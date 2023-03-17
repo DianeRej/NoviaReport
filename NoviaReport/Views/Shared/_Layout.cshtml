@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="/css/NoviaReport.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="entete">
+        <div><img src="/Images/logo-dark.png" style="width: 20%"/></div>
+        <div ><h1>Novia Report</h1></div>
+    </div>
+
+    <div id="main">
+        
+        <div id="contenu">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="footer">
+        &copy; @DateTime.Now.Year - NoviaReport, une application de NoviaTech
+    </div>
+</body>
+</html>
