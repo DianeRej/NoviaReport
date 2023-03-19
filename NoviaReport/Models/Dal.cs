@@ -9,6 +9,7 @@ namespace NoviaReport.Models
         public Dal()
         {
             _bddContext = new BddContext();
+            //_bddContext.InitializeDb();
         }
 
         public int CreateProfile(string firstName, string lastName)
@@ -36,7 +37,6 @@ namespace NoviaReport.Models
             this._bddContext.SaveChanges();
 
         }
-
         public void DeleteCreateDatabase()
         {
             _bddContext.Database.EnsureDeleted();
