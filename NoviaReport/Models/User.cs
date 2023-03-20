@@ -2,7 +2,7 @@
 
 namespace NoviaReport.Models
 {
-    public class Users
+    public class User
     {
         public int Id { get; set; }
         [MaxLength(20)]
@@ -14,6 +14,8 @@ namespace NoviaReport.Models
         public int? ProfessionalInfoId { get; set; }
         public ProfessionalInfo ProfessionalInfo { get; set;}
         public int? ProfileId { get; set; }
-        public Profile Profile { get; set; }  
+        public Profile Profile { get; set; }
+        public Role Role { get; set; }
+
     }
 }

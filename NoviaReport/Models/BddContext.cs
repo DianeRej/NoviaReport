@@ -8,7 +8,8 @@ namespace NoviaReport.Models
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ProfessionalInfo> ProfessionalInfos { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Adress> Adresses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

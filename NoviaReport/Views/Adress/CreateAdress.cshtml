@@ -1,0 +1,40 @@
+﻿@model NoviaReport.Models.Adress
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateAdress</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Ajouter une adresse : </legend>
+            @Html.LabelFor(m => Model.Num)
+            @Html.TextBoxFor(m => Model.Num)
+            @Html.ValidationMessageFor(m => Model.Num)
+            <br />
+            @Html.LabelFor(m => Model.Street)
+            @Html.TextBoxFor(m => Model.Street)
+            @Html.ValidationMessageFor(m => Model.Street)
+            <br />
+            @Html.LabelFor(m => Model.PostalCode)
+            @Html.TextBoxFor(m => Model.PostalCode)
+            @Html.ValidationMessageFor(m => Model.PostalCode)
+            <br />
+            @Html.LabelFor(m => Model.City)
+            @Html.TextBoxFor(m => Model.City)
+            @Html.ValidationMessageFor(m => Model.City)
+            <br />
+            <input type="submit" value="Ajouter" />
+        </fieldset>
+        <a href="/home/index">Changer le lien</a>
+    }
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
