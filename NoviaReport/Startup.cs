@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NoviaReport.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,10 @@ namespace NoviaReport
                 app.UseDeveloperExceptionPage();
             }
 
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.InitializeDb();
+            }
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace NoviaReport.Models
 {
-    public class Dal : IDal
+    public class DalProfile : IDalProfile
     {
         private BddContext _bddContext;
-        public Dal()
+        public DalProfile()
         {
             _bddContext = new BddContext();
             //_bddContext.InitializeDb();
@@ -36,6 +36,12 @@ namespace NoviaReport.Models
             this._bddContext.Profiles.Update(profile);
             this._bddContext.SaveChanges();
 
+        }
+        void DeleteProfile(int id)
+        {
+            Profile profileToDelete = _bddContext.Profiles.Find(id);
+            _bddContext.Profiles.Remove(profileToDelete);
+            _bddContext.SaveChanges();
         }
         public void DeleteCreateDatabase()
         {

@@ -14,7 +14,7 @@ namespace NoviaReport.Controllers
 
         public IActionResult SeeProfiles()
         {
-            Dal dal = new Dal();
+            DalProfile dal = new DalProfile();
             ViewData["ProfileList"] = dal.GetAllProfiles();
             return View("ProfileList");
         }

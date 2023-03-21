@@ -13,10 +13,16 @@ namespace NoviaReport.Models
         public DbSet<Role> Roles { get; set; }
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
+        public DbSet<UserActivity> UserActivities { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=NoviaReport");
         }
+
+        //Méthode différente que "?" pour dire que la valeur de cette table peut être nulle
+                /* protected override void OnModelCreating(ModelBuilder modelBuilder) {
+                          modelBuilder.Entity<Activity>().Property(m => m.Absences).IsRequired(false);
+                          base.OnModelCreating(modelBuilder); }*/
 
         public void InitializeDb()
         {
@@ -71,14 +77,18 @@ namespace NoviaReport.Models
                 );
 
 
-
             this.Activities.AddRange(
-               new Activity { Id = 1, Absences = Absences.CongéMaladie, OtherActivities = OtherActivities.FORMATION_PROFESSIONNELLE },
+               new Activity { Id = 1, Date = new System.DateTime(01 / 02 / 2013),Halfday = true, Absences = Absences.CongéMaladie, OtherActivities = OtherActivities.FORMATION_PROFESSIONNELLE },
                new Activity { Id = 2, OtherActivities = OtherActivities.INTER_CONTRAT },
                new Activity { Id = 3, CustomersServices = CustomersServices.PRESTATION },
-               new Activity { Id = 4, Absences = Absences.ExamenMédicalDuTravail, CustomersServices = CustomersServices.PRESTATION }
+               new Activity { Id = 4, Date = new System.DateTime(20 / 05 / 2013), Halfday = true, Absences = Absences.ExamenMédicalDuTravail, CustomersServices = CustomersServices.PRESTATION }
                );
 
+            this.UserActivities.AddRange(
+               new UserActivity { Id = 1, UserId = 1, ActivityId = 2 },
+               new UserActivity { Id = 2, UserId = 2, ActivityId = 1},
+               new UserActivity { Id = 3, UserId = 3, ActivityId = 1 },
+               new UserActivity { Id = 4, UserId = 3, ActivityId = 2 });
 
 
 

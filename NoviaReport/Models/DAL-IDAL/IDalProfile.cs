@@ -3,13 +3,14 @@ using System.Collections.Generic;
 
 namespace NoviaReport.Models
 {
-    public interface IDal : IDisposable
+    public interface IDalProfile : IDisposable
     {
         void DeleteCreateDatabase();
 
         int CreateProfile(string firstName ,string lastName);
 
         void UpdateProfile(int id, string firstName ,string lastName);
+        void DeleteProfile(int id);
 
         List<Profile> GetAllProfiles();
     }

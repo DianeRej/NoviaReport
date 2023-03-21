@@ -13,7 +13,7 @@ namespace NoviaReport.Controllers
 
         public IActionResult CreateProfile()
         {
-            using (IDal dal = new Dal())
+            using (IDalProfile dal = new DalProfile())
             {
                 return View();
             }
@@ -24,7 +24,7 @@ namespace NoviaReport.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            using (Dal dal = new Dal())
+            using (DalProfile dal = new DalProfile())
             {
                 dal.CreateProfile(firstName, lastName);
                 return Redirect("/home/seeProfiles");
@@ -36,7 +36,7 @@ namespace NoviaReport.Controllers
         {
             if (id != 0)
             {
-                using (IDal dal = new Dal())
+                using (IDalProfile dal = new DalProfile())
                 {
                     Profile profile = dal.GetAllProfiles().Where(r => r.Id == id).FirstOrDefault();
                     if (profile == null)
@@ -57,7 +57,7 @@ namespace NoviaReport.Controllers
 
             if (profile.Id != 0)
             {
-                using (Dal dal = new Dal())
+                using (DalProfile dal = new DalProfile())
                 {
                     dal.UpdateProfile(profile);
                     return Redirect("/home/seeProfiles");

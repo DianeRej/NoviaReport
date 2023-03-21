@@ -1,11 +1,16 @@
-﻿namespace NoviaReport.Models
+﻿using System;
+
+namespace NoviaReport.Models
 {
     public class Activity
     {
         public int Id { get; set; }
-        public OtherActivities OtherActivities { get; set; }
-        public Absences Absences { get; set; }
-        public CustomersServices CustomersServices { get; set; }
+        public bool? Halfday { get; set; }
+        public DateTime? Date { get; set; }
+
+        public OtherActivities? OtherActivities { get; set; }
+        public Absences? Absences { get; set; }
+        public CustomersServices? CustomersServices { get; set; }
     }
 
     public enum OtherActivities
