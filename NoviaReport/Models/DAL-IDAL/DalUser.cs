@@ -17,23 +17,6 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return user.Id;
         }
-
-        public void DeleteCreateDatabase()
-        {
-            _bddContext.Database.EnsureDeleted();
-            _bddContext.Database.EnsureCreated();
-        }
-
-        public void Dispose()
-        {
-            _bddContext.Dispose();
-        }
-
-        public List<User> GetAllUser()
-        {
-            return _bddContext.Users.ToList();
-        }
-
         public void DeleteUser(int id)
         {
             User userToDelete = _bddContext.Users.Find(id);
@@ -51,6 +34,20 @@ namespace NoviaReport.Models.DAL_IDAL
                 user.Password = password;
                 object p = _bddContext.SaveChanges();
             }
+        }
+        public List<User> GetAllUser()
+        {
+            return _bddContext.Users.ToList();
+        }
+        public void DeleteCreateDatabase()
+        {
+            _bddContext.Database.EnsureDeleted();
+            _bddContext.Database.EnsureCreated();
+        }
+
+        public void Dispose()
+        {
+            _bddContext.Dispose();
         }
     }
 }

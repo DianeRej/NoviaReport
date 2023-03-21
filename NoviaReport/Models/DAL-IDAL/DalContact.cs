@@ -18,24 +18,36 @@ namespace NoviaReport.Models.DAL_IDAL
 
         public void DeleteContact(int id)
         {
-            throw new NotImplementedException();
+            Contact contactToDelete = _bddContext.Contacts.Find(id);
+            _bddContext.Contacts.Remove(contactToDelete);
+            _bddContext.SaveChanges();
+
         }
-        public void UpdateContact(int id, string PersonalMail, int PersonalPhone, string ProMail, int ProPhone)
+        public void UpdateContact(int id, string personalMail, int personalPhone, string proMail, int proPhone)
         {
-            throw new NotImplementedException();
+            Contact contactToUpDate = _bddContext.Contacts.Find(id);
+            if (contactToUpDate != null)
+            {
+                contactToUpDate.PersonalMail = personalMail;
+                contactToUpDate.PersonalPhone = personalPhone;
+                contactToUpDate.ProMail = proMail;
+                contactToUpDate.ProPhone = proPhone;
+                _bddContext.SaveChanges();
+            }
         }
-        public List<User> GetAllContact()
+        public List<Contact> GetAllContact()
         {
-            throw new NotImplementedException();
+            return _bddContext.Contacts.ToList();
         }
         public void DeleteCreateDatabase()
         {
-            throw new NotImplementedException();
+            _bddContext.Database.EnsureDeleted();
+            _bddContext.Database.EnsureCreated();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _bddContext.Dispose();
         }
 
      

@@ -14,7 +14,9 @@ namespace NoviaReport.Models.DAL_IDAL
         void UpdateContact(int id, string PersonalMail, int PersonalPhone, string ProMail, int ProPhone);
         void DeleteContact(int id);
 
-        List<User> GetAllContact();
+        List<Contact> GetAllContact();
+
+
 
        
     }
