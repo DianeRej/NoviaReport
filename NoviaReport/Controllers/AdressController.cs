@@ -20,7 +20,7 @@ namespace NoviaReport.Controllers
             }
         }
         [HttpPost]
-        public IActionResult CreateAdress(int num, string street, int postalCode, string city)
+        public IActionResult CreateAdress(string num, string street, int postalCode, string city)
         {
             if (!ModelState.IsValid)
                 return View();

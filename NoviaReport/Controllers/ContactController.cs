@@ -18,8 +18,8 @@ namespace NoviaReport.Controllers
             }
         }
         [HttpPost]
-        public IActionResult CreateContact(string personalMail, string personalPhone, string proMail, 
-            string proPhone, Adress adress, int adressId)
+        public IActionResult CreateContact(string personalMail, int personalPhone, string proMail, 
+            int proPhone, Adress adress, int adressId)
         {
             if (!ModelState.IsValid)
                 return View();

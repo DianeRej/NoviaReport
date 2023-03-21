@@ -35,9 +35,9 @@ namespace NoviaReport
                 app.UseDeveloperExceptionPage();
             }
 
-            using (Dal dal = new Dal())
+            using (BddContext ctx = new BddContext())
             {
-                dal.DeleteCreateDatabase();
+                ctx.InitializeDb();
             }
 
             app.UseStaticFiles();
