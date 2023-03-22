@@ -22,8 +22,11 @@ namespace NoviaReport.Models
         [Display(Name = "Téléphone Pro")]
         
         public int ProPhone { get; set; }
-        public Adress Adress { get; set; }
-        public int? AdressId { get; set; }
+
+        public string Street { get; set; }
+        public int PostalCode { get; set; }
+        public string City { get; set; }
+
 
 
     }

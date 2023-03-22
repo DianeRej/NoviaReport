@@ -8,9 +8,7 @@ namespace NoviaReport.Models
     {
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ProfessionalInfo> ProfessionalInfos { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Adress> Adresses { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
@@ -36,33 +34,20 @@ namespace NoviaReport.Models
             //    new User { Id = 3, Login = "Moncef@projet2", Password = "789", ContactId = 3, ProfileId = 3, ProfessionalInfoId = 3 });
 
 
-            this.Profiles.AddRange(
-                new Profile { Id = 1, Firstname = "Diane", Lastname = "Reja" },
-                new Profile { Id = 2, Firstname = "Shain", Lastname = "Arbam" },
-                new Profile { Id = 3, Firstname = "Moncef", Lastname = "Said" },
-                new Profile { Id = 4, Firstname = "Wafa", Lastname = "Ayeb" }
-                );
-            
             this.Users.AddRange(
-                new User { Id = 1, Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ProfileId = 1, ContactId = 1,  ProfessionalInfoId = 1 },
-                new User { Id = 2, Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ProfileId = 2, ContactId = 2,  ProfessionalInfoId = 2 },
-                new User { Id = 3, Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ProfileId = 3, ContactId = 3,  ProfessionalInfoId = 3 ,ManagerId=2},
-                new User { Id = 4, Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ProfileId = 4, ContactId = 4, ProfessionalInfoId = 4, ManagerId=2 }
+                new User { Id = 1, Firstname = "Diane", Lastname = "Reja", Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ContactId = 1,  ProfessionalInfoId = 1 },
+                new User { Id = 2, Firstname = "Shain", Lastname = "Arbam", Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ContactId = 2,  ProfessionalInfoId = 2 },
+                new User { Id = 3, Firstname = "Moncef", Lastname = "Said", Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ContactId = 3,  ProfessionalInfoId = 3 ,ManagerId=2},
+                new User { Id = 4, Firstname = "Wafa", Lastname = "Ayeb", Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ContactId = 4, ProfessionalInfoId = 4, ManagerId=2 }
                 );
 
             this.Contacts.AddRange(
-                new Contact { Id = 1, PersonalMail = "Diane@gmail.com", ProMail = "Diane@projet2", PersonalPhone = 061234566, ProPhone = 061234566,  AdressId=1 },
-                new Contact { Id = 2, PersonalMail = "Shain@gmail.com", ProMail = "Shain@projet2", PersonalPhone = 078965558, ProPhone = 061234566,  AdressId = 2 },
-                new Contact { Id = 3, PersonalMail = "Monef@gmail.com", ProMail = "Moncef@projet2", PersonalPhone = 065547877, ProPhone = 061234566,  AdressId = 3 },
-                new Contact { Id = 4, PersonalMail = "Wafa@gmail.com", ProMail = "Wafa@projet2", PersonalPhone = 0788229969, ProPhone = 061234566,  AdressId = 4 }
+                new Contact { Id = 1, Street = "2 rue odessa", PostalCode = 75, City = "Paris", PersonalMail = "Diane@gmail.com", ProMail = "Diane@projet2", PersonalPhone = 061234566, ProPhone = 061234566},
+                new Contact { Id = 2, Street = "5 rue mondella", PostalCode = 95, City = "Paris", PersonalMail = "Shain@gmail.com", ProMail = "Shain@projet2", PersonalPhone = 078965558, ProPhone = 061234566 },
+                new Contact { Id = 3, Street = "9 rue general de gaulle", PostalCode = 75, City = "Paris", PersonalMail = "Monef@gmail.com", ProMail = "Moncef@projet2", PersonalPhone = 065547877, ProPhone = 061234566},
+                new Contact { Id = 4, Street = "1 rue ampere", PostalCode = 91, City = "Paris" , PersonalMail = "Wafa@gmail.com", ProMail = "Wafa@projet2", PersonalPhone = 0788229969, ProPhone = 061234566}
                 );
 
-            this.Adresses.AddRange(
-              new Adress { Id = 1, Num = "2", Street ="rue odessa", PostalCode = 75 , City = "Paris" },
-              new Adress { Id = 2, Num = "5", Street = "rue mondella", PostalCode = 95, City = "Paris" },
-              new Adress { Id = 3, Num = "9", Street = "rue general de gaulle", PostalCode = 75, City = "Paris" },
-              new Adress { Id = 4, Num = "1", Street = "rue ampere", PostalCode = 91, City = "Paris" }
-              );
             this.ProfessionalInfos.AddRange(
                new ProfessionalInfo { Id = 1, Position = Position.SALARIE, Function = 0 },
                new ProfessionalInfo { Id = 2, Position = 0, Function = Function.DEVELOPPEUR },

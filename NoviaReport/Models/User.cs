@@ -11,6 +11,15 @@ namespace NoviaReport.Models
         [Required]
         public string Password { get; set; }
 
+        [Required]
+        [Display(Name = "Prénom")]
+        [MaxLength(20)]
+        public string Firstname { get; set; }
+        [Required]
+        [Display(Name = "Nom de famille")]
+        [MaxLength(20)]
+        public string Lastname { get; set; }
+
         //réf à la table contact
         public int? ContactId { get; set; }
         public Contact Contact { get; set; }
@@ -18,11 +27,6 @@ namespace NoviaReport.Models
         //réf à la table proinfo
         public int? ProfessionalInfoId { get; set; }
         public ProfessionalInfo ProfessionalInfo { get; set;}
-        [Required]
-
-        //réf à la table profile
-        public int ProfileId { get; set; }
-        public Profile Profile { get; set; }
         
         //réf à la table role : enlevé, à la place on a une clé étrangère de user
         //dans la table role qui permet d'attribuer plusieurs roles à un employé
