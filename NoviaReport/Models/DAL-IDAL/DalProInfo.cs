@@ -9,7 +9,12 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalProInfo : IDalProInfo
     {
         private BddContext _bddContext;
-      public  int CreateProfessionalInfo(Position position, Function function)
+
+        public DalProInfo()
+        {
+            _bddContext = new BddContext();
+        }
+        public  int CreateProfessionalInfo(Position position, Function function)
         {
             ProfessionalInfo professionalInfo = new ProfessionalInfo() { Position = position, Function = function };
             _bddContext.ProfessionalInfos.Add(professionalInfo);

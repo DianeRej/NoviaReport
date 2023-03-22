@@ -25,7 +25,6 @@ namespace NoviaReport.Controllers
             if (!ModelState.IsValid)
                 return View();
             using (DalUser dal = new DalUser())
-
             {
                 dal.CreateUser(user);
 

@@ -36,7 +36,7 @@ namespace NoviaReport.Controllers
         {
             if (id != 0)
             {
-                using (IDalProfile dal = new DalProfile())
+                using (DalProfile dal = new DalProfile())
                 {
                     Profile profile = dal.GetAllProfiles().Where(r => r.Id == id).FirstOrDefault();
                     if (profile == null)

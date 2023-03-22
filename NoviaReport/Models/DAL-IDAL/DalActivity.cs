@@ -8,6 +8,12 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalActivity : IDalActivity
     {
         private BddContext _bddContext;
+
+        public DalActivity()
+        {
+            _bddContext = new BddContext();
+        }
+
         public int CreateActivity(bool halfday, DateTime date, OtherActivities otherActivities, Absences absences, CustomersServices customersServices)
         {
             Activity activityToCreate = new Activity() { Halfday = halfday, Date = date, OtherActivities= otherActivities, Absences= absences, CustomersServices  = customersServices };

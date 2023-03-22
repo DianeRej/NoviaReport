@@ -9,6 +9,11 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         private BddContext _bddContext;
 
+        public DalCRA()
+        {
+            _bddContext = new BddContext();
+        }
+
         public int CreateCRA(DateTime date, State state)
         {
             CRA craToCreate = new CRA() { Date = date, State = state };

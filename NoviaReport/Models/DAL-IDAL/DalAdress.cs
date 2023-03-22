@@ -9,6 +9,11 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         private BddContext _bddContext;
 
+        public DalAdress()
+        {
+            _bddContext = new BddContext();
+        }
+
 
         public int CreateAdress(string num, string street, int postalCode, string city)
         {

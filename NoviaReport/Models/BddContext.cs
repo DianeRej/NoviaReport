@@ -30,10 +30,10 @@ namespace NoviaReport.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
 
-            this.Users.AddRange(
-                new User { Id = 1, Login = "Dia0ne@projet2", Password = "123", ContactId = 1, ProfileId = 1, ProfessionalInfoId = 1 },
-                new User { Id = 2, Login = "Shain@projet2", Password = "456", ContactId = 2, ProfileId = 2, ProfessionalInfoId = 2 },
-                new User { Id = 3, Login = "Moncef@projet2", Password = "789", ContactId = 3, ProfileId = 3, ProfessionalInfoId = 3 });
+            //this.Users.AddRange(
+            //    new User { Id = 1, Login = "Dia0ne@projet2", Password = "123", ContactId = 1, ProfileId = 1, ProfessionalInfoId = 1 },
+            //    new User { Id = 2, Login = "Shain@projet2", Password = "456", ContactId = 2, ProfileId = 2, ProfessionalInfoId = 2 },
+            //    new User { Id = 3, Login = "Moncef@projet2", Password = "789", ContactId = 3, ProfileId = 3, ProfessionalInfoId = 3 });
 
 
             this.Profiles.AddRange(

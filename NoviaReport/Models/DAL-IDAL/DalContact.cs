@@ -8,6 +8,11 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalContact : IDalContact
     {
         private BddContext _bddContext;
+
+        public DalContact()
+        {
+            _bddContext = new BddContext();
+        }
         public int CreateContact(string personalMail, int personalPhone, string proMail, int proPhone)
         {
             Contact contact = new Contact() { PersonalMail = personalMail, PersonalPhone = personalPhone, ProMail= proMail, ProPhone= proPhone };

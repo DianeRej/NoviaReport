@@ -4,17 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
+using NoviaReport.Models;
 
 namespace NoviaReport.Models.DAL_IDAL
 {
     public class DalUser : IDalUser
     {
         private BddContext _bddContext;
-      
+
+        public DalUser()
+        {
+            _bddContext = new BddContext();
+        }
+
 
         public int CreateUser(string login, string password)
         {
-            User user = new User() { Login = login , Password = password };
+            string motDePasse = EncodeMD5(password);
+            User user = new User() { Login = login , Password = motDePasse };
             _bddContext.Users.Add(user);
             _bddContext.SaveChanges();
             return user.Id;
