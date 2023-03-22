@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
+using NoviaReport.Models.DAL_IDAL;
 using NoviaReport.ViewModels;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -9,10 +10,10 @@ namespace NoviaReport.Controllers
 {
     public class LoginController : Controller
     {
-        private Dal dal;
+        private DalUser dal;
         public LoginController()
         {
-            dal = new Dal();
+            dal = new DalUser();
         }
         public IActionResult Index()
         {

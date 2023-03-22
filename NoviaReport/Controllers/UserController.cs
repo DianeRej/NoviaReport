@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
+using NoviaReport.Models.DAL_IDAL;
 
 namespace NoviaReport.Controllers
 {
@@ -13,7 +14,7 @@ namespace NoviaReport.Controllers
 
         public IActionResult CreateUser()
         {
-            using (Dal dal = new Dal())
+            using (DalUser dal = new DalUser())
             {
                 return View();
             }
@@ -23,7 +24,7 @@ namespace NoviaReport.Controllers
         {
             if (!ModelState.IsValid)
                 return View();
-            using (Dal dal = new Dal())
+            using (DalUser dal = new DalUser())
 
             {
                 dal.CreateUser(user);

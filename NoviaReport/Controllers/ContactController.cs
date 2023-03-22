@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
+using NoviaReport.Models.DAL_IDAL;
 
 namespace NoviaReport.Controllers
 {
@@ -12,7 +13,7 @@ namespace NoviaReport.Controllers
 
         public IActionResult CreateContact()
         {
-            using (Dal dal = new Dal())
+            using (DalContact dal = new DalContact())
             {
                 return View();
             }
@@ -23,7 +24,7 @@ namespace NoviaReport.Controllers
         {
             if (!ModelState.IsValid)
                 return View();
-            using (Dal dal = new Dal())
+            using (DalContact dal = new DalContact())
             {
                 dal.CreateContact(personalMail, personalPhone, proMail, proPhone, adress, adressId);
 
