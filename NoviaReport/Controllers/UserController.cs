@@ -11,7 +11,7 @@ namespace NoviaReport.Controllers
             return View();
         }
 
-
+        //GET : UserController
         public IActionResult CreateUser()
         {
             using (DalUser dal = new DalUser())

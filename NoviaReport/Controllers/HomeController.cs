@@ -11,7 +11,7 @@ namespace NoviaReport.Controllers
             
             return View();
         }
-
+        //Permet d'afficher la liste des profils (Prénoms +Noms)
         public IActionResult SeeProfiles()
         {
             DalProfile dal = new DalProfile();

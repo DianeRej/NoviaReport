@@ -24,9 +24,8 @@ namespace NoviaReport.Models
         public int ProfileId { get; set; }
         public Profile Profile { get; set; }
         
-        //réf à la table role
-        public int? RoleId { get; set; }
-        public Role Role { get; set; }
+        //réf à la table role : enlevé, à la place on a une clé étrangère de user
+        //dans la table role qui permet d'attribuer plusieurs roles à un employé
 
         // réf à son manager (boucle sur la table User (et est nul si le user n'a pas de manager : cas de l'admin)
         public int? ManagerId { get; set; }

@@ -15,6 +15,7 @@ namespace NoviaReport.Controllers
         {
             dal = new DalUser();
         }
+        //Page de connexion (affiche le login sil'on est déjà connecté)
         public IActionResult Index()
         {
             UserViewModel viewModel = new UserViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };

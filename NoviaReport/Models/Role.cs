@@ -8,7 +8,7 @@ namespace NoviaReport.Models
         public int Id { get; set; }
         [MaxLength(30)]
         public Type  Type { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public User User { get; set; }
     }
 

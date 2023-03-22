@@ -10,7 +10,7 @@ namespace NoviaReport.Controllers
         {
             return View();
         }
-
+        //GET : ProfileController
         public IActionResult CreateProfile()
         {
             using (IDalProfile dal = new DalProfile())

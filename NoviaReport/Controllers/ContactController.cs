@@ -10,7 +10,7 @@ namespace NoviaReport.Controllers
         {
             return View();
         }
-
+        // GET : ContactController
         public IActionResult CreateContact()
         {
             using (DalContact dal = new DalContact())

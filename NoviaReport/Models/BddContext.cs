@@ -44,10 +44,10 @@ namespace NoviaReport.Models
                 );
             
             this.Users.AddRange(
-                new User { Id = 1, Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ProfileId = 1 },
-                new User { Id = 2, Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ProfileId = 2 },
-                new User { Id = 3, Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ProfileId = 3},
-                new User { Id = 4, Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ProfileId = 4 }
+                new User { Id = 1, Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ProfileId = 1, ContactId = 1,  ProfessionalInfoId = 1 },
+                new User { Id = 2, Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ProfileId = 2, ContactId = 2,  ProfessionalInfoId = 2 },
+                new User { Id = 3, Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ProfileId = 3, ContactId = 3,  ProfessionalInfoId = 3 ,ManagerId=2},
+                new User { Id = 4, Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ProfileId = 4, ContactId = 4, ProfessionalInfoId = 4, ManagerId=2 }
                 );
 
             this.Contacts.AddRange(
@@ -71,9 +71,10 @@ namespace NoviaReport.Models
                );
 
             this.Roles.AddRange(
-               new Role { Id = 1, Type = Type.ADMIN },
-               new Role { Id = 2, Type = Type.MANAGER },
-               new Role { Id = 3, Type = Type.SALARIE }
+               new Role { Id = 1, Type = Type.ADMIN, UserId=1 },
+               new Role { Id = 2, Type = Type.MANAGER, UserId = 2 },
+               new Role { Id = 3, Type = Type.SALARIE, UserId = 3 },
+               new Role { Id = 4, Type = Type.SALARIE, UserId = 4 }
                );
 
             this.CRAs.AddRange(
