@@ -6,10 +6,13 @@ namespace NoviaReport.Models
 {
     public class BddContext : DbContext
     {
+        //Tables du User
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ProfessionalInfo> ProfessionalInfos { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+
+        //Tables liées au CRA
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
         public DbSet<UserActivity> UserActivities { get; set; }
@@ -28,12 +31,7 @@ namespace NoviaReport.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
 
-            //this.Users.AddRange(
-            //    new User { Id = 1, Login = "Dia0ne@projet2", Password = "123", ContactId = 1, ProfileId = 1, ProfessionalInfoId = 1 },
-            //    new User { Id = 2, Login = "Shain@projet2", Password = "456", ContactId = 2, ProfileId = 2, ProfessionalInfoId = 2 },
-            //    new User { Id = 3, Login = "Moncef@projet2", Password = "789", ContactId = 3, ProfileId = 3, ProfessionalInfoId = 3 });
-
-
+            //remplissage initial des tables
             this.Users.AddRange(
                 new User { Id = 1, Firstname = "Diane", Lastname = "Reja", Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ContactId = 1,  ProfessionalInfoId = 1 },
                 new User { Id = 2, Firstname = "Shain", Lastname = "Arbam", Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ContactId = 2,  ProfessionalInfoId = 2 },

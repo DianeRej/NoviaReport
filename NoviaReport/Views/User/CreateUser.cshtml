@@ -24,13 +24,13 @@
         @Html.ValidationMessageFor(m => Model.Password)
             <br />
             <p>Identité </p>
-            @Html.LabelFor(m => Model.Profile.Firstname)
-            @Html.TextBoxFor(m => Model.Profile.Firstname)
-            @Html.ValidationMessageFor(m => Model.Profile.Firstname)
+            @Html.LabelFor(m => Model.Firstname)
+            @Html.TextBoxFor(m => Model.Firstname)
+            @Html.ValidationMessageFor(m => Model.Firstname)
             <br />
-            @Html.LabelFor(m => Model.Profile.Lastname)
-            @Html.TextBoxFor(m => Model.Profile.Lastname)
-            @Html.ValidationMessageFor(m => Model.Profile.Lastname)
+            @Html.LabelFor(m => Model.Lastname)
+            @Html.TextBoxFor(m => Model.Lastname)
+            @Html.ValidationMessageFor(m => Model.Lastname)
             <br />
             <p>Contact </p>
             @Html.LabelFor(m => Model.Contact.PersonalMail)
@@ -50,21 +50,17 @@
             @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
             <br />
             <p>Adresse</p>
-            @Html.LabelFor(m => Model.Contact.Adress.Num)
-            @Html.TextBoxFor(m => Model.Contact.Adress.Num)
-            @Html.ValidationMessageFor(m => Model.Contact.Adress.Num)
+            @Html.LabelFor(m => Model.Contact.Street)
+            @Html.TextBoxFor(m => Model.Contact.Street)
+            @Html.ValidationMessageFor(m => Model.Contact.Street)
             <br />
-            @Html.LabelFor(m => Model.Contact.Adress.Street)
-            @Html.TextBoxFor(m => Model.Contact.Adress.Street)
-            @Html.ValidationMessageFor(m => Model.Contact.Adress.Street)
+            @Html.LabelFor(m => Model.Contact.PostalCode)
+            @Html.TextBoxFor(m => Model.Contact.PostalCode)
+            @Html.ValidationMessageFor(m => Model.Contact.PostalCode)
             <br />
-            @Html.LabelFor(m => Model.Contact.Adress.PostalCode)
-            @Html.TextBoxFor(m => Model.Contact.Adress.PostalCode)
-            @Html.ValidationMessageFor(m => Model.Contact.Adress.PostalCode)
-            <br />
-            @Html.LabelFor(m => Model.Contact.Adress.City)
-            @Html.TextBoxFor(m => Model.Contact.Adress.City)
-            @Html.ValidationMessageFor(m => Model.Contact.Adress.City)
+            @Html.LabelFor(m => Model.Contact.City)
+            @Html.TextBoxFor(m => Model.Contact.City)
+            @Html.ValidationMessageFor(m => Model.Contact.City)
             <br />
             <!-- liste déroulante et check box pour les infos pro et le manager -->
             <legend>Rôle de l'employé</legend>
