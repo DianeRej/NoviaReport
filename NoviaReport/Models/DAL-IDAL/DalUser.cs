@@ -33,6 +33,7 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
 
         }
+        
 
         public void UpdateUser(int id, string login, string password)
         {
