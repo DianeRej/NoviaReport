@@ -1,0 +1,40 @@
+﻿@model NoviaReport.Models.Contact
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateContact</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Ajouter un contact : </legend>
+            @Html.LabelFor(m => Model.PersonalMail)
+            @Html.TextBoxFor(m => Model.PersonalMail)
+            @Html.ValidationMessageFor(m => Model.PersonalMail)
+            <br />
+            @Html.LabelFor(m => Model.PersonalPhone)
+            @Html.TextBoxFor(m => Model.PersonalPhone)
+            @Html.ValidationMessageFor(m => Model.PersonalPhone)
+            <br />
+            @Html.LabelFor(m => Model.ProMail)
+            @Html.TextBoxFor(m => Model.ProMail)
+            @Html.ValidationMessageFor(m => Model.ProMail)
+            <br />
+            @Html.LabelFor(m => Model.ProPhone)
+            @Html.TextBoxFor(m => Model.ProPhone)
+            @Html.ValidationMessageFor(m => Model.ProPhone)
+            <br />
+            <input type="submit" value="Ajouter" />
+        </fieldset>
+        <a href="/home/Index">Changer le lien</a>
+    }
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

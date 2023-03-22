@@ -9,14 +9,16 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         private BddContext _bddContext;
 
-        public int CreateAdress(int num, string street, int postalCode, string city)
+
+        public int CreateAdress(string num, string street, int postalCode, string city)
         {
-            Adress adressToCreate = new Adress() { Num = num, Street = street, PostalCode = postalCode, City = city };
-            _bddContext.Adresses.Add(adressToCreate);
+            Adress adress = new Adress() { Num = num, Street = street, PostalCode = postalCode, City = city };
+            _bddContext.Adresses.Add(adress);
             _bddContext.SaveChanges();
-            return adressToCreate.Id;
+            return adress.Id;
         }
-        public void UpdateAdress(int id, int num, string street, int postalCode, string city)
+
+            public void UpdateAdress(int id, string num, string street, int postalCode, string city)
         {
             Adress adressToUpDate = _bddContext.Adresses.Find(id);
             if (adressToUpDate != null)

@@ -16,6 +16,14 @@ namespace NoviaReport.Models.DAL_IDAL
             return contact.Id;
         }
 
+        public int CreateContact(string personalMail, int personalPhone, string proMail, int proPhone, Adress adress, int adressId)
+        {
+            Contact contact = new Contact() { PersonalMail = personalMail, PersonalPhone = personalPhone, ProMail = proMail, ProPhone = proPhone, Adress = adress, AdressId= adressId};
+            _bddContext.Contacts.Add(contact);
+            _bddContext.SaveChanges();
+            return contact.Id;
+        }
+
         public void DeleteContact(int id)
         {
             Contact contactToDelete = _bddContext.Contacts.Find(id);

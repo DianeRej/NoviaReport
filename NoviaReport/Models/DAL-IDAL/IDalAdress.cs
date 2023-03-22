@@ -10,9 +10,9 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         void DeleteCreateDatabase();
 
-        int CreateAdress(int Num, string Street, int PostalCode, string City);
+        int CreateAdress(string Num, string Street, int PostalCode, string City);
 
-        void UpdateAdress(int id, int Num, string Street, int PostalCode, string City);
+        void UpdateAdress(int id, string Num, string Street, int PostalCode, string City);
         void DeleteAdress(int id);
 
         List<Adress> GetAllAdresses();

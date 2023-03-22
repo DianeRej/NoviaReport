@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace NoviaReport.Models.DAL_IDAL
 {
@@ -17,6 +19,13 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return user.Id;
         }
+        public int CreateUser(User user)
+        {
+            _bddContext.Users.Add(user);
+            _bddContext.SaveChanges();
+            return user.Id;
+        }
+
         public void DeleteUser(int id)
         {
             User userToDelete = _bddContext.Users.Find(id);
@@ -35,6 +44,28 @@ namespace NoviaReport.Models.DAL_IDAL
                 object p = _bddContext.SaveChanges();
             }
         }
+
+        public User Authentifier(string login, string password)
+        {
+            string motDePasse = EncodeMD5(password);
+            User user = this._bddContext.Users.FirstOrDefault(u => u.Login == login && u.Password == motDePasse);
+            return user;
+        }
+        public User GetUser(int id)
+        {
+            return this._bddContext.Users.Find(id);
+        }
+
+        public User GetUser(string idStr)
+        {
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                return this.GetUser(id);
+            }
+            return null;
+        }
+
         public List<User> GetAllUser()
         {
             return _bddContext.Users.ToList();
@@ -43,6 +74,12 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Database.EnsureDeleted();
             _bddContext.Database.EnsureCreated();
+        }
+
+        public static string EncodeMD5(string motDePasse)
+        {
+            string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
         }
 
         public void Dispose()

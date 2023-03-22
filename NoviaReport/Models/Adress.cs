@@ -6,7 +6,7 @@ namespace NoviaReport.Models
     {
         public int Id { get; set; }
 
-        public int Num { get; set; }
+        public string Num { get; set; }
         [MaxLength(50)]
         public string Street { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace NoviaReport.Models
 {
@@ -6,6 +7,11 @@ namespace NoviaReport.Models
     {
         public int Id { get; set; }
         [MaxLength(30)]
-        public string Type { get; set; }
+        public Type  Type { get; set; }
+    }
+
+    public enum Type
+    {
+        ADMIN, MANAGER, SALARIE
     }
 }

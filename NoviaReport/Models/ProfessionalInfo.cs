@@ -1,14 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace NoviaReport.Models
 {
     public class ProfessionalInfo
     {
         public int Id { get; set; }
-        [MaxLength(20)]
+        [Required]
         public Position Position { get; set; } //cadre, non cadre... enum
-        [MaxLength(20)]
+        [Required]
         public Function Function { get; set; } //poste : ingénieur, développeur... enum
+        [Required]
+        public DateTime DateOfArrival { get; set; }
     }
     public enum Position
     {

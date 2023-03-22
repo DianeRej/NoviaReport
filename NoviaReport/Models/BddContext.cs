@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using NoviaReport.Models.DAL_IDAL;
 
 namespace NoviaReport.Models
 {
@@ -16,7 +17,7 @@ namespace NoviaReport.Models
         public DbSet<UserActivity> UserActivities { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=NoviaReport");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
         }
 
         //Méthode différente que "?" pour dire que la valeur de cette table peut être nulle
@@ -41,6 +42,13 @@ namespace NoviaReport.Models
                 new Profile { Id = 3, Firstname = "Moncef", Lastname = "Said" },
                 new Profile { Id = 4, Firstname = "Wafa", Lastname = "Ayeb" }
                 );
+            
+            this.Users.AddRange(
+                new User { Id = 1, Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ProfileId = 1 },
+                new User { Id = 2, Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ProfileId = 2 },
+                new User { Id = 3, Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ProfileId = 3},
+                new User { Id = 4, Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ProfileId = 4 }
+                );
 
             this.Contacts.AddRange(
                 new Contact { Id = 1, PersonalMail = "Diane@gmail.com", ProMail = "Diane@projet2", PersonalPhone = 061234566, ProPhone = 061234566,  AdressId=1 },
@@ -50,10 +58,10 @@ namespace NoviaReport.Models
                 );
 
             this.Adresses.AddRange(
-              new Adress { Id = 1, Num = 2, Street ="rue odessa", PostalCode = 75 , City = "Paris" },
-              new Adress { Id = 2, Num = 5, Street = "rue mondella", PostalCode = 95, City = "Paris" },
-              new Adress { Id = 3, Num = 9, Street = "rue general de gaulle", PostalCode = 75, City = "Paris" },
-              new Adress { Id = 4, Num = 1, Street = "rue ampere", PostalCode = 91, City = "Paris" }
+              new Adress { Id = 1, Num = "2", Street ="rue odessa", PostalCode = 75 , City = "Paris" },
+              new Adress { Id = 2, Num = "5", Street = "rue mondella", PostalCode = 95, City = "Paris" },
+              new Adress { Id = 3, Num = "9", Street = "rue general de gaulle", PostalCode = 75, City = "Paris" },
+              new Adress { Id = 4, Num = "1", Street = "rue ampere", PostalCode = 91, City = "Paris" }
               );
             this.ProfessionalInfos.AddRange(
                new ProfessionalInfo { Id = 1, Position = Position.SALARIE, Function = 0 },
@@ -63,9 +71,9 @@ namespace NoviaReport.Models
                );
 
             this.Roles.AddRange(
-               new Role { Id = 1, Type = "Admin" },
-               new Role { Id = 2, Type = "Manager",  },
-               new Role { Id = 3, Type = "Salarié", }
+               new Role { Id = 1, Type = Type.ADMIN },
+               new Role { Id = 2, Type = Type.MANAGER },
+               new Role { Id = 3, Type = Type.SALARIE }
                );
 
             this.CRAs.AddRange(
