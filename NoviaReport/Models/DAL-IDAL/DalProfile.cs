@@ -53,7 +53,18 @@ namespace NoviaReport.Models
             return _bddContext.Profiles.ToList();
         }
 
-
+        public void GetProfilesExtended()
+        {
+            var query = from user in _bddContext.Users
+                        join profile in _bddContext.Profiles on user.ProfileId equals profile.Id
+                        join professionalInfo in _bddContext.ProfessionalInfos on user.ProfessionalInfoId equals professionalInfo.Id
+                        join contact in _bddContext.Contacts on user.ContactId equals contact.Id
+                        select new { };
+            var profilesExtended = query.ToList();
+            foreach (var profile in profilesExtended) {
+                //
+            }
+        }
         public void DeleteCreateDatabase()
         {
             _bddContext.Database.EnsureDeleted();
