@@ -8,13 +8,26 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalRole : IDalRole
     {
         private BddContext _bddContext;
-        //public int CreateRole(s type)
-        //{
-        //    Role roleToCreate = new Role() { Type = type};
-        //    _bddContext.Roles.Add(roleToCreate);
-        //    _bddContext.SaveChanges();
-        //    return roleToCreate.Id;
-        //}
+
+        public DalRole()
+        {
+            _bddContext = new BddContext();
+        }
+
+        public int CreateRole(Type type, int userId)
+        {
+            Role role = new Role() { Type = type, UserId = userId };
+            _bddContext.Roles.Add(role);
+            _bddContext.SaveChanges();
+            return role.Id;
+        }
+
+        public int CreateRole(Role role)
+        {
+            _bddContext.Roles.Add(role);
+            _bddContext.SaveChanges();
+            return role.Id;
+        }
 
         //public void UpdateRole(int id, string type)
         //{
@@ -32,7 +45,7 @@ namespace NoviaReport.Models.DAL_IDAL
         //    _bddContext.Roles.Remove(roleToDelete);
         //    _bddContext.SaveChanges();
         //}
-       
+
 
         public List<Role> GetAllRoles()
         {
@@ -47,6 +60,6 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
-       
+
     }
 }

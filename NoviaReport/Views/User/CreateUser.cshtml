@@ -12,7 +12,6 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-
             <legend>Ajouter un utilisateur : </legend>
             <!-- texts box pour le login, le mot de passe, les infos profile, contact et adresse -->
             @Html.LabelFor(m => Model.Login)
@@ -62,19 +61,21 @@
             @Html.TextBoxFor(m => Model.Contact.City)
             @Html.ValidationMessageFor(m => Model.Contact.City)
             <br />
+
             <!-- liste déroulante et check box pour les infos pro et le manager -->
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
             {
             <div>
-            <input type="checkbox" id=@item value=@item name="Role"/>
+            <input type="checkbox" id=@item value=@item name="Roles"/>
             <label id="@item ">@item</label>
-                </div>
+            </div>
+
             }
             <br />
 
             @Html.LabelFor(m => Model.ProfessionalInfo.Position)
-            <select id="Position" name="Position">
+            <select id="Position" name="ProfessionalInfo.Position">
                 <option value="">Position</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
                 {
@@ -84,7 +85,7 @@
             <br />
 
             @Html.LabelFor(m => Model.ProfessionalInfo.Function)
-            <select id="Function" name="Function">
+            <select id="Function" name="ProfessionalInfo.Function">
                 <option value="">Function</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
                 {
@@ -94,19 +95,18 @@
             <br />
 
             @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
-            <input id="Model.ProfessionalInfo.DateOfArrival" type="date" />
+            <input id="ProfessionalInfo.DateOfArrival" type="date" />
             <br />
 
             @Html.LabelFor(m => Model.ManagerId)
-            <select id="ManagerId" name="Manager">
-                <option value="" disabled>--Choisissez une option--</option>
+            <select id="ManagerId" name="ManagerId">
+                <option value="">--Choisissez une option--</option>
                 <option value=0 name="Aucun manager">Aucun manager</option>
                 @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
                 {
                     <option value=@user.Id name="ManagerId">@user.Lastname</option>
                 }
             </select>
-
             <br />
 
             <input type="submit" value="Ajouter" />

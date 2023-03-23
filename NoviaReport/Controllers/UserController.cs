@@ -23,7 +23,7 @@ namespace NoviaReport.Controllers
             }
         }
         [HttpPost]
-        public IActionResult CreateUser(User user)
+        public IActionResult CreateUser(User user, List<Type> Roles)
         {
 
             if (!ModelState.IsValid)
@@ -33,9 +33,17 @@ namespace NoviaReport.Controllers
                 List<User> managers = dal.GetManagers();
                 ViewData["ManagerList"] = managers;
                 dal.CreateUser(user);
-
-                return View();
             }
+            using (DalRole dalRole = new DalRole())
+            {
+                foreach (Type type in Roles)
+                {
+                    Role role = new Role() { Type = type, UserId = user.Id };
+                    dalRole.CreateRole(role);
+                }
+            }
+            return View();
+
         }
     }
 }

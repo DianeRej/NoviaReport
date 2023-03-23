@@ -10,12 +10,11 @@ namespace NoviaReport.Models
         public Position Position { get; set; } //cadre, non cadre... enum
         [Required]
         public Function Function { get; set; } //poste : ingénieur, développeur... enum
-        [Required]
         public DateTime DateOfArrival { get; set; }
     }
     public enum Position
     {
-        CADRE, DIRECTEUR, SALARIE
+        CADRE, DIRECTEUR, NONCADRE
     }
 
     public enum Function

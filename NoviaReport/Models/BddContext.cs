@@ -47,10 +47,10 @@ namespace NoviaReport.Models
                 );
 
             this.ProfessionalInfos.AddRange(
-               new ProfessionalInfo { Id = 1, Position = Position.SALARIE, Function = 0 },
-               new ProfessionalInfo { Id = 2, Position = 0, Function = Function.DEVELOPPEUR },
-               new ProfessionalInfo { Id = 3, Position = 0, Function = 0},
-               new ProfessionalInfo { Id = 4, Position = Position.DIRECTEUR, Function = Function.DIRECTEUR_GENERAL }
+               new ProfessionalInfo { Id = 1, Position = Position.NONCADRE, Function = Function.RH, DateOfArrival = new System.DateTime(01 / 02 / 2013) },
+               new ProfessionalInfo { Id = 2, Position = Position.CADRE, Function = Function.DEVELOPPEUR, DateOfArrival = new System.DateTime(02 / 10 / 2014) },
+               new ProfessionalInfo { Id = 3, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new System.DateTime(12 / 08 / 2013) },
+               new ProfessionalInfo { Id = 4, Position = Position.DIRECTEUR, Function = Function.DIRECTEUR_GENERAL, DateOfArrival = new System.DateTime(31 / 01 / 2010) }
                );
 
             this.Roles.AddRange(
@@ -68,7 +68,6 @@ namespace NoviaReport.Models
 
                 );
 
-
             this.Activities.AddRange(
                new Activity { Id = 1, Date = new System.DateTime(01 / 02 / 2013),Halfday = true, Absences = Absences.CongéMaladie, OtherActivities = OtherActivities.FORMATION_PROFESSIONNELLE },
                new Activity { Id = 2, OtherActivities = OtherActivities.INTER_CONTRAT },
@@ -82,12 +81,7 @@ namespace NoviaReport.Models
                new UserActivity { Id = 3, UserId = 3, ActivityId = 1 },
                new UserActivity { Id = 4, UserId = 3, ActivityId = 2 });
 
-
-
-
-
             this.SaveChanges();
-
 
         }
     }
