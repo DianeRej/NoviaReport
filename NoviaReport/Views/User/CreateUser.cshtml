@@ -15,13 +15,13 @@
 
             <legend>Ajouter un utilisateur : </legend>
             <!-- texts box pour le login, le mot de passe, les infos profile, contact et adresse -->
-        @Html.LabelFor(m => Model.Login)
+            @Html.LabelFor(m => Model.Login)
             @Html.TextBoxFor(m => Model.Login)
             @Html.ValidationMessageFor(m => Model.Login)
             <br />
             @Html.LabelFor(m => Model.Password)
-            @Html.PasswordFor(m => Model.Password) <!-- mdp pas encodé pour le moment-->
-        @Html.ValidationMessageFor(m => Model.Password)
+            @Html.PasswordFor(m => Model.Password)
+            @Html.ValidationMessageFor(m => Model.Password)
             <br />
             <p>Identité </p>
             @Html.LabelFor(m => Model.Firstname)
@@ -64,54 +64,48 @@
             <br />
             <!-- liste déroulante et check box pour les infos pro et le manager -->
             <legend>Rôle de l'employé</legend>
-            <input id="ADMIN" type="checkbox" value="ADMIN" name="ADMIN" />
-            <label for="ADMIN">Admin</label>
+            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
+            {
+            <div>
+            <input type="checkbox" id=@item value=@item name="Role"/>
+            <label id="@item ">@item</label>
+                </div>
+            }
             <br />
-            <input id="MANAGER" type="checkbox" value="MANAGER" name="MANAGER" />
-            <label for="MANAGER">Manager</label>
-            <br />
-            <input id="SALARIE" type="checkbox" value="SALARIE" name="SALARIE" />
-            <label for="SALARIE">Salarié</label>
-            <br />
+
             @Html.LabelFor(m => Model.ProfessionalInfo.Position)
             <select id="Position" name="Position">
                 <option value="">Position</option>
-                <option value="0">CADRE</option>
-                <option value="1">DIRECTEUR</option>
-                <option value="2">SALARIE</option>
+                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
+                {
+                    <option value=@item name="Position">@item</option>
+                }
             </select>
             <br />
+
             @Html.LabelFor(m => Model.ProfessionalInfo.Function)
             <select id="Function" name="Function">
                 <option value="">Function</option>
-                <option value="0">INGENIEUR</option>
-                <option value="1">DEVELOPPEUR</option>
-                <option value="2">COMMERCIAL</option>
-                <option value="3">RH</option>
-                <option value="4">TECHNICIEN</option>
-                <option value="5">RESPONSABLE_RESEAU</option>
-                <option value="6">RESPONSABLE_SECURITE</option>
-                <option value="7">CHEF_DE_PROJET</option>
-                <option value="8">DIRECTEUR_COMMERCIAL</option>
-                <option value="9">DIRECTEUR_GENERAL</option>
-                <option value="10">PDG</option>
+                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
+                {
+                    <option value=@item name="Function">@item</option>
+                }
             </select>
-
             <br />
+
             @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
             <input id="Model.ProfessionalInfo.DateOfArrival" type="date" />
             <br />
-            <!--On veut récupérer le nom des manager donc il faut aller chercher ceux qui ont le Type=1 dans la 
-            table Role puis avec leur UserId retrouver le User puis avec le profileId récupérer le nom ! Chiant-->
-            @*@Html.LabelFor(m => Model.ManagerId)
-            <select id="Manager" name="Manager">
-                <option value="">--Choisissez une option--</option>
-                <option value="0" name="Aucun manager">Aucun manager</option>
+
+            @Html.LabelFor(m => Model.ManagerId)
+            <select id="ManagerId" name="Manager">
+                <option value="" disabled>--Choisissez une option--</option>
+                <option value=0 name="Aucun manager">Aucun manager</option>
                 @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
                 {
-                    <option value="@user.Id" name="@user.Lastname">@user.Lastname</option>
+                    <option value=@user.Id name="ManagerId">@user.Lastname</option>
                 }
-            </select>*@
+            </select>
 
             <br />
 

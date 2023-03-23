@@ -14,9 +14,9 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext = new BddContext();
         }
-        public  int CreateProfessionalInfo(Position position, Function function)
+        public  int CreateProfessionalInfo(Position position, Function function, DateTime dateofarrival)
         {
-            ProfessionalInfo professionalInfo = new ProfessionalInfo() { Position = position, Function = function };
+            ProfessionalInfo professionalInfo = new ProfessionalInfo() { Position = position, Function = function, DateOfArrival=dateofarrival };
             _bddContext.ProfessionalInfos.Add(professionalInfo);
             _bddContext.SaveChanges();
             return professionalInfo.Id;

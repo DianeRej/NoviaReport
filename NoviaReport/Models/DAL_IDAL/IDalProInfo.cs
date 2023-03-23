@@ -9,7 +9,7 @@ namespace NoviaReport.Models.DAL_IDAL
     {
        public void DeleteCreateDatabase();
 
-        public int CreateProfessionalInfo(Position Position, Function Function);
+        public int CreateProfessionalInfo(Position Position, Function Function, DateTime dateofarrival);
 
         public void UpdateProfessionalInfo(int id, Position Position, Function Function);
         public void DeleteProfessionalInfo(int id);

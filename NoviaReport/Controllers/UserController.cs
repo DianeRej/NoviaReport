@@ -17,8 +17,8 @@ namespace NoviaReport.Controllers
         {
             using (DalUser dal = new DalUser())
             {
-                //List<User> managers = dal.GetManagers();
-                //ViewData["ManagerList"] = managers;
+                List<User> managers = dal.GetManagers();
+                ViewData["ManagerList"] = managers;
                 return View();
             }
         }
@@ -30,7 +30,8 @@ namespace NoviaReport.Controllers
                 return View();
             using (DalUser dal = new DalUser())
             {
-
+                List<User> managers = dal.GetManagers();
+                ViewData["ManagerList"] = managers;
                 dal.CreateUser(user);
 
                 return View();

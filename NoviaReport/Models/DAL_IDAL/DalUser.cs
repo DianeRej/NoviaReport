@@ -87,7 +87,7 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id
-                        where role.Type.Equals(1) //correspond à un utilisateur Manager
+                        where role.Type.Equals(Type.MANAGER) //correspond à un utilisateur Manager
                         select user;
             List<User> managers = query.ToList();
 
