@@ -21,13 +21,18 @@ namespace NoviaReport.Models.DAL_IDAL
         public int CreateUser(string login, string password)
         {
             string motDePasse = EncodeMD5(password);
-            User user = new User() { Login = login , Password = motDePasse };
+            User user = new User() { Login = login, Password = motDePasse };
             _bddContext.Users.Add(user);
             _bddContext.SaveChanges();
             return user.Id;
         }
         public int CreateUser(User user)
         {
+            if (user.ManagerId == 0)
+            {
+                user.ManagerId = null;
+            }
+            user.Password = EncodeMD5(user.Password);
             _bddContext.Users.Add(user);
             _bddContext.SaveChanges();
             return user.Id;
@@ -40,7 +45,7 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
 
         }
-        
+
 
         public void UpdateUser(int id, string login, string password)
         {
@@ -74,9 +79,19 @@ namespace NoviaReport.Models.DAL_IDAL
             return null;
         }
 
-        public List<User> GetAllUser()
+        public List<User> GetAllUsers()
         {
             return _bddContext.Users.ToList();
+        }
+        public List<User> GetManagers()
+        {
+            var query = from role in _bddContext.Roles
+                        join user in _bddContext.Users on role.UserId equals user.Id
+                        where role.Type.Equals(1) //correspond à un utilisateur Manager
+                        select user;
+            List<User> managers = query.ToList();
+
+            return managers;
         }
         public void DeleteCreateDatabase()
         {

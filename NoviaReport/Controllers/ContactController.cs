@@ -19,14 +19,14 @@ namespace NoviaReport.Controllers
             }
         }
         [HttpPost]
-        public IActionResult CreateContact(string personalMail, int personalPhone, string proMail, 
-            int proPhone, Adress adress, int adressId)
+        public IActionResult CreateContact(string personalMail, int personalPhone, string proMail,
+            int proPhone, string street, int postalcode, string city)
         {
             if (!ModelState.IsValid)
                 return View();
             using (DalContact dal = new DalContact())
             {
-                dal.CreateContact(personalMail, personalPhone, proMail, proPhone, adress, adressId);
+                dal.CreateContact(personalMail, personalPhone, proMail, proPhone, street, postalcode, city);
 
                 return View();
             }

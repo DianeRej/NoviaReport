@@ -1,0 +1,34 @@
+﻿@model NoviaReport.Models.DAL_IDAL.DalUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserList</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Login</th>
+            <th>Poste</th>
+            @*<th>Modifier</th>*@
+        </tr>
+        @foreach (NoviaReport.Models.User user in ViewData["UserList"] as List<NoviaReport.Models.User>)
+        {
+            <tr>
+                <td>@user.Firstname</td>
+                <td>@user.Lastname</td>
+                <td>@user.Login</td>
+                <td>Poste(à faire) </td> @*à modifier pour que cela liste le poste*@
+                @*<td><a href="/User/UpdateUser/@user.Id">Modifier</a></td>*@
+            </tr>
+        }
+    </table>
+    <a href="/User/CreateUser">Ajouter un nouvel utilisateur</a>
+</body>
+</html>

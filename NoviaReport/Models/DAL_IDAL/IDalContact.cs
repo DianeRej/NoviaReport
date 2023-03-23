@@ -9,10 +9,8 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         void DeleteCreateDatabase();
 
-        int CreateContact(string PersonalMail, int PersonalPhone, string ProMail, int ProPhone);
+        int CreateContact(string PersonalMail, int PersonalPhone, string ProMail, int ProPhone, string street, int postalcode, string city);
 
-        public int CreateContact(string personalMail, int personalPhone, string proMail,
-           int proPhone, Adress adress, int adressId);
         void UpdateContact(int id, string PersonalMail, int PersonalPhone, string ProMail, int ProPhone);
         void DeleteContact(int id);
 
@@ -20,6 +18,6 @@ namespace NoviaReport.Models.DAL_IDAL
 
 
 
-       
+
     }
 }

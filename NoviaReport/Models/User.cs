@@ -26,8 +26,8 @@ namespace NoviaReport.Models
 
         //réf à la table proinfo
         public int? ProfessionalInfoId { get; set; }
-        public ProfessionalInfo ProfessionalInfo { get; set;}
-        
+        public ProfessionalInfo ProfessionalInfo { get; set; }
+
         //réf à la table role : enlevé, à la place on a une clé étrangère de user
         //dans la table role qui permet d'attribuer plusieurs roles à un employé
 

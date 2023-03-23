@@ -14,7 +14,7 @@ namespace NoviaReport.Models.DAL_IDAL
 
         void UpdateUser(int id, string Login, string Password);
 
-        List<User> GetAllUser();
+        List<User> GetAllUsers();
 
         void DeleteUser(int id);
 

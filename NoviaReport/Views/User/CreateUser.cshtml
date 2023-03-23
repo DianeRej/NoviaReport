@@ -72,16 +72,16 @@
             <br />
             <input id="SALARIE" type="checkbox" value="SALARIE" name="SALARIE" />
             <label for="SALARIE">Salarié</label>
-
-            <p>Statut de l'employé</p>
+            <br />
+            @Html.LabelFor(m => Model.ProfessionalInfo.Position)
             <select id="Position" name="Position">
                 <option value="">Position</option>
                 <option value="0">CADRE</option>
                 <option value="1">DIRECTEUR</option>
                 <option value="2">SALARIE</option>
             </select>
-
-            <p>Poste</p>
+            <br />
+            @Html.LabelFor(m => Model.ProfessionalInfo.Function)
             <select id="Function" name="Function">
                 <option value="">Function</option>
                 <option value="0">INGENIEUR</option>
@@ -96,31 +96,25 @@
                 <option value="9">DIRECTEUR_GENERAL</option>
                 <option value="10">PDG</option>
             </select>
+
             <br />
-            <p>Poste</p>
-            <select id="Manager" name="Manager">
-                <option value="">Function</option>
-                <option value="0">INGENIEUR</option>
-                <option value="1">DEVELOPPEUR</option>
-                <option value="2">COMMERCIAL</option>
-                <option value="3">RH</option>
-                <option value="4">TECHNICIEN</option>
-                <option value="5">RESPONSABLE_RESEAU</option>
-                <option value="6">RESPONSABLE_SECURITE</option>
-                <option value="7">CHEF_DE_PROJET</option>
-                <option value="8">DIRECTEUR_COMMERCIAL</option>
-                <option value="9">DIRECTEUR_GENERAL</option>
-                <option value="10">PDG</option>
-            </select>
             @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
             <input id="Model.ProfessionalInfo.DateOfArrival" type="date" />
             <br />
             <!--On veut récupérer le nom des manager donc il faut aller chercher ceux qui ont le Type=1 dans la 
             table Role puis avec leur UserId retrouver le User puis avec le profileId récupérer le nom ! Chiant-->
-            <Manager>
-                <select id="Manager" name="Manager"></select>
-                
-            </Manager>
+            @*@Html.LabelFor(m => Model.ManagerId)
+            <select id="Manager" name="Manager">
+                <option value="">--Choisissez une option--</option>
+                <option value="0" name="Aucun manager">Aucun manager</option>
+                @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
+                {
+                    <option value="@user.Id" name="@user.Lastname">@user.Lastname</option>
+                }
+            </select>*@
+
+            <br />
+
             <input type="submit" value="Ajouter" />
         </fieldset>
         <a href="/home/index">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>

@@ -13,21 +13,16 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext = new BddContext();
         }
-        public int CreateContact(string personalMail, int personalPhone, string proMail, int proPhone)
+        public int CreateContact(string personalMail, int personalPhone, string proMail, int proPhone, string street, int postalcode, string city)
         {
-            Contact contact = new Contact() { PersonalMail = personalMail, PersonalPhone = personalPhone, ProMail= proMail, ProPhone= proPhone };
+            Contact contact = new Contact() { PersonalMail = personalMail, PersonalPhone = personalPhone, ProMail = proMail, ProPhone = proPhone, 
+                Street = street, PostalCode = postalcode, City = city };
             _bddContext.Contacts.Add(contact);
             _bddContext.SaveChanges();
             return contact.Id;
         }
 
-        public int CreateContact(string personalMail, int personalPhone, string proMail, int proPhone, Adress adress, int adressId)
-        {
-            Contact contact = new Contact() { PersonalMail = personalMail, PersonalPhone = personalPhone, ProMail = proMail, ProPhone = proPhone, Adress = adress, AdressId= adressId};
-            _bddContext.Contacts.Add(contact);
-            _bddContext.SaveChanges();
-            return contact.Id;
-        }
+
 
         public void DeleteContact(int id)
         {
@@ -63,8 +58,8 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.Dispose();
         }
 
-     
 
-       
+
+
     }
 }

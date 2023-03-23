@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NoviaReport.Models;
+using NoviaReport.Models.DAL_IDAL;
 using System;
 
 namespace NoviaReport.Controllers
@@ -12,11 +12,11 @@ namespace NoviaReport.Controllers
             return View();
         }
         //Permet d'afficher la liste des profils (Prénoms +Noms)
-        public IActionResult SeeProfiles()
+        public IActionResult SeeUsers()
         {
-            DalProfile dal = new DalProfile();
-            ViewData["ProfileList"] = dal.GetAllProfiles();
-            return View("ProfileList");
+            DalUser dal = new DalUser();
+            ViewData["UserList"] = dal.GetAllUsers();
+            return View("UserList");
         }
     }
 
