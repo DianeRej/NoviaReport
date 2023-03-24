@@ -16,7 +16,7 @@
         <fieldset>
             <legend>Ajouter un utilisateur : </legend>
             <!-- texts box pour le login, le mot de passe, le prénom, le nom, et les infos dans contact -->
-            @Html.LabelFor(m => Model.Login)
+        @Html.LabelFor(m => Model.Login)
             @Html.TextBoxFor(m => Model.Login)
             @Html.ValidationMessageFor(m => Model.Login)
             <br />
@@ -68,19 +68,41 @@
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
             {
+                @*mettre un commentaire pour expliquer le fonctionnement*@
+                bool isChecked = false;
+                foreach (var itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
+                {
+                    if (itemBis.Type.Equals(item))
+                    {
+                        isChecked = true;
+                        break;
+                    }
+                }
                 <div>
-                    <input type="checkbox" id=@item value=@item name="Roles" />
+                    <input type="checkbox" id=@item value=@item name="Roles" checked=@isChecked />
                     <label id="@item ">@item</label>
                 </div>
             }
             <br />
 
+            @*La logique ici est similaire, mais vu qu'il n'y a qu'un seul JobEnum de possible, on a juste à garder la condition
+        qui permet de déterminer si la valeur du menu déroulant correspond à ce que notre User possède en attribut JobEnum'
+        Dans un <option>, selected permet que ce soit la valeur de cet input qui soit sélectionné dans la liste déroulante, plutôt
+        que le premier élément de la liste A ENLEVER !!!!*@
+
             @Html.LabelFor(m => Model.ProfessionalInfo.Position)
             <select id="Position" name="ProfessionalInfo.Position">
                 <option value="">Position</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
-                {
-                    <option value=@item name="Position">@item</option>
+                {    
+                bool positionisChecked = false;
+
+                    if (Model.ProfessionalInfo.Position.Equals(item))
+                    {
+                        positionisChecked = true; 
+                    }
+     
+                    <option value=@item name="Position" selected=@positionisChecked >@item</option>
                 }
             </select>
             <br />

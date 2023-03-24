@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
 using NoviaReport.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace NoviaReport.Models.DAL_IDAL
 {
@@ -79,9 +80,9 @@ namespace NoviaReport.Models.DAL_IDAL
             User user = this._bddContext.Users.FirstOrDefault(u => u.Login == login && u.Password == motDePasse);
             return user;
         }
-        public User GetUser(int id)
+        public User GetUserById(int id)
         {
-            return this._bddContext.Users.Find(id);
+            return this._bddContext.Users.Include(u =>u.Contact).Include(u => u.ProfessionalInfo).SingleOrDefault(u => u.Id==id);
         }
 
         public User GetUser(string idStr)
@@ -89,7 +90,7 @@ namespace NoviaReport.Models.DAL_IDAL
             int id;
             if (int.TryParse(idStr, out id))
             {
-                return this.GetUser(id);
+                return this.GetUserById(id);
             }
             return null;
         }
@@ -98,6 +99,8 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             return _bddContext.Users.ToList();
         }
+
+        
         public List<User> GetManagers()
         {
             var query = from role in _bddContext.Roles

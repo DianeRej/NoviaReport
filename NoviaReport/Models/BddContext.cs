@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using NoviaReport.Models.DAL_IDAL;
+using System;
 
 namespace NoviaReport.Models
 {
@@ -47,17 +48,18 @@ namespace NoviaReport.Models
                 );
 
             this.ProfessionalInfos.AddRange(
-               new ProfessionalInfo { Id = 1, Position = Position.NONCADRE, Function = Function.RH, DateOfArrival = new System.DateTime(01 / 02 / 2013) },
-               new ProfessionalInfo { Id = 2, Position = Position.CADRE, Function = Function.DEVELOPPEUR, DateOfArrival = new System.DateTime(02 / 10 / 2014) },
-               new ProfessionalInfo { Id = 3, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new System.DateTime(12 / 08 / 2013) },
-               new ProfessionalInfo { Id = 4, Position = Position.DIRECTEUR, Function = Function.DIRECTEUR_GENERAL, DateOfArrival = new System.DateTime(31 / 01 / 2010) }
+               new ProfessionalInfo { Id = 1, Position = Position.NONCADRE, Function = Function.RH, DateOfArrival = new DateTime(2013, 10, 01) },
+               new ProfessionalInfo { Id = 2, Position = Position.CADRE, Function = Function.DEVELOPPEUR, DateOfArrival = new DateTime(2014, 12, 29) },
+               new ProfessionalInfo { Id = 3, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new DateTime(2013, 02, 28) },
+               new ProfessionalInfo { Id = 4, Position = Position.DIRECTEUR, Function = Function.DIRECTEUR_GENERAL, DateOfArrival = new DateTime(2010, 01, 31) }
                );
 
             this.Roles.AddRange(
                new Role { Id = 1, Type = Type.ADMIN, UserId=1 },
                new Role { Id = 2, Type = Type.MANAGER, UserId = 2 },
                new Role { Id = 3, Type = Type.SALARIE, UserId = 3 },
-               new Role { Id = 4, Type = Type.SALARIE, UserId = 4 }
+               new Role { Id = 4, Type = Type.SALARIE, UserId = 4 },
+               new Role { Id = 5, Type = Type.MANAGER, UserId = 4 }
                );
 
             this.CRAs.AddRange(

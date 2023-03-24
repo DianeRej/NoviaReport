@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
+using NoviaReport.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +19,7 @@ namespace NoviaReport.Controllers
         {
             using (DalUser dal = new DalUser())
             {
-                //permet de générer la liste eds personnes référencées comme manager pour être
+                //permet de générer la liste des personnes référencées comme manager pour être
                 //proposées comme manager pour un nouvel utilisateur
                 List<User> managers = dal.GetManagers();
                 ViewData["ManagerList"] = managers;
@@ -60,7 +61,11 @@ namespace NoviaReport.Controllers
             {
                 List<User> managers = dal.GetManagers();
                 ViewData["ManagerList"] = managers;
-                User userToUpdate = dal.GetAllUsers().Where(r => r.Id == id).FirstOrDefault();
+                User userToUpdate = dal.GetUserById(id);
+                using (DalRole dalRole = new DalRole())
+                {
+                ViewData["RoleList"] = dalRole.GetRolesByUserId(id);
+                }
                 return View(userToUpdate);
             }
         }
