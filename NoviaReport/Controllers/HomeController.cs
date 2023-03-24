@@ -8,16 +8,18 @@ namespace NoviaReport.Controllers
     {
         public IActionResult Index()
         {
-            
+
             return View();
         }
 
         public IActionResult SeeProfiles()
-        {
-            DalProfile dal = new DalProfile();
-            ViewData["ProfileList"] = dal.GetAllProfiles();
-            return View("ProfileList");
-        }
+          {
+              DalProfile dal = new DalProfile();
+              ViewData["ProfileList"] = dal.GetAllProfiles();
+              return View("ProfileList");
+         }
+
     }
 
-}
+    }
+

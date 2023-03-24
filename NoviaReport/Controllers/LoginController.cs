@@ -21,9 +21,9 @@ namespace NoviaReport.Controllers
             if (viewModel.Authentifie)
             {
                 viewModel.User = dal.GetUser(HttpContext.User.Identity.Name);
-                return View(viewModel);
+                return View("EspaceLogin", viewModel);
             }
-            return View(viewModel);
+            return View("EspaceLogin", viewModel);
         }
 
         [HttpPost]
@@ -52,7 +52,7 @@ namespace NoviaReport.Controllers
                 }
                 ModelState.AddModelError("User.Login", "Login et/ou mot de passe incorrect(s)");
             }
-            return View(viewModel);
+            return View("EspaceLogin", viewModel);
         }
     }
 }
