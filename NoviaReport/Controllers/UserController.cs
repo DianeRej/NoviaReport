@@ -2,6 +2,7 @@
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NoviaReport.Controllers
 {
@@ -53,36 +54,37 @@ namespace NoviaReport.Controllers
 
         //get : envoie sur un formulaire de modification identique à celui de création mais où les champs seront
         //déjà préremplis avec les informations initiales
-        public IActionResult UpdateUser()
+        public IActionResult UpdateUser(int id)
         {
             using (DalUser dal = new DalUser())
             {
                 List<User> managers = dal.GetManagers();
                 ViewData["ManagerList"] = managers;
-                return View();
+                User userToUpdate = dal.GetAllUsers().Where(r => r.Id == id).FirstOrDefault();
+                return View(userToUpdate);
             }
         }
-        //[HttpPost]
-        //public IActionResult UpdateUser(User user, List<Type> Roles)
-        //{
+        [HttpPost]
+        public IActionResult UpdateUser(int id, User user, List<Type> Roles)
+        {
+            if (!ModelState.IsValid)
+                return View();
 
-        //    if (!ModelState.IsValid)
-        //        return View();
-        //    using (DalUser dal = new DalUser())
-        //    {
-        //        List<User> managers = dal.GetManagers();
-        //        ViewData["ManagerList"] = managers;
-        //        dal.UpdateUser(user);
-        //    }
-        //    using (DalRole dalRole = new DalRole())
-        //    {
-        //        foreach (Type type in Roles)
-        //        {
-        //            Role role = new Role() { Type = type, UserId = user.Id };
-        //            dalRole.UpdateRole(role);
-        //        }
-        //    }
-        //    return View();
-        //}
+            using (DalUser dal = new DalUser())
+            {
+                List<User> managers = dal.GetManagers();
+                ViewData["ManagerList"] = managers;
+                dal.UpdateUser(id, user);
+            }
+            using (DalRole dalRole = new DalRole())
+            {
+                foreach (Type type in Roles)
+                {
+                    Role role = new Role() { Type = type, UserId = user.Id };
+                    dalRole.UpdateRole(id, role);
+                }
+            }
+            return View();
+        }
     }
 }

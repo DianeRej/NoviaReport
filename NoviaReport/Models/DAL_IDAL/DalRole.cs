@@ -29,15 +29,15 @@ namespace NoviaReport.Models.DAL_IDAL
             return role.Id;
         }
 
-        //public void UpdateRole(int id, string type)
-        //{
-        //    Role roleToUpDate = _bddContext.Roles.Find(id);
-        //    if (roleToUpDate != null)
-        //    {
-        //        roleToUpDate.Type = type;
-        //        _bddContext.SaveChanges();
-        //    }
-        //}
+        public void UpdateRole(int id, Role role)
+        {
+            Role roleToUpdate = _bddContext.Roles.Find(id);
+            if (roleToUpdate != null)
+            {
+                _bddContext.Roles.Update(role);
+                _bddContext.SaveChanges();
+            }
+        }
 
         //public void DeleteRole(int id)
         //{
