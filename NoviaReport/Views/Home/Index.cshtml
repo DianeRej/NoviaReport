@@ -1,10 +1,157 @@
-﻿@model NoviaReport.Models.DAL_IDAL.DalUser
+
+
 @{
-    Layout = "_Layout";
+    Layout = null;
     ViewBag.Title = "Accueil";
 }
+<link href="/css/Bootstrap.css" rel="stylesheet" />
+<link href="/css/StyleEspacePresentation.css" rel="stylesheet" />
 
 
-<p><a href="/home/seeUsers">Consulter la liste des employés</a></p>
-<p><a href="/user/createuser">Ajouter un nouvel utilisateur</a></p>
+<body>
+  
+    <header>
+        <img src="./Images/1.png" />
 
+
+        <div class="boutons">
+            <a href="@Url.Action("Index", "Login")">
+                <button>Connexion</button>
+            </a>
+            <button>Essai gratuit</button>
+        </div>
+
+    </header>
+
+    <div id="content">
+
+        <div class="leftbox">
+            <h3 id="titres">Saisie des temps et activités</h3>
+            <p>
+                Avec NoviaReport, vos collaborateurs saisissent leur compte-rendu
+                d'activité (CRA) mensuel <br />
+                simplement, rapidement et efficacement. Absences, congés, activités
+                non facturables,<br />
+                imputations sur les projets... vous retrouvez toute la donnée utile au
+                pilotage de vos prestations <br />
+                et de l'ensemble de votre société.
+            </p>
+            <button><small> Demandez une démo gratuite </small></button>
+        </div>
+
+        <div class="rightbox">
+            <img src="./Images/4.png" alt="Logo d'entreprise" />
+        </div>
+    </div>
+
+    <div id="contents">
+        <div class="leftboxs">
+            <img src="./Images/Calendrier.png" />
+            <h3>Validez les feuilles de temps</h3>
+            <p1>
+                Avec un workflow de validation à 2 niveaux, par le manager et les
+                <br />
+                ressources humaines, vous vérifiez les données saisies dans les CRA.
+            </p1>
+        </div>
+
+        <div class="centerbox">
+            <img src="./Images/Analyse.png" />
+            <h3>Analysez les imputations</h3>
+            <p2>
+                Vous contrôles les absences, les imputations sur les tâches des
+                projets <br />
+                et les temps passés sur les activités non facturables.
+            </p2>
+        </div>
+
+        <div class="rightboxs">
+            <img src="./Images/Absence.png" />
+            <h3>Préparez les exports pour la paie</h3>
+            <p3>
+                Vous remontez le détail des absences depuis les CRA pour leur <br />
+                intégration dans l'outil de paie.
+            </p3>
+        </div>
+    </div>
+    <div id="contenue">
+        <p4>
+            La gestion des temps et activités est une tâche importante du pilotage
+            d'une société de services aux entreprises. Les temps passées par vos
+            consultants est une part essentielle de votre activité, il est donc
+            primordial de récolter les données, <br />analyser les informations et
+            chercher à optimiser ces temps .
+        </p4>
+    </div>
+
+    <div id="contenues">
+        <div class="leftsbox">
+            <h3 id="titres">Comment saisir ses temps dans NoviaReport ?</h3>
+            <p5>
+                Avec un ERP spécialisé pour les métiers du service comme NoviaReport,
+                vos collaborateurs renseignent <br />
+                rapidement leur compte-rendu d'activité mensuel (CRA) en imputant
+                leurs temps en journée, demi-<br />
+                journéé ou quart de journée :<br />
+                <ul>
+                    <li>
+                        Sur les tâches des projets facturables aux clients sur lesquels
+                        ils ont été affectés
+                    </li>
+                    <li>
+                        Sur les activités non facturables paramétrées (avant-vente,
+                        management, intercontrat...)
+                    </li>
+                    <li>Sur les projets internes</li>
+                </ul>
+                La validation des demandes de congés vient alimenter automatiquement
+                les CRA, et les absences pour <br />
+                maladie sont ajoutées par le support RH après réception des
+                justificatifs.<br />
+                le collaborateur peut compléter sa saisie avec des commentaires par
+                bloc de temps ou une note globale <br />
+                pour le mois. <br />
+                Enfin, la feuille de temps ou le CRA peut être envoyé en PDF au client
+                pour validation. <br />
+                La saisie des temps et les comptes-rendus d'activité sont aussi
+                accessibles à vos sous-traitants pour <br />
+                Qu'ils viennent directement reporter leur activité.
+            </p5>
+        </div>
+        <div class="rightsbox">
+            <h3>
+                Quels bénéfices avec le suivi des temps et activités dans NoviaReport
+                ?
+            </h3>
+
+            <p6>
+                Avec la saisie de temps dans l'ERP NoviaReport, l'information est
+                partagée en temps réel entre :
+                <ul>
+                    <li>
+                        Le collaborateur qui renseigne son CRA avec ses imputations sur
+                        les projets et activités
+                    </li>
+                    <li>
+                        Le manager qui peut contrôler le planning réalisé et les
+                        indicateurs de production
+                    </li>
+                    <li>
+                        les chefs de projets qui voient le suivi des tâches s'actualiser
+                        en continu/li>
+                    </li>
+                </ul>
+
+                La facturation est aussi accélérée grâce à la collection des temps
+                pour disposer <br />
+                rapidement de données fiables et justifiées. <br />
+                Les différents rapports intégrés à la solution vous aide dans
+                l'analyse de l'activité afin <br />
+                de trouver des axes d'amélioration des résultats.
+            </p6>
+        </div>
+    </div>
+
+
+    <script src="jquery.min.js"></script>
+</body>

@@ -8,16 +8,17 @@ namespace NoviaReport.Controllers
     {
         public IActionResult Index()
         {
-            
+
             return View();
         }
-        //Permet d'afficher la liste des profils (Prénoms +Noms)
+
         public IActionResult SeeUsers()
         {
             DalUser dal = new DalUser();
             ViewData["UserList"] = dal.GetAllUsers();
             return View("UserList");
         }
-    }
 
+    }
 }
+

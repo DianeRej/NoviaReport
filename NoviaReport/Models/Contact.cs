@@ -16,7 +16,7 @@ namespace NoviaReport.Models
         public int PersonalPhone { get; set; }
 
         [Display(Name = "Adresse Mail Pro")]
-        
+
         public string ProMail { get; set; }
 
         [Display(Name = "Téléphone Pro")]

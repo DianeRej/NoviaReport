@@ -31,13 +31,16 @@ namespace NoviaReport.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
 
-            //remplissage initial des tables
+
             this.Users.AddRange(
                 new User { Id = 1, Firstname = "Diane", Lastname = "Reja", Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ContactId = 1,  ProfessionalInfoId = 1 },
                 new User { Id = 2, Firstname = "Shain", Lastname = "Arbam", Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ContactId = 2,  ProfessionalInfoId = 2 },
                 new User { Id = 3, Firstname = "Moncef", Lastname = "Said", Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ContactId = 3,  ProfessionalInfoId = 3 ,ManagerId=2},
                 new User { Id = 4, Firstname = "Wafa", Lastname = "Ayeb", Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ContactId = 4, ProfessionalInfoId = 4, ManagerId=2 }
+
                 );
+            
+
 
             this.Contacts.AddRange(
                 new Contact { Id = 1, Street = "2 rue odessa", PostalCode = 75, City = "Paris", PersonalMail = "Diane@gmail.com", ProMail = "Diane@projet2", PersonalPhone = 061234566, ProPhone = 061234566},
