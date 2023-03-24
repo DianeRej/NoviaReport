@@ -10,11 +10,13 @@
 </head>
 <body>
     @using (Html.BeginForm())
+
+    //pour l'id faire un input hidden
     {
         <fieldset>
             <legend>Ajouter un utilisateur : </legend>
             <!-- texts box pour le login, le mot de passe, le prénom, le nom, et les infos dans contact -->
-            @Html.LabelFor(m => Model.Login)
+        @Html.LabelFor(m => Model.Login)
             @Html.TextBoxFor(m => Model.Login)
             @Html.ValidationMessageFor(m => Model.Login)
             <br />
@@ -66,10 +68,10 @@
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
             {
-            <div>
-            <input type="checkbox" id=@item value=@item name="Roles"/>
-            <label id="@item ">@item</label>
-            </div>
+                <div>
+                    <input type="checkbox" id=@item value=@item name="Roles" />
+                    <label id="@item ">@item</label>
+                </div>
             }
             <br />
 
@@ -82,7 +84,7 @@
                 }
             </select>
             <br />
-            
+
             @Html.LabelFor(m => Model.ProfessionalInfo.Function)
             <select id="Function" name="ProfessionalInfo.Function">
                 <option value="">Function</option>

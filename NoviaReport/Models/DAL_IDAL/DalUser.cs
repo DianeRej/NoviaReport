@@ -38,6 +38,21 @@ namespace NoviaReport.Models.DAL_IDAL
             return user.Id;
         }
 
+        public void UpdateUser(int id, User user)
+        {
+            User userToUpdate = _bddContext.Users.Find(id);
+            if (userToUpdate != null)
+            {
+                if (user.ManagerId == 0)
+                {
+                    user.ManagerId = null;
+                }
+                user.Password = EncodeMD5(user.Password);
+                _bddContext.Users.Update(user);
+                _bddContext.SaveChanges();
+            }
+        }
+
         public void DeleteUser(int id)
         {
             User userToDelete = _bddContext.Users.Find(id);

@@ -31,7 +31,6 @@ namespace NoviaReport.Models.DAL_IDAL
                 activityToUpDate.OtherActivities = otherActivities;
                 activityToUpDate.Absences = absences;
                 activityToUpDate.CustomersServices = customersServices;
-            
                 _bddContext.SaveChanges();
             }
         }
