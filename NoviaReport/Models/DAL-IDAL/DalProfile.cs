@@ -14,7 +14,7 @@ namespace NoviaReport.Models
             _bddContext = new BddContext();
             //_bddContext.InitializeDb();
         }
-
+        //Méthode pour créer un Profile
         public int CreateProfile(string firstName, string lastName)
         {
             Profile profil = new Profile() { Firstname = firstName, Lastname = lastName };

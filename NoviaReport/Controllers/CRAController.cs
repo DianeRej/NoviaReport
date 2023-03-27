@@ -22,24 +22,22 @@ namespace NoviaReport.Controllers
                 return View();
             }
         }
+        //Méthode post pour créer une activité
         [HttpPost]
-        public IActionResult CreateActivity(bool halfday, DateTime date)
+        public IActionResult CreateActivity(bool halfday, DateTime date, TypeActivity typeActivity)
         {
-            DalTypeActivity dal = new DalTypeActivity();
-            ViewData["ActivityTypes"] = dal.GetAllTypeActivities();
-            return View("Add");
-            /*
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
             using (DalActivity dal = new DalActivity())
             {
-                dal.CreateActivity(halfday, date, otherActivities, absences, customersServices);
-                return Redirect("/home/see...");
+                dal.CreateActivity(halfday, date, typeActivity);
+                return Redirect("/CRA/CreateActivity");
             }
-            */
+            
         }
-
+        //Méthode get de modification de CRA qui renvoie vers un formulaire de modification préremplis
+        //avec les informations existantes dans la DB (a travers l'id)
         public IActionResult UpdateCRA(int id)
         {
             if (id != 0)
@@ -56,7 +54,7 @@ namespace NoviaReport.Controllers
             }
             return View("Error");
         }
-
+        //Méthode post pour modifier le CRA
         [HttpPost]
         public IActionResult UpdateCRA(CRA craToUpDate)
         {
@@ -68,7 +66,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/ home / see...");
+                    return Redirect("/CRA/UpDateActivity");
                 }
             }
             else

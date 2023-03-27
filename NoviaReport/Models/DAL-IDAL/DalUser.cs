@@ -10,7 +10,12 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalUser : IDalUser
     {
         private BddContext _bddContext;
-      
+        
+        public DalUser()
+        {
+            _bddContext = new BddContext();
+        }
+
 
         public int CreateUser(string login, string password)
         {
@@ -25,7 +30,7 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return user.Id;
         }
-
+       
         public void DeleteUser(int id)
         {
             User userToDelete = _bddContext.Users.Find(id);
@@ -33,8 +38,8 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
 
         }
-        
 
+        
         public void UpdateUser(int id, string login, string password)
         {
             User user = _bddContext.Users.Find(id);
