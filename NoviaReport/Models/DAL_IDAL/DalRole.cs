@@ -46,11 +46,26 @@ namespace NoviaReport.Models.DAL_IDAL
         //    _bddContext.SaveChanges();
         //}
 
+        public List<Role> GetRolesByUserId(int userId)
+        {
+            return _bddContext.Roles.Where(r => r.UserId == userId).ToList(); ;
+        }
 
         public List<Role> GetAllRoles()
         {
             return _bddContext.Roles.ToList(); ;
         }
+
+        public void UpdateRole(int id, Role role)
+        {
+            Role roleToUpdate = _bddContext.Roles.Find(id);
+            if (roleToUpdate != null)
+            {
+                _bddContext.Roles.Update(role);
+                _bddContext.SaveChanges();
+            }
+        }
+        
         public void DeleteCreateDatabase()
         {
             _bddContext.Database.EnsureDeleted();

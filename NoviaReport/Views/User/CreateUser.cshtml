@@ -22,6 +22,7 @@
                         @Html.TextBoxFor(m => Model.Login, new {@class= "Input" })                        
                         @Html.ValidationMessageFor(m => Model.Login)
                         <i class="fa-solid fa-user" style="color: #1047c6;"></i>
+                        
                     </div>
 
                     <div class="groupe">
@@ -94,18 +95,21 @@
                         @Html.LabelFor(m => Model.Contact.Street)
                         @Html.TextBoxFor(m => Model.Contact.Street,new {@class= "Input"})
                         @Html.ValidationMessageFor(m => Model.Contact.Street)
+                        <i class="fa-solid fa-road" style="color: #1047c6;"></i>
                     </div>
 
                     <div class="groupe">
                         @Html.LabelFor(m => Model.Contact.PostalCode)
                         @Html.TextBoxFor(m => Model.Contact.PostalCode,new {@class= "Input"})
                         @Html.ValidationMessageFor(m => Model.Contact.PostalCode)
+                        
                     </div>
 
                     <div class="groupe">
                         @Html.LabelFor(m => Model.Contact.City)
                         @Html.TextBoxFor(m => Model.Contact.City,new {@class= "Input"})
                         @Html.ValidationMessageFor(m => Model.Contact.City)
+                        <i class="fa-sharp fa-solid fa-city" style="color: #1047c6;"></i>
                     </div>
 
                 </div>
