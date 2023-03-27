@@ -63,6 +63,9 @@
             <br />
 
             <!-- liste déroulante et check box pour les infos pro et le manager -->
+            @*Le foreach récupère la liste des éléments de l'enum des roles (qui s'appelle Type) et pour chaque élément 
+            génère un input chekcbox
+            On peut cocher plusieurs rôles pour un seul user*@
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
             {
@@ -72,7 +75,7 @@
             </div>
             }
             <br />
-
+            @*Les foreach récupèrent une liste des éléments des enums et les ajoutent ligne par ligne à une liste déroulante*@
             @Html.LabelFor(m => Model.ProfessionalInfo.Position)
             <select id="Position" name="ProfessionalInfo.Position">
                 <option value="">Position</option>
@@ -92,11 +95,13 @@
                 }
             </select>
             <br />
-
+            @*Pour générer le calendrier avec la date sélectionnable on lui donne le format à utiliser (qui 
+            correspond au format utilisé dans la bdd)*@
             @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
-            <input id="ProfessionalInfo.DateOfArrival" type="date" />
+            @Html.TextBoxFor(m=>Model.ProfessionalInfo.DateOfArrival,"{0:yyyy-MM-dd}" ,new{@type="date"})
             <br />
 
+            @*liste déroulante avec la liste des users référencées comme manager, la première ligne de la liste correspond à Aucun manager*@
             @Html.LabelFor(m => Model.ManagerId)
             <select id="ManagerId" name="ManagerId">
                 <option value="">--Choisissez une option--</option>

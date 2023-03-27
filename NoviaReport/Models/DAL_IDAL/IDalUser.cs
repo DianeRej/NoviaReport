@@ -12,7 +12,7 @@ namespace NoviaReport.Models.DAL_IDAL
 
         public int CreateUser(User user);
 
-        void UpdateUser(int id, string Login, string Password);
+
 
         List<User> GetAllUsers();
 
