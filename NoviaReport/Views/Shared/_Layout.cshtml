@@ -4,155 +4,165 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page de présentation</title>
-    <link href="/css/Bootstrap.css" rel="stylesheet" />
-    <link href="/css/StyleEspacePresentation.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/StyleEspaceLogin.css" />
+    <title>Interface</title>
+  
+    <link rel="stylesheet" href="/css/StyleLayout.css" />
 </head>
+<header>
+    <img src="./media/4.png" />
+
+    <div class="boutons">
+        <button>Déconnexion</button>
+    </div>
+</header>
+
 <body>
-    <header>
-        <img src="./Images/1.png" />
+    <nav class="side-nav">
+        <div class="wrapper">
+            <div class="nav-bloc n-1">
+                <svg aria-hidden="true"
+                     focusable="false"
+                     data-prefix="far"
+                     data-icon="file"
+                     class="svg-inline--fa fa-file fa-w-12"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 384 512">
+                    <path d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48z"></path>
+                </svg>
+                <div class="sub-nav">
+                    <h2>Subtitle 1</h2>
+                    <ul>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        
-        <div class="boutons">
-            <a href="@Url.Action("Index", "Login")">
-                <button>Connexion</button>
-            </a>
-            <button>Essai gratuit</button>
+            <div class="nav-bloc n-2">
+                <svg aria-hidden="true"
+                     focusable="false"
+                     data-prefix="fas"
+                     data-icon="user-alt"
+                     class="svg-inline--fa fa-user-alt fa-w-16"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 512 512">
+                    <path d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"></path>
+                </svg>
+                <div class="sub-nav">
+                    <h2>Subtitle 2</h2>
+                    <ul>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-bloc n-3">
+                <svg aria-hidden="true"
+                     focusable="false"
+                     data-prefix="far"
+                     data-icon="image"
+                     class="svg-inline--fa fa-image fa-w-16"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 512 512">
+                    <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path>
+                </svg>
+                <div class="sub-nav">
+                    <h2>Subtitle 3</h2>
+                    <ul>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-bloc n-4">
+                <svg aria-hidden="true"
+                     focusable="false"
+                     data-prefix="fas"
+                     data-icon="cog"
+                     class="svg-inline--fa fa-cog fa-w-16"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 512 512">
+                    <path d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"></path>
+                </svg>
+                <div class="sub-nav">
+                    <h2>Subtitle 4</h2>
+                    <ul>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                        <li>
+                            <a>Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        
-    </header>
-    @RenderBody()
-    <div id="content">
-        
-        <div class="leftbox">
-            <h3 id="titres">Saisie des temps et activités</h3>
-            <p>
-                Avec NoviaReport, vos collaborateurs saisissent leur compte-rendu
-                d'activité (CRA) mensuel <br />
-                simplement, rapidement et efficacement. Absences, congés, activités
-                non facturables,<br />
-                imputations sur les projets... vous retrouvez toute la donnée utile au
-                pilotage de vos prestations <br />
-                et de l'ensemble de votre société.
-            </p>
-            <button><small> Demandez une démo gratuite </small></button>
-        </div>
-
-        <div class="rightbox">
-            <img src="./Images/4.png" alt="Logo d'entreprise" />
-        </div>
-    </div>
-
-    <div id="contents">
-        <div class="leftboxs">
-            <img src="./Images/Calendrier.png" />
-            <h3>Validez les feuilles de temps</h3>
-            <p1>
-                Avec un workflow de validation à 2 niveaux, par le manager et les
-                <br />
-                ressources humaines, vous vérifiez les données saisies dans les CRA.
-            </p1>
-        </div>
-
-        <div class="centerbox">
-            <img src="./Images/Analyse.png" />
-            <h3>Analysez les imputations</h3>
-            <p2>
-                Vous contrôles les absences, les imputations sur les tâches des
-                projets <br />
-                et les temps passés sur les activités non facturables.
-            </p2>
-        </div>
-
-        <div class="rightboxs">
-            <img src="./Images/Absence.png" />
-            <h3>Préparez les exports pour la paie</h3>
-            <p3>
-                Vous remontez le détail des absences depuis les CRA pour leur <br />
-                intégration dans l'outil de paie.
-            </p3>
-        </div>
-    </div>
-    <div id="contenue">
-        <p4>
-            La gestion des temps et activités est une tâche importante du pilotage
-            d'une société de services aux entreprises. Les temps passées par vos
-            consultants est une part essentielle de votre activité, il est donc
-            primordial de récolter les données, <br />analyser les informations et
-            chercher à optimiser ces temps .
-        </p4>
-    </div>
-
-    <div id="contenues">
-        <div class="leftsbox">
-            <h3 id="titres">Comment saisir ses temps dans NoviaReport ?</h3>
-            <p5>
-                Avec un ERP spécialisé pour les métiers du service comme NoviaReport,
-                vos collaborateurs renseignent <br />
-                rapidement leur compte-rendu d'activité mensuel (CRA) en imputant
-                leurs temps en journée, demi-<br />
-                journéé ou quart de journée :<br />
-                <ul>
-                    <li>
-                        Sur les tâches des projets facturables aux clients sur lesquels
-                        ils ont été affectés
-                    </li>
-                    <li>
-                        Sur les activités non facturables paramétrées (avant-vente,
-                        management, intercontrat...)
-                    </li>
-                    <li>Sur les projets internes</li>
-                </ul>
-                La validation des demandes de congés vient alimenter automatiquement
-                les CRA, et les absences pour <br />
-                maladie sont ajoutées par le support RH après réception des
-                justificatifs.<br />
-                le collaborateur peut compléter sa saisie avec des commentaires par
-                bloc de temps ou une note globale <br />
-                pour le mois. <br />
-                Enfin, la feuille de temps ou le CRA peut être envoyé en PDF au client
-                pour validation. <br />
-                La saisie des temps et les comptes-rendus d'activité sont aussi
-                accessibles à vos sous-traitants pour <br />
-                Qu'ils viennent directement reporter leur activité.
-            </p5>
-        </div>
-        <div class="rightsbox">
-            <h3>
-                Quels bénéfices avec le suivi des temps et activités dans NoviaReport
-                ?
-            </h3>
-
-            <p6>
-                Avec la saisie de temps dans l'ERP NoviaReport, l'information est
-                partagée en temps réel entre :
-                <ul>
-                    <li>
-                        Le collaborateur qui renseigne son CRA avec ses imputations sur
-                        les projets et activités
-                    </li>
-                    <li>
-                        Le manager qui peut contrôler le planning réalisé et les
-                        indicateurs de production
-                    </li>
-                    <li>
-                        les chefs de projets qui voient le suivi des tâches s'actualiser
-                        en continu/li>
-                    </li>
-                </ul>
-
-                La facturation est aussi accélérée grâce à la collection des temps
-                pour disposer <br />
-                rapidement de données fiables et justifiées. <br />
-                Les différents rapports intégrés à la solution vous aide dans
-                l'analyse de l'activité afin <br />
-                de trouver des axes d'amélioration des résultats.
-            </p6>
-        </div>
-    </div>
-
-   
-    <script src="jquery.min.js"></script>
+    </nav>
 </body>
 </html>

@@ -34,6 +34,6 @@ namespace NoviaReport.Models
         // réf à son manager (boucle sur la table User (et est nul si le user n'a pas de manager : cas de l'admin)
         public int? ManagerId { get; set; }
         public User Manager { get; set; }
-
+        public Role Role { get; internal set; }
     }
 }

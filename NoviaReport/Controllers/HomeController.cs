@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using System;
+using System.Collections.Generic;
 
 namespace NoviaReport.Controllers
 {
@@ -11,12 +14,12 @@ namespace NoviaReport.Controllers
 
             return View();
         }
-
+        [Authorize]
         public IActionResult SeeUsers()
         {
             DalUser dal = new DalUser();
-            ViewData["UserList"] = dal.GetAllUsers();
-            return View("UserList");
+            List<User> users = dal.GetAllUsers();
+            return View("UserList",users);
         }
 
     }

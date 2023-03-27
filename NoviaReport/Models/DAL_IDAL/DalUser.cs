@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
 using NoviaReport.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace NoviaReport.Models.DAL_IDAL
 {
@@ -81,8 +82,13 @@ namespace NoviaReport.Models.DAL_IDAL
 
         public List<User> GetAllUsers()
         {
-            return _bddContext.Users.ToList();
+            return _bddContext.Users
+                .Include(u=>u.ProfessionalInfo)
+                .Include(u=>u.Role)
+                .ToList();
+           
         }
+       
         public List<User> GetManagers()
         {
             var query = from role in _bddContext.Roles
