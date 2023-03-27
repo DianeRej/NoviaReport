@@ -44,11 +44,10 @@ namespace NoviaReport.Models.DAL_IDAL
         public void UpdateRole(int id, Role role)
         {
             Role roleToUpdate = _bddContext.Roles.Find(id);
-            if (roleToUpdate != null)
-            {
-                _bddContext.Roles.Update(role);
-                _bddContext.SaveChanges();
-            }
+            _bddContext.Roles.Remove(roleToUpdate);
+            _bddContext.Roles.Add(role);
+            _bddContext.SaveChanges();
+
         }
 
         //public void DeleteRole(int id)

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NoviaReport.Models.DAL_IDAL
+namespace NoviaReport.Models.DAL_IDAL.Interfaces
 {
     interface IDalProInfo : IDisposable
     {
-       public void DeleteCreateDatabase();
+        public void DeleteCreateDatabase();
 
         public int CreateProfessionalInfo(Position Position, Function Function, DateTime dateofarrival);
 

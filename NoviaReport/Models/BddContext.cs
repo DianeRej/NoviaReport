@@ -7,6 +7,12 @@ namespace NoviaReport.Models
 {
     public class BddContext : DbContext
     {
+        //public BddContext() { //pour debug
+            
+        //    Console.WriteLine("instanciation");
+        //}
+
+
         //Tables du User
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ProfessionalInfo> ProfessionalInfos { get; set; }
@@ -21,6 +27,7 @@ namespace NoviaReport.Models
         //lien vers la BDD
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
         }
 

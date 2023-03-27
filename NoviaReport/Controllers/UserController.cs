@@ -35,6 +35,7 @@ namespace NoviaReport.Controllers
 
             if (!ModelState.IsValid) //permet de vérifier que les info rentrées sont cohérentes
                 return View();
+
             using (DalUser dal = new DalUser())
             {
                 List<User> managers = dal.GetManagers();
@@ -57,18 +58,20 @@ namespace NoviaReport.Controllers
         //déjà préremplis avec les informations initiales
         public IActionResult UpdateUser(int id)
         {
+            User userToUpdate = new User();
             using (DalUser dal = new DalUser())
             {
                 List<User> managers = dal.GetManagers();
                 ViewData["ManagerList"] = managers;
-                User userToUpdate = dal.GetUserById(id);
+                userToUpdate = dal.GetUserById(id);
                 //comme un utilisateur peut avoir un ou plusieurs rôles, on génère une liste de ces rôles en utilisant l'id du user
-                using (DalRole dalRole = new DalRole())
-                {
-                ViewData["RoleList"] = dalRole.GetRolesByUserId(id);
-                }
-                return View(userToUpdate);
+
             }
+            using (DalRole dalRole = new DalRole())
+            {
+                ViewData["RoleList"] = dalRole.GetRolesByUserId(id);
+            }
+            return View(userToUpdate);
         }
 
         //post : donc on envoie les informations modifiées dans la base de données et on retourne
@@ -76,24 +79,28 @@ namespace NoviaReport.Controllers
         [HttpPost]
         public IActionResult UpdateUser(int id, User user, List<Type> Roles)
         {
+            //retrouve la liste des rôles associés à l'utilisateurs (sert à cocher les bonnes checkbox)
             using (DalRole dalRole1 = new DalRole())
             {
                 ViewData["RoleList"] = dalRole1.GetRolesByUserId(id);
             }
-            if (!ModelState.IsValid)
+
+            if (!ModelState.IsValid) //vérifie ques les infos rentrées sont cohérentes avec le modèle
                 return View();
 
             using (DalUser dal = new DalUser())
             {
-                List<User> managers = dal.GetManagers();
-                ViewData["ManagerList"] = managers;
+                //génère la liste des managers (pour la liste déroulante)
+                //List<User> managers = dal.GetManagers();
+                //ViewData["ManagerList"] = managers;
+                //met à jour les infos du user
                 dal.UpdateUser(id, user);
             }
+
             using (DalRole dalRole = new DalRole())
             {
                 foreach (Type type in Roles)
                 {
-                    
                     Role role = new Role() { Type = type, UserId = user.Id };
                     dalRole.UpdateRole(id, role);
                 }

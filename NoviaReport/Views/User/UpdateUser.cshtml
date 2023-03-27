@@ -22,7 +22,6 @@ on peut modifier une ou plusieurs informations en même temps*@
             @Html.ValidationMessageFor(m => Model.Login)
 
             @*Pour le moment on ne peut plus modifier le mdp*@
-            <br />
             @Html.HiddenFor(m => Model.Password)
 
             <br />
@@ -35,9 +34,10 @@ on peut modifier une ou plusieurs informations en même temps*@
             @Html.TextBoxFor(m => Model.Lastname)
             @Html.ValidationMessageFor(m => Model.Lastname)
             <br />
+
             <p>Contact </p>
             @*les deux lignes suivantes correspondent à des champs cachés : ce sont les clés étrangères 
-            qui ne seront pas modifiées mais qui sont nécessaires*@
+            qui ne seront pas modifiées mais qui sont nécessaires pour l'update du user*@
             @Html.HiddenFor(m=> Model.Contact.Id)
             @Html.HiddenFor(m=> Model.ContactId)
 
@@ -71,20 +71,28 @@ on peut modifier une ou plusieurs informations en même temps*@
             @Html.ValidationMessageFor(m => Model.Contact.City)
             <br />
 
-            @*Même chose que tout à l'heure, ce sont des champs cachés pour la clé étrangères vers la table ProfesionnalInfo*@
+            @*Même chose que tout à l'heure, ce sont des champs cachés pour la clé étrangère vers la table ProfesionnalInfo*@
             @Html.HiddenFor(m=>Model.ProfessionalInfo.Id)
             @Html.HiddenFor(m=>Model.ProfessionalInfoId)
 
-
+            
             <!-- liste déroulante et check box pour les infos pro et le manager -->
+            @foreach (NoviaReport.Models.Role role in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
+            {
+                @Html.HiddenFor(r=>role.Id)
+                @Html.HiddenFor(r=>role.UserId)
+            }
+
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
             {
+
                 @*Ici on doit vérifier pour le user que l'on veut modifier quel(s) rôle(s) il avait précédemment, pour cela on doit chercher 
                 les rôles qui correspondent à l'id du user (voir la méthode dans la DalRole
                 Pour que la checkbox soit cochée avec le(s) bon(s) rôle(s) on fait une boucle foreach qui vérifie cela et qui va attribuer
                 un boolean true si le rôle est bien détenu par le user
                 Si c'est le cas alors la checkbox sera notée checked=@isChecked(donc true)*@
+                
                 bool isChecked = false;
                 foreach (NoviaReport.Models.Role itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
                 {
@@ -100,7 +108,7 @@ on peut modifier une ou plusieurs informations en même temps*@
                 </div>
             }
             <br />
-
+            
             @*Un peu comme précédemment avec les checkbox, on doit vérifier quel statut a le user, mais ici la méthode 
             est plus simple car un user n'a qu'un seul statut
             dans la boucle on vérifie que chaque ligne de l'enum et on la compare à la valeur du user
