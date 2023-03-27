@@ -2,114 +2,173 @@
 @{
     Layout = null;
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateUser</title>
-</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="/css/StyleCreateUser.css" rel="stylesheet" />
+
 <body>
-    @using (Html.BeginForm())
+   
+        @using (Html.BeginForm())
     {
         <fieldset>
+            
             <legend>Ajouter un utilisateur : </legend>
             <!-- texts box pour le login, le mot de passe, les infos profile, contact et adresse -->
-            @Html.LabelFor(m => Model.Login)
-            @Html.TextBoxFor(m => Model.Login)
-            @Html.ValidationMessageFor(m => Model.Login)
-            <br />
-            @Html.LabelFor(m => Model.Password)
-            @Html.PasswordFor(m => Model.Password)
-            @Html.ValidationMessageFor(m => Model.Password)
-            <br />
-            <p>Identité </p>
-            @Html.LabelFor(m => Model.Firstname)
-            @Html.TextBoxFor(m => Model.Firstname)
-            @Html.ValidationMessageFor(m => Model.Firstname)
-            <br />
-            @Html.LabelFor(m => Model.Lastname)
-            @Html.TextBoxFor(m => Model.Lastname)
-            @Html.ValidationMessageFor(m => Model.Lastname)
-            <br />
-            <p>Contact </p>
-            @Html.LabelFor(m => Model.Contact.PersonalMail)
-            @Html.TextBoxFor(m => Model.Contact.PersonalMail)
-            @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
-            <br />
-            @Html.LabelFor(m => Model.Contact.PersonalPhone)
-            @Html.TextBoxFor(m => Model.Contact.PersonalPhone)
-            @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
-            <br />
-            @Html.LabelFor(m => Model.Contact.ProMail)
-            @Html.TextBoxFor(m => Model.Contact.ProMail)
-            @Html.ValidationMessageFor(m => Model.Contact.ProMail)
-            <br />
-            @Html.LabelFor(m => Model.Contact.ProPhone)
-            @Html.TextBoxFor(m => Model.Contact.ProPhone)
-            @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
-            <br />
-            <p>Adresse</p>
-            @Html.LabelFor(m => Model.Contact.Street)
-            @Html.TextBoxFor(m => Model.Contact.Street)
-            @Html.ValidationMessageFor(m => Model.Contact.Street)
-            <br />
-            @Html.LabelFor(m => Model.Contact.PostalCode)
-            @Html.TextBoxFor(m => Model.Contact.PostalCode)
-            @Html.ValidationMessageFor(m => Model.Contact.PostalCode)
-            <br />
-            @Html.LabelFor(m => Model.Contact.City)
-            @Html.TextBoxFor(m => Model.Contact.City)
-            @Html.ValidationMessageFor(m => Model.Contact.City)
-            <br />
+            <div class="Corpsformulaire">
+                <div>
+                    <h3>Login et mot de passe</h3>
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Login)
+                        @Html.TextBoxFor(m => Model.Login, new {@class= "Input" })                        
+                        @Html.ValidationMessageFor(m => Model.Login)
+                        <i class="fa-solid fa-user" style="color: #1047c6;"></i>
+                    </div>
 
-            <!-- liste déroulante et check box pour les infos pro et le manager -->
-            <legend>Rôle de l'employé</legend>
-            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
-            {
-            <div>
-            <input type="checkbox" id=@item value=@item name="Roles"/>
-            <label id="@item ">@item</label>
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Password)
+                        @Html.PasswordFor(m => Model.Password, new {@class= "Input Password" })
+                        @Html.ValidationMessageFor(m => Model.Password)
+                        <i class="fa-solid fa-lock" style="color: #1047c6;"></i>
+                        
+                    </div>
+
+                </div>
+
+
+                <div>
+                    <h3>Identité </h3>
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Firstname)
+                        @Html.TextBoxFor(m => Model.Firstname, new {@class= "Input" })
+                        @Html.ValidationMessageFor(m => Model.Firstname)
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Lastname)
+                        @Html.TextBoxFor(m => Model.Lastname, new {@class= "Input" })
+                        @Html.ValidationMessageFor(m => Model.Lastname)
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <h3>Contact</h3>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.PersonalMail)
+                        @Html.TextBoxFor(m => Model.Contact.PersonalMail, new {@class= "Input Mail"})
+                        @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
+                        <i class="fa-solid fa-envelope" style="color: #1047c6;"></i>
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.PersonalPhone)
+                        @Html.TextBoxFor(m => Model.Contact.PersonalPhone, new {@class= "Input Tel"})
+                        @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
+                        
+                        
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.ProMail)
+                        @Html.TextBoxFor(m => Model.Contact.ProMail,new {@class= "Input Mail"})
+                        @Html.ValidationMessageFor(m => Model.Contact.ProMail)
+                        <i class="fa-solid fa-envelope" style="color: #1047c6;"></i>
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.ProPhone)
+                        @Html.TextBoxFor(m => Model.Contact.ProPhone,new {@class= "Input Tel"})
+                        @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
+                        
+                        
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <h3>Adresse</h3>
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.Street)
+                        @Html.TextBoxFor(m => Model.Contact.Street,new {@class= "Input"})
+                        @Html.ValidationMessageFor(m => Model.Contact.Street)
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.PostalCode)
+                        @Html.TextBoxFor(m => Model.Contact.PostalCode,new {@class= "Input"})
+                        @Html.ValidationMessageFor(m => Model.Contact.PostalCode)
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Contact.City)
+                        @Html.TextBoxFor(m => Model.Contact.City,new {@class= "Input"})
+                        @Html.ValidationMessageFor(m => Model.Contact.City)
+                    </div>
+
+                </div>
+
+
+                <!-- liste déroulante et check box pour les infos pro et le manager -->
+                <div>
+                    <h3>Rôle de l'employé</h3>
+                        @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
+                        {
+                            <input type="checkbox" class="checkbox" id=@item value=@item name="Roles" />
+                            <label id="@item ">@item</label>
+                        }
+                    
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.ProfessionalInfo.Position)
+                        <select id="Position" name="ProfessionalInfo.Position" class="choix">
+                            <option value="">Position</option>
+                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
+                            {
+                                <option value=@item name="Position">@item</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.ProfessionalInfo.Function)
+                        <select id="Function" name="ProfessionalInfo.Function" class="choix">
+                            <option value="">Function</option>
+                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
+                            {
+                                <option value=@item name="Function">@item</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
+                        <input id="ProfessionalInfo.DateOfArrival" type="date" class="choix" />
+                    </div>
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.ManagerId)
+                        <select id="ManagerId" name="ManagerId" class="choix">
+                            <option value="">--Choisissez une option--</option>
+                            <option value=0 name="Aucun manager" class="choix">Aucun manager</option>
+                            @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
+                            {
+                                <option value=@user.Id name="ManagerId">@user.Lastname</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
             </div>
+              
 
-            }
-            <br />
-
-            @Html.LabelFor(m => Model.ProfessionalInfo.Position)
-            <select id="Position" name="ProfessionalInfo.Position">
-                <option value="">Position</option>
-                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
-                {
-                    <option value=@item name="Position">@item</option>
-                }
-            </select>
-            <br />
-
-            @Html.LabelFor(m => Model.ProfessionalInfo.Function)
-            <select id="Function" name="ProfessionalInfo.Function">
-                <option value="">Function</option>
-                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
-                {
-                    <option value=@item name="Function">@item</option>
-                }
-            </select>
-            <br />
-
-            @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
-            <input id="ProfessionalInfo.DateOfArrival" type="date" />
-            <br />
-
-            @Html.LabelFor(m => Model.ManagerId)
-            <select id="ManagerId" name="ManagerId">
-                <option value="">--Choisissez une option--</option>
-                <option value=0 name="Aucun manager">Aucun manager</option>
-                @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
-                {
-                    <option value=@user.Id name="ManagerId">@user.Lastname</option>
-                }
-            </select>
-            <br />
-
-            <input type="submit" value="Ajouter" />
+          
+                <input type="submit" value="Ajouter" />
+            
+          
+         
+           
         </fieldset>
         <a href="/home/index">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>
         //lien à modif quand le dashboard de l'admin sera créé
@@ -118,4 +177,3 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
 </body>
-</html>

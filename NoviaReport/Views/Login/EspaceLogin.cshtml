@@ -7,7 +7,7 @@
 
 
 <body>
-    
+
 <div class="center">
     <img src="./Images/4.png" alt="texte alternatif" />
     <form method="post">
@@ -19,16 +19,16 @@
             <!--<label>Identifiant</label>-->
         </div>
         <div class="txt_field">
-            @Html.TextBoxFor(m => m.User.Password)
+            @Html.PasswordFor(m => m.User.Password)
             <!--<input type="password" required />-->
             <span></span>
             @Html.LabelFor(m => m.User.Password)
             <!--<label>Mot de passe </label>-->
         </div>
         <div class="pass">Mot de passe oublié?</div>
-        <input type="submit" value="Connexion" />
+            <input type="submit" value="Connexion"  />
         <div class="signup_link">
-            Vous n'êtes pas membre? <a href="#">S'inscrire</a>
+                Vous n'êtes pas membre? <a href="@Url.Action("CreateUser", "User")">S'inscrire</a>
         </div>
     </form>
 </div>

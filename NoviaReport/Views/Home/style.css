@@ -1,0 +1,159 @@
+html {
+    scroll-behavior: smooth;
+}
+h2, h3, h4, .nav-item, #transition, footer {
+    text-align: center;
+}
+/* ********************************* HEADER *********************** */
+header {
+    height: 100px;
+    background: #022829;
+    display: flex;
+    align-items: center;
+  }
+  header img{
+    width: 5%;
+    padding-left: 10px;
+  }
+  
+  .boutons {
+    margin-left: auto;
+   
+  }
+  
+  button {
+    margin-left: 100px;
+    margin-right: 40px;
+    background-color: #0e4d4f;
+    color: white;
+    box-shadow: 2px 3px 5px 0px  rgba(0,0,0,0.75);
+    border-radius : 5px;
+  }
+  
+/* ********************************  content ***************************   */
+
+  #content {
+    display:flex;
+    background: white;
+
+  }
+  .leftbox {
+    padding-top: 120px;
+    padding-left: 50px;
+    padding-bottom : 50px;
+    width: 50%;
+    color: #022829;
+}
+
+#titres {
+  text-align: left;
+  padding-left: 50px;
+}
+
+
+.leftbox button {
+    background-color: #0e4d4f;
+    color: white;
+    border-radius : 10px;
+    box-shadow: 2px 3px 5px 0px  rgba(0,0,0,0.75);
+    font-size: 20px;
+    padding: 10px 30px;
+   
+  }
+
+
+.rightbox {
+    width: 50%;
+    text-align: center;
+}
+
+/* ************************************************** contents**************************************** */
+#contents {
+    display:flex;
+    background: #022829;
+  }
+
+
+  .leftboxs {
+    width: 33%;
+    text-align: center;
+  }
+
+  .leftboxs img {
+    width: 400px;
+  }
+
+ 
+
+  p1 {
+    color: white;
+  }
+
+  
+  .centerbox {
+    width: 33%;
+    text-align: center;
+    padding-bottom : 100px;
+  }
+
+  .centerbox img {
+    width: 400px;
+  }
+  h3 {
+    font-weight: bold;
+    color: #1d6264;
+    padding-bottom : 10px;
+  }
+  p2 {
+    color: white;
+  }
+
+  .rightboxs {
+    width: 34%;
+    text-align: center;
+   
+  }
+  .rightboxs img {
+    width: 400px;
+  }
+
+  p3 {
+    color: white;
+  }
+#contenue{
+    color: white;
+    background: #022829;
+    padding-left: 50px;
+    padding-bottom: 50px;
+  }
+
+
+#contenues {
+    display:flex;
+    background: #022829;
+    padding-left: 50px;
+  }
+
+  .leftsbox{
+    width: 50%;
+    padding-bottom : 100px;
+  }
+ 
+  p5 {
+    color: white;
+  }
+
+  .rightsbox{
+    width: 50%;
+    padding-bottom : 100px;
+    padding-left: 200px;
+  }
+  
+  p6{
+    color: white;
+  }
+
+  footer {
+    background-color:#022829 ;
+    color: white;
+  }
