@@ -59,6 +59,11 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
-       
+
+        public void UpdateActivity(Activity activityToUpDate)
+        {
+            this._bddContext.Activities.Update(activityToUpDate);
+            this._bddContext.SaveChanges();
+        }
     }
 }

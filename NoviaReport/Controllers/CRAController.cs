@@ -36,7 +36,48 @@ namespace NoviaReport.Controllers
             }
             
         }
-        //Méthode get de modification de CRA qui renvoie vers un formulaire de modification préremplis
+
+        //Méthode get, qui renvoie vers un formulaire de modification préremplis
+        //avec les informations existantes dans la DB (a travers l'id)
+        public IActionResult UpdateActivity(int id)
+        {
+            if (id != 0)
+            {
+                using (IDalActivity dal = new DalActivity())
+                {
+                    Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
+                    if (ActivityToUpDate == null)
+                    {
+                        return View("Error");
+                    }
+                    return View(ActivityToUpDate);
+                }
+            }
+            return View("Error");
+        }
+        //Méthode post pour modifier une activité
+        [HttpPost]
+        public IActionResult UpdateActivity(Activity ActivityToUpDate)
+        {
+            if (!ModelState.IsValid)
+                return View(ActivityToUpDate);
+
+            if (ActivityToUpDate.Id != 0)
+            {
+                using (DalActivity dal = new DalActivity())
+                {
+                    dal.UpdateActivity(ActivityToUpDate);
+                    return Redirect("/CRA/UpDateActivity");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
+        //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
         public IActionResult UpdateCRA(int id)
         {
@@ -75,7 +116,18 @@ namespace NoviaReport.Controllers
             }
         }
 
+       /* public IActionResult CreateCRA(DateTime date, State state)
+        {
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                return View();
 
+            using (DalActivity dal = new DalActivity())
+            {
+                dal.CreateCRA( date, state);
+                return Redirect("/CRA/CreateCRA");
+            }
+
+        }*/
 
 
 
