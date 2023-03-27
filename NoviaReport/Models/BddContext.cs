@@ -66,11 +66,11 @@ namespace NoviaReport.Models
                );
 
             this.Roles.AddRange(
-               new Role { Id = 1, Type = Type.ADMIN, UserId=1 },
-               new Role { Id = 2, Type = Type.MANAGER, UserId = 2 },
-               new Role { Id = 3, Type = Type.SALARIE, UserId = 3 },
-               new Role { Id = 4, Type = Type.SALARIE, UserId = 4 },
-               new Role { Id = 5, Type = Type.MANAGER, UserId = 4 }
+               new Role { Id = 1, TypeRole = TypeRole.ADMIN, UserId=1 },
+               new Role { Id = 2, TypeRole = TypeRole.MANAGER, UserId = 2 },
+               new Role { Id = 3, TypeRole = TypeRole.SALARIE, UserId = 3 },
+               new Role { Id = 4, TypeRole = TypeRole.SALARIE, UserId = 4 },
+               new Role { Id = 5, TypeRole = TypeRole.MANAGER, UserId = 4 }
                );
 
             this.CRAs.AddRange(

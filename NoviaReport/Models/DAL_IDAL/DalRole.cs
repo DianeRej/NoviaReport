@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NoviaReport.Models.DAL_IDAL.Interfaces;
 
 namespace NoviaReport.Models.DAL_IDAL
 {
@@ -18,10 +19,10 @@ namespace NoviaReport.Models.DAL_IDAL
         }
 
         //ajoute une ligne dans la table Role
-        public int CreateRole(Type type, int userId)
+        public int CreateRole(TypeRole typeRole, int userId)
         {
             //on instancie un professionalInfo avec ses attributs (son type et une réf (clé étrangère vers la table User))
-            Role role = new Role() { Type = type, UserId = userId };
+            Role role = new Role() { TypeRole = typeRole, UserId = userId };
             //on l'ajoute dans la bdd
             _bddContext.Roles.Add(role);
             //on sauvegarde les modifications effectuées (obligatoire à chaque modification d'une table que ce soit création,
@@ -44,10 +45,9 @@ namespace NoviaReport.Models.DAL_IDAL
         public void UpdateRole(int id, Role role)
         {
             Role roleToUpdate = _bddContext.Roles.Find(id);
-            _bddContext.Roles.Remove(roleToUpdate);
-            _bddContext.Roles.Add(role);
+            roleToUpdate.TypeRole = role.TypeRole;
+            _bddContext.Roles.Update(roleToUpdate);
             _bddContext.SaveChanges();
-
         }
 
         //public void DeleteRole(int id)

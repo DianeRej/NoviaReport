@@ -67,10 +67,10 @@
             génère un input chekcbox
             On peut cocher plusieurs rôles pour un seul user*@
             <legend>Rôle de l'employé</legend>
-            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
+            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
             {
             <div>
-            <input type="checkbox" id=@item value=@item name="Roles"/>
+            <input type="checkbox" id=@item value=@item name="TypeRoles"/>
             <label id="@item ">@item</label>
             </div>
             }

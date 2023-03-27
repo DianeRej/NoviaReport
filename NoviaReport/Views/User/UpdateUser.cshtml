@@ -84,7 +84,7 @@ on peut modifier une ou plusieurs informations en même temps*@
             }
 
             <legend>Rôle de l'employé</legend>
-            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
+            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
             {
 
                 @*Ici on doit vérifier pour le user que l'on veut modifier quel(s) rôle(s) il avait précédemment, pour cela on doit chercher 
@@ -96,14 +96,14 @@ on peut modifier une ou plusieurs informations en même temps*@
                 bool isChecked = false;
                 foreach (NoviaReport.Models.Role itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
                 {
-                    if (itemBis.Type.Equals(item))
+                    if (itemBis.TypeRole.Equals(item))
                     {
                         isChecked = true;
                         break;
                     }
                 }
                 <div>
-                    <input type="checkbox" id=@item value=@item name="Roles" checked=@isChecked />
+                    <input type="checkbox" id=@item value=@item name="TypeRoles" checked=@isChecked />
                     <label id="@item ">@item</label>
                 </div>
             }

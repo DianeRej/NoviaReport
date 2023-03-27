@@ -30,7 +30,7 @@ namespace NoviaReport.Controllers
         //fait appel à la méthode de création de User (dans DalUser) et de Role (dans DalRole) tout en vérifiant toutes les
         //conditions des champs
         [HttpPost]
-        public IActionResult CreateUser(User user, List<Type> Roles)
+        public IActionResult CreateUser(User user, List<TypeRole> TypeRoles)
         {
 
             if (!ModelState.IsValid) //permet de vérifier que les info rentrées sont cohérentes
@@ -44,10 +44,10 @@ namespace NoviaReport.Controllers
             }
             using (DalRole dalRole = new DalRole())
             {
-                //on fait une boucle car il peut y avoir plusieurs role pour un seul utilisateur
-                foreach (Type type in Roles)
+                //on fait une boucle car il peut y avoir plusieurs roles pour un seul utilisateur
+                foreach (TypeRole typeRole in TypeRoles)
                 {
-                    Role role = new Role() { Type = type, UserId = user.Id };
+                    Role role = new Role() { TypeRole = typeRole, UserId = user.Id };
                     dalRole.CreateRole(role);
                 }
             }
@@ -77,9 +77,9 @@ namespace NoviaReport.Controllers
         //post : donc on envoie les informations modifiées dans la base de données et on retourne
         //sur la page d'accueil (redirection qui pourra être modifiée plus tard)
         [HttpPost]
-        public IActionResult UpdateUser(int id, User user, List<Type> Roles)
+        public IActionResult UpdateUser(int id, User user, List<TypeRole> TypeRoles)
         {
-            //retrouve la liste des rôles associés à l'utilisateurs (sert à cocher les bonnes checkbox)
+            //retrouve la liste des rôles associés à l'utilisateur (sert à cocher les bonnes checkbox)
             using (DalRole dalRole1 = new DalRole())
             {
                 ViewData["RoleList"] = dalRole1.GetRolesByUserId(id);
@@ -90,7 +90,7 @@ namespace NoviaReport.Controllers
 
             using (DalUser dal = new DalUser())
             {
-                //génère la liste des managers (pour la liste déroulante)
+                //génère la liste des managers (pour la liste déroulante) normalement il n'y en a plus besoin
                 //List<User> managers = dal.GetManagers();
                 //ViewData["ManagerList"] = managers;
                 //met à jour les infos du user
@@ -99,9 +99,9 @@ namespace NoviaReport.Controllers
 
             using (DalRole dalRole = new DalRole())
             {
-                foreach (Type type in Roles)
+                foreach (TypeRole typeRole in TypeRoles)
                 {
-                    Role role = new Role() { Type = type, UserId = user.Id };
+                    Role role = new Role() { TypeRole = typeRole, UserId = user.Id };
                     dalRole.UpdateRole(id, role);
                 }
             }

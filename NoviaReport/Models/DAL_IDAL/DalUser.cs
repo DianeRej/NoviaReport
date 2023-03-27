@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using NoviaReport.Models;
 using Microsoft.EntityFrameworkCore;
+using NoviaReport.Models.DAL_IDAL.Interfaces;
 
 namespace NoviaReport.Models.DAL_IDAL
 {
@@ -94,7 +95,7 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id
-                        where role.Type.Equals(Type.MANAGER) //correspond à un utilisateur Manager
+                        where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
                         select user;
             List<User> managers = query.ToList();
 
