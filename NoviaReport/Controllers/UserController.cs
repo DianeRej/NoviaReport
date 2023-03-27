@@ -72,6 +72,10 @@ namespace NoviaReport.Controllers
         [HttpPost]
         public IActionResult UpdateUser(int id, User user, List<Type> Roles)
         {
+            using (DalRole dalRole1 = new DalRole())
+            {
+                ViewData["RoleList"] = dalRole1.GetRolesByUserId(id);
+            }
             if (!ModelState.IsValid)
                 return View();
 
@@ -85,11 +89,12 @@ namespace NoviaReport.Controllers
             {
                 foreach (Type type in Roles)
                 {
+                    
                     Role role = new Role() { Type = type, UserId = user.Id };
                     dalRole.UpdateRole(id, role);
                 }
             }
-            return View();
+            return Redirect("/home/Index");
         }
     }
 }

@@ -19,10 +19,10 @@
         @Html.LabelFor(m => Model.Login)
             @Html.TextBoxFor(m => Model.Login)
             @Html.ValidationMessageFor(m => Model.Login)
+
             <br />
-            @Html.LabelFor(m => Model.Password)
-            @Html.PasswordFor(m => Model.Password)
-            @Html.ValidationMessageFor(m => Model.Password)
+            @Html.HiddenFor(m => Model.Password)
+
             <br />
             <p>Identité </p>
             @Html.LabelFor(m => Model.Firstname)
@@ -34,6 +34,9 @@
             @Html.ValidationMessageFor(m => Model.Lastname)
             <br />
             <p>Contact </p>
+
+            @Html.HiddenFor(m=> Model.Contact.Id)
+            @Html.HiddenFor(m=> Model.ContactId)
             @Html.LabelFor(m => Model.Contact.PersonalMail)
             @Html.TextBoxFor(m => Model.Contact.PersonalMail)
             @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
@@ -64,13 +67,15 @@
             @Html.ValidationMessageFor(m => Model.Contact.City)
             <br />
 
+            @Html.HiddenFor(m=>Model.ProfessionalInfo.Id)
+            @Html.HiddenFor(m=>Model.ProfessionalInfoId)
             <!-- liste déroulante et check box pour les infos pro et le manager -->
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Type)))
             {
                 @*mettre un commentaire pour expliquer le fonctionnement*@
                 bool isChecked = false;
-                foreach (var itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
+                foreach (NoviaReport.Models.Role itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
                 {
                     if (itemBis.Type.Equals(item))
                     {
@@ -85,24 +90,21 @@
             }
             <br />
 
-            @*La logique ici est similaire, mais vu qu'il n'y a qu'un seul JobEnum de possible, on a juste à garder la condition
-        qui permet de déterminer si la valeur du menu déroulant correspond à ce que notre User possède en attribut JobEnum'
-        Dans un <option>, selected permet que ce soit la valeur de cet input qui soit sélectionné dans la liste déroulante, plutôt
-        que le premier élément de la liste A ENLEVER !!!!*@
+            @*Explication du fontcionnement à mettre ici*@
 
             @Html.LabelFor(m => Model.ProfessionalInfo.Position)
             <select id="Position" name="ProfessionalInfo.Position">
                 <option value="">Position</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
-                {    
-                bool positionisChecked = false;
+                {
+                    bool positionIsChecked = false;
 
                     if (Model.ProfessionalInfo.Position.Equals(item))
                     {
-                        positionisChecked = true; 
+                        positionIsChecked = true;
                     }
-     
-                    <option value=@item name="Position" selected=@positionisChecked >@item</option>
+
+                    <option value=@item name="Position" selected=@positionIsChecked>@item</option>
                 }
             </select>
             <br />
@@ -112,13 +114,20 @@
                 <option value="">Function</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
                 {
-                    <option value=@item name="Function">@item</option>
+                    bool functionIsChecked = false;
+                    if (Model.ProfessionalInfo.Function.Equals(item))
+                    {
+                        functionIsChecked = true;
+                    }
+                    <option value=@item name="Function" selected=@functionIsChecked>@item</option>
                 }
             </select>
             <br />
 
+            @*Surement un problème de format à voir si le problème a été réglé pour le CRA*@
             @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
-            <input id="ProfessionalInfo.DateOfArrival" type="date" />
+            @Html.TextBoxFor(m=>Model.ProfessionalInfo.DateOfArrival,"{0:yyyy-MM-dd}" ,new{@type="date"})
+@*            <input id="ProfessionalInfo.DateOfArrival" type="date" value=@Model.ProfessionalInfo.DateOfArrival />*@
             <br />
 
             @Html.LabelFor(m => Model.ManagerId)
@@ -127,7 +136,12 @@
                 <option value=0 name="Aucun manager">Aucun manager</option>
                 @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
                 {
-                    <option value=@user.Id name="ManagerId">@user.Lastname</option>
+                    bool managerIsChecked = false;
+                    if (Model.ManagerId.Equals(user.Id))
+                    {
+                        managerIsChecked = true;
+                    }
+                    <option value=@user.Id name="ManagerId" selected=@managerIsChecked>@user.Lastname</option>
                 }
             </select>
             <br />

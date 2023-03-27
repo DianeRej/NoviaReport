@@ -41,17 +41,15 @@ namespace NoviaReport.Models.DAL_IDAL
 
         public void UpdateUser(int id, User user)
         {
-            User userToUpdate = _bddContext.Users.Find(id);
-            if (userToUpdate != null)
+
+            if (user.ManagerId == 0)
             {
-                if (user.ManagerId == 0)
-                {
-                    user.ManagerId = null;
-                }
-                user.Password = EncodeMD5(user.Password);
-                _bddContext.Users.Update(user);
-                _bddContext.SaveChanges();
+                user.ManagerId = null;
             }
+            user.Password = EncodeMD5(user.Password);
+            _bddContext.Users.Update(user);
+            _bddContext.SaveChanges();
+
         }
 
         public void DeleteUser(int id)
@@ -82,7 +80,7 @@ namespace NoviaReport.Models.DAL_IDAL
         }
         public User GetUserById(int id)
         {
-            return this._bddContext.Users.Include(u =>u.Contact).Include(u => u.ProfessionalInfo).SingleOrDefault(u => u.Id==id);
+            return this._bddContext.Users.Include(u => u.Contact).Include(u => u.ProfessionalInfo).SingleOrDefault(u => u.Id == id);
         }
 
         public User GetUser(string idStr)
@@ -100,7 +98,7 @@ namespace NoviaReport.Models.DAL_IDAL
             return _bddContext.Users.ToList();
         }
 
-        
+
         public List<User> GetManagers()
         {
             var query = from role in _bddContext.Roles
@@ -111,6 +109,8 @@ namespace NoviaReport.Models.DAL_IDAL
 
             return managers;
         }
+
+        //faire méthode GetManager qui puisse exclure un manager de la liste si il est lui même manager
         public void DeleteCreateDatabase()
         {
             _bddContext.Database.EnsureDeleted();
