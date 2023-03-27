@@ -15,7 +15,7 @@ namespace NoviaReport.Controllers
         {
             dal = new DalUser();
         }
-        //Page de connexion (affiche le login sil'on est déjà connecté)
+        //Page de connexion (affiche le login si on est déjà connecté)
         public IActionResult Index()
         {
             UserViewModel viewModel = new UserViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
@@ -26,7 +26,7 @@ namespace NoviaReport.Controllers
             }
             return View(viewModel);
         }
-
+        //post de la page de login, permet d'envoyer les infos de co (va générer un cookie qui permet de savoir si l'utilisateur est connecté)
         [HttpPost]
         public IActionResult Index(UserViewModel viewModel, string returnUrl)
         {
@@ -44,7 +44,7 @@ namespace NoviaReport.Controllers
 
                     var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
 
-                    HttpContext.SignInAsync(userPrincipal);
+                    HttpContext.SignInAsync(userPrincipal); //génère le cookie qui indique que l'utilisateur est connecté
 
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);

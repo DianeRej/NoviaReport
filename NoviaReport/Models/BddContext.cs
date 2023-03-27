@@ -17,6 +17,8 @@ namespace NoviaReport.Models
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
         public DbSet<UserActivity> UserActivities { get; set; }
+
+        //lien vers la BDD
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
@@ -27,6 +29,8 @@ namespace NoviaReport.Models
                           modelBuilder.Entity<Activity>().Property(m => m.Absences).IsRequired(false);
                           base.OnModelCreating(modelBuilder); }*/
 
+        //Initialisation de la BDD avec des données type pour faire des tests, elles seront bine sûr à remplacer
+        //avec des données plus crédibles à la fin 
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();

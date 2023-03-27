@@ -9,7 +9,6 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         void DeleteCreateDatabase();
 
-        int CreateUser(string Login, string Password);
 
         public int CreateUser(User user);
 

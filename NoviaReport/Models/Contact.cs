@@ -5,6 +5,7 @@ namespace NoviaReport.Models
 {
     public class Contact
     {
+        //les display name correspondentaux noms qui seront affichés sur les vues
         public int Id { get; set; }
 
         [Display(Name = "Adresse Mail Personnelle")]
@@ -23,8 +24,13 @@ namespace NoviaReport.Models
         
         public int ProPhone { get; set; }
 
+        [Display(Name = "Rue")]
         public string Street { get; set; }
+
+        [Display(Name = "Code Postal")]
         public int PostalCode { get; set; }
+
+        [Display(Name = "Ville")]
         public string City { get; set; }
 
 

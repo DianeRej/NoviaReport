@@ -7,8 +7,10 @@ namespace NoviaReport.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(20)]
+        [Display(Name = "Identifiant")]
         public string Login { get; set; }
         [Required]
+        [Display(Name = "Mot de Passe")]
         public string Password { get; set; }
 
         [Required]
@@ -32,6 +34,7 @@ namespace NoviaReport.Models
         //dans la table role qui permet d'attribuer plusieurs roles à un employé
 
         // réf à son manager (boucle sur la table User (et est nul si le user n'a pas de manager : cas de l'admin)
+        [Display(Name = "Nom du Manager")]
         public int? ManagerId { get; set; }
         public User Manager { get; set; }
 

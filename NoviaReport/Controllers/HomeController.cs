@@ -6,12 +6,13 @@ namespace NoviaReport.Controllers
 {
     public class HomeController : Controller
     {
+        //page d'accueil 
         public IActionResult Index()
         {
             
             return View();
         }
-        //Permet d'afficher la liste des profils (Prénoms +Noms)
+        //Permet d'afficher la liste des utilisateurs (Prénoms, Noms...) à continuer 
         public IActionResult SeeUsers()
         {
             DalUser dal = new DalUser();

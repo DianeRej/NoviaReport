@@ -33,7 +33,7 @@ namespace NoviaReport.Controllers
         public IActionResult CreateUser(User user, List<Type> Roles)
         {
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) //permet de vérifier que les info rentrées sont cohérentes
                 return View();
             using (DalUser dal = new DalUser())
             {
@@ -62,6 +62,7 @@ namespace NoviaReport.Controllers
                 List<User> managers = dal.GetManagers();
                 ViewData["ManagerList"] = managers;
                 User userToUpdate = dal.GetUserById(id);
+                //comme un utilisateur peut avoir un ou plusieurs rôles, on génère une liste de ces rôles en utilisant l'id du user
                 using (DalRole dalRole = new DalRole())
                 {
                 ViewData["RoleList"] = dalRole.GetRolesByUserId(id);
@@ -69,6 +70,9 @@ namespace NoviaReport.Controllers
                 return View(userToUpdate);
             }
         }
+
+        //post : donc on envoie les informations modifiées dans la base de données et on retourne
+        //sur la page d'accueil (redirection qui pourra être modifiée plus tard)
         [HttpPost]
         public IActionResult UpdateUser(int id, User user, List<Type> Roles)
         {
