@@ -8,7 +8,7 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalRole : IDalRole
     {
         private BddContext _bddContext;
-        public int CreateRole(string type)
+        public int CreateRole(Type type)
         {
             Role roleToCreate = new Role() { Type = type};
             _bddContext.Roles.Add(roleToCreate);
@@ -16,7 +16,7 @@ namespace NoviaReport.Models.DAL_IDAL
             return roleToCreate.Id;
         }
 
-        public void UpdateRole(int id, string type)
+        public void UpdateRole(int id, Type type)
         {
             Role roleToUpDate = _bddContext.Roles.Find(id);
             if (roleToUpDate != null)
@@ -47,6 +47,7 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
-       
+
+        
     }
 }

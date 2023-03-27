@@ -7,25 +7,28 @@ namespace NoviaReport.Models.DAL_IDAL
 {
     public class DalActivity : IDalActivity
     {
+
         private BddContext _bddContext;
-        public int CreateActivity(bool halfday, DateTime date, OtherActivities otherActivities, Absences absences, CustomersServices customersServices)
+
+        public DalActivity()
         {
-            Activity activityToCreate = new Activity() { Halfday = halfday, Date = date, OtherActivities= otherActivities, Absences= absences, CustomersServices  = customersServices };
+            _bddContext = new BddContext();
+        }
+        public int CreateActivity(bool halfday, DateTime date)
+        {
+            Activity activityToCreate = new Activity() { Halfday = halfday, Date = date};
             _bddContext.Activities.Add(activityToCreate);
             _bddContext.SaveChanges();
             return activityToCreate.Id;
         }
-        public void UpdateActivity(int id, bool halfday, DateTime date, OtherActivities otherActivities, Absences absences, CustomersServices customersServices)
+        public void UpdateActivity(int id, bool halfday, DateTime date)
         {
             Activity activityToUpDate = _bddContext.Activities.Find(id);
             if (activityToUpDate != null)
             {
                 activityToUpDate.Halfday = halfday;
                 activityToUpDate.Date = date;
-                activityToUpDate.OtherActivities = otherActivities;
-                activityToUpDate.Absences = absences;
-                activityToUpDate.CustomersServices = customersServices;
-            
+              
                 _bddContext.SaveChanges();
             }
         }

@@ -9,9 +9,9 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         void DeleteCreateDatabase();
 
-        int CreateRole(string Type);
+        int CreateRole(Type Type);
 
-        void UpdateRole(int id, string Type);
+        void UpdateRole(int id, Type Type);
         void DeleteRole(int id);
 
         List<Role> GetAllRoles();

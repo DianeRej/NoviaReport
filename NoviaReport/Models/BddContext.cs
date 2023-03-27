@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using NoviaReport.Models.DAL_IDAL;
+using System;
 
 namespace NoviaReport.Models
 {
@@ -15,6 +16,7 @@ namespace NoviaReport.Models
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
         public DbSet<UserActivity> UserActivities { get; set; }
+        public DbSet<TypeActivity> TypeActivities { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
@@ -43,12 +45,12 @@ namespace NoviaReport.Models
                 new Profile { Id = 4, Firstname = "Wafa", Lastname = "Ayeb" }
                 );
             
-            this.Users.AddRange(
+            /*this.Users.AddRange(
                 new User { Id = 1, Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ProfileId = 1 },
                 new User { Id = 2, Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ProfileId = 2 },
                 new User { Id = 3, Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ProfileId = 3},
                 new User { Id = 4, Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ProfileId = 4 }
-                );
+                );*/
 
             this.Contacts.AddRange(
                 new Contact { Id = 1, PersonalMail = "Diane@gmail.com", ProMail = "Diane@projet2", PersonalPhone = 061234566, ProPhone = 061234566,  AdressId=1 },
@@ -76,21 +78,35 @@ namespace NoviaReport.Models
                new Role { Id = 3, Type = Type.SALARIE }
                );
 
-            this.CRAs.AddRange(
-                new CRA { Id = 1, Date = new System.DateTime(01/02/2013), State =State.INCOMPLET, ActivityId =1 },
-                new CRA { Id = 2, Date = new System.DateTime(23 / 03 / 2013), State = State.NON_VALIDE, ActivityId = 2 },
-                new CRA { Id = 3, Date = new System.DateTime(12 / 04 / 2013), State = State.VALIDE, ActivityId = 3 },
-                new CRA { Id = 4, Date = new System.DateTime(20 / 05 / 2013), State = State.EN_COURS_DE_VALIDATION, ActivityId = 4 }
+           
 
-                );
+            /*
+                        this.Activities.AddRange(
+                           new Activity { Id = 1, Date = new System.DateTime(01 / 02 / 2013),Halfday = true, Absences = Absences.CongéMaladie, OtherActivities = OtherActivities.FORMATION_PROFESSIONNELLE },
+                           new Activity { Id = 2, OtherActivities = OtherActivities.INTER_CONTRAT },
+                           new Activity { Id = 3, CustomersServices = CustomersServices.PRESTATION },
+                           new Activity { Id = 4, Date = new System.DateTime(20 / 05 / 2013), Halfday = true, Absences = Absences.ExamenMédicalDuTravail, CustomersServices = CustomersServices.PRESTATION }
+                           );*/
 
+            this.TypeActivities.AddRange(
+              new TypeActivity { Id = 1, nom = Nom.FORMATION_PROFESSIONNELLE },
+              new TypeActivity { Id = 2, nom = Nom.Conge_Sans_Solde },
+              new TypeActivity { Id = 3, nom = Nom.RTT },
+              new TypeActivity { Id = 4, nom = Nom.CongeMaternite });
 
             this.Activities.AddRange(
-               new Activity { Id = 1, Date = new System.DateTime(01 / 02 / 2013),Halfday = true, Absences = Absences.CongéMaladie, OtherActivities = OtherActivities.FORMATION_PROFESSIONNELLE },
-               new Activity { Id = 2, OtherActivities = OtherActivities.INTER_CONTRAT },
-               new Activity { Id = 3, CustomersServices = CustomersServices.PRESTATION },
-               new Activity { Id = 4, Date = new System.DateTime(20 / 05 / 2013), Halfday = true, Absences = Absences.ExamenMédicalDuTravail, CustomersServices = CustomersServices.PRESTATION }
-               );
+              new Activity { Id = 1, Date = new DateTime(2023 , 02 , 01), Halfday = true, TypeActivityId =2},
+              new Activity { Id = 2,  TypeActivityId = 4 },
+              new Activity { Id = 3,  TypeActivityId = 1 },
+              new Activity { Id = 4, Date = new DateTime(2023,05,26), Halfday = true,  TypeActivityId = 4 }
+              );
+            this.CRAs.AddRange(
+               new CRA { Id = 1, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET, ActivityId = 1 },
+               new CRA { Id = 2, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE, ActivityId = 2 },
+               new CRA { Id = 3, Date = new DateTime(2023, 02, 01), State = State.VALIDE, ActivityId = 3 },
+               new CRA { Id = 4, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION, ActivityId = 4 }
+
+            );
 
             this.UserActivities.AddRange(
                new UserActivity { Id = 1, UserId = 1, ActivityId = 2 },

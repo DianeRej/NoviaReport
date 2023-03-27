@@ -27,7 +27,12 @@ namespace NoviaReport.Models.DAL_IDAL
                 _bddContext.SaveChanges();
             }
         }
+        public void UpdateCRA(CRA craToUpDate)
+        {
+            this._bddContext.CRAs.Update(craToUpDate);
+            this._bddContext.SaveChanges();
 
+        }
         public void DeleteCRA(int id)
         {
             CRA craToDelete = _bddContext.CRAs.Find(id);

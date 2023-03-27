@@ -7,13 +7,16 @@ namespace NoviaReport.Models
         public int Id { get; set; }
         public bool? Halfday { get; set; }
         public DateTime? Date { get; set; }
+       
+        public int TypeActivityId { get; set; }
+        public TypeActivity TypeActivity { get; set; }
 
-        public OtherActivities? OtherActivities { get; set; }
-        public Absences? Absences { get; set; }
-        public CustomersServices? CustomersServices { get; set; }
+        /* public OtherActivities? OtherActivities { get; set; }
+         public Absences? Absences { get; set; }
+         public CustomersServices? CustomersServices { get; set; }*/
     }
 
-    public enum OtherActivities
+   /* public enum OtherActivities
     {
         FORMATION_PROFESSIONNELLE, FORMATION_ECONOMIQUE_SOCIALE_ET_SYDICALE, INTER_CONTRAT
     }
@@ -25,5 +28,5 @@ namespace NoviaReport.Models
     public enum CustomersServices
     {
         ASTREINTE, PRESTATION, MAINTENANCE
-    }
+    }*/
 }
