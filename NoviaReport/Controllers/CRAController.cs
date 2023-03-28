@@ -48,7 +48,7 @@ namespace NoviaReport.Controllers
                     Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
                     if (ActivityToUpDate == null)
                     {
-                        return View("Error");
+                        return View(id);
                     }
                     return View(ActivityToUpDate);
                 }
@@ -75,7 +75,6 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-
 
         //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
@@ -107,7 +106,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/CRA/UpDateActivity");
+                    return Redirect("/CRA/UpDateCRA");
                 }
             }
             else
