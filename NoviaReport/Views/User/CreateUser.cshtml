@@ -104,8 +104,7 @@
             @*liste déroulante avec la liste des users référencées comme manager, la première ligne de la liste correspond à Aucun manager*@
             @Html.LabelFor(m => Model.ManagerId)
             <select id="ManagerId" name="ManagerId">
-                <option value="">--Choisissez une option--</option>
-                <option value=0 name="Aucun manager">Aucun manager</option>
+                <option value="" name="Aucun manager">Aucun manager</option>
                 @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
                 {
                     <option value=@user.Id name="ManagerId">@user.Lastname</option>
