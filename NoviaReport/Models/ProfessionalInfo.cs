@@ -22,6 +22,27 @@ namespace NoviaReport.Models
 
     public enum Function
     {
-        INGENIEUR, DEVELOPPEUR, COMMERCIAL, RH, TECHNICIEN, RESPONSABLE_RESEAU, RESPONSABLE_SECURITE, CHEF_DE_PROJET, DIRECTEUR_COMMERCIAL, DIRECTEUR_GENERAL, PDG
+        [Display(Name ="Ingénieur")]
+        INGENIEUR,
+        [Display(Name = "Développeur")]
+        DEVELOPPEUR,
+        [Display(Name = "Commercial")]
+        COMMERCIAL,
+        [Display(Name = "Ressource Humaines")]
+        RH,
+        [Display(Name = "Technicien")]
+        TECHNICIEN,
+        [Display(Name = "Responsable réseau")]
+        RESPONSABLE_RESEAU,
+        [Display(Name = "Responsable sécurité")]
+        RESPONSABLE_SECURITE,
+        [Display(Name = "Chef de projet")]
+        CHEF_DE_PROJET,
+        [Display(Name = "Directeur commercial")]
+        DIRECTEUR_COMMERCIAL,
+        [Display(Name = "Directeur général")]
+        DIRECTEUR_GENERAL,
+        [Display(Name = "Président directeur général")]
+        PDG
     }
 }

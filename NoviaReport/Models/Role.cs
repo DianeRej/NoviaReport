@@ -17,6 +17,11 @@ namespace NoviaReport.Models
 
     public enum TypeRole
     {
-        ADMIN, MANAGER, SALARIE
+        [Display(Name = "Administrateur")]
+        ADMIN,
+        [Display(Name = "Manager")]
+        MANAGER,
+        [Display(Name = "Salarié")]
+        SALARIE
     }
 }

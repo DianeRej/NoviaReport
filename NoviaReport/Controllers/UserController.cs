@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using NoviaReport.ViewModels;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace NoviaReport.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         public IActionResult Index()
