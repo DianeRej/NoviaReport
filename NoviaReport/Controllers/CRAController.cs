@@ -96,7 +96,7 @@ namespace NoviaReport.Controllers
             }
             return View("Error");
         }
-        //Méthode post pour modifier le CRA
+        //Méthode post pour modifier un CRA
         [HttpPost]
         public IActionResult UpdateCRA(CRA craToUpDate)
         {
@@ -117,18 +117,29 @@ namespace NoviaReport.Controllers
             }
         }
 
-       /* public IActionResult CreateCRA(DateTime date, State state)
+
+        //get : envoie sur le fomulaire de création d'un CRA
+        public IActionResult CreateCRA()
+        {
+            using (DalCRA dal = new DalCRA())
+            {
+                return View();
+            }
+        }
+        //Méthode post pour créer un CRA
+        [HttpPost]
+        public IActionResult CreateCRA(DateTime date, State state)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
-            using (DalActivity dal = new DalActivity())
+            using (DalCRA dal = new DalCRA())
             {
                 dal.CreateCRA( date, state);
                 return Redirect("/CRA/CreateCRA");
             }
 
-        }*/
+        }
 
 
 
