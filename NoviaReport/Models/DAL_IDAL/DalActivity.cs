@@ -28,6 +28,13 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return activityToCreate.Id;
         }
+
+        public int CreateActivity(Activity activity)
+        {
+            _bddContext.Activities.Add(activity);
+            _bddContext.SaveChanges();
+            return activity.Id;
+        }
         //Méthode pour modifier une activité
         public void UpdateActivity(int id, bool halfday, DateTime date, TypeActivity typeActivity)
         {
@@ -55,6 +62,16 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             return _bddContext.Activities.ToList();
         }
+
+        //méthode pour créer une ligne de la table intermédiaire CRAActivity à partir d'un CRA et d'une Activity
+        public int CreateCraActivity(CRA cra, Activity activity)
+        {
+            CraActivity CraActivity = new CraActivity() { CRAId = cra.Id, ActivityId=activity.Id};
+            _bddContext.CraActivities.Add(CraActivity);
+            _bddContext.SaveChanges();
+            return CraActivity.Id;
+        }
+
         //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
         public void DeleteCreateDatabase()
         {

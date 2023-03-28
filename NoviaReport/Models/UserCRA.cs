@@ -9,9 +9,10 @@ namespace NoviaReport.Models
     public class UserCRA
     {
         public int Id { get; set; }
-
+        //clé étrangère vers la table user
         public int UserId { get; set; }
         public User User { get; set; }
+        //clé étrangère vers la table CRA
         public int CRAId { get; set; }
         public CRA CRA { get; set; }
 

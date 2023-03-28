@@ -1,13 +1,18 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace NoviaReport.Models
 {
     public class Activity
     {
         public int Id { get; set; }
-        //boolean true = demi-journée, false = journée complète
-        public bool? Halfday { get; set; }
+        //boolean true = demi-journée, false (ou pas précisé) = journée complète
+        [Display(Name ="Demi-journée ?")]
+        public bool Halfday { get; set; }
+
         public DateTime Date { get; set; }
+        [Display(Name = "Type d'Activité")]
         public TypeActivity TypeActivity { get; set; }
         //à préciser seulement si l'activité est une astreinte, prestation ou maintenance
         public Client? Client { get; set; }

@@ -10,32 +10,45 @@ namespace NoviaReport.Controllers
 {
     public class CRAController : Controller
     {
-        public IActionResult Index()  
+        public IActionResult Index()
         {
             return View();
         }
         //get : envoie sur le fomulaire de création d'une activité 
-        //doit avoir une référence vers le CRA auquel elle appartient
-        public IActionResult CreateActivity()
+        //doit avoir une référence du CRA auquel elle appartient : ici c'est l'id du CRA qu'on passe en argument
+        public IActionResult CreateActivity(int CRAid)
         {
-            using (DalActivity dal = new DalActivity())
+            if (CRAid != 0)
             {
-                return View();
+                using (DalActivity dal = new DalActivity())
+                {
+                    ViewBag.CRAid = CRAid;
+                    return View();
+                }
+            } else 
+            { 
+                return View("Error"); 
             }
         }
         //Méthode post pour créer une activité
         [HttpPost]
-        public IActionResult CreateActivity(bool halfday, DateTime date, TypeActivity typeActivity)
+        public IActionResult CreateActivity(Activity activity, int CRAid)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
+            CRA cra = new CRA();
+            using (DalCRA dal = new DalCRA())
+            {
+                cra = dal.GetAllCRAs().Where(r => r.Id == CRAid).FirstOrDefault();
+            }
             using (DalActivity dal = new DalActivity())
             {
-                dal.CreateActivity(halfday, date, typeActivity);
-                return Redirect("/CRA/CreateActivity");
+                dal.CreateActivity(activity);
+                dal.CreateCraActivity(cra, activity);
+                
             }
-            
+            return Redirect("/CRA/CreateActivity");
         }
 
         //Méthode get, qui renvoie vers un formulaire de modification préremplis
@@ -117,18 +130,18 @@ namespace NoviaReport.Controllers
             }
         }
 
-       /* public IActionResult CreateCRA(DateTime date, State state)
-        {
-            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
-                return View();
+        /* public IActionResult CreateCRA(DateTime date, State state)
+         {
+             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                 return View();
 
-            using (DalActivity dal = new DalActivity())
-            {
-                dal.CreateCRA( date, state);
-                return Redirect("/CRA/CreateCRA");
-            }
+             using (DalActivity dal = new DalActivity())
+             {
+                 dal.CreateCRA( date, state);
+                 return Redirect("/CRA/CreateCRA");
+             }
 
-        }*/
+         }*/
 
 
 
