@@ -1,11 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using NoviaReport.Models.DAL_IDAL;
+using System;
 
 namespace NoviaReport.Models
 {
     public class BddContext : DbContext
     {
+        //public BddContext() { //pour debug
+            
+        //    Console.WriteLine("instanciation");
+        //}
+
+
         //Tables du User
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ProfessionalInfo> ProfessionalInfos { get; set; }
@@ -16,8 +23,11 @@ namespace NoviaReport.Models
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
         public DbSet<UserActivity> UserActivities { get; set; }
+
+        //lien vers la BDD
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
         }
 
@@ -26,6 +36,8 @@ namespace NoviaReport.Models
                           modelBuilder.Entity<Activity>().Property(m => m.Absences).IsRequired(false);
                           base.OnModelCreating(modelBuilder); }*/
 
+        //Initialisation de la BDD avec des données type pour faire des tests, elles seront bine sûr à remplacer
+        //avec des données plus crédibles à la fin 
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();
@@ -50,17 +62,18 @@ namespace NoviaReport.Models
                 );
 
             this.ProfessionalInfos.AddRange(
-               new ProfessionalInfo { Id = 1, Position = Position.NONCADRE, Function = Function.RH, DateOfArrival = new System.DateTime(01 / 02 / 2013) },
-               new ProfessionalInfo { Id = 2, Position = Position.CADRE, Function = Function.DEVELOPPEUR, DateOfArrival = new System.DateTime(02 / 10 / 2014) },
-               new ProfessionalInfo { Id = 3, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new System.DateTime(12 / 08 / 2013) },
-               new ProfessionalInfo { Id = 4, Position = Position.DIRECTEUR, Function = Function.DIRECTEUR_GENERAL, DateOfArrival = new System.DateTime(31 / 01 / 2010) }
+               new ProfessionalInfo { Id = 1, Position = Position.NONCADRE, Function = Function.RH, DateOfArrival = new DateTime(2013, 10, 01) },
+               new ProfessionalInfo { Id = 2, Position = Position.CADRE, Function = Function.DEVELOPPEUR, DateOfArrival = new DateTime(2014, 12, 29) },
+               new ProfessionalInfo { Id = 3, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new DateTime(2013, 02, 28) },
+               new ProfessionalInfo { Id = 4, Position = Position.DIRECTEUR, Function = Function.DIRECTEUR_GENERAL, DateOfArrival = new DateTime(2010, 01, 31) }
                );
 
             this.Roles.AddRange(
-               new Role { Id = 1, Type = Type.ADMIN, UserId=1 },
-               new Role { Id = 2, Type = Type.MANAGER, UserId = 2 },
-               new Role { Id = 3, Type = Type.SALARIE, UserId = 3 },
-               new Role { Id = 4, Type = Type.SALARIE, UserId = 4 }
+               new Role { Id = 1, TypeRole = TypeRole.ADMIN, UserId=1 },
+               new Role { Id = 2, TypeRole = TypeRole.MANAGER, UserId = 2 },
+               new Role { Id = 3, TypeRole = TypeRole.SALARIE, UserId = 3 },
+               new Role { Id = 4, TypeRole = TypeRole.SALARIE, UserId = 4 },
+               new Role { Id = 5, TypeRole = TypeRole.MANAGER, UserId = 4 }
                );
 
             this.CRAs.AddRange(

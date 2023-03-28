@@ -7,9 +7,12 @@ namespace NoviaReport.Models
     {
         public int Id { get; set; }
         [Required]
-        public Position Position { get; set; } //cadre, non cadre... enum
+        [Display(Name = "Statut")]
+        public Position Position { get; set; } //enum
         [Required]
-        public Function Function { get; set; } //poste : ingénieur, développeur... enum
+        [Display(Name = "Poste")]
+        public Function Function { get; set; } //enum
+        [Display(Name = "Date d'Arrivée")]
         public DateTime DateOfArrival { get; set; }
     }
     public enum Position

@@ -2,6 +2,9 @@
 @{
     Layout = null;
 }
+
+@*Ressemble beaucoup au formulaire de création mais ici les inputs sont déjà remplis avec les informations du users,
+on peut modifier une ou plusieurs informations en même temps*@
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +20,10 @@
             @Html.LabelFor(m => Model.Login)
             @Html.TextBoxFor(m => Model.Login)
             @Html.ValidationMessageFor(m => Model.Login)
-            <br />
-            @Html.LabelFor(m => Model.Password)
-            @Html.PasswordFor(m => Model.Password)
-            @Html.ValidationMessageFor(m => Model.Password)
+
+            @*Pour le moment on ne peut plus modifier le mdp*@
+            @Html.HiddenFor(m => Model.Password)
+
             <br />
             <p>Identité </p>
             @Html.LabelFor(m => Model.Firstname)
@@ -31,7 +34,13 @@
             @Html.TextBoxFor(m => Model.Lastname)
             @Html.ValidationMessageFor(m => Model.Lastname)
             <br />
+
             <p>Contact </p>
+            @*les deux lignes suivantes correspondent à des champs cachés : ce sont les clés étrangères 
+            qui ne seront pas modifiées mais qui sont nécessaires pour l'update du user*@
+            @Html.HiddenFor(m=> Model.Contact.Id)
+            @Html.HiddenFor(m=> Model.ContactId)
+
             @Html.LabelFor(m => Model.Contact.PersonalMail)
             @Html.TextBoxFor(m => Model.Contact.PersonalMail)
             @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
@@ -62,52 +71,103 @@
             @Html.ValidationMessageFor(m => Model.Contact.City)
             <br />
 
+            @*Même chose que tout à l'heure, ce sont des champs cachés pour la clé étrangère vers la table ProfesionnalInfo*@
+            @Html.HiddenFor(m=>Model.ProfessionalInfo.Id)
+            @Html.HiddenFor(m=>Model.ProfessionalInfoId)
+
+            
             <!-- liste déroulante et check box pour les infos pro et le manager -->
-            @*Le foreach récupère la liste des éléments de l'enum des roles (qui s'appelle Type) et pour chaque élément 
-            génère un input chekcbox
-            On peut cocher plusieurs rôles pour un seul user*@
+            @foreach (NoviaReport.Models.Role role in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
+            {
+                @Html.HiddenFor(r=>role.Id)
+                @Html.HiddenFor(r=>role.UserId)
+            }
+
             <legend>Rôle de l'employé</legend>
             @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
             {
-            <div>
-            <input type="checkbox" id=@item value=@item name="TypeRoles"/>
-            <label id="@item ">@item</label>
-            </div>
+
+                @*Ici on doit vérifier pour le user que l'on veut modifier quel(s) rôle(s) il avait précédemment, pour cela on doit chercher 
+                les rôles qui correspondent à l'id du user (voir la méthode dans la DalRole
+                Pour que la checkbox soit cochée avec le(s) bon(s) rôle(s) on fait une boucle foreach qui vérifie cela et qui va attribuer
+                un boolean true si le rôle est bien détenu par le user
+                Si c'est le cas alors la checkbox sera notée checked=@isChecked(donc true)*@
+                
+                bool isChecked = false;
+                foreach (NoviaReport.Models.Role itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
+                {
+                    if (itemBis.TypeRole.Equals(item))
+                    {
+                        isChecked = true;
+                        break;
+                    }
+                }
+                <div>
+                    <input type="checkbox" id=@item value=@item name="TypeRoles" checked=@isChecked />
+                    <label id="@item ">@item</label>
+                </div>
             }
             <br />
-            @*Les foreach récupèrent une liste des éléments des enums et les ajoutent ligne par ligne à une liste déroulante*@
+            
+            @*Un peu comme précédemment avec les checkbox, on doit vérifier quel statut a le user, mais ici la méthode 
+            est plus simple car un user n'a qu'un seul statut
+            dans la boucle on vérifie que chaque ligne de l'enum et on la compare à la valeur du user
+            quand elle est identique (on a trouvé le statut qui correspond au statut renseigné dans la table pour ce user un boolean (PositionIsChecked)
+            devient true et ce boolean true donne l'indication à la ligne d'ajouter selected=@positionIsChecked*@
+
             @Html.LabelFor(m => Model.ProfessionalInfo.Position)
             <select id="Position" name="ProfessionalInfo.Position">
                 <option value="">Position</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
                 {
-                    <option value=@item name="Position">@item</option>
+                    bool positionIsChecked = false;
+
+                    if (Model.ProfessionalInfo.Position.Equals(item))
+                    {
+                        positionIsChecked = true;
+                    }
+
+                    <option value=@item name="Position" selected=@positionIsChecked>@item</option>
                 }
             </select>
             <br />
-            
+            @*fonctionne comme pour le statut*@
             @Html.LabelFor(m => Model.ProfessionalInfo.Function)
             <select id="Function" name="ProfessionalInfo.Function">
                 <option value="">Function</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
                 {
-                    <option value=@item name="Function">@item</option>
+                    bool functionIsChecked = false;
+                    if (Model.ProfessionalInfo.Function.Equals(item))
+                    {
+                        functionIsChecked = true;
+                    }
+                    <option value=@item name="Function" selected=@functionIsChecked>@item</option>
                 }
             </select>
             <br />
-            @*Pour générer le calendrier avec la date sélectionnable on lui donne le format à utiliser (qui 
-            correspond au format utilisé dans la bdd)*@
+
+
             @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
             @Html.TextBoxFor(m=>Model.ProfessionalInfo.DateOfArrival,"{0:yyyy-MM-dd}" ,new{@type="date"})
             <br />
 
-            @*liste déroulante avec la liste des users référencées comme manager, la première ligne de la liste correspond à Aucun manager*@
+            @*fonctionne comme pour le statut et le poste, il reste un cas qui n'est pas traité :
+            si le user est déjà renseigné comme manager, il ne devrait pas apparaitre dans la liste déroulante
+            voir pour implémenter ça si temps
+            *@
             @Html.LabelFor(m => Model.ManagerId)
             <select id="ManagerId" name="ManagerId">
-                <option value="" name="Aucun manager">Aucun manager</option>
+                <option value="">--Choisissez une option--</option>
+                <option value=0 name="Aucun manager">Aucun manager</option>
                 @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
                 {
-                    <option value=@user.Id name="ManagerId">@user.Lastname</option>
+                    bool managerIsChecked = false;
+                    if (Model.ManagerId.Equals(user.Id))
+                    {
+                        managerIsChecked = true;
+                    }
+                    <option value=@user.Id name="ManagerId" selected=@managerIsChecked>@user.Lastname</option>
                 }
             </select>
             <br />
