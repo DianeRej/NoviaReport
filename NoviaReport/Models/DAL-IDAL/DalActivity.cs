@@ -65,5 +65,10 @@ namespace NoviaReport.Models.DAL_IDAL
             this._bddContext.Activities.Update(activityToUpDate);
             this._bddContext.SaveChanges();
         }
+
+        internal void CreateCRA(DateTime date, State state)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -115,18 +115,18 @@ namespace NoviaReport.Controllers
             }
         }
 
-       /* public IActionResult CreateCRA(DateTime date, State state)
+        public IActionResult CreateCRA(DateTime date, State state)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
-            using (DalActivity dal = new DalActivity())
+            using (DalCRA dal = new DalCRA())
             {
                 dal.CreateCRA( date, state);
                 return Redirect("/CRA/CreateCRA");
             }
 
-        }*/
+        }
 
 
 

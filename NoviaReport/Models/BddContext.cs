@@ -15,8 +15,9 @@ namespace NoviaReport.Models
         public DbSet<Role> Roles { get; set; }
         public DbSet<CRA> CRAs { get; set; }
         public DbSet<Activity> Activities{ get; set; }
-        public DbSet<UserActivity> UserActivities { get; set; }
-      //  public DbSet<TypeActivity> TypeActivities { get; set; }
+        public DbSet<UserCRA> UserCRAs { get; set; }
+        public DbSet<CraActivity> CraActivities { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
@@ -88,13 +89,13 @@ namespace NoviaReport.Models
 
             );
 
-            this.UserActivities.AddRange(
-               new UserActivity { Id = 1, UserId = 1, ActivityId = 2 },
-               new UserActivity { Id = 2, UserId = 2, ActivityId = 1},
-               new UserActivity { Id = 3, UserId = 3, ActivityId = 1 },
-               new UserActivity { Id = 4, UserId = 3, ActivityId = 2 });
+            this.UserCRAs.AddRange(
+               new UserCRA { Id = 1, UserId = 1, CRAId = 2 },
+               new UserCRA { Id = 2, UserId = 3, CRAId = 2 });
 
-
+            this.CraActivities.AddRange(
+              new CraActivity { Id = 1, CRAId = 2, ActivityId = 1 },
+              new CraActivity { Id = 2, CRAId = 2, ActivityId = 3 });
 
 
 
