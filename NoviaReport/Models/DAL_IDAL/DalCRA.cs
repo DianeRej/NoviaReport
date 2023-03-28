@@ -9,20 +9,16 @@ namespace NoviaReport.Models.DAL_IDAL
     public class DalCRA : IDalCRA
     {
         private BddContext _bddContext;
-<<<<<<< HEAD:NoviaReport/Models/DAL_IDAL/DalCRA.cs
 
-=======
         ////Méthode d'initialisation de la DB
->>>>>>> Wafa_Fonctionnalites:NoviaReport/Models/DAL-IDAL/DalCRA.cs
+
         public DalCRA()
         {
             _bddContext = new BddContext();
         }
-<<<<<<< HEAD:NoviaReport/Models/DAL_IDAL/DalCRA.cs
 
-=======
         //Méthode pour créer un CRA
->>>>>>> Wafa_Fonctionnalites:NoviaReport/Models/DAL-IDAL/DalCRA.cs
+
         public int CreateCRA(DateTime date, State state)
         {
             CRA craToCreate = new CRA() { Date = date, State = state };

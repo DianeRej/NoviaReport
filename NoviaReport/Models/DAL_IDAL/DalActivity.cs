@@ -10,21 +10,16 @@ namespace NoviaReport.Models.DAL_IDAL
     {
 
         private BddContext _bddContext;
-<<<<<<< HEAD:NoviaReport/Models/DAL_IDAL/DalActivity.cs
 
-        public DalActivity()
-        {
-            _bddContext = new BddContext();
-        }
-
-        public int CreateActivity(bool halfday, DateTime date, OtherActivities otherActivities, Absences absences, CustomersServices customersServices)
-=======
         //Méthode d'initialisation de la DB
         public DalActivity()
->>>>>>> Wafa_Fonctionnalites:NoviaReport/Models/DAL-IDAL/DalActivity.cs
         {
             _bddContext = new BddContext();
         }
+
+        //public int CreateActivity(bool halfday, DateTime date, OtherActivities otherActivities, Absences absences, CustomersServices customersServices)
+
+
         //Méthode pour créer une activité
         public int CreateActivity(bool halfday, DateTime date, TypeActivity typeActivity)
         {
@@ -41,13 +36,8 @@ namespace NoviaReport.Models.DAL_IDAL
             {
                 activityToUpDate.Halfday = halfday;
                 activityToUpDate.Date = date;
-<<<<<<< HEAD:NoviaReport/Models/DAL_IDAL/DalActivity.cs
-                activityToUpDate.OtherActivities = otherActivities;
-                activityToUpDate.Absences = absences;
-                activityToUpDate.CustomersServices = customersServices;
-=======
                 activityToUpDate.TypeActivity = typeActivity;
->>>>>>> Wafa_Fonctionnalites:NoviaReport/Models/DAL-IDAL/DalActivity.cs
+
                 _bddContext.SaveChanges();
             }
         }

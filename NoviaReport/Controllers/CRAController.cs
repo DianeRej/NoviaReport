@@ -17,7 +17,7 @@ namespace NoviaReport.Controllers
 
         public IActionResult CreateActivity()
         {
-            using (IDalActivity dal = new DalActivity())
+            using (DalActivity dal = new DalActivity())
             {
                 return View();
             }
@@ -43,7 +43,7 @@ namespace NoviaReport.Controllers
         {
             if (id != 0)
             {
-                using (IDalActivity dal = new DalActivity())
+                using (DalActivity dal = new DalActivity())
                 {
                     Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
                     if (ActivityToUpDate == null)
@@ -83,7 +83,7 @@ namespace NoviaReport.Controllers
         {
             if (id != 0)
             {
-                using (IDalCRA dal = new DalCRA())
+                using (DalCRA dal = new DalCRA())
                 {
                     CRA craToUpDate = dal.GetAllCRAs().Where(c => c.Id == id).FirstOrDefault();
                     if (craToUpDate == null)

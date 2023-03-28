@@ -55,8 +55,6 @@ namespace NoviaReport.Models
                 new User { Id = 4, Firstname = "Wafa", Lastname = "Ayeb", Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ContactId = 4, ProfessionalInfoId = 4, ManagerId=2 }
 
                 );
-            
-
 
             this.Contacts.AddRange(
                 new Contact { Id = 1, Street = "2 rue odessa", PostalCode = 75, City = "Paris", PersonalMail = "Diane@gmail.com", ProMail = "Diane@projet2", PersonalPhone = 061234566, ProPhone = 061234566},
@@ -96,14 +94,8 @@ namespace NoviaReport.Models
               new Activity { Id = 3, Date = new DateTime(2023, 02, 01), Halfday = true, TypeActivity = TypeActivity.ASTREINTE},
               new Activity { Id = 4, TypeActivity = TypeActivity.ASTREINTE, Date = new DateTime(2023,05,26), Halfday = true }
               );
-            this.CRAs.AddRange(
-               new CRA { Id = 1, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET, ActivityId = 1 },
-               new CRA { Id = 2, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE, ActivityId = 2 },
-               new CRA { Id = 3, Date = new DateTime(2023, 02, 01), State = State.VALIDE, ActivityId = 3 },
-               new CRA { Id = 4, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION, ActivityId = 4 }
 
-            );
-
+            
             this.UserActivities.AddRange(
                new UserActivity { Id = 1, UserId = 1, ActivityId = 2 },
                new UserActivity { Id = 2, UserId = 2, ActivityId = 1},
