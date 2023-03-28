@@ -6,10 +6,9 @@ using System.Security.Cryptography;
 using System.Text;
 using NoviaReport.Models;
 using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
 using NoviaReport.Models.DAL_IDAL.Interfaces;
-=======
->>>>>>> 19c549b3e06b6f9c13d2295904d74708031ad4b1
+
+
 
 namespace NoviaReport.Models.DAL_IDAL
 {
@@ -96,13 +95,8 @@ namespace NoviaReport.Models.DAL_IDAL
                 .ToList();
            
         }
-<<<<<<< HEAD
-
         //renvoie la liste de tous les users qui possèdent le rôle manager
-=======
-       
->>>>>>> 19c549b3e06b6f9c13d2295904d74708031ad4b1
-        public List<User> GetManagers()
+         public List<User> GetManagers()
         {
             var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id

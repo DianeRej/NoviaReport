@@ -26,14 +26,9 @@
                 <td>@user.Firstname</td>
                 <td>@user.Lastname</td>
                 <td>@user.Login</td>
-<<<<<<< HEAD
-                <td>poste</td> @*à modifier pour que cela liste le poste*@
-                @*<td><a href="/User/UpdateUser/@user.Id">Modifier</a></td>*@
-=======
                 <td>@Html.DisplayFor(u=>user.ProfessionalInfo.Function)</td> 
-                <td>@Html.DisplayFor(u=>user.Role.Type)</td>
+                <td>@Html.DisplayFor(u=>user.Role.TypeRole)</td>
                 <td><a href="/User/UpdateUser/@user.Id">Modifier</a></td>
->>>>>>> 19c549b3e06b6f9c13d2295904d74708031ad4b1
             </tr>
         }
     </table>

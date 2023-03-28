@@ -8,7 +8,8 @@ using System.Linq;
 
 namespace NoviaReport.Controllers
 {
-    [Authorize]
+    
+    //[Authorize]
     public class UserController : Controller
     {
         public IActionResult Index()
