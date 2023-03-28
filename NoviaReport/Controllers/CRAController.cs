@@ -116,20 +116,25 @@ namespace NoviaReport.Controllers
             }
         }
 
-       /* public IActionResult CreateCRA(DateTime date, State state)
+        /* public IActionResult CreateCRA(DateTime date, State state)
+         {
+             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                 return View();
+
+             using (DalActivity dal = new DalActivity())
+             {
+                 dal.CreateCRA( date, state);
+                 return Redirect("/CRA/CreateCRA");
+             }
+
+         }*/
+
+        public IActionResult SeeActivity()
         {
-            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
-                return View();
-
-            using (DalActivity dal = new DalActivity())
-            {
-                dal.CreateCRA( date, state);
-                return Redirect("/CRA/CreateCRA");
-            }
-
-        }*/
-
-
+            DalActivity dal = new DalActivity();
+            ViewData["ActivityList"] = dal.GetAllActivities();
+            return View("ActivityList");
+        }
 
 
 
