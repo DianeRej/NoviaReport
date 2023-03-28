@@ -14,7 +14,8 @@ namespace NoviaReport.Controllers
         {
             return View();
         }
-
+        //get : envoie sur le fomulaire de création d'une activité 
+        //doit avoir une référence vers le CRA auquel elle appartient
         public IActionResult CreateActivity()
         {
             using (DalActivity dal = new DalActivity())

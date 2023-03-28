@@ -12,7 +12,6 @@ namespace NoviaReport.Models
         //    Console.WriteLine("instanciation");
         //}
 
-
         //Tables du User
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ProfessionalInfo> ProfessionalInfos { get; set; }
@@ -20,16 +19,12 @@ namespace NoviaReport.Models
         public DbSet<Role> Roles { get; set; }
 
         //Tables liées au CRA
-        public DbSet<CRA> CRAs { get; set; }
-        public DbSet<Activity> Activities { get; set; }
         public DbSet<UserCRA> UserCRAs { get; set; }
+        public DbSet<CRA> CRAs { get; set; }
         public DbSet<CraActivity> CraActivities { get; set; }
-
+        public DbSet<Activity> Activities { get; set; }
 
         //lien vers la BDD
-
-        //  public DbSet<TypeActivity> TypeActivities { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
@@ -41,7 +36,7 @@ namespace NoviaReport.Models
                   modelBuilder.Entity<Activity>().Property(m => m.Absences).IsRequired(false);
                   base.OnModelCreating(modelBuilder); }*/
 
-        //Initialisation de la BDD avec des données type pour faire des tests, elles seront bine sûr à remplacer
+        //Initialisation de la BDD avec des données type pour faire des tests, elles seront bien sûr à remplacer
         //avec des données plus crédibles à la fin 
         public void InitializeDb()
         {
@@ -107,23 +102,25 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 9, CRAId = 3, ActivityId = 9 },
                 new CraActivity { Id = 10, CRAId = 3, ActivityId = 10 },
                 new CraActivity { Id = 11, CRAId = 4, ActivityId = 11 },
-                new CraActivity { Id = 12, CRAId = 4, ActivityId = 12 }
+                new CraActivity { Id = 12, CRAId = 4, ActivityId = 12 },
+                new CraActivity { Id = 13, CRAId = 4, ActivityId = 13 }
                 );
 
 
             this.Activities.AddRange(
-                new Activity { Id = 1, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE },
-                new Activity { Id = 2, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE },
-                new Activity { Id = 3, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE },
+                new Activity { Id = 1, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
+                new Activity { Id = 2, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
+                new Activity { Id = 3, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
                 new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CongéPayé },
-                new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION },
-                new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION },
-                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.PRESTATION },
+                new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
+                new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
+                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.PRESTATION, Client = Client.Client3 },
                 new Activity { Id = 8, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION },
-                new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION },
+                new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
+                new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
                 new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CongeMaternite },
-                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CongeMaternite }
+                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CongeMaternite },
+                new Activity { Id = 13, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client4 }
                 );
 
             this.SaveChanges();
