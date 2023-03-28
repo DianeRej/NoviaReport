@@ -1,4 +1,4 @@
-﻿@model NoviaReport.Models.CRA
+﻿@model NoviaReport.Models.Activity
 @{
     Layout = null;
 }
@@ -18,17 +18,20 @@
             @Html.TextBoxFor(m => Model.Date)
             @Html.ValidationMessageFor(m => Model.Date)
             <br />
-            @Html.LabelFor(m => Model.State)
-            @Html.TextBoxFor(m => Model.State)
-            @Html.ValidationMessageFor(m => Model.State)
+            @Html.LabelFor(m => Model.Halfday)
+            @Html.TextBoxFor(m => Model.Halfday)
+            @Html.ValidationMessageFor(m => Model.Halfday)
             <br />
+            @Html.LabelFor(m => Model.TypeActivity)
+            @Html.TextBoxFor(m => Model.TypeActivity)
+            @Html.ValidationMessageFor(m => Model.TypeActivity)
+            <br />
+
 
             <input type="submit" value="Modifier" />
         </fieldset>
-        <a href="/CRA/CreateActivity"></a>
+        <a href="/CRA/UpDateActivity"></a>
     }
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
 </body>
 </html>

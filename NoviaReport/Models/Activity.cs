@@ -5,11 +5,12 @@ namespace NoviaReport.Models
     public class Activity
     {
         public int Id { get; set; }
+        //boolean true = demi-journée, false = journée complète
         public bool? Halfday { get; set; }
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
         public TypeActivity TypeActivity { get; set; }
-       
-       
+        //à préciser seulement si l'activité est une astreinte, prestation ou maintenance
+        public Client? Client { get; set; }
     }
 
     public enum TypeActivity
@@ -21,5 +22,8 @@ namespace NoviaReport.Models
 
         ASTREINTE, PRESTATION, MAINTENANCE
     }
-
+    public enum Client
+    {
+        Client1, Client2, Client3, Client4, Client5, Client6
+    }
 }

@@ -9,8 +9,7 @@ namespace NoviaReport.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public State State { get; set; }
-        public int? ActivityId { get; set; }
-        public Activity Activity { get; set; }
+
     }
     public enum State
     {

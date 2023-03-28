@@ -10,11 +10,12 @@ namespace NoviaReport.Controllers
 {
     public class CRAController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index()  
         {
             return View();
         }
-
+        //get : envoie sur le fomulaire de création d'une activité 
+        //doit avoir une référence vers le CRA auquel elle appartient
         public IActionResult CreateActivity()
         {
             using (DalActivity dal = new DalActivity())
@@ -48,7 +49,7 @@ namespace NoviaReport.Controllers
                     Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
                     if (ActivityToUpDate == null)
                     {
-                        return View("Error");
+                        return View(id);
                     }
                     return View(ActivityToUpDate);
                 }
@@ -107,7 +108,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/CRA/UpDateActivity");
+                    return Redirect("/CRA/UpDateCRA");
                 }
             }
             else
