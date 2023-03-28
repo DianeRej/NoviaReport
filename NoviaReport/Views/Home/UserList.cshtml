@@ -20,7 +20,7 @@
             <th>Role</th>
             <th>Modifier</th>
         </tr>
-        @foreach (NoviaReport.Models.User user in Model)
+        @foreach (NoviaReport.Models.User user in ViewData["UserList"] as List<NoviaReport.Models.User>)
         {
             <tr>
                 <td>@user.Firstname</td>

@@ -48,7 +48,7 @@ namespace NoviaReport.Controllers
                     Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
                     if (ActivityToUpDate == null)
                     {
-                        return View("Error");
+                        return View(id);
                     }
                     return View(ActivityToUpDate);
                 }
@@ -107,7 +107,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/CRA/UpDateActivity");
+                    return Redirect("/CRA/UpDateCRA");
                 }
             }
             else

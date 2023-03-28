@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model NoviaReport.Models.CRA
 @{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ajouter un CRA</title>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Ajouter une activité : </legend>
+            @Html.LabelFor(m => Model.Date)
+            @Html.TextBoxFor(m => Model.Date)
+            @Html.ValidationMessageFor(m => Model.Date)
+            <br />
+            @Html.LabelFor(m => Model.State)
+            @Html.TextBoxFor(m => Model.State)
+            @Html.ValidationMessageFor(m => Model.State)
+            <br />
+            <input type="submit" value="Ajouter" />
+        </fieldset>
+        <a href="/CRA/CreateCRA"></a>
+    }
+
+</body>
+</html>

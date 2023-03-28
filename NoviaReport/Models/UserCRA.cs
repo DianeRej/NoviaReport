@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NoviaReport.Models
 {
-    public class UserActivity
+    public class UserCRA
     {
         public int Id { get; set; }
      
