@@ -10,7 +10,7 @@ namespace NoviaReport.Controllers
 {
     public class CRAController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index()  
         {
             return View();
         }
