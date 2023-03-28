@@ -6,7 +6,7 @@ namespace NoviaReport.Models
     {
         public int Id { get; set; }
         [Required]
-        [MaxLength(20)]
+
         [Display(Name = "Identifiant")]
         public string Login { get; set; }
         [Required]
@@ -15,11 +15,11 @@ namespace NoviaReport.Models
 
         [Required]
         [Display(Name = "Prénom")]
-        [MaxLength(20)]
+
         public string Firstname { get; set; }
         [Required]
         [Display(Name = "Nom de famille")]
-        [MaxLength(20)]
+
         public string Lastname { get; set; }
 
         //réf à la table contact
