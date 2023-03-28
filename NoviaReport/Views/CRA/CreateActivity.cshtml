@@ -1,0 +1,31 @@
+﻿@model NoviaReport.Models.Activity
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add activity</title>
+</head>
+<body>
+ 
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Ajouter une activité : </legend>
+            @Html.LabelFor(m => Model.Date)
+            @Html.TextBoxFor(m => Model.Date)
+            @Html.ValidationMessageFor(m => Model.Date)
+            <br />
+            @Html.LabelFor(m => Model.TypeActivity)
+            @Html.TextBoxFor(m => Model.TypeActivity)
+            @Html.ValidationMessageFor(m => Model.TypeActivity)
+            <br />
+            <input type="submit" value="Ajouter" />
+        </fieldset>
+        <a href="/CRA/CreateActivity"></a>
+    }
+
+</body>
+</html>

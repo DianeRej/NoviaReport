@@ -24,7 +24,11 @@ namespace NoviaReport.Models
         public DbSet<Activity> Activities{ get; set; }
         public DbSet<UserActivity> UserActivities { get; set; }
 
+
         //lien vers la BDD
+
+      //  public DbSet<TypeActivity> TypeActivities { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
@@ -76,6 +80,7 @@ namespace NoviaReport.Models
                new Role { Id = 5, TypeRole = TypeRole.MANAGER, UserId = 4 }
                );
 
+
             this.CRAs.AddRange(
                 new CRA { Id = 1, Date = new System.DateTime(01/02/2013), State =State.INCOMPLET, ActivityId =1 },
                 new CRA { Id = 2, Date = new System.DateTime(23 / 03 / 2013), State = State.NON_VALIDE, ActivityId = 2 },
@@ -84,12 +89,20 @@ namespace NoviaReport.Models
 
                 );
 
+
             this.Activities.AddRange(
-               new Activity { Id = 1, Date = new System.DateTime(01 / 02 / 2013),Halfday = true, Absences = Absences.CongéMaladie, OtherActivities = OtherActivities.FORMATION_PROFESSIONNELLE },
-               new Activity { Id = 2, OtherActivities = OtherActivities.INTER_CONTRAT },
-               new Activity { Id = 3, CustomersServices = CustomersServices.PRESTATION },
-               new Activity { Id = 4, Date = new System.DateTime(20 / 05 / 2013), Halfday = true, Absences = Absences.ExamenMédicalDuTravail, CustomersServices = CustomersServices.PRESTATION }
-               );
+              new Activity { Id = 1, Date = new DateTime(2023 , 02 , 01), Halfday = true, TypeActivity = TypeActivity.ASTREINTE},
+              new Activity { Id = 2, Date = new DateTime(2023, 02, 01), Halfday = true, TypeActivity = TypeActivity.CongeMaternite },
+              new Activity { Id = 3, Date = new DateTime(2023, 02, 01), Halfday = true, TypeActivity = TypeActivity.ASTREINTE},
+              new Activity { Id = 4, TypeActivity = TypeActivity.ASTREINTE, Date = new DateTime(2023,05,26), Halfday = true }
+              );
+            this.CRAs.AddRange(
+               new CRA { Id = 1, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET, ActivityId = 1 },
+               new CRA { Id = 2, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE, ActivityId = 2 },
+               new CRA { Id = 3, Date = new DateTime(2023, 02, 01), State = State.VALIDE, ActivityId = 3 },
+               new CRA { Id = 4, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION, ActivityId = 4 }
+
+            );
 
             this.UserActivities.AddRange(
                new UserActivity { Id = 1, UserId = 1, ActivityId = 2 },

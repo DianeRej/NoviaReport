@@ -9,9 +9,9 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
     {
         void DeleteCreateDatabase();
 
-        int CreateActivity(bool Halfday, DateTime Date, OtherActivities OtherActivities, Absences Absences, CustomersServices CustomersServices);
+        int CreateActivity(bool Halfday, DateTime Date, TypeActivity typeActivity);
 
-        void UpdateActivity(int id, bool Halfday, DateTime Date, OtherActivities OtherActivities, Absences Absences, CustomersServices CustomersServices);
+        void UpdateActivity(int id, bool Halfday, DateTime Date, TypeActivity typeActivity);
         void DeleteActivity(int id);
 
         List<Activity> GetAllActivities();

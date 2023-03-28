@@ -1,0 +1,34 @@
+﻿@model NoviaReport.Models.CRA
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateActivity</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Modifier une activité : </legend>
+
+            @Html.LabelFor(m => Model.Date)
+            @Html.TextBoxFor(m => Model.Date)
+            @Html.ValidationMessageFor(m => Model.Date)
+            <br />
+            @Html.LabelFor(m => Model.State)
+            @Html.TextBoxFor(m => Model.State)
+            @Html.ValidationMessageFor(m => Model.State)
+            <br />
+
+            <input type="submit" value="Modifier" />
+        </fieldset>
+        <a href="/CRA/CreateActivity"></a>
+    }
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
