@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NoviaReport.Models
 {
@@ -11,6 +12,7 @@ namespace NoviaReport.Models
         public TypeActivity TypeActivity { get; set; }
         //à préciser seulement si l'activité est une astreinte, prestation ou maintenance
         public Client? Client { get; set; }
+        public  List <CraActivity> Activities { get; set; }
     }
 
     public enum TypeActivity

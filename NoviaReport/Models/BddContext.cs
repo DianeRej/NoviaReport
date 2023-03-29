@@ -31,10 +31,7 @@ namespace NoviaReport.Models
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
         }
 
-        //Méthode différente que "?" pour dire que la valeur de cette table peut être nulle
-        /* protected override void OnModelCreating(ModelBuilder modelBuilder) {
-                  modelBuilder.Entity<Activity>().Property(m => m.Absences).IsRequired(false);
-                  base.OnModelCreating(modelBuilder); }*/
+       
 
         //Initialisation de la BDD avec des données type pour faire des tests, elles seront bien sûr à remplacer
         //avec des données plus crédibles à la fin 

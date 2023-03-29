@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NoviaReport.Models.DAL_IDAL.Interfaces;
 
 namespace NoviaReport.Models.DAL_IDAL
@@ -41,7 +42,7 @@ namespace NoviaReport.Models.DAL_IDAL
                 _bddContext.SaveChanges();
             }
         }
-        //Méthode pour supprimer une activité
+        //Méthode pour supprimer une activité 
         public void DeleteActivity(int id)
         {
             Activity activityToDelete = _bddContext.Activities.Find(id);
@@ -54,6 +55,26 @@ namespace NoviaReport.Models.DAL_IDAL
         public List<Activity> GetAllActivities()
         {
             return _bddContext.Activities.ToList();
+        }
+        public List<CraActivity> GetAllCraActivities()
+        {
+            return _bddContext.CraActivities
+                .Include(ca => ca.Activity)
+                .Include(ca => ca.CRA)
+                .ToList();
+                
+                
+        }
+
+        public List<User> GetCRA()
+        {
+            var query = from role in _bddContext.Roles
+                        join user in _bddContext.Users on role.UserId equals user.Id
+                        where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
+                        select user;
+            List<User> managers = query.ToList();
+
+            return managers;
         }
         //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
         public void DeleteCreateDatabase()

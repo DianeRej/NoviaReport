@@ -137,21 +137,5 @@ namespace NoviaReport.Controllers
             return View("ActivityList");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

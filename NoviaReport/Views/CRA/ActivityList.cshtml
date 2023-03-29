@@ -16,7 +16,7 @@
             <th>Date</th>
             <th>Halfday</th>
             <th>Type activité</th>
-            <th>Modifier</th>
+            <th>Client</th>
         </tr>
         @foreach (NoviaReport.Models.Activity activity in ViewData["ActivityList"] as List<NoviaReport.Models.Activity>)
         {
@@ -24,6 +24,9 @@
                 <td>@activity.Date</td>
                 <td>@activity.Halfday</td>
                 <td>@activity.TypeActivity</td>
+                <td>@activity.Client</td>
+                <td>@activity.(ca=>ca.CRA.id)</td>
+                
             </tr>
         }
     </table>
