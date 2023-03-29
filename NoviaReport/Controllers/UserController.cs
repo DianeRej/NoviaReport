@@ -110,5 +110,16 @@ namespace NoviaReport.Controllers
             }
             return Redirect("/home/Index");
         }
+
+        public IActionResult ListUserCRA()
+        {
+            DalUser dal = new DalUser();
+            ViewData["UserCRAList"]=dal.GetUserCRA();
+            return View("ListUserCRA");
+
+
+        }
     }
+    
+
 }

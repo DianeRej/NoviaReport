@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NoviaReport.Models.DAL_IDAL.Interfaces;
 
 namespace NoviaReport.Models.DAL_IDAL
@@ -71,6 +72,10 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             this._bddContext.Activities.Update(activityToUpDate);
             this._bddContext.SaveChanges();
+        }
+        public List<CraActivity> GetActivitiesCRA()
+        {
+            return _bddContext.CraActivities.Include(ca => ca.Activity).Include(ca => ca.CRA).ToList();
         }
     }
 }

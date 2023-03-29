@@ -10,12 +10,11 @@ namespace NoviaReport.Controllers
 {
     public class CRAController : Controller
     {
-        public IActionResult Index()  
+        public IActionResult Index()
         {
             return View();
         }
-        //get : envoie sur le fomulaire de création d'une activité 
-        //doit avoir une référence vers le CRA auquel elle appartient
+
         public IActionResult CreateActivity()
         {
             using (DalActivity dal = new DalActivity())
@@ -49,7 +48,7 @@ namespace NoviaReport.Controllers
                     Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
                     if (ActivityToUpDate == null)
                     {
-                        return View(id);
+                        return View("Error");
                     }
                     return View(ActivityToUpDate);
                 }
@@ -108,7 +107,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/CRA/UpDateCRA");
+                    return Redirect("/CRA/UpDateActivity");
                 }
             }
             else
@@ -117,18 +116,28 @@ namespace NoviaReport.Controllers
             }
         }
 
-       /* public IActionResult CreateCRA(DateTime date, State state)
+        public IActionResult CreateCRA(DateTime date, State state)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
-            using (DalActivity dal = new DalActivity())
+            using (DalCRA dal = new DalCRA())
             {
-                dal.CreateCRA( date, state);
+                dal.CreateCRA(date, state);
                 return Redirect("/CRA/CreateCRA");
             }
 
-        }*/
+        }
+        public IActionResult ListActivitiesCRA()
+        {
+            DalActivity dal = new DalActivity();
+            ViewData["ActivitiesCRAList"]=dal.GetActivitiesCRA();
+            return View("ListActivitiesCRA");
+
+        }
+
+
+
 
 
 

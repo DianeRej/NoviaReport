@@ -15,6 +15,7 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
         void DeleteCRA(int id);
 
         List<CRA> GetAllCRAs();
+       
 
     }
 }

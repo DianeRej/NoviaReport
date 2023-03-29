@@ -12,11 +12,10 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 
         public int CreateUser(User user);
 
-
-
         List<User> GetAllUsers();
 
         void DeleteUser(int id);
+        List<UserCRA> GetUserCRA();
 
     }
 }

@@ -28,7 +28,7 @@ namespace NoviaReport.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=noviaReport");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=soubass1950;database=noviaReport");
         }
 
         //Méthode différente que "?" pour dire que la valeur de cette table peut être nulle

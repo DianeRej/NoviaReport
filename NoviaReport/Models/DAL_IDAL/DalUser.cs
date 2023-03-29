@@ -97,7 +97,7 @@ namespace NoviaReport.Models.DAL_IDAL
         }
         //renvoie la liste de tous les users qui possèdent le rôle manager
          public List<User> GetManagers()
-        {
+         {
             var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id
                         where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
@@ -105,7 +105,25 @@ namespace NoviaReport.Models.DAL_IDAL
             List<User> managers = query.ToList();
 
             return managers;
+         }
+
+        public List <UserCRA> GetUserCRA()
+        {
+            /*var UserCraList= query.ToList();
+                        join user in _bddContext.Users on usercra.UserId equals user.Id
+                        join cra in _bddContext.CRAs on usercra.CRAId equals cra.Id
+                        select new {user, cra};
+
+            
+            *//*var query = from usercra in _bddContext.UserCRAs*//*
+            return UserCraList;*/
+
+            return _bddContext.UserCRAs.Include(uc=>uc.User).Include(uc=>uc.CRA).ToList();
         }
+
+
+
+
 
         //faire méthode GetManager qui puisse exclure un manager de la liste s'il est lui même manager
         //(pour qu'à la modif il ne puisse pas se choisir lui même comme manager)

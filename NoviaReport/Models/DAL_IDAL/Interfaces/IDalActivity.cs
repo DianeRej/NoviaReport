@@ -15,5 +15,6 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
         void DeleteActivity(int id);
 
         List<Activity> GetAllActivities();
+        List<CraActivity> GetActivitiesCRA();
     }
 }

@@ -1,0 +1,44 @@
+﻿@model List<NoviaReport.Models.UserCRA>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+      <head>
+            <meta name="viewport" content="width=device-width" />
+            <title>ListUserCRA</title>
+      </head>
+     <body>
+       <fieldset>
+        <legend>Liste Utilisateurs CRA</legend>
+        <table border="1">
+            <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Login</th>
+                <th>Date</th>
+                <th>Etat</th>
+            </tr>
+            @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAList"] as List<NoviaReport.Models.UserCRA>)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Firstname)</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Lastname)</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
+                    <td>@userCRA.CRA.Date.ToString("d")</td>
+                    @*<td>@Html.DisplayFor(uc=>userCRA.CRA.Date.ToString("d"))</td>*@
+                    <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
+                </tr>
+            }
+        </table>
+
+       </fieldset>
+                
+
+                        @*/User/ListUserCRA*@
+                        
+
+     </body>
+</html>
