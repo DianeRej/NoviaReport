@@ -107,23 +107,19 @@ namespace NoviaReport.Models.DAL_IDAL
             return managers;
          }
 
+        //Methode pour afficher la liste des utilisateurs et leur CRA
         public List <UserCRA> GetUserCRA()
         {
-            /*var UserCraList= query.ToList();
-                        join user in _bddContext.Users on usercra.UserId equals user.Id
-                        join cra in _bddContext.CRAs on usercra.CRAId equals cra.Id
-                        select new {user, cra};
-
-            
-            *//*var query = from usercra in _bddContext.UserCRAs*//*
-            return UserCraList;*/
-
-            return _bddContext.UserCRAs.Include(uc=>uc.User).Include(uc=>uc.CRA).ToList();
+           return _bddContext.UserCRAs.Include(uc=>uc.User).Include(uc=>uc.CRA).ToList();
         }
 
+        //Méthode pour afficher les CRA lié à un utilisateur grace au Id
+        public List<UserCRA> GetCRAForOneUser(int Id)
 
-
-
+        {
+            List<UserCRA> userCRAs = _bddContext.UserCRAs.Include(uc => uc.CRA).Include(ca => ca.User).Where(ca => ca.UserId==Id).ToList();
+            return userCRAs;
+        }
 
         //faire méthode GetManager qui puisse exclure un manager de la liste s'il est lui même manager
         //(pour qu'à la modif il ne puisse pas se choisir lui même comme manager)

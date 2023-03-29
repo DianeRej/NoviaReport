@@ -16,5 +16,6 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 
         List<Activity> GetAllActivities();
         List<CraActivity> GetActivitiesCRA();
+        List<CraActivity> GetActivitiesForOneCRA(int Id);
     }
 }

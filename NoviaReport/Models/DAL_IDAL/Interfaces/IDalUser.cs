@@ -16,6 +16,7 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 
         void DeleteUser(int id);
         List<UserCRA> GetUserCRA();
+        List<UserCRA> GetCRAForOneUser(int Id);
 
     }
 }

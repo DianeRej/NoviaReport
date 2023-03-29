@@ -80,14 +80,45 @@ namespace NoviaReport.Models
                 new UserCRA { Id = 1, UserId = 1, CRAId = 1 },
                 new UserCRA { Id = 2, UserId = 2, CRAId = 2 },
                 new UserCRA { Id = 3, UserId = 3, CRAId = 3 },
-                new UserCRA { Id = 4, UserId = 4, CRAId = 4 }
+                new UserCRA { Id = 4, UserId = 4, CRAId = 4 },
+
+                new UserCRA { Id = 5, UserId = 1, CRAId = 5 },
+                new UserCRA { Id = 6, UserId = 2, CRAId = 6 },
+                new UserCRA { Id = 7, UserId = 3, CRAId = 7 },
+                new UserCRA { Id = 8, UserId = 4, CRAId = 8 },
+
+                new UserCRA { Id = 9, UserId = 1, CRAId = 9 },
+                new UserCRA { Id = 10, UserId = 2, CRAId = 10 },
+                new UserCRA { Id = 11, UserId = 3, CRAId = 11 },
+                new UserCRA { Id = 12, UserId = 4, CRAId = 12 },
+
+                new UserCRA { Id = 13, UserId = 1, CRAId = 13 },
+                new UserCRA { Id = 14, UserId = 2, CRAId = 14 },
+                new UserCRA { Id = 15, UserId = 3, CRAId = 15 },
+                new UserCRA { Id = 16, UserId = 4, CRAId = 16 }                                
                 );
 
             this.CRAs.AddRange(
-                new CRA { Id = 1, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
-                new CRA { Id = 2, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
-                new CRA { Id = 3, Date = new DateTime(2023, 02, 01), State = State.VALIDE },
-                new CRA { Id = 4, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION }
+
+                new CRA { Id = 1, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
+                new CRA { Id = 2, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
+                new CRA { Id = 3, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
+                new CRA { Id = 4, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
+
+                new CRA { Id = 5, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+                new CRA { Id = 6, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+                new CRA { Id = 7, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+                new CRA { Id = 8, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+
+                new CRA { Id = 9, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
+                new CRA { Id = 10, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
+                new CRA { Id = 11, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
+                new CRA { Id = 12, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
+
+                new CRA { Id = 13, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE },
+                new CRA { Id = 14, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE },
+                new CRA { Id = 15, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE },
+                new CRA { Id = 16, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE }                
                 );
 
             this.CraActivities.AddRange(

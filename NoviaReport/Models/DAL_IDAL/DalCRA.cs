@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NoviaReport.Models.DAL_IDAL.Interfaces;
 
 namespace NoviaReport.Models.DAL_IDAL
@@ -68,5 +69,18 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
+
+
+        
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -51,7 +51,7 @@ namespace NoviaReport.Models.DAL_IDAL
         }
 
 
-        //Méthode pour afficherla liste des activités
+        //Méthode pour afficher la liste des activités
         public List<Activity> GetAllActivities()
         {
             return _bddContext.Activities.ToList();
@@ -73,9 +73,63 @@ namespace NoviaReport.Models.DAL_IDAL
             this._bddContext.Activities.Update(activityToUpDate);
             this._bddContext.SaveChanges();
         }
+
+        /* Méthode pour afficher la liste des activités et le CRA*/
         public List<CraActivity> GetActivitiesCRA()
         {
             return _bddContext.CraActivities.Include(ca => ca.Activity).Include(ca => ca.CRA).ToList();
         }
+
+
+
+        /*Methode pour afficher la liste des activités pour un CRA*/
+        public List<CraActivity> GetActivitiesForOneCRA(int Id)
+
+        {
+            List<CraActivity> craActivities = _bddContext.CraActivities.Include(ca => ca.Activity).Include(ca => ca.CRA).Where(ca => ca.CRAId==Id).ToList();
+            return craActivities;
+        }
+        /*CRA cra = new CRA();
+            using (DalCRA dal = new DalCRA())
+            {
+                cra = dal.GetCRAById(Id);
+            }
+            List<CraActivity> craActivities = _bddContext.CraActivities.Include(ca => ca.Activity).Include(ca => ca.CRA).ToList();
+                List<CraActivity> craActivitiesForOneCra = new List<CraActivity>();
+                foreach (CraActivity craActivity in craActivities)
+                {
+                    if (cra.Id == craActivity.CRAId)
+                {
+                    craActivitiesForOneCra.Add(craActivity);
+                }
+                }
+                        return craActivitiesForOneCra;*/
+           
+
+
+        
+
+
+
+
     }
-}
+
+
+
+
+
+        /*Methode pour afficher une activité et un CRA*//*
+        public CraActivity GetActivityCRA(int craActivityId)
+        {
+            return _bddContext.CraActivities.Include(ca => ca.Activity).Include(ca => ca.CRA)
+                             .FirstOrDefault(ca => ca.Id == craActivityId);
+        }*/
+
+
+
+
+
+
+
+    }
+

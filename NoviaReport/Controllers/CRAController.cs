@@ -128,6 +128,7 @@ namespace NoviaReport.Controllers
             }
 
         }
+       /* Controleur pour afficher la liste des Activites et le CRA*/
         public IActionResult ListActivitiesCRA()
         {
             DalActivity dal = new DalActivity();
@@ -136,7 +137,14 @@ namespace NoviaReport.Controllers
 
         }
 
+        /*Controleur pour afficher les Activités liées à un CRA*/
+        public IActionResult GetActivitiesCRA(int id)
+        {
+            DalActivity dal = new DalActivity();
+            ViewData["ActivitiesCRAList"]=dal.GetActivitiesForOneCRA(id);
+            return View("GetActivitiesCRA");
 
+        }
 
 
 

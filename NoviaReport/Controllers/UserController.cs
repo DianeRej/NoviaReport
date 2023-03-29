@@ -111,14 +111,26 @@ namespace NoviaReport.Controllers
             return Redirect("/home/Index");
         }
 
+        /*Controlleur pour afficher la liste des utilisateurs et leurs CRAs*/
         public IActionResult ListUserCRA()
         {
             DalUser dal = new DalUser();
             ViewData["UserCRAList"]=dal.GetUserCRA();
             return View("ListUserCRA");
-
-
         }
+
+        /*Controlleur pour afficher un utilisateur et ses CRAs*/
+        public IActionResult GetUserCRAs(int id)
+        {
+            DalUser dal = new DalUser();
+            ViewData["UserCRAsList"]=dal.GetCRAForOneUser(id);
+            return View("GetUserCRAs");
+        }
+
+
+
+
+
     }
     
 
