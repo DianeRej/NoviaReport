@@ -180,6 +180,13 @@ namespace NoviaReport.Controllers
             return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
+        public IActionResult ListActivitiesCRA()
+        {
+            DalActivity dal = new DalActivity();
+            ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
+            return View("ListActivitiesCRA");
+
+        }
 
 
     }

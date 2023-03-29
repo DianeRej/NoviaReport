@@ -71,6 +71,12 @@ namespace NoviaReport.Models.DAL_IDAL
             return CraActivity.Id;
         }
 
+        //Génère la liste des CRAActivities pour la vue ListCraActivities
+        public List<CraActivity> GetActivitiesCRA()
+        {
+            return _bddContext.CraActivities.Include(ca => ca.Activity).Include(ca => ca.CRA).ToList();
+        }
+
 
         //Méthode pour libérer des ressources non managées
         public void Dispose()

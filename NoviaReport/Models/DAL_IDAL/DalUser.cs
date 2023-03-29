@@ -90,13 +90,13 @@ namespace NoviaReport.Models.DAL_IDAL
         public List<User> GetAllUsers()
         {
             return _bddContext.Users
-                .Include(u=>u.ProfessionalInfo)
-                .Include(u=>u.Role)
+                .Include(u => u.ProfessionalInfo)
+                .Include(u => u.Role)
                 .ToList();
-           
+
         }
         //renvoie la liste de tous les users qui possèdent le rôle manager
-         public List<User> GetManagers()
+        public List<User> GetManagers()
         {
             var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id
@@ -105,6 +105,12 @@ namespace NoviaReport.Models.DAL_IDAL
             List<User> managers = query.ToList();
 
             return managers;
+        }
+
+        //Méthode qui permet de récupérer une liste de UserCra pour la vue listUserCRA
+        public List<UserCRA> GetUserCRA()
+        {
+            return _bddContext.UserCRAs.Include(uc => uc.User).Include(uc => uc.CRA).ToList();
         }
 
         //faire méthode GetManager qui puisse exclure un manager de la liste s'il est lui même manager

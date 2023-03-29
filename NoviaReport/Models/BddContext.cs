@@ -111,15 +111,15 @@ namespace NoviaReport.Models
                 new Activity { Id = 1, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
                 new Activity { Id = 2, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
                 new Activity { Id = 3, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
-                new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CongéPayé },
+                new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE },
                 new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
                 new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
                 new Activity { Id = 7, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.PRESTATION, Client = Client.Client3 },
                 new Activity { Id = 8, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
                 new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
                 new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CongeMaternite },
-                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CongeMaternite },
+                new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
+                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
                 new Activity { Id = 13, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client4 }
                 );
 
