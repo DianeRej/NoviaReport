@@ -7,8 +7,6 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 {
     interface IDalActivity : IDisposable
     {
-        void DeleteCreateDatabase();
-
         int CreateActivity(bool Halfday, DateTime Date, TypeActivity typeActivity);
 
         void UpdateActivity(Activity activity);

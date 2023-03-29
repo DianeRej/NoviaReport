@@ -132,11 +132,7 @@ namespace NoviaReport.Controllers
             {
                 using (DalCRA dal = new DalCRA())
                 {
-                    CRA craToUpDate = dal.GetAllCRAs().Where(c => c.Id == id).FirstOrDefault();
-                    if (craToUpDate == null)
-                    {
-                        return View("Error");
-                    }
+                    CRA craToUpDate = dal.GetCRAById(id);
                     return View(craToUpDate);
                 }
             }

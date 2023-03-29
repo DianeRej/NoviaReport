@@ -11,7 +11,6 @@ namespace NoviaReport.Models.DAL_IDAL
         private BddContext _bddContext;
 
         ////Méthode d'initialisation de la DB
-
         public DalCRA()
         {
             _bddContext = new BddContext();
@@ -25,7 +24,6 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return craToCreate.Id;
         }
-
         public int CreateCRA(CRA cra)
         {
             _bddContext.CRAs.Add(cra);
@@ -51,18 +49,29 @@ namespace NoviaReport.Models.DAL_IDAL
             this._bddContext.SaveChanges();
 
         }
-        //Méthode pour supprimer une activité
+
+
+        //Méthode pour supprimer un CRA 
         public void DeleteCRA(int id)
         {
             CRA craToDelete = _bddContext.CRAs.Find(id);
             _bddContext.CRAs.Remove(craToDelete);
             _bddContext.SaveChanges();
         }
+
+
         //Méthode pour afficherla liste de CRAs
         public List<CRA> GetAllCRAs()
         {
             return _bddContext.CRAs.ToList(); ;
         }
+
+        //Méthode pour rechercher un CRA grâce à son id
+        public CRA GetCRAById(int id)
+        {
+            return this._bddContext.CRAs.SingleOrDefault(u => u.Id == id);
+        }
+
 
         //méthode pour créer une ligne dans la table intermédiaire UserCRA à partir d'un CRA et d'un user
         public int CreateUserCRA(CRA cra, User user)
@@ -73,12 +82,7 @@ namespace NoviaReport.Models.DAL_IDAL
             return userCRA.Id;
         }
 
-        //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
-        public void DeleteCreateDatabase()
-        {
-            _bddContext.Database.EnsureDeleted();
-            _bddContext.Database.EnsureCreated();
-        }
+
         //Méthode pour libérer des ressources non managées
         public void Dispose()
         {

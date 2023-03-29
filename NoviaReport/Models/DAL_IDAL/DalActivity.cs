@@ -18,10 +18,7 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext = new BddContext();
         }
 
-        //public int CreateActivity(bool halfday, DateTime date, OtherActivities otherActivities, Absences absences, CustomersServices customersServices)
-
-
-        //Méthode pour créer une activité
+        //Méthodes pour créer une activité
         public int CreateActivity(bool halfday, DateTime date, TypeActivity typeActivity)
         {
             Activity activityToCreate = new Activity() { Halfday = halfday, Date = date, TypeActivity = typeActivity };
@@ -29,13 +26,13 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return activityToCreate.Id;
         }
-
         public int CreateActivity(Activity activity)
         {
             _bddContext.Activities.Add(activity);
             _bddContext.SaveChanges();
             return activity.Id;
         }
+
         //Méthode pour modifier une activité
         public void UpdateActivity(Activity activityToUpDate)
         {
@@ -75,18 +72,6 @@ namespace NoviaReport.Models.DAL_IDAL
         }
 
 
-        //Méthode pour rechercher une CraActivity grâce à l'id de l'activity
-        public CraActivity GetCraActivityByActivityId(int actId)
-        {
-            return this._bddContext.CraActivities.SingleOrDefault(u => u.ActivityId == actId);
-        }
-
-        //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
-        public void DeleteCreateDatabase()
-        {
-            _bddContext.Database.EnsureDeleted();
-            _bddContext.Database.EnsureCreated();
-        }
         //Méthode pour libérer des ressources non managées
         public void Dispose()
         {
