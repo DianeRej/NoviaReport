@@ -17,10 +17,22 @@ namespace NoviaReport.Controllers
         }
         //get : envoie sur le fomulaire de création d'une activité 
         //doit avoir une référence du CRA auquel elle appartient : ici c'est l'id du CRA qu'on passe en argument
+        //Pour pouvoir ajouter une activité il y a 2 conditions : le CRAid doit correspondre à un CRA existant ET 
+        //le statut du CRA doit être NON_VALIDE ou INCOMPLET
         public IActionResult CreateActivity(int CRAid)
         {
-            if (CRAid != 0)
+            CRA craToComplete = new CRA();
+            using (DalCRA dal = new DalCRA())
             {
+                craToComplete = dal.GetCRAById(CRAid);
+            }
+            if (CRAid == 0)
+            {
+                return View("Error");
+            }
+            if (craToComplete.State.Equals(State.NON_VALIDE) || craToComplete.State.Equals(State.INCOMPLET))
+            {
+
                 using (DalActivity dal = new DalActivity())
                 {
                     ViewBag.CRAid = CRAid;
@@ -31,6 +43,7 @@ namespace NoviaReport.Controllers
             {
                 return View("Error");
             }
+
         }
         //Méthode post pour créer une activité
         [HttpPost]
@@ -92,6 +105,7 @@ namespace NoviaReport.Controllers
 
         //get : envoie sur le fomulaire de création d'un CRA
         //prend en argument un userId
+        //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
         public IActionResult CreateCRA(int userId)
         {
             if (userId != 0)
@@ -101,7 +115,8 @@ namespace NoviaReport.Controllers
                     ViewBag.userId = userId;
                 }
                 return View();
-            } else return View("Error");
+            }
+            else return View("Error");
         }
 
         //Méthode post pour créer un CRA
@@ -150,13 +165,23 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+                    return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard salarié ?
                 }
             }
             else
             {
                 return View("Error");
             }
+        }
+
+        public IActionResult SubmitCRA(int id)
+        {
+            using (DalCRA dal = new DalCRA())
+            {
+                CRA craToSubmit = dal.GetCRAById(id);
+                dal.SubmitCra(craToSubmit);
+            }
+            return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
 

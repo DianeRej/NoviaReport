@@ -10,7 +10,6 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
         int CreateCRA(DateTime Date, State State);
 
         void UpdateCRA(int id, DateTime Date, State State);
-        void DeleteCRA(int id);
 
         List<CRA> GetAllCRAs();
     }

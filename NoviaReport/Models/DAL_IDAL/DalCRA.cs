@@ -26,6 +26,7 @@ namespace NoviaReport.Models.DAL_IDAL
         }
         public int CreateCRA(CRA cra)
         {
+            cra.State = State.NON_VALIDE;
             _bddContext.CRAs.Add(cra);
             _bddContext.SaveChanges();
             return cra.Id;
@@ -50,14 +51,36 @@ namespace NoviaReport.Models.DAL_IDAL
 
         }
 
-
-        //Méthode pour supprimer un CRA 
-        public void DeleteCRA(int id)
+        //méthode spécifique au salarié 
+        //permet d'envoyer un CRA à un manager pour validation
+        public void SubmitCra(CRA cra)
         {
-            CRA craToDelete = _bddContext.CRAs.Find(id);
-            _bddContext.CRAs.Remove(craToDelete);
-            _bddContext.SaveChanges();
+            cra.State = State.EN_COURS_DE_VALIDATION;
+            _bddContext.CRAs.Update(cra);
         }
+
+        //méthodes spécifique au manager 
+        //permet d'évaluer l'état d'un CRA : le renvoyer pour correction
+        //en modifiant son statut en INCOMPLET ou le valider en modifiant son statut en VALIDE
+        public void ValidateCRA(CRA cra)
+        {
+            cra.State = State.VALIDE;
+            _bddContext.CRAs.Update(cra);
+        }
+
+        public void InvalidateCRA(CRA cra)
+        {
+            cra.State = State.INCOMPLET;
+            _bddContext.CRAs.Update(cra);
+        }
+
+        //Méthode pour supprimer un CRA : a priori on ne supprimera pas de CRA donc inutile
+        //public void DeleteCRA(int id)
+        //{
+        //    CRA craToDelete = _bddContext.CRAs.Find(id);
+        //    _bddContext.CRAs.Remove(craToDelete);
+        //    _bddContext.SaveChanges();
+        //}
 
 
         //Méthode pour afficherla liste de CRAs
