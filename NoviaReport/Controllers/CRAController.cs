@@ -4,6 +4,7 @@ using NoviaReport.Models.DAL_IDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace NoviaReport.Controllers
@@ -23,11 +24,12 @@ namespace NoviaReport.Controllers
                 using (DalActivity dal = new DalActivity())
                 {
                     ViewBag.CRAid = CRAid;
-                    return View();
                 }
-            } else 
-            { 
-                return View("Error"); 
+                return View();
+            }
+            else
+            {
+                return View("Error");
             }
         }
         //Méthode post pour créer une activité
@@ -46,9 +48,9 @@ namespace NoviaReport.Controllers
             {
                 dal.CreateActivity(activity);
                 dal.CreateCraActivity(cra, activity);
-                
+
             }
-            return Redirect("/CRA/CreateActivity");
+            return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
         }
 
         //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
@@ -61,7 +63,7 @@ namespace NoviaReport.Controllers
                 using (DalActivity dal = new DalActivity())
                 {
                     activityToUpdate = dal.GetActivityById(id);
-                    
+
                 }
                 return View(activityToUpdate);
             }
@@ -79,7 +81,7 @@ namespace NoviaReport.Controllers
                 using (DalActivity dal = new DalActivity())
                 {
                     dal.UpdateActivity(ActivityToUpDate);
-                    return Redirect("/CRA/UpDateActivity");
+                    return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
                 }
             }
             else
@@ -88,6 +90,39 @@ namespace NoviaReport.Controllers
             }
         }
 
+        //get : envoie sur le fomulaire de création d'un CRA
+        //prend en argument un userId
+        public IActionResult CreateCRA(int userId)
+        {
+            if (userId != 0)
+            {
+                using (DalCRA dal = new DalCRA())
+                {
+                    ViewBag.userId = userId;
+                }
+                return View();
+            } else return View("Error");
+        }
+
+        //Méthode post pour créer un CRA
+        [HttpPost]
+        public IActionResult CreateCRA(CRA cra, int userId)
+        {
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                return View();
+            User user = new User();
+            using (DalUser dal = new DalUser())
+            {
+                user = dal.GetUserById(userId);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                dal.CreateCRA(cra);
+                dal.CreateUserCRA(cra, user);
+                return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+            }
+
+        }
 
         //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
@@ -119,7 +154,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/CRA/UpDateCRA");
+                    return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
                 }
             }
             else
@@ -128,18 +163,7 @@ namespace NoviaReport.Controllers
             }
         }
 
-        /* public IActionResult CreateCRA(DateTime date, State state)
-         {
-             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
-                 return View();
 
-             using (DalActivity dal = new DalActivity())
-             {
-                 dal.CreateCRA( date, state);
-                 return Redirect("/CRA/CreateCRA");
-             }
-
-         }*/
 
     }
 }

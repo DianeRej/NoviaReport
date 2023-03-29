@@ -17,8 +17,7 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext = new BddContext();
         }
 
-        //Méthode pour créer un CRA
-
+        //Méthodes pour créer un CRA
         public int CreateCRA(DateTime date, State state)
         {
             CRA craToCreate = new CRA() { Date = date, State = state };
@@ -26,6 +25,14 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return craToCreate.Id;
         }
+
+        public int CreateCRA(CRA cra)
+        {
+            _bddContext.CRAs.Add(cra);
+            _bddContext.SaveChanges();
+            return cra.Id;
+        }
+
         //Méthodes pour modifier un CRA 
         public void UpdateCRA(int id, DateTime date, State state)
         {
@@ -55,6 +62,15 @@ namespace NoviaReport.Models.DAL_IDAL
         public List<CRA> GetAllCRAs()
         {
             return _bddContext.CRAs.ToList(); ;
+        }
+
+        //méthode pour créer une ligne dans la table intermédiaire UserCRA à partir d'un CRA et d'un user
+        public int CreateUserCRA(CRA cra, User user)
+        {
+            UserCRA userCRA = new UserCRA() { CRAId = cra.Id, UserId = user.Id };
+            _bddContext.UserCRAs.Add(userCRA);
+            _bddContext.SaveChanges();
+            return userCRA.Id;
         }
 
         //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
