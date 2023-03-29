@@ -51,21 +51,19 @@ namespace NoviaReport.Controllers
             return Redirect("/CRA/CreateActivity");
         }
 
-        //Méthode get, qui renvoie vers un formulaire de modification préremplis
+        //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
         //avec les informations existantes dans la DB (a travers l'id)
         public IActionResult UpdateActivity(int id)
         {
             if (id != 0)
             {
+                Activity activityToUpdate = new Activity();
                 using (DalActivity dal = new DalActivity())
                 {
-                    Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
-                    if (ActivityToUpDate == null)
-                    {
-                        return View(id);
-                    }
-                    return View(ActivityToUpDate);
+                    activityToUpdate = dal.GetActivityById(id);
+                    
                 }
+                return View(activityToUpdate);
             }
             return View("Error");
         }
@@ -142,24 +140,6 @@ namespace NoviaReport.Controllers
              }
 
          }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

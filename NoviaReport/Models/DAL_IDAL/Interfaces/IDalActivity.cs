@@ -11,7 +11,7 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 
         int CreateActivity(bool Halfday, DateTime Date, TypeActivity typeActivity);
 
-        void UpdateActivity(int id, bool Halfday, DateTime Date, TypeActivity typeActivity);
+        void UpdateActivity(Activity activity);
         void DeleteActivity(int id);
 
         List<Activity> GetAllActivities();

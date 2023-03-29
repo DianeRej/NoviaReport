@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NoviaReport.Models.DAL_IDAL.Interfaces;
 
 namespace NoviaReport.Models.DAL_IDAL
@@ -36,18 +37,12 @@ namespace NoviaReport.Models.DAL_IDAL
             return activity.Id;
         }
         //Méthode pour modifier une activité
-        public void UpdateActivity(int id, bool halfday, DateTime date, TypeActivity typeActivity)
+        public void UpdateActivity(Activity activityToUpDate)
         {
-            Activity activityToUpDate = _bddContext.Activities.Find(id);
-            if (activityToUpDate != null)
-            {
-                activityToUpDate.Halfday = halfday;
-                activityToUpDate.Date = date;
-                activityToUpDate.TypeActivity = typeActivity;
-
-                _bddContext.SaveChanges();
-            }
+            this._bddContext.Activities.Update(activityToUpDate);
+            this._bddContext.SaveChanges();
         }
+
         //Méthode pour supprimer une activité
         public void DeleteActivity(int id)
         {
@@ -63,6 +58,13 @@ namespace NoviaReport.Models.DAL_IDAL
             return _bddContext.Activities.ToList();
         }
 
+        //Méthode pour rechercher une activité grâce à son id
+        public Activity GetActivityById(int id)
+        {
+            return this._bddContext.Activities.SingleOrDefault(u => u.Id == id);
+        }
+
+
         //méthode pour créer une ligne de la table intermédiaire CRAActivity à partir d'un CRA et d'une Activity
         public int CreateCraActivity(CRA cra, Activity activity)
         {
@@ -70,6 +72,13 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.CraActivities.Add(CraActivity);
             _bddContext.SaveChanges();
             return CraActivity.Id;
+        }
+
+
+        //Méthode pour rechercher une CraActivity grâce à l'id de l'activity
+        public CraActivity GetCraActivityByActivityId(int actId)
+        {
+            return this._bddContext.CraActivities.SingleOrDefault(u => u.ActivityId == actId);
         }
 
         //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
@@ -84,10 +93,6 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.Dispose();
         }
 
-        public void UpdateActivity(Activity activityToUpDate)
-        {
-            this._bddContext.Activities.Update(activityToUpDate);
-            this._bddContext.SaveChanges();
-        }
+        
     }
 }
