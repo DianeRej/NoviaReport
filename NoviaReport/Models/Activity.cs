@@ -20,14 +20,31 @@ namespace NoviaReport.Models
 
     public enum TypeActivity
     {
-        FORMATION_PROFESSIONNELLE, FORMATION_ECONOMIQUE_SOCIALE_ET_SYDICALE, INTER_CONTRAT,
+        [Display(Name = "Formation Professionnelle")] FORMATION_PROFESSIONNELLE, 
+        [Display(Name = "Formation Economique Sociale et Syndicale")] FORMATION_ECONOMIQUE_SOCIALE_ET_SYDICALE, 
+        [Display(Name = "Inter-Contrat")] INTER_CONTRAT,
 
-        CongéPayé, RTT, Conge_Sans_Solde, CongeMaternite, CongePaternite, CongéMaladie, AccidentDeTravail, AccidentDeTrajet, AutorisationDabsencePourExamensObligatoiresDeLaFemmeEnceinte,
-        CongésPourEvènementsFamiliaux, Grève, ExamenMédicalDuTravail, CongéPourEnfantMalade, Crédits_dHeures_des_représentants_du_personnel, Congé_de_formation_des_membres_du_CSE,
+        [Display(Name = "Congé Payé")] CONGE_PAYE, 
+        RTT, 
+        [Display(Name = "Congé Sans Solde")] CONGE_SANS_SOLDE, 
+        [Display(Name = "Congé Maternité")] CONGE_MATERNITE, 
+        [Display(Name = "Congé Paternité")] CONGE_PATERNITE, 
+        [Display(Name = "Congé Maladie")] CONGE_MALADIE,
+        [Display(Name = "Accident de Travail")] ACCIDENT_DE_TRAVAIL,
+        [Display(Name = "Accident de Trajet")] ACCIDENT_DE_TRAJET,
+        [Display(Name = "Autorisation d'Absence Pour Examens Obligatoires de la Femme Enceinte")] AUTORISATION_EXAMENS_FEMME_ENCEINTE,
+        [Display(Name = "Congé pour Evèvements Familiaux")] CONGE_EVENEMENTS_FAMILIAUX,
+        [Display(Name = "Grève")] GREVE, 
+        [Display(Name = "Examen Médical du Travail")] EXAMEN_MEDICAL_DU_TRAVAIL, 
+        [Display(Name = "Congé pour Enfant Malade")] CONGE_ENFANT_MALADE, 
+        [Display(Name = "Crédits d'Heures des Représentants du Personnel")] CREDITS_HEURES_REP_PERSONNEL, 
+        [Display(Name = "Congé de Formation des Membres du CSE")] CONGE_FORMATION_CSE,
 
-        ASTREINTE, PRESTATION, MAINTENANCE
+        [Display(Name = "Astreinte")] ASTREINTE, 
+        [Display(Name = "Prestation")] PRESTATION, 
+        [Display(Name = "Maintenance")] MAINTENANCE
     }
-    public enum Client
+    public enum Client //trouver des noms d'entreprises fictives
     {
         Client1, Client2, Client3, Client4, Client5, Client6
     }
