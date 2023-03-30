@@ -13,17 +13,15 @@
         <form method="post">
             <div class="txt_field">
                 @Html.TextBoxFor(m => m.User.Login)
-                <!--<input type="text" required />-->
                 <span></span>
                 @Html.LabelFor(m => m.User.Login)
-                <!--<label>Identifiant</label>-->
+                @Html.ValidationMessageFor(m => m.User.Login)
             </div>
             <div class="txt_field">
                 @Html.PasswordFor(m => m.User.Password)
-                <!--<input type="password" required />-->
                 <span></span>
                 @Html.LabelFor(m => m.User.Password)
-                <!--<label>Mot de passe </label>-->
+                @Html.ValidationMessageFor(m => m.User.Password)
             </div>
             <div class="pass">Mot de passe oublié?</div>
 

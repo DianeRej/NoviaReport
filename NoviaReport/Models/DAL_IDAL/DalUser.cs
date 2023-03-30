@@ -62,13 +62,7 @@ namespace NoviaReport.Models.DAL_IDAL
 
         }
 
-        //méthode qui est appelée par le post de la page de connexion
-        public User Authentifier(string login, string password)
-        {
-            string motDePasse = EncodeMD5(password);
-            User user = this._bddContext.Users.FirstOrDefault(u => u.Login == login && u.Password == motDePasse);
-            return user;
-        }
+        
 
         //permet de chercher un user dans la table grâce à son id
         public User GetUserById(int id)
@@ -148,10 +142,13 @@ namespace NoviaReport.Models.DAL_IDAL
             return managers;
         }
 
-        public void DeleteCreateDatabase()
+
+        //méthode qui est appelée par le post de la page de connexion
+        public User Authentifier(string login, string password)
         {
-            _bddContext.Database.EnsureDeleted();
-            _bddContext.Database.EnsureCreated();
+            string encodedPassword = EncodeMD5(password);
+            User user = this._bddContext.Users.FirstOrDefault(u => u.Login == login && u.Password == encodedPassword);
+            return user;
         }
 
         //Encodage du MdP

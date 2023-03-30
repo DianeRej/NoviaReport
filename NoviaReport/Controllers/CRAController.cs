@@ -1,21 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using System.Linq;
 
 namespace NoviaReport.Controllers
 {
+    [Authorize]
     public class CRAController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+
 
         //get : envoie sur le fomulaire de création d'une activité 
         //doit avoir une référence du CRA auquel elle appartient : ici c'est l'id du CRA qu'on passe en argument
         //Pour pouvoir ajouter une activité il y a 2 conditions : le CRAid doit correspondre à un CRA existant ET 
         //le statut du CRA doit être NON_VALIDE ou INCOMPLET
+        [Authorize(Roles = "SALARIE")]
         public IActionResult CreateActivity(int CRAid)
         {
             CRA craToComplete = new CRA();
@@ -65,6 +65,7 @@ namespace NoviaReport.Controllers
 
         //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
         //avec les informations existantes dans la DB (a travers l'id)
+        [Authorize(Roles = "SALARIE")]
         public IActionResult UpdateActivity(int id)
         {
             if (id != 0)
@@ -91,7 +92,7 @@ namespace NoviaReport.Controllers
                 using (DalActivity dal = new DalActivity())
                 {
                     dal.UpdateActivity(ActivityToUpDate);
-                    return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
+                    return Redirect("/home/index"); //à changer pour un lien vers la liste des activités
                 }
             }
             else
@@ -103,6 +104,7 @@ namespace NoviaReport.Controllers
         //get : envoie sur le fomulaire de création d'un CRA
         //prend en argument un userId
         //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
+        //[Authorize(Roles = "SALARIE")]
         public IActionResult CreateCRA(int userId)
         {
             if (userId != 0)
@@ -172,6 +174,7 @@ namespace NoviaReport.Controllers
             }
         }
         //méthode spécifique à un salarié : une fois remplis il soumet son CRA à son manager pour que celui-ci le valide
+        [Authorize(Roles = "SALARIE")]
         public IActionResult SubmitCRA(int id)
         {
             using (DalCRA dal = new DalCRA())
@@ -182,7 +185,11 @@ namespace NoviaReport.Controllers
             return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
+
+
+
         //Méthode pour afficher la liste des Activites et des CRA
+        [Authorize]
         public IActionResult ListActivitiesCRA()
         {
             DalActivity dal = new DalActivity();
@@ -192,6 +199,7 @@ namespace NoviaReport.Controllers
         }
 
         //Méthode pour afficher les Activités liées à un CRA
+        [Authorize]
         public IActionResult GetActivitiesCRA(int id)
         {
             DalActivity dal = new DalActivity();

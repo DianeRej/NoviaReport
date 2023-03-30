@@ -7,8 +7,6 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 {
     interface IDalUser : IDisposable
     {
-        void DeleteCreateDatabase();
-
 
         public int CreateUser(User user);
 

@@ -33,13 +33,24 @@ namespace NoviaReport.Controllers
         {
             if (ModelState.IsValid)
             {
-                User utilisateur = dal.Authentifier(viewModel.User.Login, viewModel.User.Password);
-                if (utilisateur != null)
+                User user = dal.Authentifier(viewModel.User.Login, viewModel.User.Password);
+                List<Role> roles = new List<Role>();
+                using (DalRole dalRole = new DalRole())
+                {
+                    roles = dalRole.GetRolesByUserId(user.Id);
+                }
+
+                if (user != null)
                 {
                     var userClaims = new List<Claim>()
                     {
-                        new Claim(ClaimTypes.Name, utilisateur.Id.ToString())
+                        new Claim(ClaimTypes.Name, user.Id.ToString()),
                     };
+
+                    foreach (Role role in roles)
+                    {
+                        userClaims.Add(new Claim(ClaimTypes.Role, role.TypeRole.ToString()));
+                    }
 
                     var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
 
@@ -49,12 +60,31 @@ namespace NoviaReport.Controllers
 
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
+                    if (user.Role.Equals(TypeRole.ADMIN))
+                    {
+                        return Redirect("/Dashboard/DashboardAdmin");
+                    }
+                    else if (user.Role.Equals(TypeRole.MANAGER))
+                    {
+                        //voir comment on transmet l'id du user pour l'utiliser pour obtenir le bon dashboard
+                        return Redirect("/Dashboard/DashboardManager");
+                    }
+                    else
+                    {
+                        //voir comment on transmet l'id du user pour l'utiliser pour obtenir le bon dashboard
+                        return Redirect("/Dashboard/DashboardSalarie");
+                    }
 
-                    return Redirect("/");
                 }
-                ModelState.AddModelError("User.Login", "Login et/ou mot de passe incorrect(s)");
+                ModelState.AddModelError("User.Login", "Login et/ou mot de passe incorrect(s)"); //affiche l'erreur en cas de fausse saisie
             }
-            return Redirect("/User/ListUserCRA");
+            return Redirect("/");
+        }
+
+        public ActionResult Deconnexion()
+        {
+            HttpContext.SignOutAsync();
+            return Redirect("/");
         }
     }
 }
