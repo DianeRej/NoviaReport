@@ -150,12 +150,10 @@ namespace NoviaReport.Controllers
             }
             return View("Error");
         }
-<<<<<<< HEAD
-        //Méthode post pour modifier un CRA
-=======
 
+ 
         //Méthode post pour modifier le CRA
->>>>>>> master
+
         [HttpPost]
         public IActionResult UpdateCRA(CRA craToUpDate)
         {
@@ -175,29 +173,11 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-<<<<<<< HEAD
 
-
-        //get : envoie sur le fomulaire de création d'un CRA
-        public IActionResult CreateCRA()
-        {
-            using (DalCRA dal = new DalCRA())
-            {
-                return View();
-            }
-        }
-        //Méthode post pour créer un CRA
-        [HttpPost]
-        public IActionResult CreateCRA(DateTime date, State state)
-        {
-            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
-                return View();
-
-=======
         //méthode spécifique à un salarié : une fois remplis il soumet son CRA à son manager pour que celui-ci le valide
         public IActionResult SubmitCRA(int id)
         {
->>>>>>> master
+
             using (DalCRA dal = new DalCRA())
             {
                 CRA craToSubmit = dal.GetCRAById(id);
@@ -206,31 +186,14 @@ namespace NoviaReport.Controllers
             return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
-<<<<<<< HEAD
-        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
         //Méthode pour afficher la liste des Activites et des CRA
         public IActionResult ListActivitiesCRA()
         {
             DalActivity dal = new DalActivity();
             ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
             return View("ListActivitiesCRA");
->>>>>>> master
+
 
         }
 
