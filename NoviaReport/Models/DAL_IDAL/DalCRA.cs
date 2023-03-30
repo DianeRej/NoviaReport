@@ -12,14 +12,12 @@ namespace NoviaReport.Models.DAL_IDAL
         private BddContext _bddContext;
 
         ////Méthode d'initialisation de la DB
-
         public DalCRA()
         {
             _bddContext = new BddContext();
         }
 
-        //Méthode pour créer un CRA
-
+        //Méthodes pour créer un CRA
         public int CreateCRA(DateTime date, State state)
         {
             CRA craToCreate = new CRA() { Date = date, State = state };
@@ -27,6 +25,14 @@ namespace NoviaReport.Models.DAL_IDAL
             _bddContext.SaveChanges();
             return craToCreate.Id;
         }
+        public int CreateCRA(CRA cra)
+        {
+            cra.State = State.NON_VALIDE;
+            _bddContext.CRAs.Add(cra);
+            _bddContext.SaveChanges();
+            return cra.Id;
+        }
+
         //Méthodes pour modifier un CRA 
         public void UpdateCRA(int id, DateTime date, State state)
         {
@@ -45,25 +51,62 @@ namespace NoviaReport.Models.DAL_IDAL
             this._bddContext.SaveChanges();
 
         }
-        //Méthode pour supprimer une activité
-        public void DeleteCRA(int id)
+
+        //méthode spécifique au salarié 
+        //permet d'envoyer un CRA à un manager pour validation
+        public void SubmitCra(CRA cra)
         {
-            CRA craToDelete = _bddContext.CRAs.Find(id);
-            _bddContext.CRAs.Remove(craToDelete);
-            _bddContext.SaveChanges();
+            cra.State = State.EN_COURS_DE_VALIDATION;
+            _bddContext.CRAs.Update(cra);
         }
+
+        //méthodes spécifique au manager 
+        //permet d'évaluer l'état d'un CRA : le renvoyer pour correction
+        //en modifiant son statut en INCOMPLET ou le valider en modifiant son statut en VALIDE
+        public void ValidateCRA(CRA cra)
+        {
+            cra.State = State.VALIDE;
+            _bddContext.CRAs.Update(cra);
+        }
+
+        public void InvalidateCRA(CRA cra)
+        {
+            cra.State = State.INCOMPLET;
+            _bddContext.CRAs.Update(cra);
+        }
+
+        //Méthode pour supprimer un CRA : a priori on ne supprimera pas de CRA donc inutile
+        //public void DeleteCRA(int id)
+        //{
+        //    CRA craToDelete = _bddContext.CRAs.Find(id);
+        //    _bddContext.CRAs.Remove(craToDelete);
+        //    _bddContext.SaveChanges();
+        //}
+
+
         //Méthode pour afficherla liste de CRAs
         public List<CRA> GetAllCRAs()
         {
             return _bddContext.CRAs.ToList(); ;
         }
 
-        //Méthode pour supprimer la base de données sur le serveur de base de données si elle existe ensuite la recréer
-        public void DeleteCreateDatabase()
+        //Méthode pour rechercher un CRA grâce à son id
+        public CRA GetCRAById(int id)
         {
-            _bddContext.Database.EnsureDeleted();
-            _bddContext.Database.EnsureCreated();
+            return this._bddContext.CRAs.SingleOrDefault(u => u.Id == id);
         }
+
+
+        //méthode pour créer une ligne dans la table intermédiaire UserCRA à partir d'un CRA et d'un user
+        public int CreateUserCRA(CRA cra, User user)
+        {
+            UserCRA userCRA = new UserCRA() { CRAId = cra.Id, UserId = user.Id };
+            _bddContext.UserCRAs.Add(userCRA);
+            _bddContext.SaveChanges();
+            return userCRA.Id;
+        }
+
+
         //Méthode pour libérer des ressources non managées
         public void Dispose()
         {

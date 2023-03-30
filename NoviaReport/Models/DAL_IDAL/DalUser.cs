@@ -90,10 +90,10 @@ namespace NoviaReport.Models.DAL_IDAL
         public List<User> GetAllUsers()
         {
             return _bddContext.Users
-                .Include(u=>u.ProfessionalInfo)
-                .Include(u=>u.Role)
+                .Include(u => u.ProfessionalInfo)
+                .Include(u => u.Role)
                 .ToList();
-           
+
         }
         //renvoie la liste de tous les users qui possèdent le rôle manager
          public List<User> GetManagers()
@@ -121,8 +121,34 @@ namespace NoviaReport.Models.DAL_IDAL
             return userCRAs;
         }
 
-        //faire méthode GetManager qui puisse exclure un manager de la liste s'il est lui même manager
-        //(pour qu'à la modif il ne puisse pas se choisir lui même comme manager)
+        //méthode GetManagers qui exclut un manager de la liste s'il est lui même manager
+        //(pour qu'à la modification d'un user il ne puisse pas s'auto-sélectionner)
+        public List<User> GetManagersWithExlusion(int id)
+        {
+                        var query = from role in _bddContext.Roles
+                        join user in _bddContext.Users on role.UserId equals user.Id
+                        where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
+                        select user;
+            List<User> managers = query.ToList();
+
+            //on regarde si le user renseigné est manager
+            //si c'est le cas on parcourt la liste jusqu'à le retrouver et on l'exclut de la liste
+            User userToTest = GetUserById(id);
+            if (userToTest.Role.Equals(TypeRole.MANAGER)) 
+            {
+                foreach (var manager in managers) 
+                {
+                    if (manager.Id == userToTest.Id)
+                    {
+                        managers.Remove(manager);
+                        break;
+                    }
+                }
+            }
+
+            return managers;
+        }
+
         public void DeleteCreateDatabase()
         {
             _bddContext.Database.EnsureDeleted();

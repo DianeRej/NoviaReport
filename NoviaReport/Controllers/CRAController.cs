@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NoviaReport.Controllers
 {
@@ -14,44 +11,69 @@ namespace NoviaReport.Controllers
         {
             return View();
         }
-
-        public IActionResult CreateActivity()
+        //get : envoie sur le fomulaire de création d'une activité 
+        //doit avoir une référence du CRA auquel elle appartient : ici c'est l'id du CRA qu'on passe en argument
+        //Pour pouvoir ajouter une activité il y a 2 conditions : le CRAid doit correspondre à un CRA existant ET 
+        //le statut du CRA doit être NON_VALIDE ou INCOMPLET
+        public IActionResult CreateActivity(int CRAid)
         {
-            using (DalActivity dal = new DalActivity())
+            CRA craToComplete = new CRA();
+            using (DalCRA dal = new DalCRA())
             {
+                craToComplete = dal.GetCRAById(CRAid);
+            }
+            if (CRAid == 0)
+            {
+                return View("Error");
+            }
+            if (craToComplete.State.Equals(State.NON_VALIDE) || craToComplete.State.Equals(State.INCOMPLET))
+            {
+
+                using (DalActivity dal = new DalActivity())
+                {
+                    ViewBag.CRAid = CRAid;
+                }
                 return View();
             }
+            else
+            {
+                return View("Error");
+            }
+
         }
         //Méthode post pour créer une activité
         [HttpPost]
-        public IActionResult CreateActivity(bool halfday, DateTime date, TypeActivity typeActivity)
+        public IActionResult CreateActivity(Activity activity, int CRAid)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
+            CRA cra = new CRA();
+            using (DalCRA dal = new DalCRA())
+            {
+                cra = dal.GetAllCRAs().Where(r => r.Id == CRAid).FirstOrDefault();
+            }
             using (DalActivity dal = new DalActivity())
             {
-                dal.CreateActivity(halfday, date, typeActivity);
-                return Redirect("/CRA/CreateActivity");
+                dal.CreateActivity(activity);
+                dal.CreateCraActivity(cra, activity);
+
             }
-            
+            return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
         }
 
-        //Méthode get, qui renvoie vers un formulaire de modification préremplis
+        //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
         //avec les informations existantes dans la DB (a travers l'id)
         public IActionResult UpdateActivity(int id)
         {
             if (id != 0)
             {
+                Activity activityToUpdate = new Activity();
                 using (DalActivity dal = new DalActivity())
                 {
-                    Activity ActivityToUpDate = dal.GetAllActivities().Where(a => a.Id == id).FirstOrDefault();
-                    if (ActivityToUpDate == null)
-                    {
-                        return View("Error");
-                    }
-                    return View(ActivityToUpDate);
+                    activityToUpdate = dal.GetActivityById(id);
                 }
+                return View(activityToUpdate);
             }
             return View("Error");
         }
@@ -67,7 +89,7 @@ namespace NoviaReport.Controllers
                 using (DalActivity dal = new DalActivity())
                 {
                     dal.UpdateActivity(ActivityToUpDate);
-                    return Redirect("/CRA/UpDateActivity");
+                    return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
                 }
             }
             else
@@ -76,6 +98,41 @@ namespace NoviaReport.Controllers
             }
         }
 
+        //get : envoie sur le fomulaire de création d'un CRA
+        //prend en argument un userId
+        //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
+        public IActionResult CreateCRA(int userId)
+        {
+            if (userId != 0)
+            {
+                using (DalCRA dal = new DalCRA())
+                {
+                    ViewBag.userId = userId;
+                }
+                return View();
+            }
+            else return View("Error");
+        }
+
+        //Méthode post pour créer un CRA
+        [HttpPost]
+        public IActionResult CreateCRA(CRA cra, int userId)
+        {
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                return View();
+            User user = new User();
+            using (DalUser dal = new DalUser())
+            {
+                user = dal.GetUserById(userId);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                dal.CreateCRA(cra);
+                dal.CreateUserCRA(cra, user);
+                return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+            }
+
+        }
 
         //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
@@ -85,11 +142,7 @@ namespace NoviaReport.Controllers
             {
                 using (DalCRA dal = new DalCRA())
                 {
-                    CRA craToUpDate = dal.GetAllCRAs().Where(c => c.Id == id).FirstOrDefault();
-                    if (craToUpDate == null)
-                    {
-                        return View("Error");
-                    }
+                    CRA craToUpDate = dal.GetCRAById(id);
                     return View(craToUpDate);
                 }
             }
@@ -107,7 +160,7 @@ namespace NoviaReport.Controllers
                 using (DalCRA dal = new DalCRA())
                 {
                     dal.UpdateCRA(craToUpDate);
-                    return Redirect("/CRA/UpDateActivity");
+                    return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard salarié ?
                 }
             }
             else
@@ -115,18 +168,14 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-
-        public IActionResult CreateCRA(DateTime date, State state)
+        public IActionResult SubmitCRA(int id)
         {
-            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
-                return View();
-
             using (DalCRA dal = new DalCRA())
             {
-                dal.CreateCRA(date, state);
-                return Redirect("/CRA/CreateCRA");
+                CRA craToSubmit = dal.GetCRAById(id);
+                dal.SubmitCra(craToSubmit);
             }
-
+            return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
        /* Controleur pour afficher la liste des Activites et le CRA*/
         public IActionResult ListActivitiesCRA()
@@ -145,25 +194,6 @@ namespace NoviaReport.Controllers
             return View("GetActivitiesCRA");
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
     }
 }
