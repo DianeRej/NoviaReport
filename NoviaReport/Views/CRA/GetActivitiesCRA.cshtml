@@ -1,0 +1,46 @@
+﻿@model List<NoviaReport.Models.CraActivity>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListActivitiesCRA</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Liste Activités CRA</legend>
+        <table border="1">
+            <tr>
+                <th>Date Activité </th>
+                <th>Type d'activité</th>
+                <th>Client</th>
+                <th>Date du CRA</th>
+                <th>Etat du CRA</th>
+            </tr>
+            @foreach (NoviaReport.Models.CraActivity craActivity in ViewData["ActivitiesCRAList"] as List<NoviaReport.Models.CraActivity>)
+            {
+                <tr>
+                    <td>@craActivity.Activity.Date.ToString("d")</td>
+                    <td>@Html.DisplayFor(ca=>craActivity.Activity.TypeActivity)</td>
+                    <td>@Html.DisplayFor(ca=>craActivity.Activity.Client)</td>
+                    <td>@craActivity.CRA.Date.ToString("d")</td>
+                    <td>@Html.DisplayFor(uc=>craActivity.CRA.State)</td>
+                </tr>
+            }
+        </table>
+
+    </fieldset>
+    @*/CRA/GetActivitiesCRA*@
+
+</body>
+</html>
+
+
+
+
+

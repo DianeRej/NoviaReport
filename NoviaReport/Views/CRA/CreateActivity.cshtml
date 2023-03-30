@@ -9,19 +9,42 @@
     <title>Add activity</title>
 </head>
 <body>
- 
+
     @using (Html.BeginForm())
     {
         <fieldset>
             <legend>Ajouter une activité : </legend>
             @Html.LabelFor(m => Model.Date)
-            @Html.TextBoxFor(m => Model.Date)
-            @Html.ValidationMessageFor(m => Model.Date)
+            @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
+            @*@Html.ValidationMessageFor(m => Model.Date)*@
             <br />
+
+
             @Html.LabelFor(m => Model.TypeActivity)
-            @Html.TextBoxFor(m => Model.TypeActivity)
-            @Html.ValidationMessageFor(m => Model.TypeActivity)
+            <select id="TypeActivity" name="TypeActivity">
+                <option value="">Type d'Activité</option>
+                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
+                {
+                    <option value=@item name="TypeActivity">@item</option>
+                }
+            </select>
             <br />
+            @Html.LabelFor(m => Model.Halfday)
+            @Html.CheckBoxFor(m => m.Halfday)
+            <br />
+
+            @Html.LabelFor(m => Model.Client)
+            <select id="Client" name="Client">
+                <option value="">Client</option>
+                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Client)))
+                {
+                    <option value=@item name="Client">@item</option>
+                }
+            </select>
+            <p>Choisir un client seulement pour une activité de type : Astreinte, Prestation ou Maintenance</p>
+            <br />
+
+            <input type="hidden" value="@ViewBag.CRAid" name="CRAid">
             <input type="submit" value="Ajouter" />
         </fieldset>
         <a href="/CRA/CreateActivity"></a>

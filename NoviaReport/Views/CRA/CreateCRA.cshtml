@@ -15,13 +15,22 @@
         <fieldset>
             <legend>Ajouter un CRA : </legend>
             @Html.LabelFor(m => Model.Date)
-            @Html.TextBoxFor(m => Model.Date)
-            @Html.ValidationMessageFor(m => Model.Date)
+            @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
             <br />
-            @Html.LabelFor(m => Model.State)
-            @Html.TextBoxFor(m => Model.State)
-            @Html.ValidationMessageFor(m => Model.State)
+            @*Liste déroulante qui permet de choisir l'état du CRA : inutile puisqu'à
+        sa création le CRA va forcément être vide et donc aura le statut NON_VALIDE. A la place on ne remplit pas ce champ mais
+        la méthode createCRA applique automatiquement l'état NON_VALIDE au nouveau CRA créé*@
+
+            @*@Html.LabelFor(m => Model.State)
+        <select id="State" name="State">
+        <option value="">Etat du CRA</option>
+        @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.State)))
+        {
+        <option value=@item name="State">@item</option>
+        }
+        </select>*@
             <br />
+
             <input type="submit" value="Ajouter" />
         </fieldset>
         <a href="/CRA/CreateCRA"></a>

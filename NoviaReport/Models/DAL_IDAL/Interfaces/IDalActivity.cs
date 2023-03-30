@@ -7,13 +7,13 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
 {
     interface IDalActivity : IDisposable
     {
-        void DeleteCreateDatabase();
-
         int CreateActivity(bool Halfday, DateTime Date, TypeActivity typeActivity);
 
-        void UpdateActivity(int id, bool Halfday, DateTime Date, TypeActivity typeActivity);
+        void UpdateActivity(Activity activity);
         void DeleteActivity(int id);
 
         List<Activity> GetAllActivities();
+        List<CraActivity> GetActivitiesCRA();
+        List<CraActivity> GetActivitiesForOneCRA(int Id);
     }
 }
