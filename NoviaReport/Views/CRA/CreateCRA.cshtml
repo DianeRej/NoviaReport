@@ -13,7 +13,7 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Ajouter une activité : </legend>
+            <legend>Ajouter un CRA : </legend>
             @Html.LabelFor(m => Model.Date)
             @Html.TextBoxFor(m => Model.Date)
             @Html.ValidationMessageFor(m => Model.Date)
@@ -26,6 +26,14 @@
         </fieldset>
         <a href="/CRA/CreateCRA"></a>
     }
+
+<select>
+    @foreach (NoviaReport.Models.TypeActivity actType List<NoviaReport.Models.TypeActivity>)
+    {
+        <option id=""></option>
+    }
+</select>
+    
 
 </body>
 </html>
