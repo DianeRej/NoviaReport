@@ -12,10 +12,6 @@ namespace NoviaReport.Models.DAL_IDAL.Interfaces
         void UpdateCRA(int id, DateTime Date, State State);
 
         List<CRA> GetAllCRAs();
-<<<<<<< HEAD
-       
 
-=======
->>>>>>> Diane_Features2
     }
 }

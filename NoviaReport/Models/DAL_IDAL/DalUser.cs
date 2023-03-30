@@ -96,8 +96,8 @@ namespace NoviaReport.Models.DAL_IDAL
 
         }
         //renvoie la liste de tous les users qui possèdent le rôle manager
-         public List<User> GetManagers()
-         {
+        public List<User> GetManagers()
+        {
             var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id
                         where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
@@ -105,19 +105,19 @@ namespace NoviaReport.Models.DAL_IDAL
             List<User> managers = query.ToList();
 
             return managers;
-         }
+        }
 
         //Methode pour afficher la liste des utilisateurs et leur CRA
-        public List <UserCRA> GetUserCRA()
+        public List<UserCRA> GetUserCRA()
         {
-           return _bddContext.UserCRAs.Include(uc=>uc.User).Include(uc=>uc.CRA).ToList();
+            return _bddContext.UserCRAs.Include(uc => uc.User).Include(uc => uc.CRA).ToList();
         }
 
         //Méthode pour afficher les CRA lié à un utilisateur grace au Id
         public List<UserCRA> GetCRAForOneUser(int Id)
 
         {
-            List<UserCRA> userCRAs = _bddContext.UserCRAs.Include(uc => uc.CRA).Include(ca => ca.User).Where(ca => ca.UserId==Id).ToList();
+            List<UserCRA> userCRAs = _bddContext.UserCRAs.Include(uc => uc.CRA).Include(ca => ca.User).Where(ca => ca.UserId == Id).ToList();
             return userCRAs;
         }
 
@@ -125,7 +125,7 @@ namespace NoviaReport.Models.DAL_IDAL
         //(pour qu'à la modification d'un user il ne puisse pas s'auto-sélectionner)
         public List<User> GetManagersWithExlusion(int id)
         {
-                        var query = from role in _bddContext.Roles
+            var query = from role in _bddContext.Roles
                         join user in _bddContext.Users on role.UserId equals user.Id
                         where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
                         select user;
@@ -134,9 +134,9 @@ namespace NoviaReport.Models.DAL_IDAL
             //on regarde si le user renseigné est manager
             //si c'est le cas on parcourt la liste jusqu'à le retrouver et on l'exclut de la liste
             User userToTest = GetUserById(id);
-            if (userToTest.Role.Equals(TypeRole.MANAGER)) 
+            if (userToTest.Role.Equals(TypeRole.MANAGER))
             {
-                foreach (var manager in managers) 
+                foreach (var manager in managers)
                 {
                     if (manager.Id == userToTest.Id)
                     {
@@ -145,7 +145,6 @@ namespace NoviaReport.Models.DAL_IDAL
                     }
                 }
             }
-
             return managers;
         }
 

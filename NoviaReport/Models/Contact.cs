@@ -9,11 +9,11 @@ namespace NoviaReport.Models
         public int Id { get; set; }
 
         [Display(Name = "Adresse Mail Personnelle")]
-        
+
         public string PersonalMail { get; set; }
 
         [Display(Name = "Téléphone Personnel")]
-        
+
         public int PersonalPhone { get; set; }
 
         [Display(Name = "Adresse Mail Pro")]

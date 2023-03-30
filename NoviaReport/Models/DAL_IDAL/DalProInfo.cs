@@ -72,6 +72,5 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
-
     }
 }

@@ -9,7 +9,7 @@
     <title>Add activity</title>
 </head>
 <body>
- 
+
     @using (Html.BeginForm())
     {
         <fieldset>
@@ -21,7 +21,7 @@
 
 
             @Html.LabelFor(m => Model.TypeActivity)
-            <select id="TypeActivity" name="TypeActivity" >
+            <select id="TypeActivity" name="TypeActivity">
                 <option value="">Type d'Activité</option>
                 @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
                 {
@@ -43,7 +43,7 @@
             </select>
             <p>Choisir un client seulement pour une activité de type : Astreinte, Prestation ou Maintenance</p>
             <br />
-            
+
             <input type="hidden" value="@ViewBag.CRAid" name="CRAid">
             <input type="submit" value="Ajouter" />
         </fieldset>

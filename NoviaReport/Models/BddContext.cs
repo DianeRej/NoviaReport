@@ -7,10 +7,6 @@ namespace NoviaReport.Models
 {
     public class BddContext : DbContext
     {
-        //public BddContext() { //pour debug
-
-        //    Console.WriteLine("instanciation");
-        //}
 
         //Tables du User
         public DbSet<Contact> Contacts { get; set; }
@@ -95,7 +91,7 @@ namespace NoviaReport.Models
                 new UserCRA { Id = 13, UserId = 1, CRAId = 13 },
                 new UserCRA { Id = 14, UserId = 2, CRAId = 14 },
                 new UserCRA { Id = 15, UserId = 3, CRAId = 15 },
-                new UserCRA { Id = 16, UserId = 4, CRAId = 16 }                                
+                new UserCRA { Id = 16, UserId = 4, CRAId = 16 }
                 );
 
             this.CRAs.AddRange(
@@ -118,7 +114,7 @@ namespace NoviaReport.Models
                 new CRA { Id = 13, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE },
                 new CRA { Id = 14, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE },
                 new CRA { Id = 15, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE },
-                new CRA { Id = 16, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE }                
+                new CRA { Id = 16, Date = new DateTime(2023, 04, 01), State = State.NON_VALIDE }
                 );
 
             this.CraActivities.AddRange(

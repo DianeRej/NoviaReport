@@ -26,6 +26,7 @@ namespace NoviaReport.Controllers
             }
             return View("EspaceLogin", viewModel);
         }
+
         //post de la page de login, permet d'envoyer les infos de co (va générer un cookie qui permet de savoir si l'utilisateur est connecté)
         [HttpPost]
         public IActionResult Index(UserViewModel viewModel, string returnUrl)

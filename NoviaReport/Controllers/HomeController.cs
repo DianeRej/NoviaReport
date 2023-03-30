@@ -21,8 +21,6 @@ namespace NoviaReport.Controllers
             return View("UserList");
         }
 
-        
-
     }
 }
 

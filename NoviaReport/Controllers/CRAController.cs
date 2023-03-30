@@ -11,6 +11,7 @@ namespace NoviaReport.Controllers
         {
             return View();
         }
+
         //get : envoie sur le fomulaire de création d'une activité 
         //doit avoir une référence du CRA auquel elle appartient : ici c'est l'id du CRA qu'on passe en argument
         //Pour pouvoir ajouter une activité il y a 2 conditions : le CRAid doit correspondre à un CRA existant ET 
@@ -39,8 +40,8 @@ namespace NoviaReport.Controllers
             {
                 return View("Error");
             }
-
         }
+
         //Méthode post pour créer une activité
         [HttpPost]
         public IActionResult CreateActivity(Activity activity, int CRAid)
@@ -77,6 +78,7 @@ namespace NoviaReport.Controllers
             }
             return View("Error");
         }
+
         //Méthode post pour modifier une activité
         [HttpPost]
         public IActionResult UpdateActivity(Activity ActivityToUpDate)
@@ -148,6 +150,7 @@ namespace NoviaReport.Controllers
             }
             return View("Error");
         }
+
         //Méthode post pour modifier le CRA
         [HttpPost]
         public IActionResult UpdateCRA(CRA craToUpDate)
@@ -168,6 +171,7 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
+        //méthode spécifique à un salarié : une fois remplis il soumet son CRA à son manager pour que celui-ci le valide
         public IActionResult SubmitCRA(int id)
         {
             using (DalCRA dal = new DalCRA())
@@ -177,23 +181,24 @@ namespace NoviaReport.Controllers
             }
             return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
-       /* Controleur pour afficher la liste des Activites et le CRA*/
+
+        //Méthode pour afficher la liste des Activites et des CRA
         public IActionResult ListActivitiesCRA()
         {
             DalActivity dal = new DalActivity();
-            ViewData["ActivitiesCRAList"]=dal.GetActivitiesCRA();
+            ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
             return View("ListActivitiesCRA");
 
         }
 
-        /*Controleur pour afficher les Activités liées à un CRA*/
+        //Méthode pour afficher les Activités liées à un CRA
         public IActionResult GetActivitiesCRA(int id)
         {
             DalActivity dal = new DalActivity();
-            ViewData["ActivitiesCRAList"]=dal.GetActivitiesForOneCRA(id);
+            ViewData["ActivitiesCRAList"] = dal.GetActivitiesForOneCRA(id);
             return View("GetActivitiesCRA");
 
         }
-                
+
     }
 }

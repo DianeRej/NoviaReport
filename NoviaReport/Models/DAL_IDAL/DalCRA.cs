@@ -11,7 +11,7 @@ namespace NoviaReport.Models.DAL_IDAL
     {
         private BddContext _bddContext;
 
-        ////Méthode d'initialisation de la DB
+        //Méthode d'initialisation de la DB
         public DalCRA()
         {
             _bddContext = new BddContext();
@@ -41,7 +41,7 @@ namespace NoviaReport.Models.DAL_IDAL
             {
                 craToUpDate.Date = date;
                 craToUpDate.State = state;
-               
+
                 _bddContext.SaveChanges();
             }
         }
@@ -96,7 +96,6 @@ namespace NoviaReport.Models.DAL_IDAL
             return this._bddContext.CRAs.SingleOrDefault(u => u.Id == id);
         }
 
-
         //méthode pour créer une ligne dans la table intermédiaire UserCRA à partir d'un CRA et d'un user
         public int CreateUserCRA(CRA cra, User user)
         {
@@ -106,24 +105,10 @@ namespace NoviaReport.Models.DAL_IDAL
             return userCRA.Id;
         }
 
-
         //Méthode pour libérer des ressources non managées
         public void Dispose()
         {
             _bddContext.Dispose();
         }
-
-
-        
-
-
-
-
-
-
-
-
-
-
     }
 }

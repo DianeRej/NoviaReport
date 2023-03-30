@@ -65,7 +65,7 @@ namespace NoviaReport.Models.DAL_IDAL
         //méthode pour créer une ligne de la table intermédiaire CRAActivity à partir d'un CRA et d'une Activity
         public int CreateCraActivity(CRA cra, Activity activity)
         {
-            CraActivity CraActivity = new CraActivity() { CRAId = cra.Id, ActivityId=activity.Id};
+            CraActivity CraActivity = new CraActivity() { CRAId = cra.Id, ActivityId = activity.Id };
             _bddContext.CraActivities.Add(CraActivity);
             _bddContext.SaveChanges();
             return CraActivity.Id;
@@ -90,9 +90,6 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
-
-
-        
     }
 }
 

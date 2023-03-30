@@ -8,7 +8,7 @@ namespace NoviaReport.Models.DAL_IDAL
 {
     public class DalRole : IDalRole
     {
-        
+
         private BddContext _bddContext;
 
         //permet d'instancier le bddcontext (donc le lien vers la bdd)
@@ -77,6 +77,5 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             _bddContext.Dispose();
         }
-
     }
 }

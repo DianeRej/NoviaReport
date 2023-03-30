@@ -22,7 +22,7 @@ namespace NoviaReport.Models
 
     public enum Function
     {
-        [Display(Name ="Ingénieur")]
+        [Display(Name = "Ingénieur")]
         INGENIEUR,
         [Display(Name = "Développeur")]
         DEVELOPPEUR,
