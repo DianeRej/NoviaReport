@@ -53,7 +53,7 @@ namespace NoviaReport.Controllers
                 }
                 ModelState.AddModelError("User.Login", "Login et/ou mot de passe incorrect(s)");
             }
-            return View("EspaceLogin", viewModel);
+            return Redirect("/User/ListUserCRA");
         }
     }
 }

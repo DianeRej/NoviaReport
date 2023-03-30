@@ -107,14 +107,40 @@ namespace NoviaReport.Models.DAL_IDAL
             return managers;
         }
 
+        //méthode GetManagers qui exclut un manager de la liste s'il est lui même manager
+        //(pour qu'à la modification d'un user il ne puisse pas s'auto-sélectionner)
+        public List<User> GetManagersWithExlusion(int id)
+        {
+                        var query = from role in _bddContext.Roles
+                        join user in _bddContext.Users on role.UserId equals user.Id
+                        where role.TypeRole.Equals(TypeRole.MANAGER) //correspond à un utilisateur Manager
+                        select user;
+            List<User> managers = query.ToList();
+
+            //on regarde si le user renseigné est manager
+            //si c'est le cas on parcourt la liste jusqu'à le retrouver et on l'exclut de la liste
+            User userToTest = GetUserById(id);
+            if (userToTest.Role.Equals(TypeRole.MANAGER)) 
+            {
+                foreach (var manager in managers) 
+                {
+                    if (manager.Id == userToTest.Id)
+                    {
+                        managers.Remove(manager);
+                        break;
+                    }
+                }
+            }
+
+            return managers;
+        }
+
         //Méthode qui permet de récupérer une liste de UserCra pour la vue listUserCRA
         public List<UserCRA> GetUserCRA()
         {
             return _bddContext.UserCRAs.Include(uc => uc.User).Include(uc => uc.CRA).ToList();
         }
 
-        //faire méthode GetManager qui puisse exclure un manager de la liste s'il est lui même manager
-        //(pour qu'à la modif il ne puisse pas se choisir lui même comme manager)
         public void DeleteCreateDatabase()
         {
             _bddContext.Database.EnsureDeleted();
