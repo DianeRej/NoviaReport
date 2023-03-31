@@ -35,12 +35,18 @@ function load() {
     dt.setMonth(new Date().getMonth() + nav);
   }
 
-  const day = dt.getDate();
-  const month = dt.getMonth();
-  const year = dt.getFullYear();
+    const day = 1;
+    console.log(day);
+    const month = craMonth;
+    console.log(month);
+    const year = craYear;
+    console.log(year);
 
-  const firstDayOfMonth = new Date(year, month, 1);
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfMonth = new Date(year, month, 1);
+    console.log(firstDayOfMonth);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    conso
+
   
   const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
     weekday: 'long',

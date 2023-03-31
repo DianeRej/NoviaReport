@@ -2,11 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
-<<<<<<< HEAD
 using NoviaReport.ViewModels;
-=======
 using System;
->>>>>>> origin/wafa_gestion_de_cra
 using System.Linq;
 
 namespace NoviaReport.Controllers
@@ -111,13 +108,17 @@ namespace NoviaReport.Controllers
         //prend en argument un userId
         //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
         [Authorize(Roles = "SALARIE")]
-        public IActionResult CreateCRA(int userId)
+        public IActionResult UpdateCRA(int craId)
         {
-            if (userId != 0)
+            if (craId != 0)
             {
                 using (DalCRA dal = new DalCRA())
                 {
-                    ViewBag.userId = userId;
+                    CRA cra = dal.GetCRAById(craId);
+                    int monthCRA = cra.Date.Month;
+                    int yearCRA = cra.Date.Year;
+                    ViewBag.craMonth = monthCRA-1;
+                    ViewBag.craYear = yearCRA;
                 }
                 return View();
             }
@@ -126,7 +127,7 @@ namespace NoviaReport.Controllers
 
         //Méthode post pour créer un CRA
         [HttpPost]
-        public IActionResult CreateCRA(CRA cra, int userId)
+        public IActionResult UpdateCRA(CRA cra, int userId)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
@@ -146,7 +147,7 @@ namespace NoviaReport.Controllers
 
         //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
-        public IActionResult UpdateCRA(int id)
+        public IActionResult UpdateCRAold(int id)
         {
             if (id != 0)
             {
@@ -163,7 +164,7 @@ namespace NoviaReport.Controllers
         //Méthode post pour modifier le CRA
 
         [HttpPost]
-        public IActionResult UpdateCRA(CRA craToUpDate)
+        public IActionResult UpdateCRAold(CRA craToUpDate)
         {
             if (!ModelState.IsValid)
                 return View(craToUpDate);
@@ -195,12 +196,6 @@ namespace NoviaReport.Controllers
             return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/wafa_gestion_de_cra
         //Méthode pour afficher la liste des Activites et des CRA
         [Authorize]
         public IActionResult ListActivitiesCRA()
