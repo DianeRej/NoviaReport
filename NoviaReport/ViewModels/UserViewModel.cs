@@ -1,4 +1,5 @@
 ﻿using NoviaReport.Models;
+using System.Collections.Generic;
 
 namespace NoviaReport.ViewModels
 {

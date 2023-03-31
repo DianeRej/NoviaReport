@@ -5,21 +5,23 @@ namespace NoviaReport.Models
     public class User
     {
         public int Id { get; set; }
-        [Required]
 
+        [Required]
+        [MaxLength(20)]
         [Display(Name = "Identifiant")]
         public string Login { get; set; }
+
         [Required]
         [Display(Name = "Mot de Passe")]
+        [MaxLength(50)]
         public string Password { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Prénom")]
-
         public string Firstname { get; set; }
-        [Required]
-        [Display(Name = "Nom de famille")]
 
+        //[Required]
+        [Display(Name = "Nom de famille")]
         public string Lastname { get; set; }
 
         //réf à la table contact
@@ -37,6 +39,6 @@ namespace NoviaReport.Models
         [Display(Name = "Nom du Manager")]
         public int? ManagerId { get; set; }
         public User Manager { get; set; }
-        public Role Role { get; internal set; }
+        //public Role Role { get; internal set; }
     }
 }

@@ -1,0 +1,48 @@
+﻿@model NoviaReport.Models.User
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SalarieDashboard</title>
+</head>
+<body>
+    @*Permet à un utilisateur qui a plusieurs roles de changer de Dashboard*@
+    @foreach (NoviaReport.Models.Role role in ViewData["UserRolesList"] as List<NoviaReport.Models.Role>)
+    {
+        if (role.TypeRole == NoviaReport.Models.TypeRole.ADMIN)
+        {
+            <a href="/Dashboard/admin">Aller sur la vue Admin</a>
+        }
+        else if (role.TypeRole == NoviaReport.Models.TypeRole.MANAGER)
+        {
+            <a href="/Dashboard/manager/@User.Identity.Name">Aller sur la vue Admin</a>
+        }
+    }
+
+    <fieldset>
+        <legend>Utilisateur et ses CRAs</legend>
+        <table border="1">
+            <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>login</th>
+                <th>Date</th>
+                <th>Etat</th>
+            </tr>
+            @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAsList"] as List<NoviaReport.Models.UserCRA>)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Firstname)</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Lastname)</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
+                    <td>@userCRA.CRA.Date.ToString("d")</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+
+
+</body>
+</html>
+

@@ -7,7 +7,7 @@ namespace NoviaReport.Models
     {
         public int Id { get; set; }
         [Display(Name = "Rôle de l'utilisateur")]
-        public TypeRole  TypeRole { get; set; } // enum
+        public TypeRole TypeRole { get; set; } // enum
 
         //réf à la table user : dans la table role on a un id, un type et un userId
         //cela permet de pouvoir attribué un ou plusieurs rôle à un seul user

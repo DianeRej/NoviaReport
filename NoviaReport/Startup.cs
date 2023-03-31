@@ -50,7 +50,7 @@ namespace NoviaReport
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"); //quand ce sera fait il faudra changer Home par Login
+                    pattern: "{controller=Home}/{action=Index}/{id?}"); 
             });
         }
     }

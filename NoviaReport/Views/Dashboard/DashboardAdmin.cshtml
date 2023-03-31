@@ -8,9 +8,22 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>UserList</title>
+    <title>AdminDashboard</title>
 </head>
 <body>
+    @*Permet à un utilisateur qui a plusieurs roles de changer de Dashboard*@
+    @foreach (NoviaReport.Models.Role role in ViewData["UserRolesList"] as List<NoviaReport.Models.Role>)
+    {
+        if (role.TypeRole == NoviaReport.Models.TypeRole.SALARIE)
+        {
+            <a href="/Dashboard/DashboardSalarie/@User.Identity.Name">Aller sur la vue Salarié</a>
+        }
+        else if (role.TypeRole == NoviaReport.Models.TypeRole.MANAGER)
+        {
+            <a href="/Dashboard/DashboardManager/@User.Identity.Name">Aller sur la vue Manager</a>
+        }
+    }
+
     <table border="1">
         <tr>
             <th>Prénom</th>

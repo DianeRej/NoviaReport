@@ -8,15 +8,11 @@ using System.Linq;
 
 namespace NoviaReport.Controllers
 {
+
     
-    //[Authorize]
     public class UserController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [Authorize(Roles = "ADMIN") ]
         //méthode get qui permet d'afficher le formulaire
         public IActionResult CreateUser()
         {
@@ -59,6 +55,7 @@ namespace NoviaReport.Controllers
 
         //get : envoie sur un formulaire de modification identique à celui de création mais où les champs seront
         //déjà préremplis avec les informations initiales
+        [Authorize(Roles = "ADMIN")]
         public IActionResult UpdateUser(int id)
         {
             User userToUpdate = new User();
@@ -109,6 +106,24 @@ namespace NoviaReport.Controllers
                 }
             }
             return Redirect("/home/Index");
+        }
+
+        //Méthode pour afficher la liste des utilisateurs et leurs CRAs
+        [Authorize(Roles = "ADMIN")]
+        public IActionResult ListUserCRA()
+        {
+            DalUser dal = new DalUser();
+            ViewData["UserCRAList"] = dal.GetUserCRA();
+            return View("ListUserCRA");
+        }
+
+        //Méthode pour afficher un utilisateur et ses CRAs
+        [Authorize]
+        public IActionResult GetUserCRAs(int id)
+        {
+            DalUser dal = new DalUser();
+            ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
+            return View("GetUserCRAs");
         }
     }
 }

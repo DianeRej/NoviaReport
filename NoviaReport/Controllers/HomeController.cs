@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models.DAL_IDAL;
 using System;
 
@@ -12,7 +13,7 @@ namespace NoviaReport.Controllers
 
             return View();
         }
-
+        [Authorize]
         //Permet d'afficher la liste des utilisateurs (Prénoms, Noms...) à continuer 
         public IActionResult SeeUsers()
         {

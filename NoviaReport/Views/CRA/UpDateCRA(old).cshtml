@@ -1,0 +1,45 @@
+﻿@model NoviaReport.Models.CRA
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Modifier un CRA</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Modifier un CRA : </legend>
+
+            @Html.LabelFor(m => Model.Date)
+            @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
+            <br />
+
+            @Html.LabelFor(m => Model.State)
+            <select id="State" name="State">
+                <option value="">Etat du CRA</option>
+                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.State)))
+                {
+                    bool stateIsChecked = false;
+
+                    if (Model.State.Equals(item))
+                    {
+                        stateIsChecked = true;
+                    }
+                    <option value=@item name="State" selected=@stateIsChecked>@item</option>
+                }
+            </select>
+            <br />
+
+
+
+            <input type="submit" value="Modifier" />
+        </fieldset>
+        <a href="/CRA/UpDateCRA"></a>
+    }
+
+</body>
+</html>

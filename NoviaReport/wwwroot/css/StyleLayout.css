@@ -14,6 +14,12 @@ header {
     background: #ffffff;
     display: flex;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    justify-content: space-between;
 }
 
     header img {
@@ -23,22 +29,31 @@ header {
 
 .boutons {
     margin-left: auto;
+    padding-right: 50px;
+    font-size: 16px;
 }
 
-button {
-    margin-left: 100px;
-    margin-right: 40px;
-    background-color: #0e4d4f;
-    color: white;
-    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
-    border-radius: 5px;
-    cursor: pointer;
-    border: none;
-    padding: 15px 22px;
-    
-}
+    .boutons button {
+        background-color: #2d4b4c; /* Couleur de fond */
+        color: #FFFFFF; /* Couleur du texte */
+        border: none; /* Supprime la bordure */
+        border-radius: 4px; /* Ajoute des coins arrondis */
+        cursor: pointer; /* Change le curseur en pointeur lorsque survolé */
+    }
+
+        .boutons button:hover {
+            background-color: #062d2e; /* Changer la couleur de fond lorsqu'on survole le bouton */
+        }
+
+        .boutons button:active {
+            transform: translateY(2px); /* Ajouter un effet de clic */
+        }
+
+
 
 body {
+    padding-top: 100px;
+    padding-left: 75px;
     background: #2d4b4c;
     font-family: Raleway, Helvetica, sans-serif;
     position: relative;
@@ -126,3 +141,14 @@ body {
             color: #f2f2f2;
             text-decoration: none;
         }
+
+
+
+
+.topbox {
+    padding-top: 120px;
+    padding-left: 200px;
+    padding-bottom: 50px;
+    width: 50%;
+    color: #022829;
+}
