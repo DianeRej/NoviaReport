@@ -39,6 +39,6 @@ namespace NoviaReport.Models
         [Display(Name = "Nom du Manager")]
         public int? ManagerId { get; set; }
         public User Manager { get; set; }
-        public Role Role { get; internal set; }
+        //public Role Role { get; internal set; }
     }
 }

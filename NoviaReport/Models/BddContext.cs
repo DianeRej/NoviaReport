@@ -66,7 +66,8 @@ namespace NoviaReport.Models
                new Role { Id = 2, TypeRole = TypeRole.MANAGER, UserId = 2 },
                new Role { Id = 3, TypeRole = TypeRole.SALARIE, UserId = 3 },
                new Role { Id = 4, TypeRole = TypeRole.SALARIE, UserId = 4 },
-               new Role { Id = 5, TypeRole = TypeRole.MANAGER, UserId = 4 }
+               new Role { Id = 5, TypeRole = TypeRole.MANAGER, UserId = 4 },
+               new Role { Id = 6, TypeRole = TypeRole.MANAGER, UserId = 1 }
                );
 
 

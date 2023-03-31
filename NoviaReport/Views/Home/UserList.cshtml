@@ -17,7 +17,7 @@
             <th>Nom</th>
             <th>Login</th>
             <th>Fonction</th>
-            <th>Role</th>
+            @*<th>Role</th>*@
             <th>Modifier</th>
         </tr>
         @foreach (NoviaReport.Models.User user in ViewData["UserList"] as List<NoviaReport.Models.User>)
@@ -27,7 +27,7 @@
                 <td>@user.Lastname</td>
                 <td>@user.Login</td>
                 <td>@Html.DisplayFor(u=>user.ProfessionalInfo.Function)</td>
-                <td>@Html.DisplayFor(u=>user.Role.TypeRole)</td>
+                @*<td>@Html.DisplayFor(u=>user.Role.TypeRole)</td>*@
                 <td><a href="/User/UpdateUser/@user.Id">Modifier</a></td>
             </tr>
         }

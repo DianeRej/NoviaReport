@@ -10,8 +10,17 @@ namespace NoviaReport.Controllers
         [Authorize(Roles = "ADMIN")]
         public IActionResult DashboardAdmin()
         {
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
             DalUser dal = new DalUser();
             ViewData["UserList"] = dal.GetAllUsers();
+            using (DalRole dalRole = new DalRole())
+            {
+                ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
+            }
             return View();
         }
 
@@ -25,6 +34,11 @@ namespace NoviaReport.Controllers
                 user = dal.GetUser(User.Identity.Name);
                 ViewData["EmployeesList"] = dal.GetEmployeesOfAManager(id);
             }
+            using (DalRole dalRole = new DalRole())
+            {
+                ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
+            }
+
             return View();
         }
 
@@ -34,9 +48,15 @@ namespace NoviaReport.Controllers
             User user = new User();
             using (DalUser dal = new DalUser())
             {
+                
                 user = dal.GetUser(User.Identity.Name);
                 ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
             }
+            using (DalRole dalRole = new DalRole()) 
+            {
+                ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
+            }
+             
             return View();
         }
     }
