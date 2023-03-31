@@ -8,8 +8,29 @@
         <title>SalarieDashboard</title>
     </head>
     <body>
-        <a href="/Cra/Create/?Userid=User.id">Faire la liste des salariés d'un manager</a>  @*Attention le lien devra être changé*@
-        <a href="/User/ListUserCra/User.id">Voir le CRA d'un salarié</a> @*Idem*@
+        <fieldset>
+            <legend>Utilisateur et ses CRAs</legend>
+            <table border="1">
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>login</th>
+                    <th>Date</th>
+                    <th>Etat</th>
+                </tr>
+                @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAsList"] as List<NoviaReport.Models.UserCRA>)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(uc=>userCRA.User.Firstname)</td>
+                        <td>@Html.DisplayFor(uc=>userCRA.User.Lastname)</td>
+                        <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
+                        <td>@userCRA.CRA.Date.ToString("d")</td>
+                        <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
+                    </tr>
+                }
+            </table>
+        </fieldset>
+
 
     </body>
     </html>

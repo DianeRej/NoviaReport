@@ -35,6 +35,7 @@ namespace NoviaReport.Controllers
             using (DalUser dal = new DalUser())
             {
                 user = dal.GetUser(User.Identity.Name);
+                ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
             }
             return View();
         }
