@@ -2,7 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
+<<<<<<< HEAD
 using NoviaReport.ViewModels;
+=======
+using System;
+>>>>>>> origin/wafa_gestion_de_cra
 using System.Linq;
 
 namespace NoviaReport.Controllers
@@ -45,22 +49,23 @@ namespace NoviaReport.Controllers
 
         //Méthode post pour créer une activité
         [HttpPost]
-        public IActionResult CreateActivity(Activity activity, int CRAid)
+        public IActionResult CreateActivity([FromBody] ActivityFromFetch res)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
 
-            CRA cra = new CRA();
             using (DalCRA dal = new DalCRA())
             {
-                cra = dal.GetAllCRAs().Where(r => r.Id == CRAid).FirstOrDefault();
-            }
-            using (DalActivity dal = new DalActivity())
-            {
-                dal.CreateActivity(activity);
-                dal.CreateCraActivity(cra, activity);
+                CRA cra = dal.GetAllCRAs().Where(r => r.Id == Convert.ToInt32(res.craId)).FirstOrDefault();
+                using (DalActivity ctx = new DalActivity())
+                {
+                    Activity activity = new Activity { Date = System.DateTime.Now, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType) };
+                    ctx.CreateActivity(activity);
+                    ctx.CreateCraActivity(cra, activity);
 
+                }
             }
+           
             return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
         }
 
@@ -154,7 +159,9 @@ namespace NoviaReport.Controllers
             return View("Error");
         }
 
+ 
         //Méthode post pour modifier le CRA
+
         [HttpPost]
         public IActionResult UpdateCRA(CRA craToUpDate)
         {
@@ -174,10 +181,12 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
+
         //méthode spécifique à un salarié : une fois remplis il soumet son CRA à son manager pour que celui-ci le valide
         [Authorize(Roles = "SALARIE")]
         public IActionResult SubmitCRA(int id)
         {
+
             using (DalCRA dal = new DalCRA())
             {
                 CRA craToSubmit = dal.GetCRAById(id);
@@ -187,8 +196,11 @@ namespace NoviaReport.Controllers
         }
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/wafa_gestion_de_cra
         //Méthode pour afficher la liste des Activites et des CRA
         [Authorize]
         public IActionResult ListActivitiesCRA()
@@ -196,6 +208,7 @@ namespace NoviaReport.Controllers
             DalActivity dal = new DalActivity();
             ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
             return View("ListActivitiesCRA");
+
 
         }
 
