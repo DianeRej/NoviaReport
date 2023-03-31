@@ -46,6 +46,6 @@ namespace NoviaReport.Models
     }
     public enum Client //trouver des noms d'entreprises fictives
     {
-        Client1, Client2, Client3, Client4, Client5, Client6
+        Client1, Client2, Client3, Client4, Client5, Client6, Client7, Client8, Client9
     }
 }
