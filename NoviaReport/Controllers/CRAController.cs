@@ -105,7 +105,7 @@ namespace NoviaReport.Controllers
         //get : envoie sur le fomulaire de création d'un CRA
         //prend en argument un userId
         //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
-        //[Authorize(Roles = "SALARIE")]
+        [Authorize(Roles = "SALARIE")]
         public IActionResult CreateCRA(int userId)
         {
             if (userId != 0)
