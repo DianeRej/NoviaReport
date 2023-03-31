@@ -4,6 +4,7 @@ using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using NoviaReport.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace NoviaReport.Controllers
@@ -60,21 +61,18 @@ namespace NoviaReport.Controllers
 
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
-                    if (user.Role.Equals(TypeRole.ADMIN))
+                    if (roles.Where(r=>r.TypeRole==TypeRole.ADMIN).FirstOrDefault()!=null)
                     {
                         return Redirect("/Dashboard/DashboardAdmin");
                     }
-                    else if (user.Role.Equals(TypeRole.MANAGER))
+                    else if (roles.Where(r => r.TypeRole == TypeRole.MANAGER).FirstOrDefault() != null)
                     {
-                        //voir comment on transmet l'id du user pour l'utiliser pour obtenir le bon dashboard
-                        return Redirect("/Dashboard/DashboardManager");
+                        return Redirect("/Dashboard/DashboardManager/" + user.Id);
                     }
                     else
                     {
-                        //voir comment on transmet l'id du user pour l'utiliser pour obtenir le bon dashboard
-                        return Redirect("/Dashboard/DashboardSalarie");
+                        return Redirect("/Dashboard/DashboardSalarie/"+ user.Id);
                     }
-
                 }
                 ModelState.AddModelError("User.Login", "Login et/ou mot de passe incorrect(s)"); //affiche l'erreur en cas de fausse saisie
             }

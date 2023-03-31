@@ -10,6 +10,21 @@
     <body>
         <a href="/User/EmployeeByManagerList">Faire la liste des salariés d'un manager</a>
         <a href="/User/ManagerSeeCra">Voir le CRA d'un salarié</a>
+        <table border="1">
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Voir ses CRAs</th>
+            </tr>
+            @foreach (NoviaReport.Models.User user in ViewData["EmployeesList"] as List<NoviaReport.Models.User>)
+            {
+                <tr>
+                    <td>@user.Firstname</td>
+                    <td>@user.Lastname</td>
+                    <td><a href="/User/GetUserCras/@user.Id">Modifier</a></td>
+                </tr>
+            }
+        </table>
 
     </body>
     </html>

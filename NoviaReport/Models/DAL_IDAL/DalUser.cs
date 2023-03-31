@@ -115,6 +115,12 @@ namespace NoviaReport.Models.DAL_IDAL
             return userCRAs;
         }
 
+        public List<User> GetEmployeesOfAManager(int id)
+        {
+            List<User> employees = _bddContext.Users.Where(u=>u.ManagerId == id).ToList();
+            return employees;
+        }
+
         //méthode GetManagers qui exclut un manager de la liste s'il est lui même manager
         //(pour qu'à la modification d'un user il ne puisse pas s'auto-sélectionner)
         public List<User> GetManagersWithExlusion(int id)

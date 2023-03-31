@@ -6,29 +6,43 @@
 <link rel="stylesheet" href="/css/StyleEspaceLogin.css" />
 
 
-<body>
-
+@if (Model.Authentifie)
+{
     <div class="center">
         <img src="./Images/4.png" alt="texte alternatif" />
-        <form method="post">
-            <div class="txt_field">
-                @Html.TextBoxFor(m => m.User.Login)
-                <span></span>
-                @Html.LabelFor(m => m.User.Login)
-                @Html.ValidationMessageFor(m => m.User.Login)
-            </div>
-            <div class="txt_field">
-                @Html.PasswordFor(m => m.User.Password)
-                <span></span>
-                @Html.LabelFor(m => m.User.Password)
-                @Html.ValidationMessageFor(m => m.User.Password)
-            </div>
-            <div class="pass">Mot de passe oublié?</div>
-
-            <input type="submit" value="Connexion" />
-            <div class="signup_link">
-                Vous n'êtes pas membre? <a href="/user/createuser">S'inscrire</a>
-            </div>
-        </form>
+        <h3>
+            Vous êtes déjà authentifié avec le login :
+            @Model.User.Login
+        </h3>
+        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
     </div>
-</body>
+}
+else
+{
+    <body>
+
+        <div class="center">
+            <img src="./Images/4.png" alt="texte alternatif" />
+            <form method="post">
+                <div class="txt_field">
+                    @Html.TextBoxFor(m => m.User.Login)
+                    <span></span>
+                    @Html.LabelFor(m => m.User.Login)
+                    @Html.ValidationMessageFor(m => m.User.Login)
+                </div>
+                <div class="txt_field">
+                    @Html.PasswordFor(m => m.User.Password)
+                    <span></span>
+                    @Html.LabelFor(m => m.User.Password)
+                    @Html.ValidationMessageFor(m => m.User.Password)
+                </div>
+                <div class="pass">Mot de passe oublié?</div>
+
+                <input type="submit" value="Connexion" />
+                <div class="signup_link">
+                    Vous n'êtes pas membre? <a href="/user/createuser">S'inscrire</a>
+                </div>
+            </form>
+        </div>
+    </body>
+}

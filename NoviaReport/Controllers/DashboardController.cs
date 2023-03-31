@@ -16,10 +16,20 @@ namespace NoviaReport.Controllers
         }
 
 
-        //je veux que le dashboard récupère l'id du user pour afficher la liste des salariés correspondant spécifiquement à ce manager
-        //il faudrait aussi créer une vue qui affiche une liste des salariés d'un manager
         [Authorize(Roles = "MANAGER")]
-        public IActionResult DashboardManager()
+        public IActionResult DashboardManager(int id)
+        {
+            User user = new User();
+            using (DalUser dal = new DalUser())
+            {
+                user = dal.GetUser(User.Identity.Name);
+                ViewData["EmployeesList"] = dal.GetEmployeesOfAManager(id);
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "SALARIE")]
+        public IActionResult DashboardSalarie(int id)
         {
             User user = new User();
             using (DalUser dal = new DalUser())
