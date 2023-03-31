@@ -13,11 +13,11 @@ namespace NoviaReport.Models
         [Display(Name = "Mot de Passe")]
         public string Password { get; set; }
 
-        [Required]
+       /* [Required]*/
         [Display(Name = "Prénom")]
 
         public string Firstname { get; set; }
-        [Required]
+        /*[Required]*/
         [Display(Name = "Nom de famille")]
 
         public string Lastname { get; set; }

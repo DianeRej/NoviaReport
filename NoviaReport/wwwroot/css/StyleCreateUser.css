@@ -64,6 +64,7 @@ h3 {
         left: 0px;
         top: 25px;
         padding: 5px;
+        color: #18534F;
     }
 /*--------------------------Boutton Ajouter-----------------------*/
 fieldset input[type=submit] {
@@ -84,10 +85,11 @@ fieldset input[type=submit] {
     }
 
     fieldset input[type=submit]:hover {
-        background-color: steelblue;
-        color: #022829;
+        background-color: #226D68;
+        color: #18534F;
         transition: all 1s ease;
         border-radius: 150px;
+        color: black;
     }
 /*-------------------INPUT--------------------------*/
 input {
@@ -106,7 +108,7 @@ input {
     }
 
     input:hover {
-        background-color: #022829;
+        background-color: #226D68;
         color: white;
     }
 /*----------------Tel-----------------------*/
@@ -128,7 +130,7 @@ input {
     }
 
     .checkbox:hover {
-        background-color: #022829;
+        background-color: #226D68;
         color: white;
     }
 /*----------------ChoiceBox(Position, fonction,Date,MAnagerId)-----------------------*/
@@ -148,7 +150,7 @@ input {
     }
 
     .choix:hover {
-        background-color: #022829;
+        background-color: #226D68;
         color: white;
     }
 

@@ -1,13 +1,21 @@
-
 body {
-    height: 100vh;
-    /*background-image: url("../Images/3.png");*/
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    right: 20%;
+    background-color: #022829;
+    
+}
+/*-----------------------Corps formulaire----------------*/
+form {
+    padding: 20px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: white;
+    
 }
 
-/*-----------------------Corps formulaire----------------*/
 fieldset {
     padding: 20px;
     border-radius: 10px;
@@ -23,17 +31,25 @@ fieldset {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 30px;
+
     }
 
+
+
+label {
+}
+
+
 h3 {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 2px;
 }
 
 .groupe {
     position: relative;
-    margin-top: 5px;
+    margin-top: 2px;
     display: flex;
     flex-direction: column;
 }
@@ -42,11 +58,11 @@ h3 {
         position: absolute;
         left: 0px;
         top: 25px;
-        padding: 9px;
-        color:#1047c6;
+        padding: 5px;
+        color: #18534F;
     }
 /*--------------------------Boutton Ajouter-----------------------*/
-fieldset input[type=submit] {
+input[type=submit] {
     background-color: #022829;
     border: 1px solid;
     border-radius: 5px;
@@ -56,24 +72,25 @@ fieldset input[type=submit] {
     width: 100%;
     height: 40px;
     position: center;
+    cursor: pointer;
 }
 
-    fieldset input[type=submit]:active {
+    input[type=submit]:active {
         padding: 5px;
     }
 
-    fieldset input[type=submit]:hover {
-        background-color: steelblue;
-        color: #022829;
+    input[type=submit]:hover {
+        background-color: #226D68;
+        color: #18534F;
         transition: all 1s ease;
         border-radius: 150px;
+        color: black;
     }
-
 /*-------------------INPUT--------------------------*/
 input {
     border: 2px solid grey;
     border-radius: 5px;
-    padding: 10px 5px 10px 30px;
+    padding: 5px 3px 5px 30px;
     transition: all 0.7s ease;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -85,20 +102,15 @@ input {
     }
 
     input:hover {
-        background-color: #022829;
+        background-color: #226D68;
         color: white;
     }
-
-
 /*----------------Tel-----------------------*/
 .Tel {
-    background-image: url("../Images/Tel (2).png");
-    background-repeat: no-repeat;
     background-position: 5px 8px;
     background-size: 20px;
     padding-left: 27px
 }
-
 /*----------------CheckBox-----------------------*/
 .checkbox {
     border-radius: 5px;
@@ -112,10 +124,9 @@ input {
     }
 
     .checkbox:hover {
-        background-color: #022829;
+        background-color: #226D68;
         color: white;
     }
-
 /*----------------ChoiceBox(Position, fonction,Date,MAnagerId)-----------------------*/
 .choix {
     border: 2px solid grey;
@@ -125,6 +136,7 @@ input {
     transition: all 0.7s ease;
     cursor: pointer;
     margin-bottom: 5px;
+    
 }
 
     .choix:focus {
@@ -133,6 +145,10 @@ input {
     }
 
     .choix:hover {
-        background-color: #022829;
+        background-color: #226D68;
         color: white;
     }
+
+.droite {
+   
+}

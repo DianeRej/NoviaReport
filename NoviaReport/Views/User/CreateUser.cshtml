@@ -4,18 +4,17 @@
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="/css/StyleCreateUser.css" rel="stylesheet" />
+<link href="/css/StyleCreateUser.css" rel="stylesheet"/>
 
 <body>
 
-    @using (Html.BeginForm())
-    {
-        <fieldset>
-            
+   @using (Html.BeginForm())
+   {
+       <fieldset>
 
-                <legend>Ajouter un utilisateur : </legend>
-                <!-- texts box pour le login, le mot de passe, les infos profile, contact et adresse -->
-            <form>
+            <legend>Ajouter un utilisateur : </legend>
+            <!-- texts box pour le login, le mot de passe, les infos profile, contact et adresse -->
+            
                 <div class="Corpsformulaire">
                     <div class="gauche">
 
@@ -25,7 +24,7 @@
                                 @Html.LabelFor(m => Model.Login)
                                 @Html.TextBoxFor(m => Model.Login, new {@class= "Input" })
                                 @Html.ValidationMessageFor(m => Model.Login)
-                                <i class="fa-solid fa-user" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-user"></i>
 
                             </div>
 
@@ -33,7 +32,7 @@
                                 @Html.LabelFor(m => Model.Password)
                                 @Html.PasswordFor(m => Model.Password, new {@class= "Input Password" })
                                 @Html.ValidationMessageFor(m => Model.Password)
-                                <i class="fa-solid fa-lock" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-lock"></i>
 
                             </div>
 
@@ -41,7 +40,7 @@
                                 @Html.LabelFor(m => Model.Password, "Confirmez votre mot de passe")
                                 @Html.PasswordFor(m => Model.Password, new {@class= "Input Password" })
                                 @Html.ValidationMessageFor(m => Model.Password)
-                                <i class="fa-solid fa-lock" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-lock"></i>
 
                             </div>
 
@@ -73,14 +72,14 @@
                                 @Html.LabelFor(m => Model.Contact.PersonalMail)
                                 @Html.TextBoxFor(m => Model.Contact.PersonalMail, new {@class= "Input Mail"})
                                 @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
-                                <i class="fa-solid fa-envelope" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-envelope"></i>
                             </div>
 
                             <div class="groupe">
                                 @Html.LabelFor(m => Model.Contact.PersonalPhone)
                                 @Html.TextBoxFor(m => Model.Contact.PersonalPhone, new {@class= "Input Tel"})
                                 @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
-                                <i class="fa-solid fa-phone" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-phone"></i>
 
                             </div>
 
@@ -88,21 +87,21 @@
                                 @Html.LabelFor(m => Model.Contact.ProMail)
                                 @Html.TextBoxFor(m => Model.Contact.ProMail,new {@class= "Input Mail"})
                                 @Html.ValidationMessageFor(m => Model.Contact.ProMail)
-                                <i class="fa-solid fa-envelope" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-envelope"></i>
                             </div>
 
                             <div class="groupe">
                                 @Html.LabelFor(m => Model.Contact.ProPhone)
                                 @Html.TextBoxFor(m => Model.Contact.ProPhone,new {@class= "Input Tel"})
                                 @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
-                                <i class="fa-solid fa-phone" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-phone"></i>
 
 
                             </div>
                         </div>
 
                     </div>
-                    
+
 
                     <div class="droite">
 
@@ -112,7 +111,7 @@
                                 @Html.LabelFor(m => Model.Contact.Street)
                                 @Html.TextBoxFor(m => Model.Contact.Street,new {@class= "Input"})
                                 @Html.ValidationMessageFor(m => Model.Contact.Street)
-                                <i class="fa-solid fa-road" style="color: #1047c6;"></i>
+                                <i class="fa-solid fa-road" ></i>
                             </div>
 
                             <div class="groupe">
@@ -126,29 +125,29 @@
                                 @Html.LabelFor(m => Model.Contact.City)
                                 @Html.TextBoxFor(m => Model.Contact.City,new {@class= "Input"})
                                 @Html.ValidationMessageFor(m => Model.Contact.City)
-                                <i class="fa-sharp fa-solid fa-city" style="color: #1047c6;"></i>
+                                <i class="fa-sharp fa-solid fa-city"></i>
                             </div>
 
                         </div>
 
 
-                        <!-- liste déroulante et check box pour les infos pro et le manager -->
+                        
                         <div>
                             <h3>Rôle de l'employé</h3>
-                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
-                            {
+                                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
+                                {
                                 <input type="checkbox" class="checkbox" id=@item value=@item name="TypeRoles" />
                                 <label id="@item ">@item</label>
-                            }
+                                }
 
                             <div class="groupe">
                                 @Html.LabelFor(m => Model.ProfessionalInfo.Position)
                                 <select id="Position" name="ProfessionalInfo.Position" class="choix">
                                     <option value="">Position</option>
-                                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
-                                    {
+                                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
+                                {
                                         <option value=@item name="Position">@item</option>
-                                    }
+                                }
                                 </select>
                             </div>
 
@@ -156,10 +155,10 @@
                                 @Html.LabelFor(m => Model.ProfessionalInfo.Function)
                                 <select id="Function" name="ProfessionalInfo.Function" class="choix">
                                     <option value="">Function</option>
-                                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
-                                    {
+                                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
+                                {
                                         <option value=@item name="Function">@item</option>
-                                    }
+                                }
                                 </select>
                             </div>
 
@@ -173,10 +172,10 @@
                                 <select id="ManagerId" name="ManagerId" class="choix">
                                     <option value="">--Choisissez une option--</option>
                                     <option value=0 name="Aucun manager" class="choix">Aucun manager</option>
-                                    @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
-                                    {
+                                @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
+                                {
                                         <option value=@user.Id name="ManagerId">@user.Lastname</option>
-                                    }
+                                }
                                 </select>
                             </div>
                         </div>
@@ -184,24 +183,33 @@
 
                     </div>
 
-                    
-                </div>
 
+                </div>
 
 
                 <input type="submit" value="Ajouter" />
 
 
 
-            </form>
-        </fieldset>
+
+
+            
+
+            
+       </fieldset>          
+
+                
+
+        
 
             
            
-        <a href="/home/index">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>
+        
+        
+        <a href="/home">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>
         //lien à modif quand le dashboard de l'admin sera créé
-    }
-    @*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+   }
+        @*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
 </body>
