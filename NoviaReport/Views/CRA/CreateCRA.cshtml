@@ -36,22 +36,25 @@
             </div>
 
             <div id="calendar"></div>
-
+            @Html.BeginForm("CreateActivity","CRA",FormMethod.Post){
             <div id="newEventModal">
                 <h2>New Event</h2>
 
-@*                <input id="eventTitleInput" placeholder="Event Title" />
-*@                <select id="eventTitleInput" name="eventTitleInput">
-                    <option value="">Type d'Activité</option>
-                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
+                @*                <input id="eventTitleInput" placeholder="Event Title" />
+                *@                <!--<select id="eventTitleInput" name="eventTitleInput">-->
+                    @*onchange="location.href='CRA/CreateCRA';">eventTitleInput*@
+                    <!--<option value="">Type d'Activité</option>
+                    foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
                     {
-                        <option value=@item name="TypeActivity">@item</option>
+                        <option value=item name="TypeActivity">item</option>
                     }
-                </select>
+                </select>-->
 
-                <button id="saveButton">Save</button>
+                <button id="saveButton" type="submit">Save</button>
                 <button id="cancelButton">Cancel</button>
             </div>
+            }
+
 
             <div id="deleteEventModal">
                 <h2>Event</h2>
@@ -68,7 +71,7 @@
         </div>
 
         <div class="containers">
-            <button id="Modifier CRA"onclick="location.href='CRA/UpdateCRA';">Modifier CRA</button>
+            <button id="Modifier CRA" onclick="location.href='CRA/UpdateCRA';">Modifier CRA</button>
             <button id="SoumettreCRA" onclick="location.href='CRA/SubmitCRA';">Sousmettre CRA</button>
         </div>
     </div>

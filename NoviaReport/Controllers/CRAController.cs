@@ -44,7 +44,7 @@ namespace NoviaReport.Controllers
 
         //Méthode post pour créer une activité
         [HttpPost]
-        public IActionResult CreateActivity(Activity activity, int CRAid)
+        public IActionResult CreateActivity(Activity activity, int CRAid, TypeActivity eventTitleInput)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
