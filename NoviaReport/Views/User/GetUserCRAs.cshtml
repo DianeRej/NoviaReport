@@ -20,6 +20,8 @@
                 <th>login</th>
                 <th>Date</th>
                 <th>Etat</th>
+                <th>Visualiser</th>
+
             </tr>
             @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAsList"] as List<NoviaReport.Models.UserCRA>)
             {
@@ -29,6 +31,8 @@
                     <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
                     <td>@userCRA.CRA.Date.ToString("d")</td>
                     <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
+                    <th><a href="/CRA/GetActivitiesCRA/@userCRA.CRAId">Visualiser</a></th>
+
                 </tr>
             }
         </table>

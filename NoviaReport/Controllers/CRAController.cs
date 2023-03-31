@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
+using NoviaReport.ViewModels;
 using System.Linq;
 
 namespace NoviaReport.Controllers
@@ -202,11 +203,20 @@ namespace NoviaReport.Controllers
         [Authorize]
         public IActionResult GetActivitiesCRA(int id)
         {
-            DalActivity dal = new DalActivity();
-            ViewData["ActivitiesCRAList"] = dal.GetActivitiesForOneCRA(id);
-            return View("GetActivitiesCRA");
+            CraActivitiesViewModel viewModel = new CraActivitiesViewModel { };
 
-        }
+            using (DalCRA dalCRA = new DalCRA())
+            {
+                viewModel.Cra = dalCRA.GetCRAById(id);
+            }
+
+            using (DalActivity dal = new DalActivity())
+            {
+                viewModel.CraActivities = dal.GetActivitiesForOneCRA(id);
+            }
+            return View("GetActivitiesCRA", viewModel);
 
     }
+
+}
 }
