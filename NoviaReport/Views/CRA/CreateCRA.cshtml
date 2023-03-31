@@ -36,24 +36,23 @@
             </div>
 
             <div id="calendar"></div>
-            @Html.BeginForm("CreateActivity","CRA",FormMethod.Post){
+            @*@Html.BeginForm("CreateActivity","CRA",FormMethod.Post){*@
             <div id="newEventModal">
                 <h2>New Event</h2>
-
-                @*                <input id="eventTitleInput" placeholder="Event Title" />
-                *@                <!--<select id="eventTitleInput" name="eventTitleInput">-->
-                    @*onchange="location.href='CRA/CreateCRA';">eventTitleInput*@
-                    <!--<option value="">Type d'Activité</option>
-                    foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
+                    <input id="craIdInput" type="hidden" name="craId" value="1"/>
+                    @*<input id="eventTitleInput" placeholder="Event Title" />*@
+                    <select id="eventTitleInput" name="eventTitleInput">
+                    <option value="">Type d'Activité</option>
+                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
                     {
-                        <option value=item name="TypeActivity">item</option>
+                        <option value=@item name="TypeActivity">@item</option>
                     }
-                </select>-->
+                </select>
 
-                <button id="saveButton" type="submit">Save</button>
+                <button id="saveButton">Save</button>
                 <button id="cancelButton">Cancel</button>
             </div>
-            }
+            @*}*@
 
 
             <div id="deleteEventModal">

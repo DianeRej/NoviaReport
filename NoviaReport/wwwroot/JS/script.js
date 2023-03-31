@@ -7,6 +7,8 @@ const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
+const craIdInput = document.getElementById('craIdInput');
+
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function openModal(date) {
@@ -93,6 +95,30 @@ function closeModal() {
   load();
 }
 
+
+function postdata(activityType, craId, dateclicked) {
+    var url = '/cra/createactivity'
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        'body': JSON.stringify(
+            {
+                'activityType': activityType,
+                'craId': craId,
+                'date': dateclicked
+            }
+        )
+    }
+    ).then((response) => response.json())
+        .then((data) => {
+            console.log('Success:')
+            window.location.href = "/"
+        })
+}
+
+
 function saveEvent() {
   if (eventTitleInput.value) {
     eventTitleInput.classList.remove('error');
@@ -102,7 +128,9 @@ function saveEvent() {
       title: eventTitleInput.value,
     });
 
-    localStorage.setItem('events', JSON.stringify(events));
+
+      postdata(eventTitleInput.value, craIdInput.value, clicked)
+    //localStorage.setItem('events', JSON.stringify(events));
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
