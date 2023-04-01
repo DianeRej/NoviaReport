@@ -62,7 +62,7 @@ namespace NoviaReport.Controllers
                 dal.CreateCraActivity(cra, activity);
 
             }
-            return Redirect("/cra/getactivitiescra/"+cra.Id); //à changer pour un lien vers la liste des acitivités
+            return Redirect("/cra/getactivitiescra/" + cra.Id); //à changer pour un lien vers la liste des acitivités
         }
 
 
@@ -78,19 +78,13 @@ namespace NoviaReport.Controllers
                 CRA cra = dal.GetAllCRAs().Where(r => r.Id == Convert.ToInt32(res.craId)).FirstOrDefault();
                 using (DalActivity ctx = new DalActivity())
                 {
-                    DateTime date = new DateTime();
-                    Console.WriteLine(res.date);
-                    date = DateTime.ParseExact(res.date, "M/d/yyyy", CultureInfo.InvariantCulture);
+                    DateTime date = DateTime.ParseExact(res.date, "M/d/yyyy", CultureInfo.InvariantCulture);
                     Activity activity = new Activity { Date = date, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
                     ctx.CreateActivity(activity);
                     ctx.CreateCraActivity(cra, activity);
-                    
-                    
-
                 }
             }
-           
-            return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
+            return Redirect("/"); 
         }
 
         //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
@@ -178,7 +172,7 @@ namespace NoviaReport.Controllers
                     CRA cra = dal.GetCRAById(craId);
                     int monthCRA = cra.Date.Month;
                     int yearCRA = cra.Date.Year;
-                    ViewBag.craMonth = monthCRA-1;
+                    ViewBag.craMonth = monthCRA - 1;
                     ViewBag.craYear = yearCRA;
                     ViewBag.craId = craId;
                 }
@@ -187,7 +181,7 @@ namespace NoviaReport.Controllers
             else return View("Error");
         }
 
-        
+
         //[HttpPost]
         //public IActionResult UpdateCRA(CRA cra, int userId)
         //{
@@ -222,7 +216,7 @@ namespace NoviaReport.Controllers
             return View("Error");
         }
 
- 
+
         //Méthode post pour modifier le CRA
 
         [HttpPost]
@@ -290,7 +284,7 @@ namespace NoviaReport.Controllers
             }
             return View("GetActivitiesCRA", viewModel);
 
-    }
+        }
 
-}
+    }
 }

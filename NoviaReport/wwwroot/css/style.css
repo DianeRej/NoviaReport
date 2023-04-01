@@ -26,13 +26,19 @@ header {
     width: 5.5%;
     padding-left: 10px;
   }
-  
-  .boutons {
+
+.boutons {
     margin-left: auto;
-    padding-right: 50px;
-    font-size: 16px;
-   
-  }
+}
+button {
+    margin-left: 100px;
+    margin-right: 40px;
+    background-color: #0e4d4f;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 15px 22px;
+}
 
   .boutons button {
     background-color: #2d4b4c; /* Couleur de fond */
