@@ -8,6 +8,21 @@
 
 @if (Model.Authentifie)
 {
+
+    <div class="connecte">
+        <img src="./Images/4.png" alt="texte alternatif" />
+        <h3>
+            Vous êtes déjà authentifié avec le login :
+            @Model.User.Login
+        </h3>
+        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+    </div>
+}
+else
+{
+
+<body>
+>>>>>>> origin/arbam_back2
     <div class="center">
         <img src="./Images/4.png" alt="texte alternatif" />
         <h3>
@@ -16,6 +31,7 @@
         </h3>
         @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
     </div>
+
 }
 else
 {
@@ -45,4 +61,7 @@ else
             </form>
         </div>
     </body>
+=======
+</body>
+
 }

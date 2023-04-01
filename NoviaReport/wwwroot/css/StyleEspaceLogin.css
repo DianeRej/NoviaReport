@@ -124,3 +124,24 @@ input[type="submit"] {
         .signup_link a:hover {
             text-decoration: underline;
         }
+
+
+
+/*-------------------Affichage panneau "deja connecté---------------------------*/
+img{
+    width: 600px;
+    display: block;
+    margin-right:auto;
+    margin-left:auto;
+    margin-top: 3%;
+    
+}
+
+h3 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50px;
+    color:#226D68;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
