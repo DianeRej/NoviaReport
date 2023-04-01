@@ -4,6 +4,7 @@ using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using NoviaReport.ViewModels;
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace NoviaReport.Controllers
@@ -77,9 +78,14 @@ namespace NoviaReport.Controllers
                 CRA cra = dal.GetAllCRAs().Where(r => r.Id == Convert.ToInt32(res.craId)).FirstOrDefault();
                 using (DalActivity ctx = new DalActivity())
                 {
-                    Activity activity = new Activity { Date = System.DateTime.Now, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
+                    DateTime date = new DateTime();
+                    Console.WriteLine(res.date);
+                    date = DateTime.ParseExact(res.date, "M/d/yyyy", CultureInfo.InvariantCulture);
+                    Activity activity = new Activity { Date = date, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
                     ctx.CreateActivity(activity);
                     ctx.CreateCraActivity(cra, activity);
+                    
+                    
 
                 }
             }
@@ -124,10 +130,44 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-
         //get : envoie sur le fomulaire de création d'un CRA
         //prend en argument un userId
         //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
+        public IActionResult CreateCRA(int userId)
+        {
+            if (userId != 0)
+            {
+                using (DalCRA dal = new DalCRA())
+                {
+                    ViewBag.userId = userId;
+                }
+                return View();
+            }
+            else return View("Error");
+        }
+
+        //Méthode post pour créer un CRA
+        [HttpPost]
+        public IActionResult CreateCRA(CRA cra, int userId)
+        {
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                return View();
+            User user = new User();
+            using (DalUser dal = new DalUser())
+            {
+                user = dal.GetUserById(userId);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                dal.CreateCRA(cra);
+                dal.CreateUserCRA(cra, user);
+                return Redirect("/cra/updateCRA?craId=" + cra.Id); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+            }
+
+        }
+
+        //get : permet de compléter un CRA en y ajoutant des activités avec la vue calendrier 
+        //pour le moment ne marche que pour un CRA vide puisque que le calendrier ne prend pas en compte des activités préexistantes du CRA
         [Authorize(Roles = "SALARIE")]
         public IActionResult UpdateCRA(int craId)
         {
@@ -147,25 +187,25 @@ namespace NoviaReport.Controllers
             else return View("Error");
         }
 
-        //Méthode post pour créer un CRA
-        [HttpPost]
-        public IActionResult UpdateCRA(CRA cra, int userId)
-        {
-            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
-                return View();
-            User user = new User();
-            using (DalUser dal = new DalUser())
-            {
-                user = dal.GetUserById(userId);
-            }
-            using (DalCRA dal = new DalCRA())
-            {
-                dal.CreateCRA(cra);
-                dal.CreateUserCRA(cra, user);
-                return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
-            }
+        
+        //[HttpPost]
+        //public IActionResult UpdateCRA(CRA cra, int userId)
+        //{
+        //    if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+        //        return View();
+        //    User user = new User();
+        //    using (DalUser dal = new DalUser())
+        //    {
+        //        user = dal.GetUserById(userId);
+        //    }
+        //    using (DalCRA dal = new DalCRA())
+        //    {
+        //        dal.CreateCRA(cra);
+        //        dal.CreateUserCRA(cra, user);
+        //        return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+        //    }
 
-        }
+        //}
 
         //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
