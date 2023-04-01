@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -21,8 +20,8 @@
             <div id="header">
                 <div id="monthDisplay"></div>
                 <div>
-                    <button id="backButton">Back</button>
-                    <button id="nextButton">Next</button>
+                    <button id="backButton" hidden>Back</button>
+                    <button id="nextButton"hidden>Next</button>
                 </div>
             </div>
 
@@ -40,13 +39,21 @@
             @*@Html.BeginForm("CreateActivity","CRA",FormMethod.Post){*@
             <div id="newEventModal">
                 <h2>Nouvelle Activité</h2>
-                    <input id="craIdInput" type="hidden" name="craId" value="1"/>
-                    @*<input id="eventTitleInput" placeholder="Event Title" />*@
-                    <select id="eventTitleInput" name="eventTitleInput">
+                <input id="craIdInput" type="hidden" name="craId" value="@ViewBag.craId" />
+                @*<input id="eventTitleInput" placeholder="Event Title" />*@
+                <select id="eventTitleInput" name="eventTitleInput">
                     <option value="">Type d'Activité</option>
                     @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
                     {
                         <option value=@item name="TypeActivity">@item</option>
+                    }
+                </select>
+
+                <select id="clientInput" name="Client">
+                    <option value="">Client</option>
+                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Client)))
+                    {
+                        <option value=@item name="Client">@item</option>
                     }
                 </select>
 
@@ -72,8 +79,7 @@
         </div>
 
         <div class="containers">
-            <button id="Modifier CRA" onclick="location.href='CRA/UpdateCRA';">Modifier CRA</button>
-            <button id="SoumettreCRA" onclick="location.href='CRA/SubmitCRA';">Soumettre CRA</button>
+            <button id="SoumettreCRA" onclick="location.href='/CRA/SubmitCRA/@ViewBag.craId';">Soumettre le CRA</button>
         </div>
     </div>
 

@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+    height: 100px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    
+  }
+  header img{
+    width: 5.5%;
+    padding-left: 10px;
+  }
+  
+  .boutons {
+    margin-left: auto;
+   
+  }
+  .boutons {
+    margin-left: auto;
+   
+  }
+  .btn{
+    margin-left: 720px;
+  }
+
+
+  .btn button{
+    background: #022829;
+    width: 200px;
+    height: 58px;
+    border: 4px solid #69a0a1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: .4s linear;
+   
+  }
+  .btn button:hover{
+    color: #1ea546;
+  }
+
+  .btn button::before{
+    content: "";
+    
+    width: 245px;
+    height: 55px;
+    top: 0px;
+    left: 0px;
+    background-color: #50bddf;
+    z-index: -1;
+    transform: .4s linear;
+    cursor: pointer;
+  }
+
+  .btn button:hover::before{
+    width: 245px;
+    background-color: #000000;
+  }
+  
+  button {
+    margin-left: 100px;
+    margin-right: 40px;
+    background-color: #022829;
+    border: 2px solid #69a0a1;
+    color: white;
+    border-radius : 20px;
+    cursor: pointer;
+    padding: 15px 22px;
+    
+  }
+
+  button:hover{
+    color: #1ea546;
+  }
+  button:active{
+    background-color: rgb(255, 255, 255);
+  }
+
+  
+
+body {
+  padding-top: 100px;
+  padding-left: 75px;
+  background: #2d4b4c;
+  font-family: Raleway, Helvetica, sans-serif;
+  position: relative;
+}
+
+/* New Stacking Context with Fixed */
+.side-nav {
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  padding-top: 100px;
+  top: 0;
+}
+
+/* To hide the sub-nav */
+.wrapper {
+  background: #022829;
+  height: 100vh;
+  width: 75px;
+}
+
+.nav-bloc {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border-bottom: 1px solid #ffffff;
+}
+.nav-bloc:hover {
+  background: #0e4d4f;
+}
+.nav-bloc:hover .sub-nav {
+  transform: translateX(75px);
+}
+.nav-bloc svg {
+  width: 25px;
+  fill: #f2f2f2;
+  transition:  0.2s ease-in-out ;
+}
+.nav-bloc:hover  svg {
+  fill: #50bddf;
+}
+.sub-nav {
+  
+  width: 200px;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  background: #022829;
+  z-index: -1;
+  color: white;
+  /* Hidden at the left side */
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-in-out;
+  border-right: 2px solid #000;
+  border-left: 2px solid #000;
+}
+.sub-nav h2 {
+  font-family: open sans, sans-serif;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+}
+.sub-nav ul {
+  list-style-type: none;
+}
+.sub-nav li {
+  padding: 15px 20px;
+}
+.sub-nav li:hover {
+  background: #0e4d4f
+}
+
+.sub-nav li a {
+   color: #f2f2f2;
+   text-decoration: none;
+}
+.topbox {
+  padding-top: 120px;
+  padding-left: 200px;
+  padding-bottom : 50px;
+  width: 50%;
+  color: #022829;
+}
+#analytics
+{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 60px 0 50px 500px;
+}
+
+#analytics .cards
+{
+  height: 200px;
+  width: 350px;
+  background: #022829;
+  margin: 0 50px;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px  #00000015;
+}
+
+
+.cards svg {
+  
+  width: 70px;
+  height: 70px;
+}
+
+#analytics .cards h2
+{
+  font-size: 60px;
+  color: #ffffff;
+}
+
+#analytics .cards h4{
+
+  font-size: 20px;
+  color: #ffffff;
+}
+
+#analytics .cards:hover
+{
+  background: #043638;
+}
+
+#analytics .cards:hover h2
+{
+  color: #50b86f;
+}
+#analytics .cards:hover h4
+{
+  color: #50b86f;
+}
+
+
+#table
+{
+  height: calc(100% - 350px);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-collapse: collapse;
+  padding: 2% 5%;
+}
+
+#table tr{
+  height: 55px;
+}
+
+#table tr th{
+  width: 350px;
+  color: #000000;
+  background: #d0d4d4;
+}
+
+#table tr td{
+  width: 200px;
+  text-align: center ;
+  border: 1px solid #7f9e9e;
+}
+
+#boutonss button  {
+  margin-left: 840px;
+  margin-right: 50px;
+  background-color: #022829;
+  color: white;
+  border-radius : 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  
+}

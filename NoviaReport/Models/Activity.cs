@@ -12,8 +12,8 @@ namespace NoviaReport.Models
     {
         public int Id { get; set; }
         //boolean true = demi-journée, false (ou pas précisé) = journée complète
-        [Display(Name = "Demi-journée ?")]
-        public bool Halfday { get; set; }
+        //[Display(Name = "Demi-journée ?")]
+        //public bool Halfday { get; set; }
 
         public DateTime Date { get; set; }
         [Display(Name = "Type d'Activité")]
@@ -25,6 +25,9 @@ namespace NoviaReport.Models
 
     public enum TypeActivity
     {
+        [Display(Name = "Astreinte")] ASTREINTE,
+        [Display(Name = "Prestation")] PRESTATION,
+        [Display(Name = "Maintenance")] MAINTENANCE,
         [Display(Name = "Formation Professionnelle")] FORMATION_PROFESSIONNELLE,
         [Display(Name = "Formation Economique Sociale et Syndicale")] FORMATION_ECONOMIQUE_SOCIALE_ET_SYDICALE,
         [Display(Name = "Inter-Contrat")] INTER_CONTRAT,
@@ -43,14 +46,11 @@ namespace NoviaReport.Models
         [Display(Name = "Examen Médical du Travail")] EXAMEN_MEDICAL_DU_TRAVAIL,
         [Display(Name = "Congé pour Enfant Malade")] CONGE_ENFANT_MALADE,
         [Display(Name = "Crédits d'Heures des Représentants du Personnel")] CREDITS_HEURES_REP_PERSONNEL,
-        [Display(Name = "Congé de Formation des Membres du CSE")] CONGE_FORMATION_CSE,
-
-        [Display(Name = "Astreinte")] ASTREINTE,
-        [Display(Name = "Prestation")] PRESTATION,
-        [Display(Name = "Maintenance")] MAINTENANCE
+        [Display(Name = "Congé de Formation des Membres du CSE")] CONGE_FORMATION_CSE
     }
+
     public enum Client //trouver des noms d'entreprises fictives
     {
-        Client1, Client2, Client3, Client4, Client5, Client6
+        Aucun_Client, Client1, Client2, Client3, Client4, Client5, Client6
     }
 }

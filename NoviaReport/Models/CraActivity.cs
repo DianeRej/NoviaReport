@@ -18,6 +18,6 @@ namespace NoviaReport.Models
         //Clé étrangère vers la table activity
 
         public int ActivityId { get; set; }
-        public Activity Activity { get; set; }
+        public Activity Activity { get; set; } 
     }
 }
