@@ -154,6 +154,16 @@
         </div>
     </div>
 
+    @if (User.IsInRole("USER") && Model.Cra.State == NoviaReport.Models.State.INCOMPLET)
+    {
+        <a href="/cra/createactivity/@Model.Cra.Id">Valider le CRA</a>
+        
+    }
+    else if (User.IsInRole("USER") && Model.Cra.State == NoviaReport.Models.State.NON_VALIDE)
+    {
+        <a href="/cra/createactivity/@Model.Cra.Id">Valider le CRA</a>
+    }
+
     @if (User.IsInRole("MANAGER") && Model.Cra.State == NoviaReport.Models.State.EN_COURS_DE_VALIDATION)
     {
         <a href="">Valider le CRA</a>
