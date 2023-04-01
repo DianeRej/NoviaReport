@@ -238,10 +238,6 @@ namespace NoviaReport.Controllers
             ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
             return View("ListActivitiesCRA");
 
-
-
-
-
         }
 
         //Méthode pour afficher les Activités liées à un CRA
@@ -256,9 +252,9 @@ namespace NoviaReport.Controllers
                 viewModel.Cra = dalCRA.GetCRAById(id);
             }
 
-            using (DalActivity dal = new DalActivity())
+            using (DalActivity dal1 = new DalActivity())
             {
-                viewModel.CraActivities = dal.GetActivitiesForOneCRA(id);
+                viewModel.CraActivities = dal1.GetActivitiesForOneCRA(id);
             }
             return View("GetActivitiesCRA", viewModel);
 

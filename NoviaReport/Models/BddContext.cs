@@ -132,37 +132,31 @@ namespace NoviaReport.Models
                new Role { Id = 1, TypeRole = TypeRole.MANAGER, UserId = 1 },
                new Role { Id = 2, TypeRole = TypeRole.MANAGER, UserId = 2 },
 
-               new Role { Id = 3, TypeRole = TypeRole.SALARIE, UserId = 3 },
-               new Role { Id = 4, TypeRole = TypeRole.ADMIN, UserId = 4 },
-               new Role { Id = 5, TypeRole = TypeRole.MANAGER, UserId = 4 },
-
                new Role { Id = 3, TypeRole = TypeRole.MANAGER, UserId = 3 },
                new Role { Id = 4, TypeRole = TypeRole.MANAGER, UserId = 4 },
-               
                new Role { Id = 5, TypeRole = TypeRole.ADMIN, UserId = 5 },
+
                new Role { Id = 6, TypeRole = TypeRole.SALARIE, UserId = 6 },
                new Role { Id = 7, TypeRole = TypeRole.SALARIE, UserId = 7 },
+               
                new Role { Id = 8, TypeRole = TypeRole.SALARIE, UserId = 8 },
+               new Role { Id = 9, TypeRole = TypeRole.SALARIE, UserId =9 },
+               new Role { Id = 10, TypeRole = TypeRole.SALARIE, UserId = 10 },
+               new Role { Id = 11, TypeRole = TypeRole.SALARIE, UserId = 11},
                
-               new Role { Id = 9, TypeRole = TypeRole.SALARIE, UserId = 9 },
-               new Role { Id = 10, TypeRole = TypeRole.SALARIE, UserId = 10 },              
-               new Role { Id = 11, TypeRole = TypeRole.SALARIE, UserId = 11 },
-               new Role { Id = 12, TypeRole = TypeRole.SALARIE, UserId = 12 },
-               
-               new Role { Id = 13, TypeRole = TypeRole.SALARIE, UserId = 13},
-               new Role { Id = 14, TypeRole = TypeRole.SALARIE, UserId =  14 },              
+               new Role { Id = 12, TypeRole = TypeRole.SALARIE, UserId = 12},
+               new Role { Id = 13, TypeRole = TypeRole.SALARIE, UserId = 13 },              
+               new Role { Id = 14, TypeRole = TypeRole.SALARIE, UserId = 14},
                new Role { Id = 15, TypeRole = TypeRole.SALARIE, UserId = 15 },
-               new Role { Id = 16, TypeRole = TypeRole.SALARIE, UserId =  16 },
                
-               new Role { Id = 17, TypeRole = TypeRole.SALARIE, UserId = 17 },
-               new Role { Id = 18, TypeRole = TypeRole.SALARIE, UserId =  18 },               
-               new Role { Id = 19, TypeRole = TypeRole.MANAGER, UserId = 19 },
-               new Role { Id = 20, TypeRole = TypeRole.MANAGER, UserId = 20 },
-
-               new Role { Id = 21, TypeRole = TypeRole.MANAGER, UserId = 21 }
-
-
-
+               new Role { Id = 16, TypeRole = TypeRole.SALARIE, UserId = 16},
+               new Role { Id = 17, TypeRole = TypeRole.SALARIE, UserId =  17 },              
+               new Role { Id = 18, TypeRole = TypeRole.SALARIE, UserId = 18},
+               new Role { Id = 19, TypeRole = TypeRole.MANAGER, UserId =  19 },
+               
+               new Role { Id = 20, TypeRole = TypeRole.MANAGER, UserId = 20},
+               new Role { Id = 21, TypeRole = TypeRole.MANAGER, UserId =  21 }              
+        
                );
 
 
@@ -297,20 +291,6 @@ namespace NoviaReport.Models
 
             this.CraActivities.AddRange(
                 new CraActivity { Id = 1, CRAId = 1, ActivityId = 1 },
-
-                new CraActivity { Id = 2, CRAId = 1, ActivityId = 2 },
-                new CraActivity { Id = 3, CRAId = 1, ActivityId = 3 },
-                new CraActivity { Id = 4, CRAId = 1, ActivityId = 4 },
-                new CraActivity { Id = 5, CRAId = 2, ActivityId = 5 },
-                new CraActivity { Id = 6, CRAId = 2, ActivityId = 6 },
-                new CraActivity { Id = 7, CRAId = 2, ActivityId = 7 },
-                new CraActivity { Id = 8, CRAId = 2, ActivityId = 8 },
-                new CraActivity { Id = 9, CRAId = 3, ActivityId = 9 },
-                new CraActivity { Id = 10, CRAId = 3, ActivityId = 10 },
-                new CraActivity { Id = 11, CRAId = 4, ActivityId = 11 },
-                new CraActivity { Id = 12, CRAId = 4, ActivityId = 12 },
-
-
                 new CraActivity { Id = 2, CRAId = 2, ActivityId = 2 },
                 new CraActivity { Id = 3, CRAId = 3, ActivityId = 3 },
                 new CraActivity { Id = 4, CRAId = 4, ActivityId = 4 },
@@ -347,7 +327,7 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 34, CRAId = 34, ActivityId = 34 },
                 new CraActivity { Id = 35, CRAId = 35, ActivityId = 35 },
                 new CraActivity { Id = 36, CRAId = 36, ActivityId = 36 },
-              
+
                 new CraActivity { Id = 37, CRAId = 37, ActivityId = 37 },
                 new CraActivity { Id = 38, CRAId = 38, ActivityId = 38 },
                 new CraActivity { Id = 39, CRAId = 39, ActivityId = 39 },
@@ -360,7 +340,6 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 46, CRAId = 46, ActivityId = 46 },
                 new CraActivity { Id = 47, CRAId = 47, ActivityId = 47 },
                 new CraActivity { Id = 48, CRAId = 48, ActivityId = 48 }
-
                 );
 
 
@@ -373,20 +352,13 @@ namespace NoviaReport.Models
                 new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.SOCIETE_GENERAL },
 
                 new Activity { Id = 7, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ENGIE },
-                new Activity { Id = 8, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 8, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client },
                 new Activity { Id = 9, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
-                new Activity { Id = 10, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
+                new Activity { Id = 10, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client= Client.TOTAL_ENERGIES },
                 new Activity { Id = 11, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 12, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 12, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.CONGE_MATERNITE },
 
-                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ENGIE },
-                new Activity { Id = 8, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
-                new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
-                new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
                 new Activity { Id = 13, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
-
                 new Activity { Id = 14, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
                 new Activity { Id = 15, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
                 new Activity { Id = 16, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
@@ -402,14 +374,12 @@ namespace NoviaReport.Models
                 new Activity { Id = 26, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.VALLOUREC },
                 new Activity { Id = 27, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
                 new Activity { Id = 28, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
-
                 new Activity { Id = 29, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
                 new Activity { Id = 30, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
                 new Activity { Id = 31, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
                 new Activity { Id = 32, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
                 new Activity { Id = 33, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
                 new Activity { Id = 34, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
-
                 new Activity { Id = 35, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
                 new Activity { Id = 36, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
                 new Activity { Id = 37, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
@@ -424,7 +394,7 @@ namespace NoviaReport.Models
                 new Activity { Id = 46, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
                 new Activity { Id = 47, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.VALLOUREC },
                 new Activity { Id = 48, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA }
-                
+
 
                 );
 
