@@ -18,7 +18,7 @@ namespace NoviaReport.Controllers
         //Pour pouvoir ajouter une activité il y a 2 conditions : le CRAid doit correspondre à un CRA existant ET 
         //le statut du CRA doit être NON_VALIDE ou INCOMPLET
         [Authorize(Roles = "SALARIE")]
-        public IActionResult CreateActivity(int CRAid)
+        public IActionResult CreateActivityForm(int CRAid)
         {
             CRA craToComplete = new CRA();
             using (DalCRA dal = new DalCRA())
@@ -43,8 +43,29 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-
         //Méthode post pour créer une activité
+        [HttpPost]
+        public IActionResult CreateActivityForm(Activity activity, int CRAid)
+        {
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                return View();
+
+            CRA cra = new CRA();
+            using (DalCRA dal = new DalCRA())
+            {
+                cra = dal.GetAllCRAs().Where(r => r.Id == CRAid).FirstOrDefault();
+            }
+            using (DalActivity dal = new DalActivity())
+            {
+                dal.CreateActivity(activity);
+                dal.CreateCraActivity(cra, activity);
+
+            }
+            return Redirect("/cra/getactivitiescra/"+cra.Id); //à changer pour un lien vers la liste des acitivités
+        }
+
+
+        //Méthode post pour créer une activité à partir du calendrier
         [HttpPost]
         public IActionResult CreateActivity([FromBody] ActivityFromFetch res)
         {

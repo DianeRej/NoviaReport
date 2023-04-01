@@ -136,12 +136,12 @@
 
             @if (User.IsInRole("SALARIE") && Model.Cra.State.Equals(NoviaReport.Models.State.INCOMPLET))
             {
-                <a href="/cra/createactivity/@Model.Cra.Id"><button>Ajouter une activité</button></a>
+                <a href="/cra/createactivityform?craid=@Model.Cra.Id"><button>Ajouter une activité</button></a>
 
             }
             else if (User.IsInRole("SALARIE") && Model.Cra.State.Equals(NoviaReport.Models.State.NON_VALIDE))
             {
-                <a href="/cra/createactivity/@Model.Cra.Id"><button>Ajouter une activité</button></a>
+                <a href="/cra/createactivityform?craid=@Model.Cra.Id"><button>Ajouter une activité</button></a>
             }
 
             @if (User.IsInRole("MANAGER") && Model.Cra.State.Equals(NoviaReport.Models.State.EN_COURS_DE_VALIDATION))
