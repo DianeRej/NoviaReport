@@ -134,6 +134,25 @@
             <p>Etat du CRA : </p>
             <p>@Model.Cra.State</p>
 
+            @if (User.IsInRole("SALARIE") && Model.Cra.State.Equals(NoviaReport.Models.State.INCOMPLET))
+            {
+                <a href="/cra/createactivity/@Model.Cra.Id"><button>Ajouter une activité</button></a>
+
+            }
+            else if (User.IsInRole("SALARIE") && Model.Cra.State.Equals(NoviaReport.Models.State.NON_VALIDE))
+            {
+                <a href="/cra/createactivity/@Model.Cra.Id"><button>Ajouter une activité</button></a>
+            }
+
+            @if (User.IsInRole("MANAGER") && Model.Cra.State.Equals(NoviaReport.Models.State.EN_COURS_DE_VALIDATION))
+            {
+                <a href="">Valider le CRA</a>
+                //mettre le lien de l'action ValidateCRA
+                <a href="">Renvoyer le CRA pour modification</a>
+                //mettre le lien de l'action InvalidateCRA
+
+            }
+
             <table id="table">
                 <tr>
                     <th>Date Activité </th>
@@ -154,24 +173,7 @@
         </div>
     </div>
 
-    @if (User.IsInRole("USER") && Model.Cra.State == NoviaReport.Models.State.INCOMPLET)
-    {
-        <a href="/cra/createactivity/@Model.Cra.Id">Valider le CRA</a>
-        
-    }
-    else if (User.IsInRole("USER") && Model.Cra.State == NoviaReport.Models.State.NON_VALIDE)
-    {
-        <a href="/cra/createactivity/@Model.Cra.Id">Valider le CRA</a>
-    }
-
-    @if (User.IsInRole("MANAGER") && Model.Cra.State == NoviaReport.Models.State.EN_COURS_DE_VALIDATION)
-    {
-        <a href="">Valider le CRA</a>
-        //mettre le lien de l'action ValidateCRA
-        <a href="">Renvoyer le CRA pour modification</a>
-        //mettre le lien de l'action InvalidateCRA
-
-    }
+    
 
     @*/CRA/GetActivitiesCRA*@
 
