@@ -28,6 +28,37 @@ namespace NoviaReport.Controllers
             return View("EspaceLogin", viewModel);
         }
 
+        //Page mot de passe oublie
+        public IActionResult ForgetPassword()
+        {
+            return View("ForgetPassword");
+        }
+
+        //post de la page de Mot de pass oublié, permet d'envoyer un lien de réinitialisation de mot de passe par mail à l'utilisateur)
+        [HttpPost]
+        public IActionResult ForgetPassword(UserViewModel viewModel, string returnUrl)
+        {
+            ModelState.AddModelError("User.Login", "'Aucun utilisateur correspondant à ce Login n'a été trouvé");
+            if (ModelState.IsValid)
+            {
+                User user = dal.getUserByLogin(viewModel.User.Login);
+                List<Role> roles = new List<Role>();
+
+
+                if (user != null)
+                {
+                    //envoyer le lien de reinitialisation de mot de passe par mail
+                    ModelState.AddModelError("User.Login", "'Aucun utilisateur correspondant à ce Login n'a été trouvé"); //affiche l'erreur en cas de fausse saisie
+                    return Redirect("/Login");
+                }
+
+                ModelState.AddModelError("User.Login", "'Aucun utilisateur correspondant à ce Login n'a été trouvé"); //affiche l'erreur en cas de fausse saisie
+                return Redirect("/Login");
+            }
+            return Redirect("/Login");
+        }
+
+
         //post de la page de login, permet d'envoyer les infos de co (va générer un cookie qui permet de savoir si l'utilisateur est connecté)
         [HttpPost]
         public IActionResult Index(UserViewModel viewModel, string returnUrl)

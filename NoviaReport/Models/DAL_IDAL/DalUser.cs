@@ -157,6 +157,14 @@ namespace NoviaReport.Models.DAL_IDAL
             return user;
         }
 
+        //méthode qui est appelée par mot de passe oublie
+        public User getUserByLogin(string login)
+        {
+            User user = this._bddContext.Users.FirstOrDefault(u => u.Login == login);
+
+            return user;
+        }
+
         //Encodage du MdP
         public static string EncodeMD5(string motDePasse)
         {
