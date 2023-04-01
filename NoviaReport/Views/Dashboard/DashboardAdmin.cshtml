@@ -17,10 +17,10 @@
 <body>
     <!----------------------------------------------------- HEADER ---------------------------------------------->
     <header>
-        <img src="./Images/4.png" />
+        <img src="/Images/4.png" />
 
         <div class="boutons">
-            <button>Déconnexion</button>
+            <a href="/Login/Deconnexion"><button>Déconnexion</button></a>
         </div>
     </header>
     <!---------------------------------------------------  Side-nav ------------------------------------------------>
@@ -170,14 +170,14 @@
                 <td>@user.Login</td>
                 <td>@Html.DisplayFor(u=>user.ProfessionalInfo.Function)</td>
                 @*<td>@Html.DisplayFor(u=>user.Role.TypeRole)</td>*@
-                        <td><a href="/User/UpdateUser/@user.Id">Modifier</a><button class="modifier">Modifier</button></td>
+                        <td><a href="/User/UpdateUser/@user.Id"><button class="modifier">Modifier</button></a></td>
             </tr>
         }
     </table>
     </div>
         <div id="boutonss">
-            <button class="ajouter">Ajouter utilisateur</button>
-            <a href="/User/CreateUser">Ajouter un nouvel utilisateur</a>
+            
+            <a href="/User/CreateUser"><button class="ajouter">Ajouter utilisateur</button></a>
         </div>
     </div>
     
