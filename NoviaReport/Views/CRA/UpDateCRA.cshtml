@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -40,13 +39,21 @@
             @*@Html.BeginForm("CreateActivity","CRA",FormMethod.Post){*@
             <div id="newEventModal">
                 <h2>Nouvelle Activité</h2>
-                    <input id="craIdInput" type="hidden" name="craId" value="1"/>
-                    @*<input id="eventTitleInput" placeholder="Event Title" />*@
-                    <select id="eventTitleInput" name="eventTitleInput">
+                <input id="craIdInput" type="hidden" name="craId" value="@ViewBag.craId" />
+                @*<input id="eventTitleInput" placeholder="Event Title" />*@
+                <select id="eventTitleInput" name="eventTitleInput">
                     <option value="">Type d'Activité</option>
                     @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
                     {
                         <option value=@item name="TypeActivity">@item</option>
+                    }
+                </select>
+
+                <select id="clientInput" name="Client">
+                    <option value="">Client</option>
+                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Client)))
+                    {
+                        <option value=@item name="Client">@item</option>
                     }
                 </select>
 

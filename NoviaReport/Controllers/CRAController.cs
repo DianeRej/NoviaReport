@@ -56,7 +56,7 @@ namespace NoviaReport.Controllers
                 CRA cra = dal.GetAllCRAs().Where(r => r.Id == Convert.ToInt32(res.craId)).FirstOrDefault();
                 using (DalActivity ctx = new DalActivity())
                 {
-                    Activity activity = new Activity { Date = System.DateTime.Now, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType) };
+                    Activity activity = new Activity { Date = System.DateTime.Now, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
                     ctx.CreateActivity(activity);
                     ctx.CreateCraActivity(cra, activity);
 
@@ -119,6 +119,7 @@ namespace NoviaReport.Controllers
                     int yearCRA = cra.Date.Year;
                     ViewBag.craMonth = monthCRA-1;
                     ViewBag.craYear = yearCRA;
+                    ViewBag.craId = craId;
                 }
                 return View();
             }

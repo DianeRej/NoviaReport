@@ -8,6 +8,7 @@ const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const craIdInput = document.getElementById('craIdInput');
+const clientInput = document.getElementById('clientInput');
 
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -29,23 +30,23 @@ function openModal(date) {
 }
 
 function load() {
-  const dt = new Date();
+    const dt = new Date(craYear, craMonth, 1);
 
   if (nav !== 0) {
     dt.setMonth(new Date().getMonth() + nav);
   }
 
-    const day = 1;
+    const day = dt.getDate();
     console.log(day);
-    const month = craMonth;
+    const month = dt.getMonth();
     console.log(month);
-    const year = craYear;
+    const year = dt.getFullYear();
     console.log(year);
 
+
     const firstDayOfMonth = new Date(year, month, 1);
-    console.log(firstDayOfMonth);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    conso
+
 
   
   const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
@@ -102,7 +103,7 @@ function closeModal() {
 }
 
 
-function postdata(activityType, craId, dateclicked) {
+function postdata(activityType, client, craId, dateclicked) {
     var url = '/cra/createactivity'
     fetch(url, {
         method: 'POST',
@@ -113,7 +114,8 @@ function postdata(activityType, craId, dateclicked) {
             {
                 'activityType': activityType,
                 'craId': craId,
-                'date': dateclicked
+                'date': dateclicked,
+                'client': client
             }
         )
     }
@@ -135,7 +137,7 @@ function saveEvent() {
     });
 
 
-      postdata(eventTitleInput.value, craIdInput.value, clicked)
+      postdata(eventTitleInput.value, clientInput.value, craIdInput.value, clicked)
     //localStorage.setItem('events', JSON.stringify(events));
     closeModal();
   } else {
