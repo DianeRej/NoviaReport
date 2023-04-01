@@ -30,23 +30,68 @@ header {
     margin-left: auto;
    
   }
-
-.btn {
+  .boutons {
+    margin-left: auto;
+   
+  }
+  .btn{
     margin-left: 720px;
-}
+  }
 
- 
- 
+
+  .btn button{
+    background: #022829;
+    width: 200px;
+    height: 58px;
+    border: 4px solid #69a0a1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: .4s linear;
+   
+  }
+  .btn button:hover{
+    color: #1ea546;
+  }
+
+  .btn button::before{
+    content: "";
+    
+    width: 245px;
+    height: 55px;
+    top: 0px;
+    left: 0px;
+    background-color: #50bddf;
+    z-index: -1;
+    transform: .4s linear;
+    cursor: pointer;
+  }
+
+  .btn button:hover::before{
+    width: 245px;
+    background-color: #000000;
+  }
+  
   button {
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: #043638;
+    margin-left: 100px;
+    margin-right: 40px;
+    background-color: #022829;
+    border: 2px solid #69a0a1;
     color: white;
     border-radius : 20px;
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 15px 22px;
     
   }
+
+  button:hover{
+    color: #1ea546;
+  }
+  button:active{
+    background-color: rgb(255, 255, 255);
+  }
+
+  
 
 body {
   padding-top: 100px;
@@ -130,7 +175,6 @@ body {
    color: #f2f2f2;
    text-decoration: none;
 }
-
 .topbox {
   padding-top: 120px;
   padding-left: 200px;
@@ -138,13 +182,12 @@ body {
   width: 50%;
   color: #022829;
 }
-
 #analytics
 {
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: 60px 0 50px 650px;
+  padding: 60px 0 50px 500px;
 }
 
 #analytics .cards
@@ -192,6 +235,7 @@ body {
 {
   color: #50b86f;
 }
+
 
 #table
 {

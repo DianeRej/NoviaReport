@@ -19,6 +19,21 @@
     <header>
         <img src="/Images/4.png" />
 
+        <div class="btn">
+            @*Permet à un utilisateur qui a plusieurs roles de changer de Dashboard*@
+            @foreach (NoviaReport.Models.Role role in ViewData["UserRolesList"] as List<NoviaReport.Models.Role>)
+            {
+                if (role.TypeRole == NoviaReport.Models.TypeRole.SALARIE)
+                {
+                    <a href="/Dashboard/DashboardSalarie/@User.Identity.Name"><button>Vue Salarié</button></a>
+                }
+                else if (role.TypeRole == NoviaReport.Models.TypeRole.MANAGER)
+                {
+                    <a href="/Dashboard/DashboardManager/@User.Identity.Name"><button>Vue Manager</button></a>
+                }
+            }
+        </div>
+
         <div class="boutons">
             <a href="/Login/Deconnexion"><button>Déconnexion</button></a>
         </div>
