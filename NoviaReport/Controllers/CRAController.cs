@@ -188,13 +188,17 @@ namespace NoviaReport.Controllers
         [Authorize(Roles = "SALARIE")]
         public IActionResult SubmitCRA(int id)
         {
-
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
             using (DalCRA dal = new DalCRA())
             {
                 CRA craToSubmit = dal.GetCRAById(id);
                 dal.SubmitCra(craToSubmit);
             }
-            return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+            return Redirect("/Dashboard/DashboardSalarie/" + user.Id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
         //Méthode pour afficher la liste des Activites et des CRA

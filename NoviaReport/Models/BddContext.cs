@@ -130,8 +130,8 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 9, CRAId = 3, ActivityId = 9 },
                 new CraActivity { Id = 10, CRAId = 3, ActivityId = 10 },
                 new CraActivity { Id = 11, CRAId = 4, ActivityId = 11 },
-                new CraActivity { Id = 12, CRAId = 4, ActivityId = 12 },
-                new CraActivity { Id = 13, CRAId = 4, ActivityId = 13 }
+                new CraActivity { Id = 12, CRAId = 4, ActivityId = 12 }
+
                 );
 
 
@@ -142,13 +142,12 @@ namespace NoviaReport.Models
                 new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE },
                 new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
                 new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
-                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.PRESTATION, Client = Client.Client3 },
-                new Activity { Id = 8, Date = new DateTime(2023, 02, 03), Halfday = true, TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 13, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client4 }
+                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client3 },
+                new Activity { Id = 8, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
+                new Activity { Id = 9, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
+                new Activity { Id = 10, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
+                new Activity { Id = 11, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
+                new Activity { Id = 12, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client4 }
                 );
 
             this.SaveChanges();
