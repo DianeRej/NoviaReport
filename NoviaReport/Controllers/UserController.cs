@@ -107,7 +107,7 @@ namespace NoviaReport.Controllers
                     dalRole.UpdateRole(id, role);
                 }
             }
-            return Redirect("/home/Index");
+            return Redirect("/Dashboard/DashboardAdmin");
         }
 
         //Méthode pour afficher la liste des utilisateurs et leurs CRAs
