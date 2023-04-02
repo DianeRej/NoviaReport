@@ -125,5 +125,6 @@ namespace NoviaReport.Controllers
             ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
             return View("GetUserCRAs");
         }
+        //ceci est un test
     }
 }
