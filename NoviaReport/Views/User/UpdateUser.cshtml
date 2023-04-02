@@ -27,7 +27,7 @@
     {
         <fieldset>
             <h1>UpdateUser</h1>
-            <legend>Ajouter un utilisateur : </legend>
+            <legend>Modfier un utilisateur : </legend>
             @*<!-- texts box pour le login, le mot de passe, le prénom, le nom, et les infos dans contact -->*@
 
             <div class="Corps_formulaire">
@@ -38,6 +38,7 @@
                         @Html.TextBoxFor(m => Model.Login)
                         @Html.ValidationMessageFor(m => Model.Login)
                         <i class="fa-solid fa-user"></i>
+
                         @*Pour le moment on ne peut plus modifier le mdp*@
                         @Html.HiddenFor(m => Model.Password)
                     </div>
@@ -75,6 +76,7 @@
                         @Html.LabelFor(m => Model.Contact.PersonalPhone)
                         @Html.TextBoxFor(m => Model.Contact.PersonalPhone, new {@class= "Input Tel"})
                         @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
+                        <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="groupe">
                         @Html.LabelFor(m => Model.Contact.ProMail)
@@ -211,11 +213,10 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" value="Ajouter" />
+            <input type="submit" value="Modifier" />
         </fieldset>
 
-        <a href="/home/index">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>
-        //lien à modif quand le dashboard de l'admin sera créé
+        <button><a href="/dashboard/dashboardadmin">Retour au tableau de bord</a></button>
     }
     @*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>

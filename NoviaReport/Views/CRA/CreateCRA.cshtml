@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="/css/StyleCreateCra.css" rel="stylesheet" />
     <title>Ajouter un CRA</title>
 </head>
 <body>
@@ -13,10 +14,11 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Ajouter un CRA : </legend>
-            @Html.LabelFor(m => Model.Date)
-            @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
-            <br />
+            <legend>Ajouter un CRA</legend>
+            <div class="date">
+                @Html.LabelFor(m => Model.Date)
+                @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
+            </div>
             @*Liste déroulante qui permet de choisir l'état du CRA : inutile puisqu'à
         sa création le CRA va forcément être vide et donc aura le statut NON_VALIDE. A la place on ne remplit pas ce champ mais
         la méthode createCRA applique automatiquement l'état NON_VALIDE au nouveau CRA créé*@
@@ -29,9 +31,11 @@
         <option value=@item name="State">@item</option>
         }
         </select>*@
-            <br />
+            <div class="button">
 
-            <input type="submit" value="Ajouter" />
+                <input type="submit" value="Ajouter" />
+            </div>
+
         </fieldset>
         <a href="/CRA/CreateCRA"></a>
     }

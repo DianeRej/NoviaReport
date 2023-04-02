@@ -73,7 +73,7 @@ namespace NoviaReport.Models.DAL_IDAL
 
         public void InvalidateCRA(CRA cra)
         {
-            cra.State = State.INCOMPLET;
+            cra.State = State.NON_VALIDE;
             _bddContext.CRAs.Update(cra);
             _bddContext.SaveChanges();
         }
