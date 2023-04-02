@@ -141,10 +141,6 @@
                 <th>Date</th>
                 <th>Etat</th>
                 <th>Visualiser</th>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/arbam_back2
             </tr>
 
             @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAsList"] as List<NoviaReport.Models.UserCRA>)
@@ -155,12 +151,8 @@
                     <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
                     <td>@userCRA.CRA.Date.ToString("d")</td>
                     <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
-<<<<<<< HEAD
                     <th><a href="/CRA/GetActivitiesCRA/@userCRA.CRAId">Visualiser</a></th>
 
-=======
-                    <td><button class="modifier">Visualiser</button></td>
->>>>>>> origin/arbam_back2
                 </tr>
             }
         </table>
