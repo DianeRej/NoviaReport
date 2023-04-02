@@ -27,7 +27,7 @@ namespace NoviaReport.Models.DAL_IDAL
         }
         public int CreateCRA(CRA cra)
         {
-            cra.State = State.INCOMPLET;
+            cra.State = State.NON_VALIDE;
             _bddContext.CRAs.Add(cra);
             _bddContext.SaveChanges();
             return cra.Id;
@@ -68,12 +68,14 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             cra.State = State.VALIDE;
             _bddContext.CRAs.Update(cra);
+            _bddContext.SaveChanges();
         }
 
         public void InvalidateCRA(CRA cra)
         {
-            cra.State = State.INCOMPLET;
+            cra.State = State.NON_VALIDE;
             _bddContext.CRAs.Update(cra);
+            _bddContext.SaveChanges();
         }
 
         //Méthode pour supprimer un CRA : a priori on ne supprimera pas de CRA donc inutile

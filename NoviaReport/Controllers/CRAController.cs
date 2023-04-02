@@ -199,7 +199,7 @@ namespace NoviaReport.Controllers
             {
                 dal.CreateCRA(cra);
                 dal.CreateUserCRA(cra, user);
-                return Redirect("/cra/updateCRA?craId=" + cra.Id); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+                return Redirect("/cra/updateCRAp?craId=" + cra.Id); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
             }
 
         }
@@ -207,7 +207,7 @@ namespace NoviaReport.Controllers
         //get : permet de compléter un CRA en y ajoutant des activités avec la vue calendrier 
         //pour le moment ne marche que pour un CRA vide puisque que le calendrier ne prend pas en compte des activités préexistantes du CRA
         [Authorize(Roles = "SALARIE")]
-        public IActionResult UpdateCRA(int craId)
+        public IActionResult UpdateCRAp(int craId)
         {
             if (craId != 0)
             {
@@ -300,6 +300,41 @@ namespace NoviaReport.Controllers
             
             return Redirect("/CRA/UpDateCRA" ); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
+
+        [Authorize(Roles = "MANAGER")]
+        public IActionResult ValidateCRA(int id)
+        {
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                CRA craToValidate = dal.GetCRAById(id);
+                dal.ValidateCRA(craToValidate);
+            }
+
+            return Redirect("/CRA/GetActivitiesCRA/"+id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+        }
+
+        [Authorize(Roles = "MANAGER")]
+        public IActionResult InvalidateCRA(int id)
+        {
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                CRA craToInvalidate = dal.GetCRAById(id);
+                dal.InvalidateCRA(craToInvalidate);
+            }
+
+            return Redirect("/CRA/GetActivitiesCRA/"+id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+        }
+
 
         //Méthode pour afficher la liste des Activites et des CRA
         [Authorize]

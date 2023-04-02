@@ -13,17 +13,9 @@ namespace NoviaReport.Models
     }
     public enum State
     {
-<<<<<<< HEAD
-        [Display(Name= "En cours de validation" )]
-        EN_COURS_DE_VALIDATION,
-        [Display(Name = "Validé")]
-        VALIDE,
-        [Display(Name = "Non validé")]
-        NON_VALIDE,
-        [Display(Name = "Incomplet")]
-        INCOMPLET
-=======
-        INCOMPLET, EN_COURS_DE_VALIDATION, VALIDE, NON_VALIDE
->>>>>>> Wafa_gestion_de_cra
+        [Display(Name = "Incomplet")]INCOMPLET, 
+        [Display(Name= "En cours de validation" )]EN_COURS_DE_VALIDATION, 
+        [Display(Name = "Validé")]VALIDE, 
+        [Display(Name = "Non validé")] NON_VALIDE
     }
 }
