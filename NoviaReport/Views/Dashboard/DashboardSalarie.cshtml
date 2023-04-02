@@ -1,4 +1,8 @@
-﻿@model NoviaReport.Models.User
+﻿@model List<NoviaReport.Models.User>
+@{
+    Layout = null;
+}
+@*A actualiser*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,10 +10,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Salarié</title>
-    <link rel="stylesheet" href="/css/styleDashboardSalarie.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styleDashboardAdmin.css" />
 </head>
-
 
 <body>
     <!----------------------------------------------------- HEADER ---------------------------------------------->
@@ -96,10 +99,10 @@
                     <h2>CRA</h2>
                     <ul>
                         <li>
-                            <a href="/CRA/CreateCRA?userId=@User.Identity.Name">Créer nouveau CRA</a>
+                            <a href="/CRA/UpDateCRA">Saisir cra</a>
                         </li>
                         <li>
-                            <a>Historique</a>
+                            <a>Visualiser les cra</a>
                         </li>
                     </ul>
                 </div>
@@ -136,67 +139,34 @@
             </div>
         </div>
     </nav>
-    <!--------------------------- COMPTEURS -------------------------------------------->
-    <div style="display: flex; flex-direction: column">
-        <div id="analytics">
-            <!----cards-->
-            <!---- user card------>
-            <div class="cards">
-                <!----icon---->
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 512 512"
-                     style="fill: #6db7b9">
-                    <!--! Font Awesome Pro 6.4.0 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path d="M368.4 18.3L312.7 74.1 437.9 199.3l55.7-55.7c21.9-21.9 21.9-57.3 0-79.2L447.6 18.3c-21.9-21.9-57.3-21.9-79.2 0zM288 94.6l-9.2 2.8L134.7 140.6c-19.9 6-35.7 21.2-42.3 41L3.8 445.8c-3.8 11.3-1 23.9 7.3 32.4L164.7 324.7c-3-6.3-4.7-13.3-4.7-20.7c0-26.5 21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48c-7.4 0-14.4-1.7-20.7-4.7L33.7 500.9c8.6 8.3 21.1 11.2 32.4 7.3l264.3-88.6c19.7-6.6 35-22.4 41-42.3l43.2-144.1 2.8-9.2L288 94.6z" />
-                </svg>
+    <!---------------------------Contenu -------------------------------------------->
+    <div>
+        <table id="table">
+            <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>login</th>
+                <th>Date</th>
+                <th>Etat</th>
+                <th>Modifier le CRA</th>
+            </tr>
+            @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAsList"] as List<NoviaReport.Models.UserCRA>)
+            {
 
-                <h2>@ViewBag.ToValidateCRAsNb</h2>
-                <h4>CRA en attente de validation</h4>
-            </div>
-            <div class="cards">
-                <!----icon---->
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 512 512"
-                     style="fill: #6db7b9">
-                    <!--! Font Awesome Pro 6.4.0 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
-                </svg>
-
-                <h2>@ViewBag.ToCompleteCRAsNb</h2>
-                <h4>CRA à saisir</h4>
-            </div>
-        </div>
-        <!--------------------------------    Table      ------------------------------->
-
-        <div>
-            <table id="table">
                 <tr>
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>login</th>
-                    <th>Date</th>
-                    <th>Etat</th>
-                    <th>Modifier le CRA</th>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Firstname)</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Lastname)</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
+                    <td>@userCRA.CRA.Date.ToString("d")</td>
+                    <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
+                    <td><a href="/CRA/GetActivitiesCRA/@userCRA.CRAId"><button>Visualiser</button></a></td>
+
+
                 </tr>
-                @foreach (NoviaReport.Models.UserCRA userCRA in ViewData["UserCRAsList"] as List<NoviaReport.Models.UserCRA>)
-                {
-
-                    <tr>
-                        <td>@Html.DisplayFor(uc=>userCRA.User.Firstname)</td>
-                        <td>@Html.DisplayFor(uc=>userCRA.User.Lastname)</td>
-                        <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
-                        <td>@userCRA.CRA.Date.ToString("d")</td>
-                        <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
-                        <td><a href="/CRA/GetActivitiesCRA/@userCRA.CRAId"><button>Visualiser</button></a></td>
-
-
-                    </tr>
-                }
-            </table>
-        </div>
+            }
+        </table>
     </div>
 
 
 </body>
 </html>
-

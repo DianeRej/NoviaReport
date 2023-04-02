@@ -29,6 +29,37 @@ namespace NoviaReport.Controllers
             return View("EspaceLogin", viewModel);
         }
 
+        //Page mot de passe oublie
+        public IActionResult ForgetPassword()
+        {
+            return View("ForgetPassword");
+        }
+
+        //post de la page de Mot de pass oublié, permet d'envoyer un lien de réinitialisation de mot de passe par mail à l'utilisateur)
+        [HttpPost]
+        public IActionResult ForgetPassword(UserViewModel viewModel, string returnUrl)
+        {
+            ModelState.AddModelError("User.Login", "'Aucun utilisateur correspondant à ce Login n'a été trouvé");
+            if (ModelState.IsValid)
+            {
+                User user = dal.getUserByLogin(viewModel.User.Login);
+                List<Role> roles = new List<Role>();
+
+
+                if (user != null)
+                {
+                    //envoyer le lien de reinitialisation de mot de passe par mail
+                    ModelState.AddModelError("User.Login", "'Aucun utilisateur correspondant à ce Login n'a été trouvé"); //affiche l'erreur en cas de fausse saisie
+                    return Redirect("/Login");
+                }
+
+                ModelState.AddModelError("User.Login", "'Aucun utilisateur correspondant à ce Login n'a été trouvé"); //affiche l'erreur en cas de fausse saisie
+                return Redirect("/Login");
+            }
+            return Redirect("/Login");
+        }
+
+
         //post de la page de login, permet d'envoyer les infos de co (va générer un cookie qui permet de savoir si l'utilisateur est connecté)
         [HttpPost]
         public IActionResult Index(UserViewModel viewModel, string returnUrl)
@@ -36,14 +67,17 @@ namespace NoviaReport.Controllers
             if (ModelState.IsValid)
             {
                 User user = dal.Authentifier(viewModel.User.Login, viewModel.User.Password);
+
                 List<Role> roles = new List<Role>();
-                using (DalRole dalRole = new DalRole())
-                {
-                    roles = dalRole.GetRolesByUserId(user.Id);
-                }
+               
 
                 if (user != null)
                 {
+                    using (DalRole dalRole = new DalRole())
+                    {
+                        roles = dalRole.GetRolesByUserId(user.Id);
+                    }
+
                     var userClaims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Name, user.Id.ToString()),

@@ -6,6 +6,7 @@ using NoviaReport.ViewModels;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace NoviaReport.Controllers
 {
@@ -127,15 +128,58 @@ namespace NoviaReport.Controllers
         //get : envoie sur le fomulaire de création d'un CRA
         //prend en argument un userId
         //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
-        public IActionResult CreateCRA(int userId)
+
+        [Authorize(Roles = "SALARIE")]
+        public IActionResult UpdateCRA()
         {
-            if (userId != 0)
+            int _userId = Int32.Parse( User.Identity.Name);
+            if (_userId != 0)
+
             {
-                using (DalCRA dal = new DalCRA())
+                CRA _cra = null;
+                using (DalUser _dalUser = new DalUser())
                 {
-                    ViewBag.userId = userId;
+                    User _user = _dalUser.GetUserById(_userId);
+
+                    using (DalCRA dal = new DalCRA())
+                    {
+
+                        _cra = dal.GetCurrentCRAByUser(_userId);
+                        if (_cra == null) //---- créer un nouveau cra
+                        {
+                            _cra = new CRA();
+                            _cra.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                            dal.CreateCRA(_cra);
+                            dal.CreateUserCRA(_cra, _user);
+
+                        }
+                    }
+
+                    Dictionary<string, string> _AllEvent = new Dictionary<string, string>();
+                    using (DalActivity _dalAct = new DalActivity())
+                    {
+                        List<CraActivity> listActiv = _dalAct.GetActivitiesForOneCRA(_cra.Id);
+                        foreach (var item in listActiv )
+                        {
+
+                            if (!_AllEvent.Keys.Contains(item.Activity.Date.ToString("M/d/yyyy")))
+                            {
+                                _AllEvent.Add(item.Activity.Date.ToString("M/d/yyyy"), item.Activity.TypeActivity.ToString());
+                            }
+                        
+                        }
+                    }
+                    int monthCRA = _cra.Date.Month;
+                    int yearCRA = _cra.Date.Year;
+                    ViewBag.craMonth = monthCRA - 1;
+                    ViewBag.craYear = yearCRA;
+                    ViewBag.craId = _cra.Id;
+                    ViewBag.State = _cra.State;
+                    ViewBag.ListEvents = _AllEvent;
+
+
+                    return View();
                 }
-                return View();
             }
             else return View("Error");
         }
@@ -253,7 +297,8 @@ namespace NoviaReport.Controllers
                 CRA craToSubmit = dal.GetCRAById(id);
                 dal.SubmitCra(craToSubmit);
             }
-            return Redirect("/Dashboard/DashboardSalarie/" + user.Id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+            
+            return Redirect("/CRA/UpDateCRA" ); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
         //Méthode pour afficher la liste des Activites et des CRA
