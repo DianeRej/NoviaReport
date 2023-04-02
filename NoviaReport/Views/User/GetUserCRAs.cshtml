@@ -151,14 +151,11 @@
                     <td>@Html.DisplayFor(uc=>userCRA.User.Login)</td>
                     <td>@userCRA.CRA.Date.ToString("d")</td>
                     <td>@Html.DisplayFor(uc=>userCRA.CRA.State)</td>
-                    <th><a href="/CRA/GetActivitiesCRA/@userCRA.CRAId">Visualiser</a></th>
+                    <td><a href="/CRA/GetActivitiesCRA/@userCRA.CRAId"><button>Visualiser</button></a></td>
 
                 </tr>
             }
         </table>
-    </div>
-    <div id="boutonss">
-        <button class="ajouter">Ajouter utilisateur</button>
     </div>
 
        
