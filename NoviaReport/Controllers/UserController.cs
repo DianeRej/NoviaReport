@@ -31,14 +31,16 @@ namespace NoviaReport.Controllers
         [HttpPost]
         public IActionResult CreateUser(User user, List<TypeRole> TypeRoles)
         {
-
+            using (DalUser dal = new DalUser())
+            {
+                List<User> managers = dal.GetManagers();
+                ViewData["ManagerList"] = managers;
+            }
             if (!ModelState.IsValid) //permet de vérifier que les info rentrées sont cohérentes
                 return View();
 
             using (DalUser dal = new DalUser())
             {
-                List<User> managers = dal.GetManagers();
-                ViewData["ManagerList"] = managers;
                 dal.CreateUser(user);
             }
             using (DalRole dalRole = new DalRole())
