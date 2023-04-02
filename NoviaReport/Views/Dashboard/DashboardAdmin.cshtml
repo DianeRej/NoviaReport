@@ -122,6 +122,8 @@
         </div>
     </nav>
     <!---------------------------Contenu -------------------------------------------->
+    <div class="bienvenu-msg">Bienvenu <i>@ViewBag.name</i></div>
+
     <!-------Data----->
     <div style="display: flex; flex-direction: column">
         <div id="analytics">
@@ -139,47 +141,47 @@
                 <h4>Utilisateurs</h4>
             </div>
         </div>
-       @* voir sur l'interface manager*@
-    @*Permet à un utilisateur qui a plusieurs roles de changer de Dashboard*@
-    @*@foreach (NoviaReport.Models.Role role in ViewData["UserRolesList"] as List<NoviaReport.Models.Role>)
-    {
-        if (role.TypeRole == NoviaReport.Models.TypeRole.SALARIE)
-        {
-            <a href="/Dashboard/DashboardSalarie/@User.Identity.Name">Aller sur la vue Salarié</a>
-        }
-        else if (role.TypeRole == NoviaReport.Models.TypeRole.MANAGER)
-        {
-            <a href="/Dashboard/DashboardManager/@User.Identity.Name">Aller sur la vue Manager</a>
-        }
-    }*@
+        @* voir sur l'interface manager*@
+        @*Permet à un utilisateur qui a plusieurs roles de changer de Dashboard*@
+        @*@foreach (NoviaReport.Models.Role role in ViewData["UserRolesList"] as List<NoviaReport.Models.Role>)
+            {
+                if (role.TypeRole == NoviaReport.Models.TypeRole.SALARIE)
+                {
+                    <a href="/Dashboard/DashboardSalarie/@User.Identity.Name">Aller sur la vue Salarié</a>
+                }
+                else if (role.TypeRole == NoviaReport.Models.TypeRole.MANAGER)
+                {
+                    <a href="/Dashboard/DashboardManager/@User.Identity.Name">Aller sur la vue Manager</a>
+                }
+            }*@
         <div>
             <table id="table">
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Login</th>
-            <th>Fonction</th>
-            @*<th>Role</th>*@
-            <th>Modifier</th>
-        </tr>
-        @foreach (NoviaReport.Models.User user in ViewData["UserList"] as List<NoviaReport.Models.User>)
-        {
-            <tr>
-                <td>@user.Firstname</td>
-                <td>@user.Lastname</td>
-                <td>@user.Login</td>
-                <td>@Html.DisplayFor(u=>user.ProfessionalInfo.Function)</td>
-                @*<td>@Html.DisplayFor(u=>user.Role.TypeRole)</td>*@
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Login</th>
+                    <th>Fonction</th>
+                    @*<th>Role</th>*@
+                    <th>Modifier</th>
+                </tr>
+                @foreach (NoviaReport.Models.User user in ViewData["UserList"] as List<NoviaReport.Models.User>)
+                {
+                    <tr>
+                        <td>@user.Firstname</td>
+                        <td>@user.Lastname</td>
+                        <td>@user.Login</td>
+                        <td>@Html.DisplayFor(u => user.ProfessionalInfo.Function)</td>
+                        @*<td>@Html.DisplayFor(u=>user.Role.TypeRole)</td>*@
                         <td><a href="/User/UpdateUser/@user.Id"><button class="modifier">Modifier</button></a></td>
-            </tr>
-        }
-    </table>
-    </div>
+                    </tr>
+                }
+            </table>
+        </div>
         <div id="boutonss">
-            
+
             <a href="/User/CreateUser"><button class="ajouter">Ajouter utilisateur</button></a>
         </div>
     </div>
-    
+
 </body>
 </html>

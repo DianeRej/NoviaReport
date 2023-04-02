@@ -14,6 +14,7 @@ namespace NoviaReport.Controllers
             using (DalUser dalUser = new DalUser())
             {
                 user = dalUser.GetUser(User.Identity.Name);
+                ViewBag.name = user.Firstname;
             }
             DalUser dal = new DalUser();
             ViewData["UserList"] = dal.GetAllUsers();
@@ -32,6 +33,7 @@ namespace NoviaReport.Controllers
             using (DalUser dal = new DalUser())
             {
                 user = dal.GetUser(User.Identity.Name);
+                ViewBag.name = user.Firstname;
                 ViewData["EmployeesList"] = dal.GetEmployeesOfAManager(id);
             }
             using (DalRole dalRole = new DalRole())
@@ -48,11 +50,43 @@ namespace NoviaReport.Controllers
             User user = new User();
             using (DalUser dal = new DalUser())
             {
-                
+                //pour le message de bienvenu
                 user = dal.GetUser(User.Identity.Name);
+
+                ViewBag.name = user.Firstname;
                 ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
             }
-            using (DalRole dalRole = new DalRole()) 
+            CRA _cra = null;
+            using (DalCRA dal = new DalCRA())
+            {
+                _cra = dal.GetCurrentCRAByUser(id);
+                if (_cra == null) {
+                    ViewBag.cra_message = "Vous n\'avez pas encore debutez la saisie de CRA";
+                }
+                else
+                {
+                    string sta = "";
+                    /*
+                    switch (_cra.State)
+                    {
+                        case _cra.:
+                            sta = "incomplet";
+                            break;
+                        case 1:
+                            sta = "en cours de validation";
+                            break;
+                        case 2:
+                            sta = "validé";
+                            break;
+                        case 3:
+                            sta = "réfusé";
+                            break;
+                    }
+                    */
+                    ViewBag.cra_message = "Votre CRA du "+ _cra.Date.Month +"/"+ _cra.Date.Year + " est " + _cra.State;
+                }
+            }
+                using (DalRole dalRole = new DalRole()) 
             {
                 ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
             }
