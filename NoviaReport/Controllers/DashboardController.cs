@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NoviaReport.Controllers
 {
@@ -14,9 +16,12 @@ namespace NoviaReport.Controllers
             using (DalUser dalUser = new DalUser())
             {
                 user = dalUser.GetUser(User.Identity.Name);
+                List<User> userList = new List<User> { user };
+                userList = dalUser.GetAllUsers();
+                int userNb = userList.Count;
+                ViewData["UserList"] = userList;
+                ViewBag.UserNb = userNb;
             }
-            DalUser dal = new DalUser();
-            ViewData["UserList"] = dal.GetAllUsers();
             using (DalRole dalRole = new DalRole())
             {
                 ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
@@ -48,15 +53,15 @@ namespace NoviaReport.Controllers
             User user = new User();
             using (DalUser dal = new DalUser())
             {
-                
+
                 user = dal.GetUser(User.Identity.Name);
                 ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
             }
-            using (DalRole dalRole = new DalRole()) 
+            using (DalRole dalRole = new DalRole())
             {
                 ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
             }
-             
+
             return View();
         }
     }
