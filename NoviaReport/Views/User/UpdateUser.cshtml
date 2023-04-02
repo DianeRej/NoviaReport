@@ -2,17 +2,22 @@
     ViewData["Title"] = "UpdateUser";
 }
 
-<h1>UpdateUser</h1>
+
 @model NoviaReport.Models.User
 @{
     Layout = null;
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="/css/StyleUpdateUser.css" rel="stylesheet" />
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/css/StyleUpdateUser.css" rel="stylesheet" />
+    <title>Modifier un utilisateur</title>
+</head>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CreateUser</title>
@@ -21,6 +26,7 @@
     @using (Html.BeginForm())
     {
         <fieldset>
+            <h1>UpdateUser</h1>
             <legend>Ajouter un utilisateur : </legend>
             @*<!-- texts box pour le login, le mot de passe, le prénom, le nom, et les infos dans contact -->*@
 
