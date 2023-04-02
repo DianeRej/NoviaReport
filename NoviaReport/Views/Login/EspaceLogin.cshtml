@@ -9,12 +9,16 @@
 @if (Model.Authentifie)
 {
     <div class="center">
-        <img src="./Images/4.png" alt="texte alternatif" />
+        <div>
+            <img src="./Images/4.png" alt="texte alternatif" />
+        </div>
+        <div>
         <h3>
             Vous êtes déjà authentifié avec le login :
             @Model.User.Login
         </h3>
         @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        </div>
     </div>
 }
 else

@@ -115,6 +115,7 @@ namespace NoviaReport.Models.DAL_IDAL
             return userCRAs;
         }
 
+
         public List<User> GetEmployeesOfAManager(int id)
         {
             List<User> employees = _bddContext.Users.Where(u=>u.ManagerId == id).ToList();

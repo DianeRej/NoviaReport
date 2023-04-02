@@ -63,14 +63,25 @@ namespace NoviaReport.Controllers
                 List<UserCRA> CRAs = new List<UserCRA>();
                 CRAs = dal.GetCRAForOneUser(id);
                 ViewData["UserCRAsList"] = CRAs;
+                int ToValidateCRAsNb = 0;
+                foreach (UserCRA UserCRA in CRAs)
+                {
+                    if (UserCRA.CRA.State.Equals(State.EN_COURS_DE_VALIDATION))
+                    {
+                        ToValidateCRAsNb++;
+                    }
+                }
+                ViewBag.ToValidateCRAsNb = ToValidateCRAsNb;
 
-                //List<UserCRA> ToValidateCRAs = (List<UserCRA>)CRAs.Where(cra => cra.CRA.State.Equals(State.EN_COURS_DE_VALIDATION));
-                //int ToValidateCRAsNb = ToValidateCRAs.Count;
-                //ViewBag.ToValidateCRAsNb = ToValidateCRAsNb;
-
-                //List<UserCRA> ToCompleteCRAs = (List<UserCRA>)CRAs.Where(cra => cra.CRA.State.Equals(State.NON_VALIDE));
-                //int ToCompleteCRAsNb = ToCompleteCRAs.Count;
-                //ViewBag.ToCompleteCRAsNb = ToCompleteCRAsNb;
+                int ToCompleteCRAsNb = 0;
+                foreach (UserCRA UserCRA in CRAs)
+                {
+                    if (UserCRA.CRA.State.Equals(State.NON_VALIDE) || UserCRA.CRA.State.Equals(State.INCOMPLET))
+                    {
+                        ToCompleteCRAsNb++;
+                    }
+                }
+                ViewBag.ToCompleteCRAsNb = ToCompleteCRAsNb;
             }
             using (DalRole dalRole = new DalRole())
             {
