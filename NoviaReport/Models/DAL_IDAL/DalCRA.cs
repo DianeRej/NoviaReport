@@ -58,6 +58,7 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             cra.State = State.EN_COURS_DE_VALIDATION;
             _bddContext.CRAs.Update(cra);
+            _bddContext.SaveChanges();
         }
 
         //méthodes spécifique au manager 
@@ -67,12 +68,14 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             cra.State = State.VALIDE;
             _bddContext.CRAs.Update(cra);
+            _bddContext.SaveChanges();
         }
 
         public void InvalidateCRA(CRA cra)
         {
-            cra.State = State.INCOMPLET;
+            cra.State = State.NON_VALIDE;
             _bddContext.CRAs.Update(cra);
+            _bddContext.SaveChanges();
         }
 
         //Méthode pour supprimer un CRA : a priori on ne supprimera pas de CRA donc inutile

@@ -43,12 +43,12 @@ namespace NoviaReport.Models
             this.Users.AddRange(
                 new User { Id = 1, Firstname = "Diane", Lastname = "Reja", Login = "DianeR", Password = DalUser.EncodeMD5("ddddd"), ContactId = 1, ProfessionalInfoId = 1 },
                 new User { Id = 2, Firstname = "Shain", Lastname = "Arbam", Login = "ShainA", Password = DalUser.EncodeMD5("sssss"), ContactId = 2, ProfessionalInfoId = 2 },
-                new User { Id = 3, Firstname = "Moncef", Lastname = "Said", Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ContactId = 3, ProfessionalInfoId = 3,},
-                new User { Id = 4, Firstname = "Wafa", Lastname = "Ayeb", Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ContactId = 4, ProfessionalInfoId = 4,},
+                new User { Id = 3, Firstname = "Moncef", Lastname = "Said", Login = "MoncefS", Password = DalUser.EncodeMD5("mmmmm"), ContactId = 3, ProfessionalInfoId = 3, },
+                new User { Id = 4, Firstname = "Wafa", Lastname = "Ayeb", Login = "WafaA", Password = DalUser.EncodeMD5("wwwww"), ContactId = 4, ProfessionalInfoId = 4, },
 
 
-                new User { Id = 5, Firstname = "Fidji", Lastname = "Kennedy", Login = "FidjiK", Password = DalUser.EncodeMD5("fifi"), ContactId = 5, ProfessionalInfoId = 5, ManagerId = 2},
-                new User { Id = 6, Firstname = "Paul", Lastname = "Belmondo", Login = "PaulB", Password = DalUser.EncodeMD5("belo"), ContactId = 6, ProfessionalInfoId = 6, ManagerId=2},
+                new User { Id = 5, Firstname = "Fidji", Lastname = "Kennedy", Login = "FidjiK", Password = DalUser.EncodeMD5("fifi"), ContactId = 5, ProfessionalInfoId = 5, ManagerId = 2 },
+                new User { Id = 6, Firstname = "Paul", Lastname = "Belmondo", Login = "PaulB", Password = DalUser.EncodeMD5("belo"), ContactId = 6, ProfessionalInfoId = 6, ManagerId = 2 },
                 new User { Id = 7, Firstname = "Patrick", Lastname = "Brelle", Login = "PatrickB", Password = DalUser.EncodeMD5("brelle"), ContactId = 7, ProfessionalInfoId = 7, ManagerId = 2 },
                 new User { Id = 8, Firstname = "Francis", Lastname = "Garbel", Login = "FrancisG", Password = DalUser.EncodeMD5("garbel"), ContactId = 8, ProfessionalInfoId = 8, ManagerId = 2 },
 
@@ -59,14 +59,14 @@ namespace NoviaReport.Models
 
 
                 new User { Id = 13, Firstname = "Ashraaf", Lastname = "Awad", Login = "AshraafA", Password = DalUser.EncodeMD5("ashraaf"), ContactId = 13, ProfessionalInfoId = 13, ManagerId = 19 },
-                new User { Id = 14, Firstname = "Athika", Lastname = "Fazil", Login = "AthikaF", Password = DalUser.EncodeMD5("athika"), ContactId = 14, ProfessionalInfoId = 14, ManagerId= 19 },
-                new User { Id = 15, Firstname = "Sonia", Lastname = "Texeira",Login = "SoniaT", Password = DalUser.EncodeMD5("sonia"), ContactId = 15, ProfessionalInfoId = 15, ManagerId = 19 },
+                new User { Id = 14, Firstname = "Athika", Lastname = "Fazil", Login = "AthikaF", Password = DalUser.EncodeMD5("athika"), ContactId = 14, ProfessionalInfoId = 14, ManagerId = 19 },
+                new User { Id = 15, Firstname = "Sonia", Lastname = "Texeira", Login = "SoniaT", Password = DalUser.EncodeMD5("sonia"), ContactId = 15, ProfessionalInfoId = 15, ManagerId = 19 },
                 new User { Id = 16, Firstname = "Lili", Lastname = "Baleine", Login = "LiliB", Password = DalUser.EncodeMD5("lili"), ContactId = 16, ProfessionalInfoId = 16, ManagerId = 20 },
 
-                new User { Id = 17, Firstname = "Rosali", Lastname = "Tricoli", Login = "RosaliT", Password = DalUser.EncodeMD5("rosali"), ContactId = 17, ProfessionalInfoId = 17, ManagerId= 20 },
-                new User { Id = 18, Firstname = "Violette", Lastname = "Celine",Login = "VioletteC", Password = DalUser.EncodeMD5("violette"), ContactId = 18, ProfessionalInfoId = 18, ManagerId= 20 },
-                new User { Id = 19, Firstname = "Camaro", Lastname = "Ndialo", Login = "CamaroN", Password = DalUser.EncodeMD5("camaro"), ContactId = 19, ProfessionalInfoId = 19,},
-                new User { Id = 20, Firstname = "Jay", Lastname = "Singh", Login = "JayS", Password = DalUser.EncodeMD5("jay"), ContactId = 20, ProfessionalInfoId = 20,},
+                new User { Id = 17, Firstname = "Rosali", Lastname = "Tricoli", Login = "RosaliT", Password = DalUser.EncodeMD5("rosali"), ContactId = 17, ProfessionalInfoId = 17, ManagerId = 20 },
+                new User { Id = 18, Firstname = "Violette", Lastname = "Celine", Login = "VioletteC", Password = DalUser.EncodeMD5("violette"), ContactId = 18, ProfessionalInfoId = 18, ManagerId = 20 },
+                new User { Id = 19, Firstname = "Camaro", Lastname = "Ndialo", Login = "CamaroN", Password = DalUser.EncodeMD5("camaro"), ContactId = 19, ProfessionalInfoId = 19, },
+                new User { Id = 20, Firstname = "Jay", Lastname = "Singh", Login = "JayS", Password = DalUser.EncodeMD5("jay"), ContactId = 20, ProfessionalInfoId = 20, },
 
                 new User { Id = 21, Firstname = "Ashok", Lastname = "Lanka", Login = "AshokL", Password = DalUser.EncodeMD5("ashok"), ContactId = 21, ProfessionalInfoId = 21 }
                 );
@@ -85,7 +85,7 @@ namespace NoviaReport.Models
                 new Contact { Id = 9, Street = "35 rue des margerittes", PostalCode = 06360, City = "Eze", PersonalMail = "Alain@gmail.com", ProMail = "Alain@projet2", PersonalPhone = 063225544, ProPhone = 0644556677 },
                 new Contact { Id = 10, Street = "20 rue de la station", PostalCode = 95130, City = "Franconville", PersonalMail = "PierreV@gmail.com", ProMail = "PierreV@projet2", PersonalPhone = 077776777, ProPhone = 075559988 },
                 new Contact { Id = 11, Street = "10 rue kepler", PostalCode = 83600, City = "Frejus", PersonalMail = "Viknesh@gmail.com", ProMail = "Viknesh@projet2", PersonalPhone = 0766459887, ProPhone = 0743345645 },
-                new Contact { Id = 12, Street = "1 rue du des jasmins", PostalCode =83160 , City = "la Mole", PersonalMail = "Sanjay@gmail.com", ProMail = "Sanjay@projet2", PersonalPhone = 0799999999, ProPhone = 0788009900 },
+                new Contact { Id = 12, Street = "1 rue du des jasmins", PostalCode = 83160, City = "la Mole", PersonalMail = "Sanjay@gmail.com", ProMail = "Sanjay@projet2", PersonalPhone = 0799999999, ProPhone = 0788009900 },
 
                 new Contact { Id = 13, Street = "5 rue maurice meyer", PostalCode = 83980, City = "Le Lavandou", PersonalMail = "Ashraaf@gmail.com", ProMail = "Ashraaf@projet2", PersonalPhone = 0765344961, ProPhone = 0704050676 },
                 new Contact { Id = 14, Street = "6 rue du general leclerc", PostalCode = 73220, City = "Aiton", PersonalMail = "Athika@gmail.com", ProMail = "Athika@projet2", PersonalPhone = 078965558, ProPhone = 061234566 },
@@ -117,7 +117,7 @@ namespace NoviaReport.Models
                new ProfessionalInfo { Id = 10, Position = Position.CADRE, Function = Function.DEVELOPPEUR, DateOfArrival = new DateTime(2015, 09, 01) },
                new ProfessionalInfo { Id = 11, Position = Position.NONCADRE, Function = Function.TECHNICIEN, DateOfArrival = new DateTime(2016, 01, 28) },
                new ProfessionalInfo { Id = 12, Position = Position.NONCADRE, Function = Function.TECHNICIEN, DateOfArrival = new DateTime(2016, 10, 28) },
-               
+
                new ProfessionalInfo { Id = 13, Position = Position.NONCADRE, Function = Function.RESPONSABLE_RESEAU, DateOfArrival = new DateTime(2010, 11, 01) },
                new ProfessionalInfo { Id = 14, Position = Position.NONCADRE, Function = Function.RESPONSABLE_RESEAU, DateOfArrival = new DateTime(2016, 12, 29) },
                new ProfessionalInfo { Id = 15, Position = Position.NONCADRE, Function = Function.RESPONSABLE_SECURITE, DateOfArrival = new DateTime(2015, 02, 28) },
@@ -127,7 +127,7 @@ namespace NoviaReport.Models
                new ProfessionalInfo { Id = 18, Position = Position.CADRE, Function = Function.CHEF_DE_PROJET, DateOfArrival = new DateTime(2016, 12, 29) },
                new ProfessionalInfo { Id = 19, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new DateTime(2017, 02, 28) },
                new ProfessionalInfo { Id = 20, Position = Position.CADRE, Function = Function.INGENIEUR, DateOfArrival = new DateTime(2017, 01, 31) },
-               
+
                new ProfessionalInfo { Id = 21, Position = Position.DIRECTEUR, Function = Function.PDG, DateOfArrival = new DateTime(2010, 01, 31) }
                );
 
@@ -137,24 +137,24 @@ namespace NoviaReport.Models
 
                new Role { Id = 3, TypeRole = TypeRole.MANAGER, UserId = 3 },
                new Role { Id = 4, TypeRole = TypeRole.MANAGER, UserId = 4 },
-               
+
                new Role { Id = 5, TypeRole = TypeRole.ADMIN, UserId = 5 },
                new Role { Id = 6, TypeRole = TypeRole.SALARIE, UserId = 6 },
                new Role { Id = 7, TypeRole = TypeRole.SALARIE, UserId = 7 },
                new Role { Id = 8, TypeRole = TypeRole.SALARIE, UserId = 8 },
-               
+
                new Role { Id = 9, TypeRole = TypeRole.SALARIE, UserId = 9 },
-               new Role { Id = 10, TypeRole = TypeRole.SALARIE, UserId = 10 },              
+               new Role { Id = 10, TypeRole = TypeRole.SALARIE, UserId = 10 },
                new Role { Id = 11, TypeRole = TypeRole.SALARIE, UserId = 11 },
                new Role { Id = 12, TypeRole = TypeRole.SALARIE, UserId = 12 },
-               
-               new Role { Id = 13, TypeRole = TypeRole.SALARIE, UserId = 13},
-               new Role { Id = 14, TypeRole = TypeRole.SALARIE, UserId =  14 },              
+
+               new Role { Id = 13, TypeRole = TypeRole.SALARIE, UserId = 13 },
+               new Role { Id = 14, TypeRole = TypeRole.SALARIE, UserId = 14 },
                new Role { Id = 15, TypeRole = TypeRole.SALARIE, UserId = 15 },
-               new Role { Id = 16, TypeRole = TypeRole.SALARIE, UserId =  16 },
-               
+               new Role { Id = 16, TypeRole = TypeRole.SALARIE, UserId = 16 },
+
                new Role { Id = 17, TypeRole = TypeRole.SALARIE, UserId = 17 },
-               new Role { Id = 18, TypeRole = TypeRole.SALARIE, UserId =  18 },               
+               new Role { Id = 18, TypeRole = TypeRole.SALARIE, UserId = 18 },
                new Role { Id = 19, TypeRole = TypeRole.MANAGER, UserId = 19 },
                new Role { Id = 20, TypeRole = TypeRole.MANAGER, UserId = 20 },
 
@@ -175,7 +175,7 @@ namespace NoviaReport.Models
                 new UserCRA { Id = 7, UserId = 12, CRAId = 7 },
                 new UserCRA { Id = 8, UserId = 13, CRAId = 8 },
 
-                new UserCRA { Id = 9,  UserId = 14, CRAId = 9 },
+                new UserCRA { Id = 9, UserId = 14, CRAId = 9 },
                 new UserCRA { Id = 10, UserId = 15, CRAId = 10 },
                 new UserCRA { Id = 11, UserId = 16, CRAId = 11 },
                 new UserCRA { Id = 12, UserId = 17, CRAId = 12 },
@@ -224,15 +224,15 @@ namespace NoviaReport.Models
                 new UserCRA { Id = 46, UserId = 12, CRAId = 46 },
                 new UserCRA { Id = 47, UserId = 13, CRAId = 47 },
                 new UserCRA { Id = 48, UserId = 14, CRAId = 48 }
-
                 );
 
             this.CRAs.AddRange(
 
-                new CRA { Id = 1, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
-                new CRA { Id = 2, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
-                new CRA { Id = 3, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
-                new CRA { Id = 4, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
+                new CRA { Id = 1, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
+                new CRA { Id = 2, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+                new CRA { Id = 3, Date = new DateTime(2023, 03, 01), State = State.INCOMPLET },
+                new CRA { Id = 4, Date = new DateTime(2023, 04, 01), State = State.INCOMPLET },
+
 
                 new CRA { Id = 5, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
                 new CRA { Id = 6, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
@@ -245,7 +245,7 @@ namespace NoviaReport.Models
                 new CRA { Id = 12, Date = new DateTime(2023, 01, 01), State = State.EN_COURS_DE_VALIDATION },
 
                 new CRA { Id = 13, Date = new DateTime(2023, 01, 01), State = State.NON_VALIDE },
-                new CRA { Id = 14, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION},
+                new CRA { Id = 14, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION },
                 new CRA { Id = 15, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
                 new CRA { Id = 16, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
 
@@ -305,7 +305,6 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 11, CRAId = 11, ActivityId = 11 },
                 new CraActivity { Id = 12, CRAId = 12, ActivityId = 12 },
                 new CraActivity { Id = 13, CRAId = 13, ActivityId = 13 },
-
                 new CraActivity { Id = 14, CRAId = 14, ActivityId = 14 },
                 new CraActivity { Id = 15, CRAId = 15, ActivityId = 15 },
                 new CraActivity { Id = 16, CRAId = 16, ActivityId = 16 },
@@ -329,7 +328,6 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 34, CRAId = 34, ActivityId = 34 },
                 new CraActivity { Id = 35, CRAId = 35, ActivityId = 35 },
                 new CraActivity { Id = 36, CRAId = 36, ActivityId = 36 },
-              
                 new CraActivity { Id = 37, CRAId = 37, ActivityId = 37 },
                 new CraActivity { Id = 38, CRAId = 38, ActivityId = 38 },
                 new CraActivity { Id = 39, CRAId = 39, ActivityId = 39 },
@@ -345,62 +343,62 @@ namespace NoviaReport.Models
 
 
             this.Activities.AddRange(
-                new Activity { Id = 1, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
-                new Activity { Id = 2, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
-                new Activity { Id = 3, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client2 },
-                new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE },
-                new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
-                new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client1 },
-                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client3 },
-                new Activity { Id = 8, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 13, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client4 },
+                new Activity { Id = 1, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.BNP_PARIBAS },
+                new Activity { Id = 2, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.BNP_PARIBAS },
+                new Activity { Id = 3, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.BNP_PARIBAS },
+                new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE, Client = Client.Aucun_Client },
+                new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.SOCIETE_GENERALE },
+                new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.SOCIETE_GENERALE },
+                new Activity { Id = 7, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ENGIE },
+                new Activity { Id = 8, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client },
+                new Activity { Id = 9, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 10, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 11, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE, Client = Client.Aucun_Client },
+                new Activity { Id = 12, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE, Client = Client.Aucun_Client },
+                new Activity { Id = 13, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
 
-                new Activity { Id = 14, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client9 },
-                new Activity { Id = 15, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client9 },
-                new Activity { Id = 16, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client9 },
-                new Activity { Id = 17, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE },
-                new Activity { Id = 18, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 },
-                new Activity { Id = 19, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 },
-                new Activity { Id = 20, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 21, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 22, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 23, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client7 },
-                new Activity { Id = 24, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 25, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE },
-                new Activity { Id = 26, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client8 },
-                new Activity { Id = 27, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 },
-                new Activity { Id = 28, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 },
+                new Activity { Id = 14, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
+                new Activity { Id = 15, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
+                new Activity { Id = 16, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
+                new Activity { Id = 17, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE, Client = Client.Aucun_Client },
+                new Activity { Id = 18, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 19, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 20, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 21, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client },
+                new Activity { Id = 22, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 23, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.EUTELSAT },
+                new Activity { Id = 24, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.CONGE_MATERNITE, Client = Client.Aucun_Client },
+                new Activity { Id = 25, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.CONGE_MATERNITE, Client = Client.Aucun_Client },
+                new Activity { Id = 26, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.VALLOUREC },
+                new Activity { Id = 27, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 28, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
 
-                new Activity { Id = 29, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 30, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 31, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client4 },
-                new Activity { Id = 32, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 33, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 34, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client4 },
+                new Activity { Id = 29, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client },
+                new Activity { Id = 30, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 31, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 32, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 33, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 34, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
 
-                new Activity { Id = 35, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client9 },
-                new Activity { Id = 36, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client9 },
-                new Activity { Id = 37, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.Client9 },
-                new Activity { Id = 38, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE },
-                new Activity { Id = 39, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 },
-                new Activity { Id = 40, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 },
-                new Activity { Id = 41, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 42, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE },
-                new Activity { Id = 43, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 44, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client7 },
-                new Activity { Id = 45, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 46, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client6 },
-                new Activity { Id = 47, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.Client8 },
-                new Activity { Id = 48, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.Client5 }
-              
+                new Activity { Id = 35, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
+                new Activity { Id = 36, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
+                new Activity { Id = 37, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
+                new Activity { Id = 38, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE, Client = Client.Aucun_Client },
+                new Activity { Id = 39, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 40, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 41, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 42, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client },
+                new Activity { Id = 43, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 44, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.EUTELSAT },
+                new Activity { Id = 45, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 46, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 47, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.VALLOUREC },
+                new Activity { Id = 48, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA }
+
                 );
 
             this.SaveChanges();
-
+             
         }
     }
 }

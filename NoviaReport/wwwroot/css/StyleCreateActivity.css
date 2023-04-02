@@ -1,0 +1,33 @@
+﻿body {
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    right: 20%;
+    background-color: #022829;
+}
+
+form {
+    padding: 20px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: white;
+}
+
+fieldset {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+    fieldset legend {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+.groupe {
+    position: relative;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,12 +1,20 @@
 body {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 20%;
     right: 20%;
     background-color: #022829;
     
 }
 /*-----------------------Corps formulaire----------------*/
+h1 {
+    font-size: 17px;
+    font-weight: bold;
+    position: center;
+    margin-bottom: 2px;
+    color: white;
+}
+
 form {
     padding: 20px;
     top: 10px;
@@ -33,12 +41,6 @@ fieldset {
         margin-bottom: 30px;
 
     }
-
-
-
-label {
-}
-
 
 h3 {
     font-size: 17px;
@@ -149,6 +151,22 @@ input {
         color: white;
     }
 
-.droite {
-   
+button {
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    color: black;
+    font-size: 15px;
+    transition: all 0,5s ease;
+    position: center;
+    cursor: pointer;
 }
+
+    button:hover {
+        color: darkred;
+    }
+
+    button:focus {
+        color: darkred;
+    }

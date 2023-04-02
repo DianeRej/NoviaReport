@@ -256,6 +256,40 @@ namespace NoviaReport.Controllers
             return Redirect("/Dashboard/DashboardSalarie/" + user.Id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
+        [Authorize(Roles = "MANAGER")]
+        public IActionResult ValidateCRA(int id)
+        {
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                CRA craToValidate = dal.GetCRAById(id);
+                dal.ValidateCRA(craToValidate);
+            }
+
+            return Redirect("/CRA/GetActivitiesCRA/" + id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+        }
+
+        [Authorize(Roles = "MANAGER")]
+        public IActionResult InvalidateCRA(int id)
+        {
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
+            using (DalCRA dal = new DalCRA())
+            {
+                CRA craToInvalidate = dal.GetCRAById(id);
+                dal.InvalidateCRA(craToInvalidate);
+            }
+
+            return Redirect("/CRA/GetActivitiesCRA/" + id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+        }
+
         //Méthode pour afficher la liste des Activites et des CRA
         [Authorize]
         public IActionResult ListActivitiesCRA()
