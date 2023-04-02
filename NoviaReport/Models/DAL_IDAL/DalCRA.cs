@@ -27,7 +27,7 @@ namespace NoviaReport.Models.DAL_IDAL
         }
         public int CreateCRA(CRA cra)
         {
-            cra.State = State.NON_VALIDE;
+            cra.State = State.INCOMPLET;
             _bddContext.CRAs.Add(cra);
             _bddContext.SaveChanges();
             return cra.Id;
@@ -58,6 +58,7 @@ namespace NoviaReport.Models.DAL_IDAL
         {
             cra.State = State.EN_COURS_DE_VALIDATION;
             _bddContext.CRAs.Update(cra);
+            this._bddContext.SaveChanges();
         }
 
         //méthodes spécifique au manager 
@@ -94,6 +95,16 @@ namespace NoviaReport.Models.DAL_IDAL
         public CRA GetCRAById(int id)
         {
             return this._bddContext.CRAs.SingleOrDefault(u => u.Id == id);
+        }
+        //Méthode pour rechercher un CRA grâce à un Id user, Year and Month
+        public CRA GetCurrentCRAByUser(int idUser)
+        {
+
+            DateTime currentDate =  DateTime.Now;
+            var vUserCra = this._bddContext.UserCRAs.FirstOrDefault(x => x.UserId == idUser && x.CRA.Date.Year == currentDate.Year && x.CRA.Date.Month == currentDate.Month);
+            return vUserCra != null ? _bddContext.CRAs.SingleOrDefault(x=>x.Id == vUserCra.CRAId) : null;
+
+
         }
 
         //méthode pour créer une ligne dans la table intermédiaire UserCRA à partir d'un CRA et d'un user

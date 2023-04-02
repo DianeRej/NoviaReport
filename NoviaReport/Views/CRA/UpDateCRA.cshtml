@@ -1,5 +1,10 @@
-﻿@{
+﻿@using NoviaReport.Models;
+@{
     Layout = null;
+
+    Dictionary<string,string> listeEvents = ViewBag.ListEvents;
+   
+    var craState = ViewBag.State;
 }
 
 <!DOCTYPE html>
@@ -21,7 +26,7 @@
                 <div id="monthDisplay"></div>
                 <div>
                     <button id="backButton" hidden>Back</button>
-                    <button id="nextButton"hidden>Next</button>
+                    <button id="nextButton" hidden>Next</button>
                 </div>
             </div>
 
@@ -76,11 +81,41 @@
             <script>var craMonth = "@ViewBag.craMonth"</script>
             <script>var craYear = "@ViewBag.craYear"</script>
             <script src="/js/script.js"></script>
-        </div>
+            <script>
+                    var allEvents = @Json.Serialize(listeEvents)
+                    for (var x in allEvents) {
+                        events.push({
+                            date: x,
+                            title: allEvents[x],
+                        });
+                }
+                load();
 
-        <div class="containers">
-            <button id="SoumettreCRA" onclick="location.href='/CRA/SubmitCRA/@ViewBag.craId';">Soumettre le CRA</button>
+
+            </script>
         </div>
+        @{
+        
+                
+
+            if (craState == NoviaReport.Models.State.INCOMPLET)
+            {
+
+                <div class="containers">
+                    <button id="SoumettreCRA" onclick="location.href='/CRA/SubmitCRA/@ViewBag.craId';">Soumettre le CRA</button>
+                </div>
+            }
+            if (craState == NoviaReport.Models.State.EN_COURS_DE_VALIDATION)
+            {
+
+                <div class="containers">
+                    <p> Ce CRA est en cours de validation</p>
+                </div>
+            }
+
+        }
+
+
     </div>
 
     <!----------------------------------------------------- HEADER ---------------------------------------------->
@@ -151,9 +186,6 @@
                 <div class="sub-nav">
                     <h2>CRA</h2>
                     <ul>
-                        <li>
-                            <a>Saisir cra</a>
-                        </li>
                         <li>
                             <a>Historique</a>
                         </li>

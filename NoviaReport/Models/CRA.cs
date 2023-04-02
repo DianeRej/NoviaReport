@@ -13,6 +13,6 @@ namespace NoviaReport.Models
     }
     public enum State
     {
-        EN_COURS_DE_VALIDATION, VALIDE, NON_VALIDE, INCOMPLET
+        INCOMPLET, EN_COURS_DE_VALIDATION, VALIDE, NON_VALIDE
     }
 }

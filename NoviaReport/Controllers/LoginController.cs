@@ -66,14 +66,17 @@ namespace NoviaReport.Controllers
             if (ModelState.IsValid)
             {
                 User user = dal.Authentifier(viewModel.User.Login, viewModel.User.Password);
+
                 List<Role> roles = new List<Role>();
-                using (DalRole dalRole = new DalRole())
-                {
-                    roles = dalRole.GetRolesByUserId(user.Id);
-                }
+               
 
                 if (user != null)
                 {
+                    using (DalRole dalRole = new DalRole())
+                    {
+                        roles = dalRole.GetRolesByUserId(user.Id);
+                    }
+
                     var userClaims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Name, user.Id.ToString()),
