@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
+using NoviaReport.Models.DAL_IDAL.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,13 +38,34 @@ namespace NoviaReport.Controllers
             using (DalUser dal = new DalUser())
             {
                 user = dal.GetUser(User.Identity.Name);
-                ViewData["EmployeesList"] = dal.GetEmployeesOfAManager(id);
+                List<User> employeeList = new List<User> {};
+                employeeList = dal.GetEmployeesOfAManager(id);
+                int employeeNb = employeeList.Count;
+                ViewData["EmployeesList"] = employeeList;
+                ViewBag.EmployeeNb = employeeNb;
+
+                int CRAInWaiting = 0;
+                foreach (User employee in employeeList)
+                {
+                    List<UserCRA> cRAs = dal.GetCRAForOneUser(employee.Id);
+                    foreach (UserCRA userCRA in cRAs)
+                    {
+                        if (userCRA.CRA.State.Equals(State.EN_COURS_DE_VALIDATION))
+                        {
+                            CRAInWaiting++;
+                        }
+                    }
+                }
+                ViewBag.CRAInWaiting = CRAInWaiting;
             }
+            //faire un compteur des cra non validé pour chaque employé et additionner tous les compteurs
+            
+
+            //permet de vérifier quels roles à le user : s'il a plusieurs roles, il y aura un lien pour changer de vue dans le header du dashboard
             using (DalRole dalRole = new DalRole())
             {
                 ViewData["UserRolesList"] = dalRole.GetRolesByUserId(user.Id);
             }
-
             return View();
         }
 
@@ -53,9 +75,29 @@ namespace NoviaReport.Controllers
             User user = new User();
             using (DalUser dal = new DalUser())
             {
-
                 user = dal.GetUser(User.Identity.Name);
-                ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
+                List<UserCRA> CRAs = new List<UserCRA>();
+                CRAs = dal.GetCRAForOneUser(id);
+                ViewData["UserCRAsList"] = CRAs;
+                int ToValidateCRAsNb = 0;
+                foreach (UserCRA UserCRA in CRAs)
+                {
+                    if (UserCRA.CRA.State.Equals(State.EN_COURS_DE_VALIDATION))
+                    {
+                        ToValidateCRAsNb++;
+                    }
+                }
+                ViewBag.ToValidateCRAsNb = ToValidateCRAsNb;
+
+                int ToCompleteCRAsNb = 0;
+                foreach (UserCRA UserCRA in CRAs)
+                {
+                    if (UserCRA.CRA.State.Equals(State.NON_VALIDE) || UserCRA.CRA.State.Equals(State.INCOMPLET))
+                    {
+                        ToCompleteCRAsNb++;
+                    }
+                }
+                ViewBag.ToCompleteCRAsNb = ToCompleteCRAsNb;
             }
             using (DalRole dalRole = new DalRole())
             {

@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Liste des activités</title>
     <link rel="stylesheet" href="/css/styleTabActivitiesCra.css" />
 </head>
 
@@ -130,18 +130,23 @@
     <div style="display: flex; flex-direction: column">
         <div>
             <h2>Liste d'activités CRA</h2>
+            
+            <p style="display: inline-block;">Etat du CRA :</p>
+            <span style="display: inline-block;">@Model.Cra.State</span>
+            
 
-            <p>Etat du CRA : </p>
-            <p>@Model.Cra.State</p>
+            
 
             @if (User.IsInRole("SALARIE") && Model.Cra.State.Equals(NoviaReport.Models.State.INCOMPLET))
             {
                 <a href="/cra/createactivityform?craid=@Model.Cra.Id"><button>Ajouter une activité</button></a>
+                <a href="/CRA/SubmitCRA/@Model.Cra.Id"><button>Soumettre le CRA</button></a>
 
             }
             else if (User.IsInRole("SALARIE") && Model.Cra.State.Equals(NoviaReport.Models.State.NON_VALIDE))
             {
                 <a href="/cra/createactivityform?craid=@Model.Cra.Id"><button>Ajouter une activité</button></a>
+                <a href="/CRA/SubmitCRA/@Model.Cra.Id"><button>Soumettre le CRA</button></a>
             }
 
             @if (User.IsInRole("MANAGER") && Model.Cra.State.Equals(NoviaReport.Models.State.EN_COURS_DE_VALIDATION))
@@ -171,6 +176,7 @@
                 }
             </table>
         </div>
+
     </div>
 
     

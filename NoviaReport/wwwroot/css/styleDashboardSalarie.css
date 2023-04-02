@@ -22,7 +22,7 @@ header {
     
   }
   header img{
-    width: 5.5%;
+    width: 5%;
     padding-left: 10px;
   }
   
@@ -212,6 +212,7 @@ body {
   width: 200px;
   text-align: center ;
   border: 1px solid #7f9e9e;
+  color : white ;
 }
 
 #boutonss button  {

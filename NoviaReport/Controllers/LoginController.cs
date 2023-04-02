@@ -20,6 +20,7 @@ namespace NoviaReport.Controllers
         public IActionResult Index()
         {
             UserViewModel viewModel = new UserViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
+            
             if (viewModel.Authentifie)
             {
                 viewModel.User = dal.GetUser(HttpContext.User.Identity.Name);

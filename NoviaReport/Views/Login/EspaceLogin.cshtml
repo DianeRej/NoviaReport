@@ -3,18 +3,31 @@
 @{
     Layout = null;
 }
-<link rel="stylesheet" href="/css/StyleEspaceLogin.css" />
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/Bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/StyleEspaceLogin.css" />
+    <title>Connexion</title>
+</head>
 @if (Model.Authentifie)
 {
     <div class="center">
-        <img src="./Images/4.png" alt="texte alternatif" />
+        <div>
+            <img src="./Images/4.png" alt="texte alternatif" />
+        </div>
+        <div>
         <h3>
             Vous êtes déjà authentifié avec le login :
             @Model.User.Login
         </h3>
         @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        </div>
     </div>
 }
 else
@@ -46,3 +59,4 @@ else
         </div>
     </body>
 }
+</html>
