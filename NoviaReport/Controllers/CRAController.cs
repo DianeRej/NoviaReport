@@ -6,6 +6,7 @@ using NoviaReport.ViewModels;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace NoviaReport.Controllers
 {
@@ -30,7 +31,7 @@ namespace NoviaReport.Controllers
             {
                 return View("Error");
             }
-            if (craToComplete.State.Equals(State.NON_VALIDE) || craToComplete.State.Equals(State.INCOMPLET))
+            if (craToComplete.State.Equals(State.VALIDATION_REFUSEE) || craToComplete.State.Equals(State.INCOMPLET))
             {
 
                 using (DalActivity dal = new DalActivity())
@@ -57,14 +58,13 @@ namespace NoviaReport.Controllers
                 CRA cra = dal.GetAllCRAs().Where(r => r.Id == Convert.ToInt32(res.craId)).FirstOrDefault();
                 using (DalActivity ctx = new DalActivity())
                 {
-                    Activity activity = new Activity { Date = System.DateTime.Now, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
+                    DateTime date = DateTime.ParseExact(res.date, "M/d/yyyy", CultureInfo.InvariantCulture);
+                    Activity activity = new Activity { Date = date, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
                     ctx.CreateActivity(activity);
                     ctx.CreateCraActivity(cra, activity);
-
                 }
             }
-           
-            return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
+            return Redirect("/");
         }
 
         //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
