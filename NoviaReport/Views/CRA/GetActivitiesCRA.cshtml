@@ -151,9 +151,9 @@
 
             @if (User.IsInRole("MANAGER") && Model.Cra.State.Equals(NoviaReport.Models.State.EN_COURS_DE_VALIDATION))
             {
-                <a href="">Valider le CRA</a>
+                <a href="/CRA/ValidateCRA/@Model.Cra.Id"><button>Valider le CRA</button></a>
                 //mettre le lien de l'action ValidateCRA
-                <a href="">Renvoyer le CRA pour modification</a>
+                <a href="/CRA/InvalidateCRA/@Model.Cra.Id"><button>Renvoyer le CRA pour modification</button></a>
                 //mettre le lien de l'action InvalidateCRA
 
             }
