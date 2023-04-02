@@ -1,9 +1,5 @@
 body {
-    /*height: 100vh;*/
-    /*background-image: url("../Images/3.png");*/
-    /*background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;*/
+    
     position: absolute;
     top: 0%;
     left: 20%;
@@ -33,14 +29,6 @@ fieldset {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 30px;
-    }
-
-    legend{
-        
-    }
-
-    label{
-        
     }
 
 
@@ -154,6 +142,19 @@ input {
         color: white;
     }
 
- .droite{
-     
- }
+button {
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    transition: all 0,5s ease;
+    position: center;
+    cursor: pointer;
+}
+
+    button:hover{
+        color: darkred;
+    }
+

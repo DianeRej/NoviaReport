@@ -1,8 +1,8 @@
 @{
-    ViewData["Title"] = "UpdateUser";
+    ViewData["Title"] = /*"UpdateUser"*/ "Modifier_Utilisateur";
 }
 
-<h1>UpdateUser</h1>
+
 @model NoviaReport.Models.User
 @{
     Layout = null;
@@ -15,13 +15,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CreateUser</title>
+    @*<title>CreateUser</title>*@
 </head>
 <body>
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Ajouter un utilisateur : </legend>
+            <legend>Modifier un utilisateur : </legend>
             @*<!-- texts box pour le login, le mot de passe, le prénom, le nom, et les infos dans contact -->*@
 
             <div class="Corps_formulaire">
@@ -32,6 +32,7 @@
                         @Html.TextBoxFor(m => Model.Login)
                         @Html.ValidationMessageFor(m => Model.Login)
                         <i class="fa-solid fa-user"></i>
+
                         @*Pour le moment on ne peut plus modifier le mdp*@
                         @Html.HiddenFor(m => Model.Password)
                     </div>
@@ -69,6 +70,7 @@
                         @Html.LabelFor(m => Model.Contact.PersonalPhone)
                         @Html.TextBoxFor(m => Model.Contact.PersonalPhone, new {@class= "Input Tel"})
                         @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
+                        <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="groupe">
                         @Html.LabelFor(m => Model.Contact.ProMail)
@@ -80,6 +82,7 @@
                         @Html.LabelFor(m => Model.Contact.ProPhone)
                         @Html.TextBoxFor(m => Model.Contact.ProPhone, new {@class= "Input Tel"})
                         @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
+                        <i class="fa-solid fa-phone"></i>
                     </div>
                 </div>
 
@@ -205,10 +208,15 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" value="Ajouter" />
+            <input type="submit" value="Modifier" />
         </fieldset>
 
-        <a href="/home/index">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>
+
+        <button><a href="/dashboard/dashboardadmin">Retour au tableau de bord</a></button>
+        
+        
+
+
         //lien à modif quand le dashboard de l'admin sera créé
     }
     @*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>

@@ -2,53 +2,80 @@
 @{
     Layout = null;
 }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="/css/StyleCreateActivity.css" rel="stylesheet" />
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Add activity</title>
 </head>
+
+
 <body>
 
-    @using (Html.BeginForm())
-    {
-        <fieldset>
-            <legend>Ajouter une activité : </legend>
-            @Html.LabelFor(m => Model.Date)
-            @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
-            @*@Html.ValidationMessageFor(m => Model.Date)*@
-            <br />
+  
+
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                <legend>Ajouter une activité : </legend>
+
+                <div class="Corps_formulaire">
+
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.Date)
+                        @Html.TextBoxFor(m=>Model.Date,"{0:yyyy-MM-dd}" ,new{@type="date"})
+                        @*@Html.ValidationMessageFor(m => Model.Date)*@
+                        <br />
+                    </div>
 
 
-            @Html.LabelFor(m => Model.TypeActivity)
-            <select id="TypeActivity" name="TypeActivity">
-                <option value="">Type d'Activité</option>
-                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
-                {
-                    <option value=@item name="TypeActivity">@item</option>
-                }
-            </select>
-            <br />
-            @*@Html.LabelFor(m => Model.Halfday)
-            @Html.CheckBoxFor(m => m.Halfday)
-            <br />*@
+                    <div class="groupe">
+                        @Html.LabelFor(m => Model.TypeActivity)
+                        <select id="TypeActivity" name="TypeActivity">
+                            <option value="">Type d'Activité</option>
+                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeActivity)))
+                            {
+                                <option value=@item name="TypeActivity">@item</option>
+                            }
+                        </select>
+                        <br />
+                        @*@Html.LabelFor(m => Model.Halfday)
+                    @Html.CheckBoxFor(m => m.Halfday)
+                    <br />*@
+                    </div>
 
-            @Html.LabelFor(m => Model.Client)
-            <select id="Client" name="Client">
-                <option value="">Client</option>
-                @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Client)))
-                {
-                    <option value=@item name="Client">@item</option>
-                }
-            </select>
-            <p>Choisir un client seulement pour une activité de type : Astreinte, Prestation ou Maintenance</p>
-            <br />
+                    <div class="groupe">
 
-            <input type="hidden" value="@ViewBag.CRAid" name="CRAid">
-            <input type="submit" value="Ajouter" />
-        </fieldset>
-        <a href="/CRA/CreateActivity"></a>
-    }
+                        @Html.LabelFor(m => Model.Client)
+                        <select id="Client" name="Client">
+                            <option value="">Client</option>
+                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Client)))
+                            {
+                                <option value=@item name="Client">@item</option>
+                            }
+                        </select>
+
+                    </div>
+
+
+                    <input type="hidden" value="@ViewBag.CRAid" name="CRAid">
+                    <input type="submit" value="Ajouter" />
+
+
+                </div>
+
+                
+            </fieldset>
+            <a href="/CRA/CreateActivity"></a>
+        }
+
+   
+
+    
 
 </body>
 </html>
