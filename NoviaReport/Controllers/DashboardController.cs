@@ -38,12 +38,28 @@ namespace NoviaReport.Controllers
             using (DalUser dal = new DalUser())
             {
                 user = dal.GetUser(User.Identity.Name);
-                List<User> employeeList = new List<User> { user };
+                List<User> employeeList = new List<User> {};
                 employeeList = dal.GetEmployeesOfAManager(id);
                 int employeeNb = employeeList.Count;
                 ViewData["EmployeesList"] = employeeList;
                 ViewBag.EmployeeNb = employeeNb;
+
+                int CRAInWaiting = 0;
+                foreach (User employee in employeeList)
+                {
+                    List<UserCRA> cRAs = dal.GetCRAForOneUser(employee.Id);
+                    foreach (UserCRA userCRA in cRAs)
+                    {
+                        if (userCRA.CRA.State.Equals(State.EN_COURS_DE_VALIDATION))
+                        {
+                            CRAInWaiting++;
+                        }
+                    }
+                }
+                ViewBag.CRAInWaiting = CRAInWaiting;
             }
+            //faire un compteur des cra non validé pour chaque employé et additionner tous les compteurs
+            
 
             //permet de vérifier quels roles à le user : s'il a plusieurs roles, il y aura un lien pour changer de vue dans le header du dashboard
             using (DalRole dalRole = new DalRole())

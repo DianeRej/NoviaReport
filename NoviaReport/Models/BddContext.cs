@@ -284,7 +284,7 @@ namespace NoviaReport.Models
                 new CRA { Id = 43, Date = new DateTime(2023, 12, 01), State = State.VALIDE },
                 new CRA { Id = 44, Date = new DateTime(2023, 12, 01), State = State.VALIDE },
 
-                new CRA { Id = 45, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET },
+                new CRA { Id = 45, Date = new DateTime(2023, 12, 01), State = State.EN_COURS_DE_VALIDATION },
                 new CRA { Id = 46, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET },
                 new CRA { Id = 47, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET },
                 new CRA { Id = 48, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET }
