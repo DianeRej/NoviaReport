@@ -19,43 +19,34 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    justify-content: space-between;
     
   }
   header img{
     width: 5.5%;
     padding-left: 10px;
   }
-
-.boutons {
+  
+  .boutons {
     margin-left: auto;
+   
+  }
+
+.btn {
+    margin-left: 720px;
 }
-button {
-    margin-left: 100px;
-    margin-right: 40px;
-    background-color: #0e4d4f;
+
+ 
+ 
+  button {
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: #043638;
     color: white;
-    border-radius: 20px;
+    border-radius : 20px;
     cursor: pointer;
-    padding: 15px 22px;
-}
-
-  .boutons button {
-    background-color: #2d4b4c; /* Couleur de fond */
-    color: #FFFFFF; /* Couleur du texte */
-    border: none; /* Supprime la bordure */
-    border-radius: 4px; /* Ajoute des coins arrondis */
-    cursor: pointer; /* Change le curseur en pointeur lorsque survolé */
-
+    padding: 10px 15px;
+    
   }
-  .boutons button:hover {
-    background-color: #062d2e; /* Changer la couleur de fond lorsqu'on survole le bouton */
-  }
-  .boutons button:active {
-    transform: translateY(2px); /* Ajouter un effet de clic */
-  }
-  
-  
 
 body {
   padding-top: 100px;
@@ -140,9 +131,6 @@ body {
    text-decoration: none;
 }
 
-
-
-
 .topbox {
   padding-top: 120px;
   padding-left: 200px;
@@ -151,3 +139,93 @@ body {
   color: #022829;
 }
 
+#analytics
+{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 60px 0 50px 650px;
+}
+
+#analytics .cards
+{
+  height: 200px;
+  width: 350px;
+  background: #022829;
+  margin: 0 50px;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px  #00000015;
+}
+
+
+.cards svg {
+  
+  width: 70px;
+  height: 70px;
+}
+
+#analytics .cards h2
+{
+  font-size: 60px;
+  color: #ffffff;
+}
+
+#analytics .cards h4{
+
+  font-size: 20px;
+  color: #ffffff;
+}
+
+#analytics .cards:hover
+{
+  background: #043638;
+}
+
+#analytics .cards:hover h2
+{
+  color: #50b86f;
+}
+#analytics .cards:hover h4
+{
+  color: #50b86f;
+}
+
+#table
+{
+  height: calc(100% - 350px);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-collapse: collapse;
+  padding: 2% 5%;
+}
+
+#table tr{
+  height: 55px;
+}
+
+#table tr th{
+  width: 350px;
+  color: #000000;
+  background: #d0d4d4;
+}
+
+#table tr td{
+  width: 200px;
+  text-align: center ;
+  border: 1px solid #7f9e9e;
+}
+
+#boutonss button  {
+  margin-left: 840px;
+  margin-right: 50px;
+  background-color: #022829;
+  color: white;
+  border-radius : 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  
+}

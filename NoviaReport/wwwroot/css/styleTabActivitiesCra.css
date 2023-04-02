@@ -19,43 +19,28 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    justify-content: space-between;
     
   }
   header img{
     width: 5.5%;
     padding-left: 10px;
   }
-
-.boutons {
+  
+  .boutons {
     margin-left: auto;
-}
-button {
+   
+  }
+  
+  button {
     margin-left: 100px;
     margin-right: 40px;
     background-color: #0e4d4f;
     color: white;
-    border-radius: 20px;
+    border-radius : 20px;
     cursor: pointer;
     padding: 15px 22px;
-}
-
-  .boutons button {
-    background-color: #2d4b4c; /* Couleur de fond */
-    color: #FFFFFF; /* Couleur du texte */
-    border: none; /* Supprime la bordure */
-    border-radius: 4px; /* Ajoute des coins arrondis */
-    cursor: pointer; /* Change le curseur en pointeur lorsque survolé */
-
+    
   }
-  .boutons button:hover {
-    background-color: #062d2e; /* Changer la couleur de fond lorsqu'on survole le bouton */
-  }
-  .boutons button:active {
-    transform: translateY(2px); /* Ajouter un effet de clic */
-  }
-  
-  
 
 body {
   padding-top: 100px;
@@ -140,9 +125,6 @@ body {
    text-decoration: none;
 }
 
-
-
-
 .topbox {
   padding-top: 120px;
   padding-left: 200px;
@@ -150,4 +132,41 @@ body {
   width: 50%;
   color: #022829;
 }
+
+h2{
+  padding: 30px 50px;
+  font-size: 30px;
+  font-family: Georgia, serif;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #022829;
+
+}
+#table
+{
+  height: calc(100% - 350px);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-collapse: collapse;
+  padding-top: 20px;
+}
+
+#table tr{
+  height: 55px;
+}
+
+#table tr th{
+  width: 350px;
+  color: #000000;
+  background: #d0d4d4;
+}
+
+#table tr td{
+  width: 200px;
+  text-align: center ;
+  border: 1px solid #7f9e9e;
+}
+
 

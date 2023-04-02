@@ -4,6 +4,7 @@ using NoviaReport.Models;
 using NoviaReport.Models.DAL_IDAL;
 using NoviaReport.ViewModels;
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace NoviaReport.Controllers
@@ -18,7 +19,7 @@ namespace NoviaReport.Controllers
         //Pour pouvoir ajouter une activité il y a 2 conditions : le CRAid doit correspondre à un CRA existant ET 
         //le statut du CRA doit être NON_VALIDE ou INCOMPLET
         [Authorize(Roles = "SALARIE")]
-        public IActionResult CreateActivity(int CRAid)
+        public IActionResult CreateActivityForm(int CRAid)
         {
             CRA craToComplete = new CRA();
             using (DalCRA dal = new DalCRA())
@@ -43,8 +44,29 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-
         //Méthode post pour créer une activité
+        [HttpPost]
+        public IActionResult CreateActivityForm(Activity activity, int CRAid)
+        {
+            if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+                return View();
+
+            CRA cra = new CRA();
+            using (DalCRA dal = new DalCRA())
+            {
+                cra = dal.GetAllCRAs().Where(r => r.Id == CRAid).FirstOrDefault();
+            }
+            using (DalActivity dal = new DalActivity())
+            {
+                dal.CreateActivity(activity);
+                dal.CreateCraActivity(cra, activity);
+
+            }
+            return Redirect("/cra/getactivitiescra/" + cra.Id); //à changer pour un lien vers la liste des acitivités
+        }
+
+
+        //Méthode post pour créer une activité à partir du calendrier
         [HttpPost]
         public IActionResult CreateActivity([FromBody] ActivityFromFetch res)
         {
@@ -56,14 +78,13 @@ namespace NoviaReport.Controllers
                 CRA cra = dal.GetAllCRAs().Where(r => r.Id == Convert.ToInt32(res.craId)).FirstOrDefault();
                 using (DalActivity ctx = new DalActivity())
                 {
-                    Activity activity = new Activity { Date = System.DateTime.Now, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType) };
+                    DateTime date = DateTime.ParseExact(res.date, "M/d/yyyy", CultureInfo.InvariantCulture);
+                    Activity activity = new Activity { Date = date, TypeActivity = (TypeActivity)Enum.Parse(typeof(TypeActivity), res.activityType), Client = (Client)Enum.Parse(typeof(Client), res.client) };
                     ctx.CreateActivity(activity);
                     ctx.CreateCraActivity(cra, activity);
-
                 }
             }
-           
-            return Redirect("/home/index"); //à changer pour un lien vers la liste des acitivités
+            return Redirect("/"); 
         }
 
         //Méthode get, pour modifier une activité qui renvoie vers un formulaire de modification prérempli
@@ -103,22 +124,16 @@ namespace NoviaReport.Controllers
                 return View("Error");
             }
         }
-
         //get : envoie sur le fomulaire de création d'un CRA
         //prend en argument un userId
         //C'est le salarié qui crée son CRA en entrant la date (01/mois/année) ; l'état initial du CRA est fixé à NON_VALIDE
-        [Authorize(Roles = "SALARIE")]
-        public IActionResult UpdateCRA(int craId)
+        public IActionResult CreateCRA(int userId)
         {
-            if (craId != 0)
+            if (userId != 0)
             {
                 using (DalCRA dal = new DalCRA())
                 {
-                    CRA cra = dal.GetCRAById(craId);
-                    int monthCRA = cra.Date.Month;
-                    int yearCRA = cra.Date.Year;
-                    ViewBag.craMonth = monthCRA-1;
-                    ViewBag.craYear = yearCRA;
+                    ViewBag.userId = userId;
                 }
                 return View();
             }
@@ -127,7 +142,7 @@ namespace NoviaReport.Controllers
 
         //Méthode post pour créer un CRA
         [HttpPost]
-        public IActionResult UpdateCRA(CRA cra, int userId)
+        public IActionResult CreateCRA(CRA cra, int userId)
         {
             if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
                 return View();
@@ -140,10 +155,51 @@ namespace NoviaReport.Controllers
             {
                 dal.CreateCRA(cra);
                 dal.CreateUserCRA(cra, user);
-                return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+                return Redirect("/cra/updateCRA?craId=" + cra.Id); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
             }
 
         }
+
+        //get : permet de compléter un CRA en y ajoutant des activités avec la vue calendrier 
+        //pour le moment ne marche que pour un CRA vide puisque que le calendrier ne prend pas en compte des activités préexistantes du CRA
+        [Authorize(Roles = "SALARIE")]
+        public IActionResult UpdateCRA(int craId)
+        {
+            if (craId != 0)
+            {
+                using (DalCRA dal = new DalCRA())
+                {
+                    CRA cra = dal.GetCRAById(craId);
+                    int monthCRA = cra.Date.Month;
+                    int yearCRA = cra.Date.Year;
+                    ViewBag.craMonth = monthCRA - 1;
+                    ViewBag.craYear = yearCRA;
+                    ViewBag.craId = craId;
+                }
+                return View();
+            }
+            else return View("Error");
+        }
+
+
+        //[HttpPost]
+        //public IActionResult UpdateCRA(CRA cra, int userId)
+        //{
+        //    if (!ModelState.IsValid)// pour verifier si les infos saisis sont cohérentes
+        //        return View();
+        //    User user = new User();
+        //    using (DalUser dal = new DalUser())
+        //    {
+        //        user = dal.GetUserById(userId);
+        //    }
+        //    using (DalCRA dal = new DalCRA())
+        //    {
+        //        dal.CreateCRA(cra);
+        //        dal.CreateUserCRA(cra, user);
+        //        return Redirect("/home/index"); //à changer pour un lien vers la liste des cra ou le dashboard du User ?
+        //    }
+
+        //}
 
         //Méthode get pour la modification d'un CRA, qui renvoie vers un formulaire de modification préremplis
         //avec les informations existantes dans la DB (a travers l'id)
@@ -160,7 +216,7 @@ namespace NoviaReport.Controllers
             return View("Error");
         }
 
- 
+
         //Méthode post pour modifier le CRA
 
         [HttpPost]
@@ -187,13 +243,17 @@ namespace NoviaReport.Controllers
         [Authorize(Roles = "SALARIE")]
         public IActionResult SubmitCRA(int id)
         {
-
+            User user = new User();
+            using (DalUser dalUser = new DalUser())
+            {
+                user = dalUser.GetUser(User.Identity.Name);
+            }
             using (DalCRA dal = new DalCRA())
             {
                 CRA craToSubmit = dal.GetCRAById(id);
                 dal.SubmitCra(craToSubmit);
             }
-            return Redirect("/home/index"); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
+            return Redirect("/Dashboard/DashboardSalarie/" + user.Id); //à changer pour un lien vers la liste des CRA ou le dashboard salarié ?
         }
 
         //Méthode pour afficher la liste des Activites et des CRA
@@ -203,14 +263,13 @@ namespace NoviaReport.Controllers
             DalActivity dal = new DalActivity();
             ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
             return View("ListActivitiesCRA");
-
-
         }
 
         //Méthode pour afficher les Activités liées à un CRA
         [Authorize]
         public IActionResult GetActivitiesCRA(int id)
         {
+
             CraActivitiesViewModel viewModel = new CraActivitiesViewModel { };
 
             using (DalCRA dalCRA = new DalCRA())
@@ -224,7 +283,7 @@ namespace NoviaReport.Controllers
             }
             return View("GetActivitiesCRA", viewModel);
 
-    }
+        }
 
-}
+    }
 }

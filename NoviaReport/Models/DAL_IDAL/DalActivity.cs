@@ -21,7 +21,7 @@ namespace NoviaReport.Models.DAL_IDAL
         //Méthodes pour créer une activité
         public int CreateActivity(bool halfday, DateTime date, TypeActivity typeActivity)
         {
-            Activity activityToCreate = new Activity() { Halfday = halfday, Date = date, TypeActivity = typeActivity };
+            Activity activityToCreate = new Activity() { Date = date, TypeActivity = typeActivity };
             _bddContext.Activities.Add(activityToCreate);
             _bddContext.SaveChanges();
             return activityToCreate.Id;

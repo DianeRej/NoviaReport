@@ -50,7 +50,7 @@ namespace NoviaReport.Controllers
                     dalRole.CreateRole(role);
                 }
             }
-            return View();
+            return Redirect("/Dashboard/DashboardAdmin");
         }
 
         //get : envoie sur un formulaire de modification identique à celui de création mais où les champs seront
@@ -125,5 +125,6 @@ namespace NoviaReport.Controllers
             ViewData["UserCRAsList"] = dal.GetCRAForOneUser(id);
             return View("GetUserCRAs");
         }
+        //ceci est un test
     }
 }
