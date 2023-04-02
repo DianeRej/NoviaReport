@@ -1,137 +1,153 @@
+@model NoviaReport.Models.User
 @{
     ViewData["Title"] = "UpdateUser";
 }
 
-<h1>UpdateUser</h1>
-@model NoviaReport.Models.User
+
 @{
-    Layout = null;
+    
+Layout = null;
 }
+
+
+<!DOCTYPE html>
+
+                                                    @*<head>
+                                                        <meta name="viewport" content="width=device-width" />
+                                                     <title>CreateUser</title>
+                                                     </head> *@
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="/css/StyleUpdateUser.css" rel="stylesheet" />
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CreateUser</title>
 </head>
+=======
+
+>>>>>>> origin/arbam_back2
 <body>
     @using (Html.BeginForm())
     {
-        <fieldset>
-            <legend>Ajouter un utilisateur : </legend>
+       <fieldset>            
+            <legend>Modifier un utilisateur : </legend>
             @*<!-- texts box pour le login, le mot de passe, le prénom, le nom, et les infos dans contact -->*@
+            
+            <form>
+                <div class="Corps_formulaire">
+                    
+                    <div class="gauche">
 
-            <div class="Corps_formulaire">
-                <div>
-                    <h3>Login</h3>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Login)
-                        @Html.TextBoxFor(m => Model.Login)
-                        @Html.ValidationMessageFor(m => Model.Login)
-                        <i class="fa-solid fa-user"></i>
-                        @*Pour le moment on ne peut plus modifier le mdp*@
-                        @Html.HiddenFor(m => Model.Password)
-                    </div>
-                </div>
+                        <div>
+                            <h3>Login</h3>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.Login)
+                                @Html.TextBoxFor(m => Model.Login)
+                                @Html.ValidationMessageFor(m => Model.Login)
+                                <i class="fa-solid fa-user"></i>
+                                @*Pour le moment on ne peut plus modifier le mdp*@
+                                @Html.HiddenFor(m => Model.Password)
+                            </div>
+                        </div>
 
 
-                <div>
-                    <h3>Identité</h3>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Firstname)
-                        @Html.TextBoxFor(m => Model.Firstname)
-                        @Html.ValidationMessageFor(m => Model.Firstname)
-                    </div>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Lastname)
-                        @Html.TextBoxFor(m => Model.Lastname)
-                        @Html.ValidationMessageFor(m => Model.Lastname)
-                    </div>
-                </div>
+                        <div>
+                            <h3>Identité</h3>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.Firstname)
+                                @Html.TextBoxFor(m => Model.Firstname)
+                                @Html.ValidationMessageFor(m => Model.Firstname)
+                            </div>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.Lastname)
+                                @Html.TextBoxFor(m => Model.Lastname)
+                                @Html.ValidationMessageFor(m => Model.Lastname)
+                            </div>
+                        </div>
 
-                <div>
-                    <h3>Contact </h3>
-                    <div class="groupe">
-                        @*les deux lignes suivantes correspondent à des champs cachés : ce sont les clés étrangères
-                    qui ne seront pas modifiées mais qui sont nécessaires pour l'update du user*@
-                        @Html.HiddenFor(m=> Model.Contact.Id)
-                        @Html.HiddenFor(m=> Model.ContactId)
+                        <div>
+                            <h3>Contact </h3>
+                            <div class="groupe">
+                                @*les deux lignes suivantes correspondent à des champs cachés : ce sont les clés étrangères
+                                qui ne seront pas modifiées mais qui sont nécessaires pour l'update du user*@
+                                @Html.HiddenFor(m=> Model.Contact.Id)
+                                @Html.HiddenFor(m=> Model.ContactId)
 
-                        @Html.LabelFor(m => Model.Contact.PersonalMail)
-                        @Html.TextBoxFor(m => Model.Contact.PersonalMail, new {@class= "Input Mail"})
-                        @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Contact.PersonalPhone)
-                        @Html.TextBoxFor(m => Model.Contact.PersonalPhone, new {@class= "Input Tel"})
-                        @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
-                    </div>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Contact.ProMail)
-                        @Html.TextBoxFor(m => Model.Contact.ProMail, new {@class= "Input Mail"})
-                        @Html.ValidationMessageFor(m => Model.Contact.ProMail)
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Contact.ProPhone)
-                        @Html.TextBoxFor(m => Model.Contact.ProPhone, new {@class= "Input Tel"})
-                        @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
-                    </div>
-                </div>
-
-                <div>
-                    <h3>Adresse</h3>
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Contact.Street)
-                        @Html.TextBoxFor(m => Model.Contact.Street)
-                        @Html.ValidationMessageFor(m => Model.Contact.Street)
-                        <i class="fa-solid fa-road"></i>
+                                @Html.LabelFor(m => Model.Contact.PersonalMail)
+                                @Html.TextBoxFor(m => Model.Contact.PersonalMail, new {@class= "Mail"})
+                                @Html.ValidationMessageFor(m => Model.Contact.PersonalMail)
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.Contact.PersonalPhone)
+                                @Html.TextBoxFor(m => Model.Contact.PersonalPhone, new {@class= "Tel"})
+                                @Html.ValidationMessageFor(m => Model.Contact.PersonalPhone)
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.Contact.ProMail)
+                                @Html.TextBoxFor(m => Model.Contact.ProMail, new {@class= "Mail"})
+                                @Html.ValidationMessageFor(m => Model.Contact.ProMail)
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.Contact.ProPhone)
+                                @Html.TextBoxFor(m => Model.Contact.ProPhone, new {@class= "Tel"})
+                                @Html.ValidationMessageFor(m => Model.Contact.ProPhone)
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Contact.PostalCode)
-                        @Html.TextBoxFor(m => Model.Contact.PostalCode)
-                        @Html.ValidationMessageFor(m => Model.Contact.PostalCode)
-                    </div>
+                
+                
 
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.Contact.City)
-                        @Html.TextBoxFor(m => Model.Contact.City)
-                        @Html.ValidationMessageFor(m => Model.Contact.City)
-                        <i class="fa-sharp fa-solid fa-city"></i>
-                    </div>
+                   <div class="droite">
 
-                </div>
+                        <h3>Adresse</h3>
+                        <div class="groupe">
+                            @Html.LabelFor(m => Model.Contact.Street)
+                            @Html.TextBoxFor(m => Model.Contact.Street)
+                            @Html.ValidationMessageFor(m => Model.Contact.Street)
+                            <i class="fa-solid fa-road"></i>
+                        </div>
 
-                @*Même chose que tout à l'heure, ce sont des champs cachés pour la clé étrangère vers la table ProfesionnalInfo*@
-                @Html.HiddenFor(m=>Model.ProfessionalInfo.Id)
-                @Html.HiddenFor(m=>Model.ProfessionalInfoId)
+                        <div class="groupe">
+                            @Html.LabelFor(m => Model.Contact.PostalCode)
+                            @Html.TextBoxFor(m => Model.Contact.PostalCode)
+                            @Html.ValidationMessageFor(m => Model.Contact.PostalCode)
+                        </div>
 
-                @*<!-- liste déroulante et check box pour les infos pro et le manager -->*@
-                <div>
-                    <h3>Rôle de l'employé</h3>
-                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
-                    {
-                        @*Ici on doit vérifier pour le user que l'on veut modifier quel(s) rôle(s) il avait précédemment, pour cela on doit chercher
-                les rôles qui correspondent à l'id du user (voir la méthode dans la DalRole
-                Pour que la checkbox soit cochée avec le(s) bon(s) rôle(s) on fait une boucle foreach qui vérifie cela et qui va attribuer
-                un boolean true si le rôle est bien détenu par le user
-                Si c'est le cas alors la checkbox sera notée checked=@isChecked(donc true)*@
+                        <div class="groupe">
+                            @Html.LabelFor(m => Model.Contact.City)
+                            @Html.TextBoxFor(m => Model.Contact.City)
+                            @Html.ValidationMessageFor(m => Model.Contact.City)
+                            <i class="fa-sharp fa-solid fa-city"></i>
+                        </div>
 
-                        bool isChecked = false;
-                        foreach (NoviaReport.Models.Role itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
-                        {
-                            if (itemBis.TypeRole.Equals(item))
+
+
+                        @*Même chose que tout à l'heure, ce sont des champs cachés pour la clé étrangère vers la table ProfesionnalInfo*@
+                        @Html.HiddenFor(m=>Model.ProfessionalInfo.Id)
+                        @Html.HiddenFor(m=>Model.ProfessionalInfoId)
+
+                        @*<!-- liste déroulante et check box pour les infos pro et le manager -->*@
+                        <div>
+                            <h3>Rôle de l'employé</h3>
+                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.TypeRole)))
                             {
-                                isChecked = true;
-                                break;
-                            }
-                        }
+                                @*Ici on doit vérifier pour le user que l'on veut modifier quel(s) rôle(s) il avait précédemment, pour cela on doit chercher
+                                les rôles qui correspondent à l'id du user (voir la méthode dans la DalRole
+                                Pour que la checkbox soit cochée avec le(s) bon(s) rôle(s) on fait une boucle foreach qui vérifie cela et qui va attribuer
+                                un boolean true si le rôle est bien détenu par le user
+                                Si c'est le cas alors la checkbox sera notée checked=@isChecked(donc true)*@
 
+<<<<<<< HEAD
                         <input type="checkbox" class="checkbox" id=@item value=@item name="Roles" checked=@isChecked />
                         <label id="@item ">@item</label>
                     }
@@ -151,62 +167,107 @@
                                 bool positionIsChecked = false;
 
                                 if (Model.ProfessionalInfo.Position.Equals(item))
+=======
+                                bool isChecked = false;
+                                foreach (NoviaReport.Models.Role itemBis in ViewData["RoleList"] as List<NoviaReport.Models.Role>)
+>>>>>>> origin/arbam_back2
                                 {
-                                    positionIsChecked = true;
+                                    if (itemBis.TypeRole.Equals(item))
+                                    {
+                                        isChecked = true;
+                                        break;
+                                    }
                                 }
 
-                                <option value=@item name="Position" selected=@positionIsChecked>@item</option>
+                                <input type="checkbox" class="checkbox" id=@item value=@item name="Roles" checked=@isChecked />
+                                <label id="@item ">@item</label>
                             }
-                        </select>
-                    </div>
 
-                    @*fonctionne comme pour le statut*@
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.ProfessionalInfo.Function)
-                        <select id="Function" name="ProfessionalInfo.Function" class="choix">
-                            <option value="">Function</option>
-                            @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
-                            {
-                                bool functionIsChecked = false;
-                                if (Model.ProfessionalInfo.Function.Equals(item))
-                                {
-                                    functionIsChecked = true;
-                                }
-                                <option value=@item name="Function" selected=@functionIsChecked>@item</option>
-                            }
-                        </select>
-                    </div>
+                            @*Un peu comme précédemment avec les checkbox, on doit vérifier quel statut a le user, mais ici la méthode
+                                 est plus simple car un user n'a qu'un seul statut
+                                dans la boucle on vérifie que chaque ligne de l'enum et on la compare à la valeur du user
+                                quand elle est identique (on a trouvé le statut qui correspond au statut renseigné dans la table pour ce user un boolean (PositionIsChecked)
+                                devient true et ce boolean true donne l'indication à la ligne d'ajouter selected=@positionIsChecked*@
 
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
-                        @Html.TextBoxFor(m=>Model.ProfessionalInfo.DateOfArrival,"{0:yyyy-MM-dd}" ,new{@type="date"})
-                        @*<input id="ProfessionalInfo.DateOfArrival" type="date" value=@Model.ProfessionalInfo.DateOfArrival />*@
-                    </div>
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.ProfessionalInfo.Position)
+                                <select id="Position" name="ProfessionalInfo.Position" class="choix">
+                                    <option value="">Position</option>
+                                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Position)))
+                                    {
+                                        bool positionIsChecked = false;
 
-                    @*fonctionne comme pour le statut et le poste, il reste un cas qui n'est pas traité :
-                si le user est déjà renseigné comme manager, il ne devrait pas apparaitre dans la liste déroulante
-                voir pour implémenter ça si temps*@
+                                        if (Model.ProfessionalInfo.Position.Equals(item))
+                                        {
+                                            positionIsChecked = true;
+                                        }
 
-                    <div class="groupe">
-                        @Html.LabelFor(m => Model.ManagerId)
-                        <select id="ManagerId" name="ManagerId" class="choix">
-                            <option value="">--Choisissez une option--</option>
-                            <option value=0 name="Aucun manager">Aucun manager</option>
-                            @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
-                            {
-                                bool managerIsChecked = false;
-                                if (Model.ManagerId.Equals(user.Id))
-                                {
-                                    managerIsChecked = true;
-                                }
-                                <option value=@user.Id name="ManagerId" selected=@managerIsChecked>@user.Lastname</option>
-                            }
-                        </select>
-                    </div>
+                                        <option value=@item name="Position" selected=@positionIsChecked>@item</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @*fonctionne comme pour le statut*@
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.ProfessionalInfo.Function)
+                                <select id="Function" name="ProfessionalInfo.Function" class="choix">
+                                    <option value="">Function</option>
+                                    @foreach (var item in Enum.GetValues(typeof(NoviaReport.Models.Function)))
+                                    {
+                                        bool functionIsChecked = false;
+                                        if (Model.ProfessionalInfo.Function.Equals(item))
+                                        {
+                                            functionIsChecked = true;
+                                        }
+                                        <option value=@item name="Function" selected=@functionIsChecked>@item</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.ProfessionalInfo.DateOfArrival)
+                                @Html.TextBoxFor(m=>Model.ProfessionalInfo.DateOfArrival,"{0:yyyy-MM-dd}" ,new{@type="date"})
+                                @*<input id="ProfessionalInfo.DateOfArrival" type="date" value=@Model.ProfessionalInfo.DateOfArrival />*@
+                            </div>
+
+                            @*fonctionne comme pour le statut et le poste, il reste un cas qui n'est pas traité :
+                             si le user est déjà renseigné comme manager, il ne devrait pas apparaitre dans la liste déroulante
+                                voir pour implémenter ça si temps*@
+
+                            <div class="groupe">
+                                @Html.LabelFor(m => Model.ManagerId)
+                                <select id="ManagerId" name="ManagerId" class="choix">
+                                    <option value="">--Choisissez une option--</option>
+                                    <option value=0 name="Aucun manager">Aucun manager</option>
+                                    @foreach (NoviaReport.Models.User user in ViewData["ManagerList"] as List<NoviaReport.Models.User>)
+                                    {
+                                        bool managerIsChecked = false;
+                                        if (Model.ManagerId.Equals(user.Id))
+                                        {
+                                            managerIsChecked = true;
+                                        }
+                                        <option value=@user.Id name="ManagerId" selected=@managerIsChecked>@user.Lastname</option>
+                                    }
+                                </select>
+                            </div>
+
+                        </div>
+
+
+
+                   </div>
+
+                    
+                    
+                
+            
+               
+                
+                
                 </div>
-            </div>
+            </form>
             <input type="submit" value="Ajouter" />
-        </fieldset>
+       </fieldset>
 
         <a href="/home/index">Pour le moment retour vers l'index -> Changer ce lien pour un lien vers le dashboard de l'admin</a>
         //lien à modif quand le dashboard de l'admin sera créé
@@ -215,4 +276,3 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
 </body>
-</html>

@@ -46,6 +46,16 @@ namespace NoviaReport.Models
 
     public enum Client //trouver des noms d'entreprises fictives
     {
-        Aucun_Client, Client1, Client2, Client3, Client4, Client5, Client6
+
+        [Display(Name = "Aucun client")] Aucun_Client, 
+        [Display(Name = "Société Générale")] Client1,
+        [Display(Name = "BNP Paribas")] Client2,
+        [Display(Name = "ENGIE")] Client3, 
+        [Display(Name = "Total Energies")] Client4, 
+        [Display(Name = "Arkema")] Client5, 
+        [Display(Name = "Elior Group")] Client6, 
+        [Display(Name = "Eutelsat")] Client7, 
+        [Display(Name = "Vallourec")] Client8, 
+        [Display(Name = "Amoeba SA")] Client9
     }
 }

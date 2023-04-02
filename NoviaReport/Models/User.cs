@@ -16,11 +16,10 @@ namespace NoviaReport.Models
         [MaxLength(50)]
         public string Password { get; set; }
 
-        //[Required]
+
         [Display(Name = "Prénom")]
         public string Firstname { get; set; }
 
-        //[Required]
         [Display(Name = "Nom de famille")]
         public string Lastname { get; set; }
 

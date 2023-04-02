@@ -263,14 +263,13 @@ namespace NoviaReport.Controllers
             DalActivity dal = new DalActivity();
             ViewData["ActivitiesCRAList"] = dal.GetActivitiesCRA();
             return View("ListActivitiesCRA");
-
-
         }
 
         //Méthode pour afficher les Activités liées à un CRA
         [Authorize]
         public IActionResult GetActivitiesCRA(int id)
         {
+
             CraActivitiesViewModel viewModel = new CraActivitiesViewModel { };
 
             using (DalCRA dalCRA = new DalCRA())
