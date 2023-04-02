@@ -48,14 +48,14 @@ namespace NoviaReport.Models
 
 
                 new User { Id = 5, Firstname = "Fidji", Lastname = "Kennedy", Login = "FidjiK", Password = DalUser.EncodeMD5("fifi"), ContactId = 5, ProfessionalInfoId = 5, ManagerId = 2 },
-                new User { Id = 6, Firstname = "Paul", Lastname = "Belmondo", Login = "PaulB", Password = DalUser.EncodeMD5("belo"), ContactId = 6, ProfessionalInfoId = 6, ManagerId = 2 },
+                new User { Id = 6, Firstname = "Paul", Lastname = "Belmondo", Login = "PaulB", Password = DalUser.EncodeMD5("belo"), ContactId = 6, ProfessionalInfoId = 6, ManagerId = 3 },
                 new User { Id = 7, Firstname = "Patrick", Lastname = "Brelle", Login = "PatrickB", Password = DalUser.EncodeMD5("brelle"), ContactId = 7, ProfessionalInfoId = 7, ManagerId = 2 },
                 new User { Id = 8, Firstname = "Francis", Lastname = "Garbel", Login = "FrancisG", Password = DalUser.EncodeMD5("garbel"), ContactId = 8, ProfessionalInfoId = 8, ManagerId = 2 },
 
                 new User { Id = 9, Firstname = "Alain", Lastname = "Decour", Login = "AlainD", Password = DalUser.EncodeMD5("alain"), ContactId = 9, ProfessionalInfoId = 9, ManagerId = 3 },
                 new User { Id = 10, Firstname = "Pierre", Lastname = "Voisine", Login = "RokV", Password = DalUser.EncodeMD5("pierre"), ContactId = 10, ProfessionalInfoId = 10, ManagerId = 3 },
                 new User { Id = 11, Firstname = "Viknesh", Lastname = "Mandu", Login = "VikneshM", Password = DalUser.EncodeMD5("viknesh"), ContactId = 11, ProfessionalInfoId = 11, ManagerId = 3 },
-                new User { Id = 12, Firstname = "Sanjay", Lastname = "Talou", Login = "SanjayT", Password = DalUser.EncodeMD5("sanjay"), ContactId = 12, ProfessionalInfoId = 12, ManagerId = 3 },
+                new User { Id = 12, Firstname = "Sanjay", Lastname = "Talou", Login = "SanjayT", Password = DalUser.EncodeMD5("sanjay"), ContactId = 12, ProfessionalInfoId = 12, ManagerId = 2 },
 
 
                 new User { Id = 13, Firstname = "Ashraaf", Lastname = "Awad", Login = "AshraafA", Password = DalUser.EncodeMD5("ashraaf"), ContactId = 13, ProfessionalInfoId = 13, ManagerId = 19 },
@@ -213,7 +213,7 @@ namespace NoviaReport.Models
                 new UserCRA { Id = 37, UserId = 16, CRAId = 37 },
                 new UserCRA { Id = 38, UserId = 17, CRAId = 38 },
                 new UserCRA { Id = 39, UserId = 18, CRAId = 39 },
-                new UserCRA { Id = 40, UserId = 6, CRAId = 40 },
+                new UserCRA { Id = 40, UserId = 18, CRAId = 40 },
 
                 new UserCRA { Id = 41, UserId = 7, CRAId = 41 },
                 new UserCRA { Id = 42, UserId = 8, CRAId = 42 },
@@ -228,14 +228,14 @@ namespace NoviaReport.Models
 
             this.CRAs.AddRange(
 
-                new CRA { Id = 1, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
+                new CRA { Id = 1, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
                 new CRA { Id = 2, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
                 new CRA { Id = 3, Date = new DateTime(2023, 03, 01), State = State.INCOMPLET },
-                new CRA { Id = 4, Date = new DateTime(2023, 04, 01), State = State.INCOMPLET },
+                new CRA { Id = 4, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
 
 
                 new CRA { Id = 5, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
-                new CRA { Id = 6, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
+                new CRA { Id = 6, Date = new DateTime(2023, 01, 01), State = State.VALIDE },
                 new CRA { Id = 7, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
                 new CRA { Id = 8, Date = new DateTime(2023, 01, 01), State = State.INCOMPLET },
 
@@ -245,13 +245,13 @@ namespace NoviaReport.Models
                 new CRA { Id = 12, Date = new DateTime(2023, 01, 01), State = State.EN_COURS_DE_VALIDATION },
 
                 new CRA { Id = 13, Date = new DateTime(2023, 01, 01), State = State.NON_VALIDE },
-                new CRA { Id = 14, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION },
+                new CRA { Id = 14, Date = new DateTime(2023, 02, 01), State = State.VALIDE },
                 new CRA { Id = 15, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
                 new CRA { Id = 16, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
 
-                new CRA { Id = 17, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+                new CRA { Id = 17, Date = new DateTime(2023, 02, 01), State = State.VALIDE },
                 new CRA { Id = 18, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
-                new CRA { Id = 19, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
+                new CRA { Id = 19, Date = new DateTime(2023, 02, 01), State = State.VALIDE },
                 new CRA { Id = 20, Date = new DateTime(2023, 02, 01), State = State.INCOMPLET },
 
                 new CRA { Id = 21, Date = new DateTime(2023, 02, 01), State = State.EN_COURS_DE_VALIDATION },
@@ -261,13 +261,13 @@ namespace NoviaReport.Models
 
                 new CRA { Id = 25, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
                 new CRA { Id = 26, Date = new DateTime(2023, 02, 01), State = State.NON_VALIDE },
-                new CRA { Id = 27, Date = new DateTime(2023, 03, 01), State = State.NON_VALIDE },
+                new CRA { Id = 27, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
                 new CRA { Id = 28, Date = new DateTime(2023, 03, 01), State = State.NON_VALIDE },
 
                 new CRA { Id = 29, Date = new DateTime(2023, 03, 01), State = State.INCOMPLET },
-                new CRA { Id = 30, Date = new DateTime(2023, 03, 01), State = State.INCOMPLET },
+                new CRA { Id = 30, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
                 new CRA { Id = 31, Date = new DateTime(2023, 03, 01), State = State.INCOMPLET },
-                new CRA { Id = 32, Date = new DateTime(2023, 03, 01), State = State.INCOMPLET },
+                new CRA { Id = 32, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
 
                 new CRA { Id = 33, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
                 new CRA { Id = 34, Date = new DateTime(2023, 03, 01), State = State.EN_COURS_DE_VALIDATION },
@@ -281,10 +281,10 @@ namespace NoviaReport.Models
 
                 new CRA { Id = 41, Date = new DateTime(2023, 12, 01), State = State.VALIDE },
                 new CRA { Id = 42, Date = new DateTime(2023, 12, 01), State = State.VALIDE },
-                new CRA { Id = 43, Date = new DateTime(2023, 12, 01), State = State.VALIDE },
+                new CRA { Id = 43, Date = new DateTime(2023, 04, 01), State = State.INCOMPLET},
                 new CRA { Id = 44, Date = new DateTime(2023, 12, 01), State = State.VALIDE },
 
-                new CRA { Id = 45, Date = new DateTime(2023, 12, 01), State = State.EN_COURS_DE_VALIDATION },
+                new CRA { Id = 45, Date = new DateTime(2023, 04, 01), State = State.INCOMPLET },
                 new CRA { Id = 46, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET },
                 new CRA { Id = 47, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET },
                 new CRA { Id = 48, Date = new DateTime(2023, 12, 01), State = State.INCOMPLET }
@@ -296,6 +296,7 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 2, CRAId = 2, ActivityId = 2 },
                 new CraActivity { Id = 3, CRAId = 3, ActivityId = 3 },
                 new CraActivity { Id = 4, CRAId = 4, ActivityId = 4 },
+                
                 new CraActivity { Id = 5, CRAId = 5, ActivityId = 5 },
                 new CraActivity { Id = 6, CRAId = 6, ActivityId = 6 },
                 new CraActivity { Id = 7, CRAId = 7, ActivityId = 7 },
@@ -322,10 +323,10 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 28, CRAId = 28, ActivityId = 28 },
                 new CraActivity { Id = 29, CRAId = 29, ActivityId = 29 },
                 new CraActivity { Id = 30, CRAId = 30, ActivityId = 30 },
-                new CraActivity { Id = 31, CRAId = 31, ActivityId = 31 },
-                new CraActivity { Id = 32, CRAId = 32, ActivityId = 32 },
-                new CraActivity { Id = 33, CRAId = 33, ActivityId = 33 },
-                new CraActivity { Id = 34, CRAId = 34, ActivityId = 34 },
+                new CraActivity { Id = 31, CRAId = 30, ActivityId = 31 },
+                new CraActivity { Id = 32, CRAId = 30, ActivityId = 32 },
+                new CraActivity { Id = 33, CRAId = 30, ActivityId = 33 },
+                new CraActivity { Id = 34, CRAId = 30, ActivityId = 34 },
                 new CraActivity { Id = 35, CRAId = 35, ActivityId = 35 },
                 new CraActivity { Id = 36, CRAId = 36, ActivityId = 36 },
                 new CraActivity { Id = 37, CRAId = 37, ActivityId = 37 },
@@ -338,7 +339,11 @@ namespace NoviaReport.Models
                 new CraActivity { Id = 44, CRAId = 44, ActivityId = 44 },
                 new CraActivity { Id = 45, CRAId = 45, ActivityId = 45 },
                 new CraActivity { Id = 46, CRAId = 46, ActivityId = 46 },
-                new CraActivity { Id = 47, CRAId = 47, ActivityId = 47 }
+                new CraActivity { Id = 47, CRAId = 47, ActivityId = 47 },
+                new CraActivity { Id = 48, CRAId = 4, ActivityId = 48 },
+                new CraActivity { Id = 49, CRAId = 4, ActivityId = 49 },
+                new CraActivity { Id = 50, CRAId = 4, ActivityId = 50 },
+                new CraActivity { Id = 51, CRAId = 4, ActivityId = 51 }
                 );
 
 
@@ -346,7 +351,7 @@ namespace NoviaReport.Models
                 new Activity { Id = 1, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.BNP_PARIBAS },
                 new Activity { Id = 2, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.BNP_PARIBAS },
                 new Activity { Id = 3, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.ASTREINTE, Client = Client.BNP_PARIBAS },
-                new Activity { Id = 4, Date = new DateTime(2023, 02, 26), TypeActivity = TypeActivity.CONGE_PAYE, Client = Client.Aucun_Client },
+                new Activity { Id = 4, Date = new DateTime(2023, 01, 20), TypeActivity = TypeActivity.CONGE_PAYE, Client = Client.Aucun_Client },
                 new Activity { Id = 5, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.SOCIETE_GENERALE },
                 new Activity { Id = 6, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.SOCIETE_GENERALE },
                 new Activity { Id = 7, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ENGIE },
@@ -374,11 +379,11 @@ namespace NoviaReport.Models
                 new Activity { Id = 28, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
 
                 new Activity { Id = 29, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client },
-                new Activity { Id = 30, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
-                new Activity { Id = 31, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
-                new Activity { Id = 32, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
-                new Activity { Id = 33, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
-                new Activity { Id = 34, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 30, Date = new DateTime(2023, 03, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 31, Date = new DateTime(2023, 03, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.TOTAL_ENERGIES },
+                new Activity { Id = 32, Date = new DateTime(2023, 03, 03), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 33, Date = new DateTime(2023, 03, 04), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
+                new Activity { Id = 34, Date = new DateTime(2023, 03, 05), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.TOTAL_ENERGIES },
 
                 new Activity { Id = 35, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
                 new Activity { Id = 36, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.ASTREINTE, Client = Client.AMOEBA_SA },
@@ -393,8 +398,12 @@ namespace NoviaReport.Models
                 new Activity { Id = 45, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
                 new Activity { Id = 46, Date = new DateTime(2023, 02, 02), TypeActivity = TypeActivity.PRESTATION, Client = Client.ELIOR_GROUP },
                 new Activity { Id = 47, Date = new DateTime(2023, 02, 03), TypeActivity = TypeActivity.MAINTENANCE, Client = Client.VALLOUREC },
-                new Activity { Id = 48, Date = new DateTime(2023, 02, 01), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA }
 
+                new Activity { Id = 48, Date = new DateTime(2023, 01, 24), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 49, Date = new DateTime(2023, 01, 25), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA },
+                new Activity { Id = 50, Date = new DateTime(2023, 01, 26), TypeActivity = TypeActivity.PRESTATION, Client = Client.ARKEMA},
+                new Activity { Id = 51, Date = new DateTime(2023, 01, 27), TypeActivity = TypeActivity.FORMATION_PROFESSIONNELLE, Client = Client.Aucun_Client }
+                
                 );
 
             this.SaveChanges();

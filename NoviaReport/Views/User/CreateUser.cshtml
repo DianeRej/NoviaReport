@@ -48,8 +48,6 @@
                         @Html.ValidationMessageFor(m => Model.Login)
                         <i class="fa-solid fa-user"></i>
 
-                        @*Pour le moment on ne peut plus modifier le mdp*@
-                        @Html.HiddenFor(m => Model.Password)
                     </div>
                 </div>
                 <div>
@@ -174,11 +172,11 @@
 
             </div>
 
-            <input type="submit" value="Ajouter" />
+                <input type="submit" value="Ajouter" />
 
         </fieldset>
         <button><a href="/dashboard/dashboardadmin">Retour au tableau de bord</a></button>
-    }
+        }
     @*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@

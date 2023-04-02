@@ -5,7 +5,7 @@ namespace NoviaReport.Models
 {
     public class Contact
     {
-        //les display name correspondentaux noms qui seront affichés sur les vues
+        //les display name correspondent aux noms qui seront affichés sur les vues
         public int Id { get; set; }
 
         [Display(Name = "Adresse Mail Personnelle")]
